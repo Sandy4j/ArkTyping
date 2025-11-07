@@ -11,19 +11,25 @@ config_version=5
 [application]
 
 config/name="3D Tower Defense"
-run/main_scene="res://scenes/Main.tscn"
+run/main_scene="uid://cj0xxw8ewgpqy"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 GameManager="*res://scripts/Autoload/GameManager.gd"
-WaveManager="*res://scripts/Autoload/WaveManager.gd"
+TypingSystem="*res://scripts/Autoload/TypingSystem.gd"
+LevelManager="*res://scripts/Autoload/LevelManager.gd"
 
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+
+[global_group]
+
+towerinput=""
+towercon=""
 
 [input]
 

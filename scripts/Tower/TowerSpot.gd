@@ -8,10 +8,9 @@ var has_tower: bool = false
 var hover_material: StandardMaterial3D
 var default_material: StandardMaterial3D
 
-@onready var mesh_instance: MeshInstance3D = $MeshInstance3D
+@onready var mesh_instance: MeshInstance3D = $Altar
 
 func _ready() -> void:
-	# Create materials for visual feedback
 	default_material = StandardMaterial3D.new()
 	default_material.albedo_color = Color(0.3, 0.3, 0.8, 0.5)
 	default_material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
