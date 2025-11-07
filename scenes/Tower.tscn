@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://cjhp6v8qnx4qm"]
+
+[ext_resource type="Script" path="res://scripts/Tower.gd" id="1_tower"]
+[ext_resource type="PackedScene" uid="uid://ckr4wvp7hx8tn" path="res://scenes/Projectile.tscn" id="2_projectile"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_tower"]
+top_radius = 0.5
+bottom_radius = 0.5
+height = 1.0
+
+[sub_resource type="SphereShape3D" id="SphereShape_range"]
+radius = 10.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_shoot"]
+size = Vector3(0.2, 0.2, 0.5)
+
+[node name="Tower" type="Node3D"]
+script = ExtResource("1_tower")
+projectile_scene = ExtResource("2_projectile")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("CylinderMesh_tower")
+
+[node name="RangeArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RangeArea"]
+shape = SubResource("SphereShape_range")
+
+[node name="ShootPoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ShootPoint"]
+mesh = SubResource("BoxMesh_shoot")
