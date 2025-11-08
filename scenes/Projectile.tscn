@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://ckr4wvp7hx8tn"]
+[gd_scene load_steps=3 format=3 uid="uid://ckr4wvp7hx8tn"]
 
-[ext_resource type="Script" path="res://scripts/Projectile.gd" id="1_projectile"]
+[ext_resource type="Script" uid="uid://bkso2a2sv0efi" path="res://scripts/Tower/Projectile.gd" id="1_projectile"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_projectile"]
 radius = 0.15
