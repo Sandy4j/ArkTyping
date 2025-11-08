@@ -1,12 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://dwmyf3c3kjdih"]
+[gd_scene load_steps=14 format=3 uid="uid://dwmyf3c3kjdih"]
 
 [ext_resource type="Script" uid="uid://bpdh0cu6naavy" path="res://scripts/Tower/inputtower.gd" id="2_jlsqs"]
 [ext_resource type="Script" uid="uid://dgxccv80klhc7" path="res://scripts/Tower/TowerCon.gd" id="3_q8u5g"]
 [ext_resource type="Script" uid="uid://bbexpquh4b3ip" path="res://scripts/UI/UI.gd" id="4_uimanager"]
-[ext_resource type="PackedScene" uid="uid://dfql5k5psmgxn" path="res://scenes/TowerSpot.tscn" id="5_towerspot"]
+[ext_resource type="PackedScene" uid="uid://dfql5k5psmgxn" path="res://scenes/Tower/TowerSpot.tscn" id="5_towerspot"]
 [ext_resource type="Script" uid="uid://4ipxb665lopb" path="res://scripts/WaveManager.gd" id="6_jlsqs"]
-[ext_resource type="PackedScene" uid="uid://cjhp6v8qnx4qm" path="res://scenes/Tower.tscn" id="6_tower"]
-[ext_resource type="PackedScene" uid="uid://bo7jkw2yxbwbc" path="res://scenes/Enemy.tscn" id="7_q8u5g"]
+[ext_resource type="PackedScene" uid="uid://cjhp6v8qnx4qm" path="res://scenes/Tower/Tower.tscn" id="6_tower"]
 [ext_resource type="PackedScene" uid="uid://dr5mh3wmxd7uu" path="res://scenes/Base.tscn" id="8_base"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sky"]
@@ -127,13 +126,8 @@ tower_scene = ExtResource("6_tower")
 
 [node name="WaveManager" type="Node" parent="."]
 script = ExtResource("6_jlsqs")
-enemy_scene = ExtResource("7_q8u5g")
 spawn_path_node = NodePath("../EnemyPath")
 base_node = NodePath("../Base")
-initial_enemies_per_wave = null
-spawn_interval = null
-time_between_waves = null
-max_waves = 1
 metadata/_custom_type_script = "uid://4ipxb665lopb"
 
 [node name="UI" type="CanvasLayer" parent="."]

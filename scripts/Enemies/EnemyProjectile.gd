@@ -1,10 +1,10 @@
-extends Node3D
+﻿extends Node3D
 
-## Projectile tower
+## Projectile Enemy
 
 var target: Node3D = null
 var damage: float = 10.0
-var speed: float = 10.0
+var speed: float = 8.0
 var pool_name: String = ""  # tracking asal pool
 
 func initialize(target_node: Node3D, proj_damage: float, proj_speed: float) -> void:
@@ -26,14 +26,17 @@ func _process(delta: float) -> void:
 		hit_target()
 
 func hit_target() -> void:
-	if target and is_instance_valid(target) and target.has_method("take_damage"):
-		target.take_damage(damage)
+	if target and is_instance_valid(target):
+		if target.has_method("take_damage"):
+			target.take_damage(damage)
+		elif target.get_parent() and target.get_parent().has_method("take_damage"):
+			target.get_parent().take_damage(damage)
 	return_to_pool()
 
 func return_to_pool() -> void:
 	target = null
 	damage = 10.0
-	speed = 10.0
+	speed = 8.0
 	
 	if pool_name != "" and ObjectPool.pools.has(pool_name):
 		ObjectPool.return_pooled_object(pool_name, self)

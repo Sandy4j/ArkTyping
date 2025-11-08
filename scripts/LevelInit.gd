@@ -1,4 +1,5 @@
 ﻿extends Node
+class_name LevelInit
 
 func _ready() -> void:
 	var scene_path = get_tree().current_scene.scene_file_path

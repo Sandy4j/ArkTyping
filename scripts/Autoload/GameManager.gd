@@ -32,8 +32,8 @@ func set_base(base_node: Node3D) -> void:
 		base_reference.hp_changed.connect(_on_base_hp_changed)
 		call_deferred("_emit_initial_base_hp")
 
-func _on_base_hp_changed(new_hp: int) -> void:
-	base_hp_changed.emit(new_hp)
+func _on_base_hp_changed(current: int, _maximum: int) -> void:
+	base_hp_changed.emit(current)
 
 func _emit_initial_base_hp() -> void:
 	if base_reference:

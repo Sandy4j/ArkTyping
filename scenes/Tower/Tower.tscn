@@ -1,12 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://cjhp6v8qnx4qm"]
 
-[ext_resource type="Script" uid="uid://cqhh8jen48v85" path="res://scripts/Tower/Tower.gd" id="1_tower"]
-[ext_resource type="PackedScene" uid="uid://ckr4wvp7hx8tn" path="res://scenes/Projectile.tscn" id="2_projectile"]
-
+[ext_resource type="Script" uid="uid://cqhh8jen48v85" path="res://scripts/Tower/Tower.gd" id="1_s35pe"]
+[ext_resource type="PackedScene" uid="uid://ckr4wvp7hx8tn" path="res://scenes/Tower/Projectile.tscn" id="2_il1ul"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_tower"]
-top_radius = 0.5
-bottom_radius = 0.5
 height = 1.0
 
 [sub_resource type="SphereShape3D" id="SphereShape_range"]
@@ -16,8 +13,8 @@ radius = 10.0
 size = Vector3(0.2, 0.2, 0.5)
 
 [node name="Tower" type="Node3D"]
-script = ExtResource("1_tower")
-projectile_scene = ExtResource("2_projectile")
+script = ExtResource("1_s35pe")
+projectile_scene = ExtResource("2_il1ul")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -32,7 +29,7 @@ monitorable = false
 shape = SubResource("SphereShape_range")
 
 [node name="ShootPoint" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="ShootPoint"]
 mesh = SubResource("BoxMesh_shoot")

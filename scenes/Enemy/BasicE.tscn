@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://orr3oexwxv50"]
+
+[ext_resource type="Script" path="res://scripts/Enemies/BasicEnemy.gd" id="1_inemf"]
+[ext_resource type="Texture2D" uid="uid://4tmvqdctr5pd" path="res://asset/1762598031673.png" id="2_bxj72"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_inemf"]
+
+[node name="Enemy" type="CharacterBody3D"]
+script = ExtResource("1_inemf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_inemf")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+texture = ExtResource("2_bxj72")

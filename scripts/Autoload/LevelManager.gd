@@ -54,5 +54,7 @@ func reload_current_level() -> void:
 		get_tree().reload_current_scene()
 
 func trigger_victory() -> void:
+	if GameManager.is_game_over:
+		return
 	victory.emit()
 	print("Menang cuy")
