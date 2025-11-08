@@ -73,12 +73,10 @@ func upgrade() -> bool:
 	if GameManager.spend_currency(upgrade_cost):
 		upgrade_level += 1
 		
-		# Increase stats
 		damage *= 1.2
 		fire_rate *= 1.1
 		detection_range *= 1.1
 		
-		# Update range visualization
 		if range_area:
 			var collision_shape = range_area.get_node("CollisionShape3D")
 			if collision_shape and collision_shape.shape is SphereShape3D:

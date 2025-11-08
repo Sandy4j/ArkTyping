@@ -50,7 +50,5 @@ func place_tower() -> void:
 		
 		if mesh_instance:
 			mesh_instance.visible = false
-		
-		print("Tower placed!")
 	else:
-		print("Not enough currency!")
+		print("Kurang")

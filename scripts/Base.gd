@@ -9,7 +9,6 @@ var current_hp: int = 0
 func _ready() -> void:
 	current_hp = max_hp
 	GameManager.set_base(self)
-	hp_changed.emit(current_hp)
 
 func take_damage(damage: int) -> void:
 	current_hp -= damage
