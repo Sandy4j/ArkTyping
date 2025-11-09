@@ -33,6 +33,7 @@ folder_colors={
 "res://resources/Enemy Data/": "red",
 "res://resources/SpawnEntry/": "blue",
 "res://resources/WaveData/": "purple",
+"res://resources/res_tower/": "orange",
 "res://scenes/Enemy/": "red",
 "res://scenes/Tower/": "orange",
 "res://scripts/Enemies/": "red",

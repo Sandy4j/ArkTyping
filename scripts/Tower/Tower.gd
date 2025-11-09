@@ -17,13 +17,8 @@ var enemies_in_range: Array[CharacterBody3D] = []
 var overload_burst_active:bool
 var scarlet_harvester_active:bool
 
-# Health system for tower
-@export var max_hp: float = 100.0
+var max_hp: float = 100.0
 var current_hp: float = 100.0
-# Upgrade stats
-
-@export var upgrade_cost: int = 50
-var upgrade_level: int = 0
 
 var orbit
 var is_lilitia:bool
@@ -32,7 +27,6 @@ var current_target: CharacterBody3D = null
 var skill_active: bool = false
 var skill_cooldown: float = 0.0
 var current_skill_cooldown: float = 0.0
-var current_target: Node3D = null
 
 @onready var sprite: Sprite3D = $Sprite3D
 @onready var range_area: Area3D = $RangeArea
@@ -44,16 +38,17 @@ func _ready() -> void:
 	detection_range = tower_data.range
 	projectile_speed = tower_data.projectile_speed 
 	skill_type = tower_data.skill
+	max_hp = tower_data.max_hp
+	current_hp = max_hp
 	sprite.texture = tower_data.sprite
 	print("Tower initialized with data: ", tower_data.chara)
-	print("Damage: ", damage, " Fire Rate: ", fire_rate, " Range: ", detection_range)
+	print("Damage: ", damage, " Fire Rate: ", fire_rate, " Range: ", detection_range, " HP: ", max_hp)
 	if tower_data.chara == "lilitia":
 		is_lilitia = true
 		activate_holy_divine_basic()
 		return
 	
 	add_to_group("tower")
-	current_hp = max_hp
 	
 	if range_area:
 		var collision_shape = range_area.get_node("CollisionShape3D")
@@ -63,32 +58,29 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if not is_inside_tree():
 		return
-		
 	
 	fire_timer += delta
 	
 	# Update skill cooldown
 	if current_skill_cooldown > 0:
 		current_skill_cooldown -= delta
+	
 	if is_lilitia:
 		return
 	
-	 
-	
-	# Find target
-	#if not current_target or not is_instance_valid(current_target):
-		#current_target = find_nearest_enemy()
+	# Update target
 	update_target()
-	# Check if target is still in range
-	#if current_target and global_position.distance_to(current_target.global_position) > detection_range:
-		#current_target = null
-	if not current_target or not is_instance_valid(current_target):
+	
+	# Find target if none
+	if not current_target or not is_instance_valid(current_target) or not current_target.is_in_group("enemies"):
 		current_target = find_nearest_enemy()
 	
+	# Check if target is still in range
 	if current_target and global_position.distance_to(current_target.global_position) > detection_range:
 		current_target = null
 	
-	if current_target and fire_timer >= 1.0 / fire_rate:
+	# Shoot at target
+	if current_target and is_instance_valid(current_target) and current_target.is_in_group("enemies") and fire_timer >= 1.0 / fire_rate:
 		if overload_burst_active:
 			overload_burst()
 		elif tower_data.skill == "bloody opus" or scarlet_harvester_active:
@@ -99,20 +91,6 @@ func _process(delta: float) -> void:
 		else:
 			shoot(current_target)
 		fire_timer = 0.0
-
-func find_nearest_enemy() -> Node3D:
-	var enemies = get_tree().get_nodes_in_group("enemies")
-	var nearest: Node3D = null
-	var nearest_distance: float = INF
-	
-	for enemy in enemies:
-		if is_instance_valid(enemy):
-			var distance = global_position.distance_to(enemy.global_position)
-			if distance <= detection_range and distance < nearest_distance:
-				nearest = enemy
-				nearest_distance = distance
-	
-	return nearest
 
 func shoot(target: Node3D) -> void:
 	if not projectile_scene:
@@ -141,19 +119,40 @@ func double_shoot(target: CharacterBody3D) -> void:
 	if not projectile_scene:
 		return
 	
-	var projectile1 = projectile_scene.instantiate()
-	var projectile2 = projectile_scene.instantiate()
+	var pool_key = "tower_projectile"
+	
+	# First projectile
+	var projectile1 = ObjectPool.get_pooled_object(pool_key)
+	if not projectile1:
+		projectile1 = projectile_scene.instantiate()
+	else:
+		projectile1.pool_name = pool_key
+	
 	get_tree().current_scene.add_child(projectile1)
-	get_tree().current_scene.add_child(projectile2)
+	
 	if shoot_point:
 		projectile1.global_position = shoot_point.global_position
-		projectile2.global_position = shoot_point.global_position
 	else:
 		projectile1.global_position = global_position + Vector3.UP
-		projectile2.global_position = global_position + Vector3.UP
 	
 	projectile1.initialize(target, damage, projectile_speed)
+	
+	# Second projectile
 	await get_tree().create_timer(0.25).timeout
+	
+	var projectile2 = ObjectPool.get_pooled_object(pool_key)
+	if not projectile2:
+		projectile2 = projectile_scene.instantiate()
+	else:
+		projectile2.pool_name = pool_key
+	
+	get_tree().current_scene.add_child(projectile2)
+	
+	if shoot_point:
+		projectile2.global_position = shoot_point.global_position
+	else:
+		projectile2.global_position = global_position + Vector3.UP
+	
 	projectile2.initialize(target, damage, projectile_speed)
 	shot_fired.emit()
 	print("shot")
@@ -175,11 +174,18 @@ func overload_burst() -> void:
 	if targets.size() == 0:
 		return
 	
+	var pool_key = "tower_projectile"
+	
 	for i in range(targets.size()):
 		var target = targets[i]
 		if is_instance_valid(target):
+			var projectile = ObjectPool.get_pooled_object(pool_key)
 			
-			var projectile = projectile_scene.instantiate()
+			if not projectile:
+				projectile = projectile_scene.instantiate()
+			else:
+				projectile.pool_name = pool_key
+			
 			get_tree().current_scene.add_child(projectile)
 			
 			if shoot_point:
@@ -188,7 +194,6 @@ func overload_burst() -> void:
 				projectile.global_position = global_position + Vector3.UP
 			
 			projectile.initialize(target, damage, projectile_speed)
-			
 	
 	shot_fired.emit()
 	print("Triple Shot! Hit ", targets.size(), " enemies")
@@ -199,7 +204,7 @@ func find_nearest_enemy() -> CharacterBody3D:
 	var nearest_distance: float = INF
 	
 	for enemy in enemies:
-		if is_instance_valid(enemy):
+		if is_instance_valid(enemy) and enemy.is_in_group("enemies"):
 			var distance = global_position.distance_to(enemy.global_position)
 			if distance <= detection_range and distance < nearest_distance:
 				nearest = enemy
@@ -227,15 +232,15 @@ func _on_enemy_exited_range(body: Node3D) -> void:
 	if body.is_in_group("enemies") and body is CharacterBody3D:
 		var enemy = body as CharacterBody3D
 		
-		# Hapus dari array
+		# Hapus musuh dari array
 		if enemy in enemies_in_range:
 			enemies_in_range.erase(enemy)
 			print("Enemy exited range. Total enemies: ", enemies_in_range.size())
-			
-			# Jika musuh yang keluar adalah target saat ini, cari target baru
-			if enemy == current_target:
-				current_target = null
-				update_target()
+		
+		# Jika musuh yang keluar adalah target saat ini, cari target baru
+		if enemy == current_target:
+			current_target = null
+			update_target()
 
 func update_target() -> void:
 	# Bersihkan array dari musuh yang sudah tidak valid
@@ -255,11 +260,11 @@ func update_target() -> void:
 			print("Target reacquired: ", current_target.name)
 
 func cleanup_enemies_array() -> void:
-	# Hapus musuh yang sudah tidak valid dari array
+	# Hapus musuh yang sudah tidak valid atau tidak dalam group "enemies" (pooled)
 	var invalid_enemies: Array[CharacterBody3D] = []
 	
 	for enemy in enemies_in_range:
-		if not is_instance_valid(enemy):
+		if not is_instance_valid(enemy) or not enemy.is_in_group("enemies"):
 			invalid_enemies.append(enemy)
 	
 	for invalid_enemy in invalid_enemies:
@@ -268,26 +273,10 @@ func cleanup_enemies_array() -> void:
 	# Jika ada musuh yang dihapus, update target
 	if invalid_enemies.size() > 0:
 		print("Cleaned up ", invalid_enemies.size(), " invalid enemies")
-		if current_target and not is_instance_valid(current_target):
+		if current_target and (not is_instance_valid(current_target) or not current_target.is_in_group("enemies")):
 			current_target = null
 			update_target()
 
-func upgrade() -> bool:
-	if GameManager.spend_currency(upgrade_cost):
-		upgrade_level += 1
-		
-		damage *= 1.2
-		fire_rate *= 1.1
-		detection_range *= 1.1
-		
-		if range_area:
-			var collision_shape = range_area.get_node("CollisionShape3D")
-			if collision_shape and collision_shape.shape is SphereShape3D:
-				collision_shape.shape.radius = detection_range
-		
-		print("Tower upgraded to level ", upgrade_level)
-		return true
-	return false
 
 func take_damage(dmg: float) -> void:
 	current_hp -= dmg

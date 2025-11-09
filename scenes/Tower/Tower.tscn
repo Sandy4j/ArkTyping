@@ -1,8 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://cjhp6v8qnx4qm"]
 
 [ext_resource type="Script" uid="uid://cqhh8jen48v85" path="res://scripts/Tower/Tower.gd" id="1_tower"]
-[ext_resource type="PackedScene" uid="uid://ckr4wvp7hx8tn" path="res://scenes/Projectile.tscn" id="2_projectile"]
-[ext_resource type="Texture2D" uid="uid://dtibubuamy3s4" path="res://asset/Capture.PNG" id="3_02lgm"]
+[ext_resource type="PackedScene" uid="uid://ckr4wvp7hx8tn" path="res://scenes/Tower/Projectile.tscn" id="2_projectile"]
+[ext_resource type="Texture2D" uid="uid://dtibubuamy3s4" path="res://asset/Tower/Capture.PNG" id="3_02lgm"]
+
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_tower"]
 height = 1.0

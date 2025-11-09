@@ -81,6 +81,16 @@ func reach_end() -> void:
 func return_to_pool() -> void:
 	remove_from_group("enemies")
 	
+	# Disconnect all signals before returning to pool
+	for connection in died.get_connections():
+		died.disconnect(connection.callable)
+	
+	for connection in reached_end.get_connections():
+		reached_end.disconnect(connection.callable)
+	
+	for connection in hp_changed.get_connections():
+		hp_changed.disconnect(connection.callable)
+	
 	current_hp = enemy_data.max_hp if enemy_data else 0.0
 	
 	if path_follow:

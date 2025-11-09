@@ -13,6 +13,9 @@ var base_reference: Node3D = null
 
 func _ready() -> void:
 	currency = starting_currency
+	call_deferred("_emit_initial_currency")
+
+func _emit_initial_currency() -> void:
 	currency_changed.emit(currency)
 
 func add_currency(amount: int) -> void:

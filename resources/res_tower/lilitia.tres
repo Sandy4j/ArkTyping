@@ -1,7 +1,8 @@
 [gd_resource type="Resource" script_class="TowerData" load_steps=3 format=3 uid="uid://dvfphesh2a4nj"]
 
 [ext_resource type="Script" uid="uid://g85gwfmcln8s" path="res://scripts/Tower/Tower_Res.gd" id="1_r3aw5"]
-[ext_resource type="Texture2D" uid="uid://ipa7n5xgfsya" path="res://asset/3.PNG" id="2_jlmn8"]
+[ext_resource type="Texture2D" uid="uid://ipa7n5xgfsya" path="res://asset/Tower/3.PNG" id="2_jlmn8"]
+
 
 [resource]
 script = ExtResource("1_r3aw5")

@@ -6,7 +6,7 @@ class_name SpawnManager
 signal spawn_point_completed(spawn_point_index: int)
 signal all_spawn_points_completed
 
-@export var base_node: NodePath
+
 
 # Sequential mode variables
 var current_spawn_point_index: int = 0
@@ -19,6 +19,7 @@ var spawn_point_states: Array[Dictionary] = []  # Tracking state untkuk setiap s
 var spawn_timers: Array[float] = []  # Timer untuk setiap spawn point
 
 # Variables umum
+var base_node: NodePath
 var spawn_point_configs: Array[SpawnPointConfig] = []
 var is_spawning: bool = false
 var base: Node = null
@@ -26,8 +27,7 @@ var active_enemies: int = 0
 var spawn_mode: int = 0  # WaveConfig.SpawnMode
 
 func _ready() -> void:
-	if base_node:
-		base = get_node(base_node)
+	call_deferred("_find_base")
 
 func _process(delta: float) -> void:
 	if not is_spawning or GameManager.is_game_over:
@@ -37,6 +37,19 @@ func _process(delta: float) -> void:
 		_process_sequential(delta)
 	elif spawn_mode == 1:  # SIMULTANEOUS
 		_process_simultaneous(delta)
+
+func _find_base() -> void:
+	if base_node:
+		base = get_node(base_node)
+	else:
+		var root = get_tree().current_scene
+		if root:
+			base = root.get_node_or_null("Base")
+			if not base:
+				for child in root.get_children():
+					if child.name == "Base" or (child is Node3D and child.has_method("take_damage")):
+						base = child
+						break
 
 func _process_sequential(delta: float) -> void:
 	var current_config = get_current_spawn_point_config()
@@ -163,8 +176,12 @@ func spawn_enemy(config: SpawnPointConfig, spawn_point_index: int) -> void:
 		enemy.enemy_data = spawn_entry.enemy_data
 	
 	enemy.path_to_follow = spawn_path
-	enemy.died.connect(_on_enemy_died)
-	enemy.reached_end.connect(_on_enemy_reached_end)
+	
+	# Connect signals only if not already connected
+	if not enemy.died.is_connected(_on_enemy_died):
+		enemy.died.connect(_on_enemy_died, CONNECT_ONE_SHOT)
+	if not enemy.reached_end.is_connected(_on_enemy_reached_end):
+		enemy.reached_end.connect(_on_enemy_reached_end, CONNECT_ONE_SHOT)
 	
 	get_tree().current_scene.add_child(enemy)
 	
@@ -204,8 +221,12 @@ func spawn_boss(config: SpawnPointConfig, spawn_point_index: int) -> void:
 		boss._setup_visual()
 	
 	boss.path_to_follow = spawn_path
-	boss.died.connect(_on_enemy_died)
-	boss.reached_end.connect(_on_enemy_reached_end)
+	
+	# Connect signals only if not already connected
+	if not boss.died.is_connected(_on_enemy_died):
+		boss.died.connect(_on_enemy_died, CONNECT_ONE_SHOT)
+	if not boss.reached_end.is_connected(_on_enemy_reached_end):
+		boss.reached_end.connect(_on_enemy_reached_end, CONNECT_ONE_SHOT)
 	
 	get_tree().current_scene.add_child(boss)
 	
