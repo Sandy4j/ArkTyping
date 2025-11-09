@@ -1,11 +1,19 @@
-[gd_scene load_steps=15 format=3 uid="uid://cj0xxw8ewgpqy"]
+[gd_scene load_steps=26 format=3 uid="uid://cj0xxw8ewgpqy"]
 
 [ext_resource type="PackedScene" uid="uid://dr5mh3wmxd7uu" path="res://scenes/Base.tscn" id="1_jy02f"]
 [ext_resource type="Script" uid="uid://bpdh0cu6naavy" path="res://scripts/Tower/inputtower.gd" id="2_5dxk1"]
+[ext_resource type="Script" uid="uid://g85gwfmcln8s" path="res://scripts/Tower/Tower_Res.gd" id="3_jy02f"]
 [ext_resource type="Script" uid="uid://dgxccv80klhc7" path="res://scripts/Tower/TowerCon.gd" id="3_kjd3d"]
+[ext_resource type="Texture2D" uid="uid://dtibubuamy3s4" path="res://asset/Capture.PNG" id="4_kjd3d"]
 [ext_resource type="PackedScene" uid="uid://dfql5k5psmgxn" path="res://scenes/TowerSpot.tscn" id="4_qdeet"]
+[ext_resource type="Resource" uid="uid://bk8grfmo48v2h" path="res://asset/res_tower/kaelio.tres" id="4_y72ps"]
+[ext_resource type="Resource" uid="uid://bhwlp2kr8e0ir" path="res://asset/res_tower/silvanna.tres" id="5_d3o6j"]
+[ext_resource type="Texture2D" uid="uid://7hb01lte08km" path="res://asset/Capture2.PNG" id="5_qdeet"]
+[ext_resource type="Resource" uid="uid://dvfphesh2a4nj" path="res://asset/res_tower/lilitia.tres" id="6_pdl2l"]
 [ext_resource type="PackedScene" uid="uid://cjhp6v8qnx4qm" path="res://scenes/Tower.tscn" id="6_xw3ee"]
+[ext_resource type="Resource" uid="uid://buqk2061a1dx5" path="res://asset/res_tower/morriden.tres" id="7_2t17w"]
 [ext_resource type="Script" uid="uid://4ipxb665lopb" path="res://scripts/WaveManager.gd" id="7_l0eo6"]
+[ext_resource type="Texture2D" uid="uid://chfi6ttn6h3pk" path="res://asset/4.PNG" id="7_y72ps"]
 [ext_resource type="PackedScene" uid="uid://bo7jkw2yxbwbc" path="res://scenes/Enemy.tscn" id="8_j0sdw"]
 [ext_resource type="Script" uid="uid://bbexpquh4b3ip" path="res://scripts/UI/UI.gd" id="9_pdl2l"]
 
@@ -34,6 +42,42 @@ _data = {
 }
 point_count = 5
 
+[sub_resource type="Resource" id="Resource_d3o6j"]
+script = ExtResource("3_jy02f")
+chara = "vigilante"
+damage = 30
+speed = 0.5
+range = 200.0
+skill = "bloody opus"
+skill_duration = 5
+sprite = ExtResource("4_kjd3d")
+projectile_speed = 25
+metadata/_custom_type_script = "uid://g85gwfmcln8s"
+
+[sub_resource type="Resource" id="Resource_pdl2l"]
+script = ExtResource("3_jy02f")
+chara = "leciana"
+damage = 20
+speed = 1.2
+range = 100.0
+skill = "scarlet harvester"
+skill_duration = 5
+sprite = ExtResource("5_qdeet")
+projectile_speed = 15
+metadata/_custom_type_script = "uid://g85gwfmcln8s"
+
+[sub_resource type="Resource" id="Resource_2t17w"]
+script = ExtResource("3_jy02f")
+chara = "rosemary"
+damage = 40
+speed = 0.3
+range = 500.0
+skill = "bullet requiem"
+skill_duration = 5
+sprite = ExtResource("7_y72ps")
+projectile_speed = 45
+metadata/_custom_type_script = "uid://g85gwfmcln8s"
+
 [node name="Level1" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -61,6 +105,7 @@ max_hp = 10
 
 [node name="Input" type="Node" parent="." groups=["towerinput"]]
 script = ExtResource("2_5dxk1")
+tower_list = Array[ExtResource("3_jy02f")]([ExtResource("4_y72ps"), ExtResource("5_d3o6j"), ExtResource("6_pdl2l"), ExtResource("7_2t17w"), SubResource("Resource_d3o6j"), SubResource("Resource_pdl2l"), SubResource("Resource_2t17w")])
 
 [node name="TxtPanel" type="Panel" parent="Input"]
 anchors_preset = 5
@@ -157,6 +202,21 @@ text = "Currency: 100"
 [node name="WaveLabel" type="Label" parent="UI/Panel/VBoxContainer"]
 layout_mode = 2
 text = "Wave: 0"
+
+[node name="Label" type="Label" parent="UI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "wadasdawd"
 
 [node name="WaveManager" type="Node" parent="."]
 script = ExtResource("7_l0eo6")

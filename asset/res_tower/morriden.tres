@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="TowerData" load_steps=3 format=3 uid="uid://buqk2061a1dx5"]
+
+[ext_resource type="Script" uid="uid://g85gwfmcln8s" path="res://scripts/Tower/Tower_Res.gd" id="1_ij4bj"]
+[ext_resource type="Texture2D" uid="uid://chfi6ttn6h3pk" path="res://asset/4.PNG" id="2_7ydou"]
+
+[resource]
+script = ExtResource("1_ij4bj")
+chara = "morriden"
+damage = 20
+speed = 0.9
+range = 100.0
+skill = "toxic veil"
+skill_duration = 10
+sprite = ExtResource("2_7ydou")
+projectile_speed = 10
+metadata/_custom_type_script = "uid://g85gwfmcln8s"
