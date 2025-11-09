@@ -5,6 +5,7 @@ var tower_spots: Array[Area3D] = []
 var selected_spot_index: int = -1
 var highlight_material: StandardMaterial3D
 var tower_input: Node = null
+@onready var ui: CanvasLayer = $"../UI"
 
 func _ready() -> void:
 	
@@ -85,31 +86,47 @@ func place_tower_at_selected(data:TowerData) -> void:
 	if selected_spot_index >= 0 and selected_spot_index < tower_spots.size():
 		var spot = tower_spots[selected_spot_index]
 		if spot.has_tower:
-			print("Spot ", selected_spot_index + 1, " sudah ada tower!")
+			var msg:String = str("Spot ", selected_spot_index + 1, " sudah ada tower!")
+			ui.show_message(msg)
 			return
 		spot.place_tower(data)
-		
+		var msg =str("memasang tower ", data.chara)
+		ui.show_message(msg)
 		update_spot_labels()
 		selected_spot_index = -1
 		TypingSystem.clear_text()
 	else:
-		print("No spot selected!")
+		ui.show_message("No spot selected!")
 
 func active_tower_at_selected(v:String) -> void:
 	print("mengaktifkan skill dengan ", v)
 	if selected_spot_index >= 0 and selected_spot_index < tower_spots.size():
 		var spot = tower_spots[selected_spot_index]
 		if !spot.has_tower:
-			print("Spot ", selected_spot_index + 1, " belum ada tower!")
-			return
+			var msg = str("Spot ", selected_spot_index + 1, " belum ada tower!")
+			ui.show_message(msg)
 		if spot.tower_data.skill == v:
 			spot.tower_node.Skill(v)
+			var msg =str("mengaktifkan skill ", v)
+			ui.show_message(msg)
 		else:
-			print("salah skill woi")
+			ui.show_message("salah skill woi")
 		#selected_spot_index = -1
 		TypingSystem.clear_text()
 	else:
-		print("No spot selected!")
+		ui.show_message("No spot selected!")
+
+func delete_tower_at_selected() -> void:
+	if selected_spot_index >= 0 and selected_spot_index < tower_spots.size():
+		var spot = tower_spots[selected_spot_index]
+		if !spot.has_tower:
+			ui.show_message("Spot ini belum ada tower")
+			return
+		var msg =str("menghapus tower ", spot.tower_data.chara)
+		spot.remove_tower()
+		update_spot_labels()
+		ui.show_message(msg)
+		TypingSystem.clear_text()
 
 func _process(_delta: float) -> void:
 	pass

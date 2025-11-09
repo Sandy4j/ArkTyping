@@ -49,7 +49,7 @@ func place_tower(data:TowerData) -> void:
 		tower_node = tower
 		tower_data = data
 		tower.tower_data = data
-		add_child(tower)
+		self.add_child(tower)
 		tower.global_position = global_position + Vector3.UP * 0.5
 		has_tower = true
 		
@@ -57,3 +57,10 @@ func place_tower(data:TowerData) -> void:
 			mesh_instance.visible = false
 	else:
 		print("Kurang")
+
+func remove_tower():
+	tower_node.queue_free()
+	tower_data = null
+	has_tower = false
+	print("tower di hapus")
+	mesh_instance.visible = true

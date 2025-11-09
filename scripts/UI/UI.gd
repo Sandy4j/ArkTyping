@@ -4,6 +4,7 @@ extends CanvasLayer
 @onready var currency_label: Label = $Panel/VBoxContainer/CurrencyLabel
 @onready var wave_label: Label = $Panel/VBoxContainer/WaveLabel
 @onready var wavesystem = $"../WaveManager"
+@onready var message: Label = $Label
 
 func _ready() -> void:
 	GameManager.currency_changed.connect(_on_currency_changed)
@@ -11,7 +12,7 @@ func _ready() -> void:
 	GameManager.game_over.connect(_on_game_over)
 	LevelManager.victory.connect(_on_victory)
 	wavesystem.wave_started.connect(_on_wave_started)
-
+	message.visible = false
 
 func _on_currency_changed(amount: int) -> void:
 	currency_label.text = "Currency: " + str(amount)
@@ -36,3 +37,9 @@ func _on_victory() -> void:
 		var winlose_instance = winlose_scene.instantiate()
 		get_tree().current_scene.add_child(winlose_instance)
 		winlose_instance.show_victory()
+
+func show_message(v:String):
+	message.text = v
+	message.visible = true
+	await get_tree().create_timer(2).timeout
+	message.visible = false

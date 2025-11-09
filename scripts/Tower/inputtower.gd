@@ -25,8 +25,11 @@ func _on_text_typed(current_text: String) -> void:
 		if current_text.to_lower() == word:
 			inputLbl.add_theme_color_override("font_color", Color.YELLOW)
 			return
-		else:
-			inputLbl.add_theme_color_override("font_color", Color.WHITE)
+	if current_text == "Retreat" or current_text == "retreat":
+		inputLbl.add_theme_color_override("font_color", Color.RED)
+		return
+	else:
+		inputLbl.add_theme_color_override("font_color", Color.WHITE)
 	
 
 func _on_text_submitted(full_text: String) -> void:	
@@ -38,6 +41,7 @@ func _on_text_submitted(full_text: String) -> void:
 				print("Spot yang kepilih: ", selected_spot_index + 1)
 			else:
 				print("Spot belum dipilih bro.")
+				
 	for word in SKILL_KEYWORD:
 		if typed_text == word:
 			if selected_spot_index >= 0:
@@ -45,8 +49,14 @@ func _on_text_submitted(full_text: String) -> void:
 				print("Mengaktifkan skill di slot: ", selected_spot_index + 1)
 			else:
 				print("Spot belum dipilih bro.")
+	if typed_text == "retreat":
+		if selected_spot_index >= 0:
+			request_delete_tower()
+			print("Hapus Tower di slot: ", selected_spot_index + 1)
 		else:
-			print("Input Salah Woi.")
+			print("Spot belum dipilih bro.")
+	else:
+		print("Input Salah Woi.")
 	inputLbl.text = ""
 
 func set_selected_spot(index: int) -> void:
@@ -68,5 +78,13 @@ func request_tower_skill(v:String) -> void:
 	var tower_controller = get_tree().get_first_node_in_group("towercon")
 	if tower_controller and tower_controller.has_method("active_tower_at_selected"):
 		tower_controller.active_tower_at_selected(v)
+	else:
+		print("TowerController not found!")
+
+func request_delete_tower() ->void:
+	
+	var tower_controller = get_tree().get_first_node_in_group("towercon")
+	if tower_controller and tower_controller.has_method("delete_tower_at_selected"):
+		tower_controller.delete_tower_at_selected()
 	else:
 		print("TowerController not found!")
