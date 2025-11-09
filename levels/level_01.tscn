@@ -54,9 +54,6 @@ fov = 60.0
 mesh = SubResource("PlaneMesh_ground")
 surface_material_override/0 = SubResource("StandardMaterial3D_ground")
 
-[node name="EnemyPath" type="Path3D" parent="."]
-curve = SubResource("Curve3D_path")
-
 [node name="Base" parent="." instance=ExtResource("1_jy02f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0)
 max_hp = 10
@@ -163,9 +160,10 @@ text = "Wave: 0"
 [node name="WaveManager" type="Node" parent="."]
 script = ExtResource("7_l0eo6")
 wave_configs = Array[ExtResource("8_jy02f")]([ExtResource("9_5dxk1")])
-spawn_path_node = NodePath("../EnemyPath")
-base_node = NodePath("../Base")
 metadata/_custom_type_script = "uid://4ipxb665lopb"
+
+[node name="EnemyPath" type="Path3D" parent="WaveManager"]
+curve = SubResource("Curve3D_path")
 
 [node name="LevelInit" type="Node" parent="."]
 script = ExtResource("11_kjd3d")

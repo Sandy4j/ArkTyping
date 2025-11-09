@@ -1,12 +1,11 @@
 [gd_resource type="Resource" script_class="WaveConfig" load_steps=5 format=3 uid="uid://baoxfgqvytd5c"]
 
-[ext_resource type="Script" path="res://resources/EnemySpawnEntry.gd" id="1_m25o7"]
 [ext_resource type="Script" path="res://resources/WaveConfig.gd" id="2_2v7dj"]
-[ext_resource type="Resource" uid="uid://dn2apalcumv4b" path="res://resources/SpawnEntry/Level 1/BasicSELvl1W2.tres" id="2_dta0k"]
-[ext_resource type="Resource" uid="uid://cpprnlg6d30vu" path="res://resources/SpawnEntry/Level 1/RangedSELvl1W2.tres" id="3_flyq3"]
+[ext_resource type="Script" path="res://resources/SpawnPointConfig.gd" id="2_dta0k"]
+[ext_resource type="Resource" uid="uid://y8kurhj31pjk" path="res://resources/SpawnEntry/Level 1/SPMid_Lvl1W2.tres" id="3_flyq3"]
+[ext_resource type="Resource" uid="uid://ckyxluivbj2id" path="res://resources/SpawnEntry/Level 1/SPRight_Lvl1W2.tres" id="4_g7pam"]
 
 [resource]
 script = ExtResource("2_2v7dj")
-total_enemies = 8
-spawn_interval = 1.5
-enemy_spawn_entries = Array[ExtResource("1_m25o7")]([ExtResource("2_dta0k"), ExtResource("3_flyq3")])
+wave_number = 2
+spawn_point_configs = Array[ExtResource("2_dta0k")]([ExtResource("3_flyq3"), ExtResource("4_g7pam")])
