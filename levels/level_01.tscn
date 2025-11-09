@@ -12,7 +12,7 @@
 [ext_resource type="Resource" uid="uid://bhwlp2kr8e0ir" path="res://resources/res_tower/silvanna.tres" id="7_bm28l"]
 [ext_resource type="Script" uid="uid://4ipxb665lopb" path="res://scripts/WaveManager.gd" id="7_l0eo6"]
 [ext_resource type="Script" path="res://resources/WaveConfig.gd" id="8_jy02f"]
-[ext_resource type="Resource" uid="uid://dgw4ukvn22bjs" path="res://resources/WaveData/Wave1_lvl1.tres" id="9_5dxk1"]
+[ext_resource type="Resource" uid="uid://dgw4ukvn22bjs" path="res://resources/WaveData/Level 1/Wave1_lvl1.tres" id="9_5dxk1"]
 [ext_resource type="Script" uid="uid://bbexpquh4b3ip" path="res://scripts/UI/UI.gd" id="9_pdl2l"]
 [ext_resource type="Script" path="res://scripts/LevelInit.gd" id="11_kjd3d"]
 

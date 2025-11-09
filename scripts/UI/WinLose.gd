@@ -105,4 +105,4 @@ func _on_next_level_pressed() -> void:
 
 func _on_menu_pressed() -> void:
 	GameManager.reset_game_state()
-	get_tree().change_scene_to_file("res://scenes/Main.tscn")
+	get_tree().change_scene_to_file("res://scenes/UI/main_menu.tscn")

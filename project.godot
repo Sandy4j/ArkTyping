@@ -36,6 +36,7 @@ folder_colors={
 "res://resources/res_tower/": "orange",
 "res://scenes/Enemy/": "red",
 "res://scenes/Tower/": "orange",
+"res://scenes/UI/": "green",
 "res://scripts/Enemies/": "red",
 "res://scripts/Tower/": "orange",
 "res://scripts/UI/": "green"
