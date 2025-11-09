@@ -1,9 +1,8 @@
-[gd_scene load_steps=10 format=4 uid="uid://dubi06bupoyt8"]
+[gd_scene load_steps=9 format=4 uid="uid://dubi06bupoyt8"]
 
-[ext_resource type="Script" uid="uid://dgxccv80klhc7" path="res://scripts/TowerCon.gd" id="1_ci5ev"]
-[ext_resource type="PackedScene" uid="uid://dfql5k5psmgxn" path="res://scenes/TowerSpot.tscn" id="2_pgr2e"]
+[ext_resource type="Script" uid="uid://dgxccv80klhc7" path="res://scripts/Tower/TowerCon.gd" id="1_ci5ev"]
+[ext_resource type="PackedScene" uid="uid://dfql5k5psmgxn" path="res://scenes/Tower/TowerSpot.tscn" id="2_pgr2e"]
 [ext_resource type="Script" uid="uid://4ipxb665lopb" path="res://scripts/WaveManager.gd" id="3_ebau5"]
-[ext_resource type="PackedScene" uid="uid://bo7jkw2yxbwbc" path="res://scenes/Enemy.tscn" id="4_288ch"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vd3t1"]
 
@@ -81,13 +80,7 @@ fov = 60.0
 
 [node name="WaveManager" type="Node" parent="."]
 script = ExtResource("3_ebau5")
-enemy_scene = ExtResource("4_288ch")
 spawn_path_node = NodePath("Path3D")
-base_node = null
-initial_enemies_per_wave = null
-spawn_interval = null
-time_between_waves = null
-max_waves = null
 metadata/_custom_type_script = "uid://4ipxb665lopb"
 
 [node name="Path3D" type="Path3D" parent="WaveManager"]

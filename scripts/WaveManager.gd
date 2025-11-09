@@ -5,87 +5,98 @@ signal wave_started(wave_number: int)
 signal wave_completed(wave_number: int)
 signal all_waves_completed
 
-@export var enemy_scene: PackedScene
-@export var spawn_path_node: NodePath
-@export var base_node: NodePath
-@export var initial_enemies_per_wave: int = 5
-@export var spawn_interval: float = 1.0
-@export var time_between_waves: float = 5.0
-@export var max_waves: int = 1
+## Array berisi konfigurasi WaveConfig untuk setiap gelombang
+@export var wave_configs: Array[WaveConfig] = []
 
 var current_wave: int = 0
-var enemies_spawned: int = 0
-var enemies_alive: int = 0
-var is_spawning: bool = false
-var spawn_timer: float = 0.0
 var wave_timer: float = 0.0
-var spawn_path: Path3D = null
-var base : Node = null
+var current_wave_config: WaveConfig = null
+var victory_triggered: bool = false
+var spawn_manager: SpawnManager = null
+var wave_complete_checked: bool = false
 
 func _ready() -> void:
-	wave_timer = time_between_waves
+	var initial_wait = 5.0
+	if wave_configs.size() > 0 and wave_configs[0]:
+		initial_wait = wave_configs[0].time_until_next_wave
+	wave_timer = initial_wait
 	
-	if spawn_path_node:
-		spawn_path = get_node(spawn_path_node)
-	if base_node:	
-		base = get_node(base_node)
+	spawn_manager = SpawnManager.new()
+	add_child(spawn_manager)
+	spawn_manager.all_spawn_points_completed.connect(_on_all_spawn_points_completed)
+	
+	PoolSetup.setup_pools_for_waves(wave_configs)
+
 
 func _process(delta: float) -> void:
 	if GameManager.is_game_over:
 		return
 	
-	if is_spawning:
-		spawn_timer += delta
-		if spawn_timer >= spawn_interval and enemies_spawned < get_enemies_in_wave():
-			spawn_enemy()
-			spawn_timer = 0.0
-	elif current_wave < max_waves:
+	if current_wave > 0:
+		check_wave_complete()
+	
+	if not spawn_manager.is_currently_spawning() and current_wave < get_max_waves():
 		wave_timer += delta
-		if wave_timer >= time_between_waves:
+		if wave_timer >= get_time_between_waves():
 			start_wave()
 
 func start_wave() -> void:
 	current_wave += 1
-	enemies_spawned = 0
-	is_spawning = true
 	wave_timer = 0.0
-	wave_started.emit(current_wave)
-
-func get_enemies_in_wave() -> int:
-	return initial_enemies_per_wave + (current_wave - 1) * 2
-
-func spawn_enemy() -> void:
-	if not enemy_scene or not spawn_path:
-		return
+	wave_complete_checked = false
 	
-	var enemy = enemy_scene.instantiate()
-	enemy.path_to_follow = spawn_path
-	enemy.died.connect(_on_enemy_died)
-	enemy.reached_end.connect(_on_enemy_reached_end)
+	if current_wave <= wave_configs.size() and wave_configs[current_wave - 1]:
+		current_wave_config = wave_configs[current_wave - 1]
+	else:
+		current_wave_config = null
 	
-	get_tree().current_scene.add_child(enemy)
-	enemies_spawned += 1
-	enemies_alive += 1
+	var spawn_configs = get_spawn_point_configs_for_wave()
 	
-	if enemies_spawned >= get_enemies_in_wave():
-		is_spawning = false
+	if spawn_configs.size() > 0:
+		var mode = current_wave_config.spawn_mode
+		
+		spawn_manager.start_spawning(spawn_configs, mode)
+		wave_started.emit(current_wave)
+		
+		var mode_name = "SEQUENTIAL" if mode == 0 else "SIMULTANEOUS"
+		print("WaveManager: Wave ", current_wave, " mulai dengan", spawn_configs.size(), " spawn points (", mode_name, " mode)")
+	else:
+		push_error("WaveManager: tidak ada konfigurasi ", current_wave)
 
-func _on_enemy_died(reward: int) -> void:
-	enemies_alive -= 1
-	GameManager.add_currency(reward)
-	check_wave_complete()
+func get_spawn_point_configs_for_wave() -> Array[SpawnPointConfig]:
+	var configs: Array[SpawnPointConfig] = []
+	
+	if current_wave_config:
+		configs = current_wave_config.spawn_point_configs
+	
+	return configs
 
-func _on_enemy_reached_end(damage: int) -> void:
-	enemies_alive -= 1
-	base.take_damage(damage)
-	check_wave_complete()
+func get_time_between_waves() -> float:
+	if current_wave_config:
+		return current_wave_config.time_until_next_wave
+	else:
+		return 5.0  # Default fallback
+
+func get_max_waves() -> int:
+	return wave_configs.size()
+
+func _on_all_spawn_points_completed() -> void:
+	print("WaveManager: Semua spawn point sudah selesai", current_wave)
 
 func check_wave_complete() -> void:
-	if not is_spawning and enemies_alive <= 0:
-		wave_completed.emit(current_wave)
-		print("Wave ", current_wave, " completed!")
+	if wave_complete_checked:
+		return
 		
-		if current_wave >= max_waves:
+	var spawning_complete = not spawn_manager.is_currently_spawning()
+	var all_enemies_defeated = spawn_manager.get_active_enemy_count() <= 0
+	
+	if spawning_complete and all_enemies_defeated and not GameManager.is_game_over:
+		wave_complete_checked = true
+		wave_completed.emit(current_wave)
+		print("WaveManager: Wave ", current_wave, " completed!")
+		
+		if current_wave >= get_max_waves() and not victory_triggered:
+			victory_triggered = true
 			all_waves_completed.emit()
 			LevelManager.trigger_victory()
 		else:
