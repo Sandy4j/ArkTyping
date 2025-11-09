@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://csx7urgavio8b"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_0etov"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0etov"]
+
+[node name="MeshInstance3D" type="MeshInstance3D"]
+transform = Transform3D(13, 0, 0, 0, 4, 0, 0, 0, 13, 0, 0, 0)
+mesh = SubResource("SphereMesh_0etov")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_0etov")

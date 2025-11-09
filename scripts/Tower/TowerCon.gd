@@ -47,9 +47,7 @@ func select_spot(index: int) -> void:
 		return
 	
 	var spot = tower_spots[index]
-	if spot.has_tower:
-		print("Spot ", index + 1, " sudah ada tower!")
-		return
+	
 
 	if selected_spot_index >= 0 and selected_spot_index < tower_spots.size():
 		var prev_spot = tower_spots[selected_spot_index]
@@ -83,13 +81,32 @@ func update_spot_labels() -> void:
 		if spot.has_tower:
 			label.visible = false
 
-func place_tower_at_selected() -> void:
+func place_tower_at_selected(data:TowerData) -> void:
 	if selected_spot_index >= 0 and selected_spot_index < tower_spots.size():
 		var spot = tower_spots[selected_spot_index]
-		spot.place_tower()
+		if spot.has_tower:
+			print("Spot ", selected_spot_index + 1, " sudah ada tower!")
+			return
+		spot.place_tower(data)
 		
 		update_spot_labels()
 		selected_spot_index = -1
+		TypingSystem.clear_text()
+	else:
+		print("No spot selected!")
+
+func active_tower_at_selected(v:String) -> void:
+	print("mengaktifkan skill dengan ", v)
+	if selected_spot_index >= 0 and selected_spot_index < tower_spots.size():
+		var spot = tower_spots[selected_spot_index]
+		if !spot.has_tower:
+			print("Spot ", selected_spot_index + 1, " belum ada tower!")
+			return
+		if spot.tower_data.skill == v:
+			spot.tower_node.Skill(v)
+		else:
+			print("salah skill woi")
+		#selected_spot_index = -1
 		TypingSystem.clear_text()
 	else:
 		print("No spot selected!")

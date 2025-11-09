@@ -1,0 +1,103 @@
+[gd_scene load_steps=7 format=3 uid="uid://cnyl6tpwn0hfq"]
+
+[ext_resource type="Script" uid="uid://csfl7rlx78to1" path="res://scripts/Tower/orbit_skill.gd" id="1_cl6ga"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_02lgm"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6dv47"]
+radius = 0.7051163
+
+[sub_resource type="Animation" id="Animation_6dv47"]
+length = 0.001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sphere1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-2.7177987, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sphere2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2.718, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6pmem"]
+resource_name = "spin"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sphere1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-5, 0, 0), Vector3(-2, 0, 2), Vector3(0, 0, 5), Vector3(2, 0, 2), Vector3(5, 0, 0), Vector3(2, 0, -2), Vector3(0, 0, -5), Vector3(-2, 0, -2), Vector3(-5, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sphere2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(5, 0, 0), Vector3(2, 0, -2), Vector3(0, 0, -5), Vector3(-2, 0, -2), Vector3(-5, 0, 0), Vector3(-2, 0, 2), Vector3(0, 0, 5), Vector3(2, 0, 2), Vector3(5, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vxing"]
+_data = {
+&"RESET": SubResource("Animation_6dv47"),
+&"spin": SubResource("Animation_6pmem")
+}
+
+[node name="Orbit" type="Node3D"]
+script = ExtResource("1_cl6ga")
+
+[node name="Sphere1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7177987, 0, 0)
+mesh = SubResource("SphereMesh_02lgm")
+skeleton = NodePath("../..")
+
+[node name="Area3D" type="Area3D" parent="Sphere1"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sphere1/Area3D"]
+shape = SubResource("SphereShape3D_6dv47")
+
+[node name="Sphere2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.718, 0, 0)
+mesh = SubResource("SphereMesh_02lgm")
+skeleton = NodePath("../..")
+
+[node name="Area3D" type="Area3D" parent="Sphere2"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sphere2/Area3D"]
+shape = SubResource("SphereShape3D_6dv47")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_vxing")
+}

@@ -1,43 +1,72 @@
 extends Node
 class_name TowerInput
 
+@export var tower_list:Array[TowerData]
 @onready var inputLbl: Label = $TxtPanel/Label
 
-const TOWER_KEYWORD: String = "tower"
+var TOWER_KEYWORD:Array[String]
+var SKILL_KEYWORD:Array[String]
 var selected_spot_index: int = -1
 
 func _ready() -> void:
+	for data in tower_list:
+		TOWER_KEYWORD.append(data.chara)
+		SKILL_KEYWORD.append(data.skill)
 	TypingSystem.text_typed.connect(_on_text_typed)
 	TypingSystem.text_submitted.connect(_on_text_submitted)
 
 func _on_text_typed(current_text: String) -> void:
 	inputLbl.text = current_text
+	for word in TOWER_KEYWORD:
+		if current_text.to_lower() == word:
+			inputLbl.add_theme_color_override("font_color", Color.GREEN)
+			return
+	for word in SKILL_KEYWORD:
+		if current_text.to_lower() == word:
+			inputLbl.add_theme_color_override("font_color", Color.YELLOW)
+			return
+		else:
+			inputLbl.add_theme_color_override("font_color", Color.WHITE)
 	
-	if current_text.to_lower() == TOWER_KEYWORD:
-		inputLbl.add_theme_color_override("font_color", Color.GREEN)
-	else:
-		inputLbl.add_theme_color_override("font_color", Color.WHITE)
-	
+
 func _on_text_submitted(full_text: String) -> void:	
 	var typed_text = full_text.to_lower().strip_edges()
-	
-	if typed_text == TOWER_KEYWORD:
-		if selected_spot_index >= 0:
-			request_tower_placement()
-			print("Spot yang kepilih: ", selected_spot_index + 1)
+	for word in TOWER_KEYWORD:
+		if typed_text == word:
+			if selected_spot_index >= 0:
+				request_tower_placement(typed_text)
+				print("Spot yang kepilih: ", selected_spot_index + 1)
+			else:
+				print("Spot belum dipilih bro.")
+	for word in SKILL_KEYWORD:
+		if typed_text == word:
+			if selected_spot_index >= 0:
+				request_tower_skill(typed_text)
+				print("Mengaktifkan skill di slot: ", selected_spot_index + 1)
+			else:
+				print("Spot belum dipilih bro.")
 		else:
-			print("Spot belum dipilih bro.")
-	else:
-		print("Input Salah Woi.")
-	
+			print("Input Salah Woi.")
 	inputLbl.text = ""
 
 func set_selected_spot(index: int) -> void:
 	selected_spot_index = index
 
-func request_tower_placement() -> void:
+func request_tower_placement(v:String) -> void:
+	var data:TowerData
+	for datas in tower_list:
+		if datas.chara == v:
+			data = datas
+	
 	var tower_controller = get_tree().get_first_node_in_group("towercon")
 	if tower_controller and tower_controller.has_method("place_tower_at_selected"):
-		tower_controller.place_tower_at_selected()
+		tower_controller.place_tower_at_selected(data)
+	else:
+		print("TowerController not found!")
+
+func request_tower_skill(v:String) -> void:
+	var tower_controller = get_tree().get_first_node_in_group("towercon")
+	if tower_controller and tower_controller.has_method("active_tower_at_selected"):
+		tower_controller.active_tower_at_selected(v)
 	else:
 		print("TowerController not found!")

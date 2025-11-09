@@ -2,6 +2,8 @@ extends Area3D
 ## TowerSpot - Marks valid locations for tower placement
 
 @export var tower_scene: PackedScene
+var tower_data:TowerData
+var tower_node
 @export var tower_cost: int = 50
 
 var has_tower: bool = false
@@ -22,13 +24,13 @@ func _ready() -> void:
 	if mesh_instance:
 		mesh_instance.material_override = default_material
 	
-	input_event.connect(_on_input_event)
+	#input_event.connect(_on_input_event)
 	mouse_entered.connect(_on_mouse_entered)
 	mouse_exited.connect(_on_mouse_exited)
 
-func _on_input_event(_camera: Node, event: InputEvent, _pos: Vector3, _normal: Vector3, _shape_idx: int) -> void:
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		place_tower()
+#func _on_input_event(_camera: Node, event: InputEvent, _pos: Vector3, _normal: Vector3, _shape_idx: int) -> void:
+	#if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		#place_tower()
 
 func _on_mouse_entered() -> void:
 	if not has_tower and mesh_instance:
@@ -38,12 +40,15 @@ func _on_mouse_exited() -> void:
 	if not has_tower and mesh_instance:
 		mesh_instance.material_override = default_material
 
-func place_tower() -> void:
+func place_tower(data:TowerData) -> void:
 	if has_tower or not tower_scene:
 		return
 	
 	if GameManager.spend_currency(tower_cost):
 		var tower = tower_scene.instantiate()
+		tower_node = tower
+		tower_data = data
+		tower.tower_data = data
 		add_child(tower)
 		tower.global_position = global_position + Vector3.UP * 0.5
 		has_tower = true
