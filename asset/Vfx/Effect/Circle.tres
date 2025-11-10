@@ -1,0 +1,93 @@
+[gd_resource type="VisualShader" load_steps=10 format=3 uid="uid://drhlywvnbts8x"]
+
+[ext_resource type="Texture2D" uid="uid://cqgfrfhwi6t54" path="res://asset/Vfx/Texture/Circle03.png" id="1_eq5aa"]
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_633cx"]
+parameter_name = "Texture2DParameter"
+texture_type = 1
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_u74nm"]
+expanded_output_ports = [0]
+source = 5
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_ol0sk"]
+
+[sub_resource type="Gradient" id="Gradient_00l5x"]
+offsets = PackedFloat32Array(0, 0.5411765, 1)
+colors = PackedColorArray(0.19434926, 0.19434929, 0.1943492, 0, 0.09239707, 0.09239706, 0.09239706, 0, 0.19434938, 0.19434923, 0.19434926, 0.5568628)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_758ts"]
+gradient = SubResource("Gradient_00l5x")
+fill_from = Vector2(1, 0.5470086)
+fill_to = Vector2(0, 0.508547)
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_6b5rq"]
+output_port_for_preview = 0
+expanded_output_ports = [0]
+texture = SubResource("GradientTexture2D_758ts")
+texture_type = 1
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_y1pg7"]
+texture = ExtResource("1_eq5aa")
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_wvhpg"]
+operator = 2
+
+[resource]
+code = "shader_type canvas_item;
+render_mode blend_add, unshaded;
+
+uniform sampler2D Texture2DParameter : source_color;
+uniform sampler2D tex_frg_7;
+uniform sampler2D tex_frg_6 : source_color;
+
+
+
+void fragment() {
+	vec4 n_out3p0;
+// Texture2D:3
+	n_out3p0 = texture(Texture2DParameter, UV);
+	float n_out3p1 = n_out3p0.r;
+
+
+// Texture2D:7
+	vec4 n_out7p0 = texture(tex_frg_7, UV);
+
+
+// Texture2D:6
+	vec4 n_out6p0 = texture(tex_frg_6, UV);
+	float n_out6p1 = n_out6p0.r;
+
+
+// FloatOp:8
+	float n_out8p0 = n_out7p0.x * n_out6p1;
+
+
+// FloatOp:4
+	float n_out4p0 = n_out3p1 + n_out8p0;
+
+
+// Output:0
+	COLOR.rgb = vec3(n_out4p0);
+
+
+}
+"
+mode = 1
+modes/blend = 1
+flags/unshaded = true
+flags/light_only = false
+nodes/fragment/0/position = Vector2(860, 120)
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture2DParameter_633cx")
+nodes/fragment/2/position = Vector2(-900, 560)
+nodes/fragment/3/node = SubResource("VisualShaderNodeTexture_u74nm")
+nodes/fragment/3/position = Vector2(-560, 300)
+nodes/fragment/4/node = SubResource("VisualShaderNodeFloatOp_ol0sk")
+nodes/fragment/4/position = Vector2(460, 120)
+nodes/fragment/6/node = SubResource("VisualShaderNodeTexture_6b5rq")
+nodes/fragment/6/position = Vector2(-140, 820)
+nodes/fragment/7/node = SubResource("VisualShaderNodeTexture_y1pg7")
+nodes/fragment/7/position = Vector2(-240, 480)
+nodes/fragment/8/node = SubResource("VisualShaderNodeFloatOp_wvhpg")
+nodes/fragment/8/position = Vector2(240, 440)
+nodes/fragment/connections = PackedInt32Array(2, 0, 3, 2, 3, 1, 4, 0, 4, 0, 0, 0, 7, 0, 8, 0, 6, 1, 8, 1, 8, 0, 4, 1)

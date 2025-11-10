@@ -20,11 +20,27 @@ config/icon="res://icon.svg"
 GameManager="*res://scripts/Autoload/GameManager.gd"
 TypingSystem="*res://scripts/Autoload/TypingSystem.gd"
 LevelManager="*res://scripts/Autoload/LevelManager.gd"
+ObjectPool="*res://scripts/Autoload/ObjectPool.gd"
 
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+
+[file_customization]
+
+folder_colors={
+"res://resources/Enemy Data/": "red",
+"res://resources/SpawnEntry/": "blue",
+"res://resources/WaveData/": "purple",
+"res://resources/res_tower/": "orange",
+"res://scenes/Enemy/": "red",
+"res://scenes/Tower/": "orange",
+"res://scenes/UI/": "green",
+"res://scripts/Enemies/": "red",
+"res://scripts/Tower/": "orange",
+"res://scripts/UI/": "green"
+}
 
 [global_group]
 

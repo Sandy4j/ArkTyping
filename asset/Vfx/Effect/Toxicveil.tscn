@@ -1,0 +1,95 @@
+[gd_scene load_steps=13 format=3 uid="uid://bki2t1ws2v8rl"]
+
+[ext_resource type="Shader" uid="uid://coauk4bbvmhgx" path="res://asset/Vfx/Effect/Toxicveil.tres" id="1_a61vl"]
+[ext_resource type="ArrayMesh" uid="uid://iotm0untdscf" path="res://asset/Vfx/Obj/Cloud.obj" id="1_r2o5d"]
+[ext_resource type="Texture2D" uid="uid://rbas1wb7bknm" path="res://asset/Vfx/Texture/T_Noise10.png" id="2_a0r21"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bwa15"]
+render_priority = 0
+shader = ExtResource("1_a61vl")
+shader_parameter/ColorParameter = Color(0, 0.67083853, 0.122739054, 1)
+shader_parameter/Texture_scale = Vector2(0.5, 0.5)
+shader_parameter/Texture_param = ExtResource("2_a0r21")
+
+[sub_resource type="Curve" id="Curve_6evny"]
+_data = [Vector2(0, 0), 0.0, 0.36053637, 0, 0, Vector2(0.46819332, 0.8403733), 1.254666, 1.254666, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_p1g3h"]
+curve = SubResource("Curve_6evny")
+
+[sub_resource type="Curve" id="Curve_806l4"]
+_data = [Vector2(0, 0), 0.0, 1.851839, 0, 0, Vector2(0.07633587, 0.5083497), 0.0, 0.0, 0, 0, Vector2(1, 0.49557954), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_a61vl"]
+curve = SubResource("Curve_806l4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a0r21"]
+lifetime_randomness = 1.0
+particle_flag_rotate_y = true
+emission_shape = 1
+emission_sphere_radius = 0.5
+angle_min = -179.99998
+angle_max = 180.00002
+direction = Vector3(0, 0.5, 0)
+spread = 0.0
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
+scale_max = 1.1999999
+scale_curve = SubResource("CurveTexture_a61vl")
+alpha_curve = SubResource("CurveTexture_p1g3h")
+
+[sub_resource type="Animation" id="Animation_58i2t"]
+resource_name = "Toxicvwil"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Toxicveil:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_vj8ee"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Toxicveil:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ar4o1"]
+_data = {
+&"RESET": SubResource("Animation_vj8ee"),
+&"Toxicvwil": SubResource("Animation_58i2t")
+}
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Toxicveil" type="GPUParticles3D" parent="."]
+material_override = SubResource("ShaderMaterial_bwa15")
+emitting = false
+amount = 100
+lifetime = 9.0
+one_shot = true
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_a0r21")
+draw_pass_1 = ExtResource("1_r2o5d")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ar4o1")
+}

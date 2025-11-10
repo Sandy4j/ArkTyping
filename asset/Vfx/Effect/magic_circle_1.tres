@@ -1,0 +1,59 @@
+[gd_resource type="VisualShader" load_steps=5 format=3 uid="uid://1pldl8bk7dgr"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_r7blv"]
+load_path = "res://.godot/imported/Circle_Aura2w.png-0025c530fe53a0167a34d2aac6d90b75.s3tc.ctex"
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_3mjpu"]
+output_port_for_preview = 0
+expanded_output_ports = [0]
+texture = SubResource("CompressedTexture2D_r7blv")
+texture_type = 1
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_46wof"]
+operator = 2
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_nswuo"]
+expanded_output_ports = [0]
+parameter_name = "ColorParameter"
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_add, depth_draw_opaque, depth_test_default, cull_disabled, diffuse_lambert, specular_schlick_ggx, unshaded;
+
+uniform vec4 ColorParameter : source_color;
+uniform sampler2D tex_frg_2 : source_color;
+
+
+
+void fragment() {
+// ColorParameter:9
+	vec4 n_out9p0 = ColorParameter;
+	float n_out9p4 = n_out9p0.a;
+
+
+// Texture2D:2
+	vec4 n_out2p0 = texture(tex_frg_2, UV);
+
+
+// FloatOp:4
+	float n_out4p0 = n_out9p4 * n_out2p0.x;
+
+
+// Output:0
+	ALBEDO = vec3(n_out9p0.xyz);
+	ALPHA = n_out4p0;
+
+
+}
+"
+modes/blend = 1
+modes/cull = 2
+flags/unshaded = true
+nodes/fragment/0/position = Vector2(400, 160)
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_3mjpu")
+nodes/fragment/2/position = Vector2(-380, 320)
+nodes/fragment/4/node = SubResource("VisualShaderNodeFloatOp_46wof")
+nodes/fragment/4/position = Vector2(100, 240)
+nodes/fragment/9/node = SubResource("VisualShaderNodeColorParameter_nswuo")
+nodes/fragment/9/position = Vector2(-260, -20)
+nodes/fragment/connections = PackedInt32Array(9, 0, 0, 0, 4, 0, 0, 1, 9, 4, 4, 0, 2, 0, 4, 1)

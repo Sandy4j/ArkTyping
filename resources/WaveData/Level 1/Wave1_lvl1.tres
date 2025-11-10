@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="WaveConfig" load_steps=4 format=3 uid="uid://dgw4ukvn22bjs"]
+
+[ext_resource type="Script" path="res://resources/SpawnPointConfig.gd" id="2_q1xf4"]
+[ext_resource type="Resource" uid="uid://cjf1j62siruvw" path="res://resources/SpawnEntry/Level 1/Spawn Point/SPMid_Lvl1W1.tres" id="3_8ilvk"]
+[ext_resource type="Script" path="res://resources/WaveConfig.gd" id="3_nytxy"]
+
+
+[resource]
+script = ExtResource("3_nytxy")
+spawn_point_configs = Array[ExtResource("2_q1xf4")]([ExtResource("3_8ilvk")])

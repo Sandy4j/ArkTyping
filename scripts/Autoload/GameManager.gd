@@ -13,6 +13,9 @@ var base_reference: Node3D = null
 
 func _ready() -> void:
 	currency = starting_currency
+	call_deferred("_emit_initial_currency")
+
+func _emit_initial_currency() -> void:
 	currency_changed.emit(currency)
 
 func add_currency(amount: int) -> void:
@@ -32,8 +35,8 @@ func set_base(base_node: Node3D) -> void:
 		base_reference.hp_changed.connect(_on_base_hp_changed)
 		call_deferred("_emit_initial_base_hp")
 
-func _on_base_hp_changed(new_hp: int) -> void:
-	base_hp_changed.emit(new_hp)
+func _on_base_hp_changed(current: int, _maximum: int) -> void:
+	base_hp_changed.emit(current)
 
 func _emit_initial_base_hp() -> void:
 	if base_reference:
