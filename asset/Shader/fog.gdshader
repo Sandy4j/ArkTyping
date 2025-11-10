@@ -1,25 +1,15 @@
 shader_type fog;
 
-/* main fog shader */
-uniform float base_density: hint_range(0, 1) = 0.8;
-uniform vec3 base_color: source_color;
+/* Smooth fog shader without dust effect */
+uniform float base_density: hint_range(0, 1) = 0.5;
+uniform vec3 base_color: source_color = vec3(1.0, 1.0, 1.0);
 uniform float fade_out_height = 2.0;
 uniform float fade_out_distance = 1.5;
 
-uniform vec3 noise_amounts = vec3(0.4, 0.35, 0.25); // should add up to 1
-uniform vec3 noise_scales = vec3(1.0, 2.0, 4.0);
-uniform vec3 noise_velocity1 = vec3(0.5, 0.0, 0.0);
-uniform vec3 noise_velocity2 = vec3(1, 0.0, -1);
-uniform vec3 noise_velocity3 = vec3(0.0, 0.6, 0.3);
-
-/* gradient_noise_3d.gdshaderinc */
-// The MIT License
-// Copyright © 2013 Inigo Quilez
-// Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-// All noise functions here:
-//
-// https://www.shadertoy.com/playlist/fXlXzf&from=0&num=12
+// Optional: add very subtle variation (set to 0 for completely uniform fog)
+uniform float noise_strength: hint_range(0, 1) = 0.1;
+uniform vec3 noise_scale = vec3(0.5, 0.5, 0.5);
+uniform vec3 noise_velocity = vec3(0.1, 0.0, 0.1);
 
 vec3 hash(vec3 p) {
 	p = vec3(dot(p,vec3(127.1,311.7, 74.7)),
@@ -29,11 +19,9 @@ vec3 hash(vec3 p) {
 	return -1.0 + 2.0 * fract(sin(p) * 43758.5453123);
 }
 
-// 3D gradient noise function
 float noise(in vec3 p) {
 	vec3 i = floor(p);
 	vec3 f = fract(p);
-
 	vec3 u = f*f*(3.0-2.0*f);
 
     return mix( mix( mix( dot( hash( i + vec3(0.0,0.0,0.0) ), f - vec3(0.0,0.0,0.0) ), 
@@ -47,12 +35,21 @@ float noise(in vec3 p) {
 }
 
 void fog() {
-	vec3 base_pos = WORLD_POSITION * vec3(0.1, 0.5, 0.1);
+	// Start with base density
 	DENSITY = base_density;
-	float noise1 = noise(base_pos * noise_scales.x + TIME * noise_velocity1) * noise_amounts.x;
-	float noise2 = noise(base_pos * noise_scales.y + TIME * noise_velocity2) * noise_amounts.y;
-	float noise3 = noise(base_pos * noise_scales.z + TIME * noise_velocity3) * noise_amounts.z;
-	DENSITY *= smoothstep(-0.1, 0.0, noise1 + noise2 + noise3);
+	
+	// Optional: add very subtle noise variation (can be disabled by setting noise_strength to 0)
+	if (noise_strength > 0.0) {
+		vec3 base_pos = WORLD_POSITION * noise_scale;
+		float noise_value = noise(base_pos + TIME * noise_velocity);
+		// Map noise from [-1,1] to [1-strength, 1+strength] for subtle variation
+		float noise_multiplier = 1.0 + (noise_value * noise_strength);
+		DENSITY *= noise_multiplier;
+	}
+	
+	// Fade out with height (makes fog denser at ground level)
 	DENSITY *= 1.0 - smoothstep(fade_out_height, fade_out_height + fade_out_distance, WORLD_POSITION.y);
+	
+	// Set fog color
 	ALBEDO = base_color;
 }

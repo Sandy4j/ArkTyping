@@ -3,18 +3,16 @@ class_name Towercon
 
 var tower_spots: Array[Area3D] = []
 var selected_spot_index: int = -1
-var highlight_material: StandardMaterial3D
+var outline_material: ShaderMaterial
 var tower_input: Node = null
 @onready var ui: CanvasLayer = $"../UI"
 
 func _ready() -> void:
-	
-	highlight_material = StandardMaterial3D.new()
-	highlight_material.albedo_color = Color(1.0, 1.0, 0.0, 0.8)
-	highlight_material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
-	highlight_material.emission_enabled = true
-	highlight_material.emission = Color(1.0, 1.0, 0.0)
-	highlight_material.emission_energy = 0.5
+	outline_material = ShaderMaterial.new()
+	var outline_shader = load("res://asset/Shader/outline_highlight.gdshader")
+	outline_material.shader = outline_shader
+	outline_material.set_shader_parameter("outline_color", Color(1.0, 1.0, 0.0, 1.0))
+	outline_material.set_shader_parameter("outline_width", 0.05)
 	
 	collect_tower_spots()
 	
@@ -43,23 +41,44 @@ func collect_tower_spots() -> void:
 	
 	print("Found ", tower_spots.size(), " tower spots")
 
+func add_outline_to_spot(spot: Area3D) -> void:
+	var outline_node = spot.get_node_or_null("OutlineHighlight")
+	if outline_node:
+		return
+	var mesh_instance = spot.get_node_or_null("Altar")
+	if not mesh_instance:
+		return
+	
+	var outline_mesh = MeshInstance3D.new()
+	outline_mesh.name = "OutlineHighlight"
+	outline_mesh.mesh = mesh_instance.mesh
+	outline_mesh.material_override = outline_material
+	outline_mesh.position = mesh_instance.position
+	outline_mesh.rotation = mesh_instance.rotation
+	outline_mesh.scale = mesh_instance.scale
+	
+	spot.add_child(outline_mesh)
+
+func remove_outline_from_spot(spot: Area3D) -> void:
+	var outline_node = spot.get_node_or_null("OutlineHighlight")
+	if outline_node:
+		outline_node.queue_free()
+
 func select_spot(index: int) -> void:
 	if index < 0 or index >= tower_spots.size():
 		return
 	
 	var spot = tower_spots[index]
 	
-
 	if selected_spot_index >= 0 and selected_spot_index < tower_spots.size():
 		var prev_spot = tower_spots[selected_spot_index]
-		if prev_spot.mesh_instance and not prev_spot.has_tower:
-			prev_spot.mesh_instance.material_override = prev_spot.default_material
+		if not prev_spot.has_tower:
+			remove_outline_from_spot(prev_spot)
 
 	selected_spot_index = index
-	if spot.mesh_instance and not spot.has_tower:
-		spot.mesh_instance.material_override = highlight_material
+	if not spot.has_tower:
+		add_outline_to_spot(spot)
 	
-	print("Selected spot ", index + 1, " - Type 'tower' to place")
 	if tower_input and tower_input.has_method("set_selected_spot"):
 		tower_input.set_selected_spot(index)
 

@@ -13,24 +13,9 @@ var default_material: StandardMaterial3D
 @onready var mesh_instance: MeshInstance3D = $Altar
 
 func _ready() -> void:
-	default_material = StandardMaterial3D.new()
-	default_material.albedo_color = Color(0.3, 0.3, 0.8, 0.5)
-	default_material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
 	
-	hover_material = StandardMaterial3D.new()
-	hover_material.albedo_color = Color(0.3, 0.8, 0.3, 0.7)
-	hover_material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
-	
-	if mesh_instance:
-		mesh_instance.material_override = default_material
-	
-	#input_event.connect(_on_input_event)
 	mouse_entered.connect(_on_mouse_entered)
 	mouse_exited.connect(_on_mouse_exited)
-
-#func _on_input_event(_camera: Node, event: InputEvent, _pos: Vector3, _normal: Vector3, _shape_idx: int) -> void:
-	#if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		#place_tower()
 
 func _on_mouse_entered() -> void:
 	if not has_tower and mesh_instance:
