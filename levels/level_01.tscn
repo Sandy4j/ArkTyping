@@ -1,5 +1,6 @@
 [gd_scene load_steps=22 format=3 uid="uid://cj0xxw8ewgpqy"]
 
+[ext_resource type="Material" uid="uid://ctd55tbm5xssh" path="res://asset/Shader/Sky/night.tres" id="1_d3o6j"]
 [ext_resource type="PackedScene" uid="uid://dr5mh3wmxd7uu" path="res://scenes/Base.tscn" id="1_jy02f"]
 [ext_resource type="Script" uid="uid://bpdh0cu6naavy" path="res://scripts/Tower/inputtower.gd" id="2_5dxk1"]
 [ext_resource type="Script" uid="uid://dgxccv80klhc7" path="res://scripts/Tower/TowerCon.gd" id="3_kjd3d"]
@@ -16,12 +17,8 @@
 [ext_resource type="Script" uid="uid://bbexpquh4b3ip" path="res://scripts/UI/UI.gd" id="9_pdl2l"]
 [ext_resource type="Script" path="res://scripts/LevelInit.gd" id="11_kjd3d"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sky"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-
 [sub_resource type="Sky" id="Sky_main"]
-sky_material = SubResource("ProceduralSkyMaterial_sky")
+sky_material = ExtResource("1_d3o6j")
 
 [sub_resource type="Environment" id="Environment_main"]
 background_mode = 2

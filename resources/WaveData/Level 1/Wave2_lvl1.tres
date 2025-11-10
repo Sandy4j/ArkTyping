@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://resources/WaveConfig.gd" id="2_2v7dj"]
 [ext_resource type="Script" path="res://resources/SpawnPointConfig.gd" id="2_dta0k"]
-[ext_resource type="Resource" uid="uid://y8kurhj31pjk" path="res://resources/SpawnEntry/Level 1/Spawn Point/SPMid_Lvl1W2.tres" id="3_flyq3"]
+[ext_resource type="Resource" uid="uid://drl2hps7cviu3" path="res://resources/SpawnEntry/Level 1/Spawn Point/SPLeft_Lvl1W2.tres" id="4_06ban"]
 [ext_resource type="Resource" uid="uid://ckyxluivbj2id" path="res://resources/SpawnEntry/Level 1/Spawn Point/SPRight_Lvl1W2.tres" id="4_g7pam"]
-
 
 [resource]
 script = ExtResource("2_2v7dj")
 wave_number = 2
-spawn_point_configs = Array[ExtResource("2_dta0k")]([ExtResource("3_flyq3"), ExtResource("4_g7pam")])
+spawn_mode = 1
+spawn_point_configs = Array[ExtResource("2_dta0k")]([ExtResource("4_g7pam"), ExtResource("4_06ban")])

@@ -24,7 +24,7 @@ func _on_wave_started(wave: int) -> void:
 	wave_label.text = "Wave: " + str(wave)
 
 func _on_game_over(stars: int) -> void:
-	var winlose_scene = load("res://scenes/WinLose.tscn")
+	var winlose_scene = load("res://scenes/UI/WinLose.tscn")
 	if winlose_scene:
 		var winlose_instance = winlose_scene.instantiate()
 		get_tree().current_scene.add_child(winlose_instance)
@@ -32,7 +32,7 @@ func _on_game_over(stars: int) -> void:
 
 func _on_victory() -> void:
 	await get_tree().create_timer(1.0).timeout
-	var winlose_scene = load("res://scenes/WinLose.tscn")
+	var winlose_scene = load("res://scenes/UI/WinLose.tscn")
 	if winlose_scene:
 		var winlose_instance = winlose_scene.instantiate()
 		get_tree().current_scene.add_child(winlose_instance)
