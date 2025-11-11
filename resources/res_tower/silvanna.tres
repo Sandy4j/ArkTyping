@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="TowerData" load_steps=3 format=3 uid="uid://bhwlp2kr8e0ir"]
 
 [ext_resource type="Script" uid="uid://g85gwfmcln8s" path="res://scripts/Tower/Tower_Res.gd" id="1_h3o12"]
-[ext_resource type="Texture2D" uid="uid://7hb01lte08km" path="res://asset/Tower/Capture2.PNG" id="2_133gv"]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_ebbtt"]
 
 [resource]
 script = ExtResource("1_h3o12")
@@ -12,6 +12,6 @@ speed = 0.8
 range = 200.0
 skill = "lunar blessing"
 skill_duration = 10
-sprite = ExtResource("2_133gv")
+sprite = SubResource("SpriteFrames_ebbtt")
 projectile_speed = 10
 metadata/_custom_type_script = "uid://g85gwfmcln8s"

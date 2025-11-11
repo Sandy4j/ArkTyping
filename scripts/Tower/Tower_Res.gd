@@ -7,7 +7,9 @@ class_name TowerData
 @export var range:float
 @export var skill:String
 @export var skill_duration:int
+@export var skill_sprite:CompressedTexture2D
+@export var cooldown:int
 @export var max_hp:float = 100.0
-@export var sprite:CompressedTexture2D
-@export var projectile:CompressedTexture2D
+@export var sprite:SpriteFrames
+@export var projectile:PackedScene
 @export var projectile_speed:int

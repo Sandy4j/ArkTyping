@@ -2,13 +2,16 @@ extends Node
 class_name TowerInput
 
 @export var tower_list:Array[TowerData]
-@onready var inputLbl: Label = $TxtPanel/Label
-
+@onready var inputLbl: Label = $"../UI/TypeBox/Label"
+@onready var history_box: TextureRect = $"../UI/HistoryBox"
+var HistoryLbl:Array[Node]
+var count:int = 0
 var TOWER_KEYWORD:Array[String]
 var SKILL_KEYWORD:Array[String]
 var selected_spot_index: int = -1
 
 func _ready() -> void:
+	HistoryLbl = history_box.get_children()
 	for data in tower_list:
 		TOWER_KEYWORD.append(data.chara)
 		SKILL_KEYWORD.append(data.skill)
@@ -39,6 +42,9 @@ func _on_text_submitted(full_text: String) -> void:
 			if selected_spot_index >= 0:
 				request_tower_placement(typed_text)
 				print("Spot yang kepilih: ", selected_spot_index + 1)
+				HIstory_add(typed_text,Color.GREEN)
+				inputLbl.text = ""
+				return
 			else:
 				print("Spot belum dipilih bro.")
 				
@@ -47,15 +53,22 @@ func _on_text_submitted(full_text: String) -> void:
 			if selected_spot_index >= 0:
 				request_tower_skill(typed_text)
 				print("Mengaktifkan skill di slot: ", selected_spot_index + 1)
+				HIstory_add(typed_text,Color.GREEN)
+				inputLbl.text = ""
+				return
 			else:
 				print("Spot belum dipilih bro.")
 	if typed_text == "retreat":
 		if selected_spot_index >= 0:
 			request_delete_tower()
 			print("Hapus Tower di slot: ", selected_spot_index + 1)
+			HIstory_add(typed_text,Color.GREEN)
+			inputLbl.text = ""
+			return
 		else:
 			print("Spot belum dipilih bro.")
 	else:
+		HIstory_add(typed_text,Color.RED)
 		print("Input Salah Woi.")
 	inputLbl.text = ""
 
@@ -88,3 +101,26 @@ func request_delete_tower() ->void:
 		tower_controller.delete_tower_at_selected()
 	else:
 		print("TowerController not found!")
+
+func HIstory_add(v:String, cl:Color):
+	if count < 3:
+		count += 1
+	
+	match count:
+		1:
+			HistoryLbl[0].text = v
+			HistoryLbl[0].modulate = cl
+			
+		2:
+			HistoryLbl[1].text = HistoryLbl[0].text
+			HistoryLbl[1].modulate = HistoryLbl[0].modulate
+			HistoryLbl[0].text = v
+			HistoryLbl[0].modulate = cl
+			
+		3:
+			HistoryLbl[2].text = HistoryLbl[1].text
+			HistoryLbl[2].modulate = HistoryLbl[1].modulate
+			HistoryLbl[1].text = HistoryLbl[0].text
+			HistoryLbl[1].modulate = HistoryLbl[0].modulate
+			HistoryLbl[0].text = v
+			HistoryLbl[0].modulate = cl

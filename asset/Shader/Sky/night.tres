@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=13 format=3 uid="uid://ctd55tbm5xssh"]
 
-[ext_resource type="Texture2D" uid="uid://bkekawof4gp3x" path="res://asset/Shader/Sky/shooting_star_sampler.png" id="1_ea6hj"]
+[ext_resource type="Texture2D" uid="uid://cnia1eyvb1lmn" path="res://asset/Shader/Sky/shooting_star_sampler.png" id="1_ea6hj"]
 
 [sub_resource type="Shader" id="Shader_ea6hj"]
 code = "shader_type sky;

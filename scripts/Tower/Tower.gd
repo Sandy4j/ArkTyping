@@ -27,20 +27,24 @@ var current_target: CharacterBody3D = null
 var skill_active: bool = false
 var skill_cooldown: float = 0.0
 var current_skill_cooldown: float = 0.0
-
-@onready var sprite: Sprite3D = $Sprite3D
+var is_shooting:bool
+var is_animation_playing: bool = false
+@onready var sprite: AnimatedSprite3D = $Sprite3D
 @onready var range_area: Area3D = $RangeArea
 @onready var shoot_point: Node3D = $ShootPoint
+@onready var skill_sprite: Sprite3D = $SkillSprite
 
 func _ready() -> void:
+	shot_fired.connect(after_shoot)
 	damage = tower_data.damage
 	fire_rate = tower_data.speed 
 	detection_range = tower_data.range
 	projectile_speed = tower_data.projectile_speed 
 	skill_type = tower_data.skill
 	max_hp = tower_data.max_hp
+	skill_cooldown = tower_data.cooldown
 	current_hp = max_hp
-	sprite.texture = tower_data.sprite
+	sprite.sprite_frames = tower_data.sprite
 	print("Tower initialized with data: ", tower_data.chara)
 	print("Damage: ", damage, " Fire Rate: ", fire_rate, " Range: ", detection_range, " HP: ", max_hp)
 	if tower_data.chara == "lilitia":
@@ -54,6 +58,8 @@ func _ready() -> void:
 		var collision_shape = range_area.get_node("CollisionShape3D")
 		if collision_shape and collision_shape.shape is SphereShape3D:
 			collision_shape.shape.radius = detection_range
+	current_skill_cooldown = skill_cooldown
+	sprite.play("default")
 
 func _process(delta: float) -> void:
 	if not is_inside_tree():
@@ -65,10 +71,10 @@ func _process(delta: float) -> void:
 	if current_skill_cooldown > 0:
 		current_skill_cooldown -= delta
 	
+	update_animation()
 	if is_lilitia:
 		return
 	
-	# Update target
 	update_target()
 	
 	# Find target if none
@@ -81,9 +87,12 @@ func _process(delta: float) -> void:
 	
 	# Shoot at target
 	if current_target and is_instance_valid(current_target) and current_target.is_in_group("enemies") and fire_timer >= 1.0 / fire_rate:
+		is_shooting = true
 		if overload_burst_active:
 			overload_burst()
-		elif tower_data.skill == "bloody opus" or scarlet_harvester_active:
+		elif scarlet_harvester_active:
+			scarlet_harvester()
+		elif tower_data.skill == "bloody opus":
 			shoot(current_target)
 			fire_timer = 0.0
 			await get_tree().create_timer(0.25).timeout
@@ -92,7 +101,32 @@ func _process(delta: float) -> void:
 			shoot(current_target)
 		fire_timer = 0.0
 
+func update_animation():
+	if is_shooting:
+		if sprite.animation != "attack":
+			sprite.play("attack")
+			print("iki attack")
+	else:
+		if sprite.animation != "default":
+			sprite.play("default")
+			print("default")
+
+func after_shoot():
+	#is_shooting = false
+	pass
+
 func shoot(target: Node3D) -> void:
+	if is_animation_playing:
+		return  # 🚫 JANGAN SHOOT JIKA MASIH ANIMASI ATTACK
+	
+	is_shooting = true
+	is_animation_playing = true
+	
+	# 🎯 STOP ANIMASI IDLE DULU
+	sprite.stop()
+	
+	# 🎯 PLAY ANIMASI ATTACK
+	sprite.play("attack")
 	if not projectile_scene:
 		return
 	
@@ -158,6 +192,47 @@ func double_shoot(target: CharacterBody3D) -> void:
 	print("shot")
 
 func overload_burst() -> void:
+	if not projectile_scene:
+		return
+	
+	var targets:Array
+	
+	if enemies_in_range.size() == 0:
+		return
+	elif enemies_in_range.size() < 2:
+		targets.append(enemies_in_range.get(0))
+	else:
+		targets.append(enemies_in_range.get(0))
+		targets.append(enemies_in_range.get(1))
+	
+	if targets.size() == 0:
+		return
+	
+	var pool_key = "tower_projectile"
+	
+	for i in range(targets.size()):
+		var target = targets[i]
+		if is_instance_valid(target):
+			var projectile = ObjectPool.get_pooled_object(pool_key)
+			
+			if not projectile:
+				projectile = projectile_scene.instantiate()
+			else:
+				projectile.pool_name = pool_key
+			
+			get_tree().current_scene.add_child(projectile)
+			
+			if shoot_point:
+				projectile.global_position = shoot_point.global_position
+			else:
+				projectile.global_position = global_position + Vector3.UP
+			
+			projectile.initialize(target, damage, projectile_speed)
+	
+	shot_fired.emit()
+	print("Triple Shot! Hit ", targets.size(), " enemies")
+
+func scarlet_harvester() -> void:
 	if not projectile_scene:
 		return
 	
@@ -348,7 +423,7 @@ func activate_lunar_blessing() -> void:
 func activate_holy_divine_basic() -> void:
 	print("lilitia aktif!")
 	is_lilitia = true
-	var orbit_scene = load("res://scenes/orbit.tscn")
+	var orbit_scene = load("res://scenes/Tower/orbit.tscn")
 	var orbit_node = orbit_scene.instantiate()
 	orbit_node.damage = tower_data.damage
 	orbit_node.dot_timer = tower_data.speed
@@ -430,3 +505,13 @@ func bullet_requiem_counter():
 		damage = tower_data.damage
 		fire_rate = tower_data.speed
 		shot_fired.disconnect(bullet_requiem_counter)
+
+
+func _on_sprite_3d_animation_finished() -> void:
+	print("Animation finished: ", sprite.animation)
+	
+	# 🎯 JIKA ANIMASI ATTACK SELESAI, KEMBALI KE IDLE
+	if sprite.animation == "attack":
+		is_shooting = false
+		is_animation_playing = false
+		sprite.play("idle")  # 🎯 KEMBALI KE IDLE YANG MUTER-MUTER

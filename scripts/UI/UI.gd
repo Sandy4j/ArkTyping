@@ -1,8 +1,8 @@
 extends CanvasLayer
 
-@onready var hp_label: Label = $Panel/VBoxContainer/HPLabel
+@onready var hp_label: Label = $HP/Health_Con/Cur
 @onready var currency_label: Label = $Panel/VBoxContainer/CurrencyLabel
-@onready var wave_label: Label = $Panel/VBoxContainer/WaveLabel
+@onready var wave_label: Label = $Wave/Wave_Con/Cur
 @onready var wavesystem = $"../WaveManager"
 @onready var message: Label = $Label
 
@@ -18,10 +18,10 @@ func _on_currency_changed(amount: int) -> void:
 	currency_label.text = "Currency: " + str(amount)
 
 func _on_base_hp_changed(hp: int) -> void:
-	hp_label.text = "Base HP: " + str(hp)
+	hp_label.text = str(hp)
 
 func _on_wave_started(wave: int) -> void:
-	wave_label.text = "Wave: " + str(wave)
+	wave_label.text = str(wave)
 
 func _on_game_over(stars: int) -> void:
 	var winlose_scene = load("res://scenes/UI/WinLose.tscn")
