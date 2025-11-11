@@ -1,20 +1,21 @@
-[gd_resource type="Resource" script_class="TowerData" load_steps=17 format=3 uid="uid://bk8grfmo48v2h"]
+[gd_resource type="Resource" script_class="TowerData" load_steps=18 format=3 uid="uid://bk8grfmo48v2h"]
 
 [ext_resource type="PackedScene" uid="uid://csgdym37gysnc" path="res://asset/Vfx/Effect/Bullet_Kaelio.tscn" id="1_7kj1q"]
 [ext_resource type="Script" uid="uid://g85gwfmcln8s" path="res://scripts/Tower/Tower_Res.gd" id="1_ekg0c"]
-[ext_resource type="Texture2D" uid="uid://bxr7dljvrp27b" path="res://asset/Tower/Kaelio/Attack/Skill 1.png" id="2_0jynn"]
-[ext_resource type="Texture2D" uid="uid://slmcgdd8b42i" path="res://asset/Tower/Kaelio/Attack/Skill 2.png" id="3_7kj1q"]
-[ext_resource type="Texture2D" uid="uid://c28o1opa5jk00" path="res://asset/Tower/Kaelio/Attack/Skill 3.png" id="4_45kid"]
-[ext_resource type="Texture2D" uid="uid://cauga68q4asgq" path="res://asset/Tower/Kaelio/Attack/Skill 4.png" id="5_3xivg"]
-[ext_resource type="Texture2D" uid="uid://c8c2ie1osw45n" path="res://asset/Tower/Kaelio/Attack/Skill 5.png" id="6_v2kk4"]
-[ext_resource type="Texture2D" uid="uid://ftqiwphhvces" path="res://asset/Tower/Kaelio/Attack/Skill 6.png" id="7_ektn4"]
-[ext_resource type="Texture2D" uid="uid://bsm421tieqnuh" path="res://asset/Tower/Kaelio/Idle/Idle 1.png" id="8_w588g"]
-[ext_resource type="Texture2D" uid="uid://2pt0l7v5b3n5" path="res://asset/Tower/Kaelio/Idle/Idle 2.png" id="9_4g1xp"]
-[ext_resource type="Texture2D" uid="uid://c4kdemrupdmhc" path="res://asset/Tower/Kaelio/Idle/Idle 3.png" id="10_ted16"]
-[ext_resource type="Texture2D" uid="uid://n06rdblem3r6" path="res://asset/Tower/Kaelio/Idle/Idle 4.png" id="11_3c3g6"]
-[ext_resource type="Texture2D" uid="uid://uj8w35tbbda7" path="res://asset/Tower/Kaelio/Idle/Idle 5.png" id="12_y1y7l"]
-[ext_resource type="Texture2D" uid="uid://pj624iom14x1" path="res://asset/Tower/Kaelio/Idle/Idle 6.png" id="13_n7kkh"]
-[ext_resource type="Texture2D" uid="uid://c01hlvkjmh6fh" path="res://asset/Tower/Kaelio/Idle/Idle 7.png" id="14_2gnla"]
+[ext_resource type="Texture2D" uid="uid://b4ltm1v3v0koq" path="res://asset/Tower/Kaelio/Attack/Skill 1.png" id="2_0jynn"]
+[ext_resource type="Texture2D" uid="uid://lvkn0a71cx7i" path="res://asset/Tower/Kaelio/Attack/Skill 2.png" id="3_7kj1q"]
+[ext_resource type="Texture2D" uid="uid://bxhxv4arheov4" path="res://asset/Tower/Skill/Group.png" id="3_45kid"]
+[ext_resource type="Texture2D" uid="uid://d0t3knmdnyy5f" path="res://asset/Tower/Kaelio/Attack/Skill 3.png" id="4_45kid"]
+[ext_resource type="Texture2D" uid="uid://53liuwxfj4ag" path="res://asset/Tower/Kaelio/Attack/Skill 4.png" id="5_3xivg"]
+[ext_resource type="Texture2D" uid="uid://b1onhl0gn58cc" path="res://asset/Tower/Kaelio/Attack/Skill 5.png" id="6_v2kk4"]
+[ext_resource type="Texture2D" uid="uid://4yws4q3bmt5x" path="res://asset/Tower/Kaelio/Attack/Skill 6.png" id="7_ektn4"]
+[ext_resource type="Texture2D" uid="uid://duwrv6y6q8cwh" path="res://asset/Tower/Kaelio/Idle/Idle 1.png" id="8_w588g"]
+[ext_resource type="Texture2D" uid="uid://bdfrapjaxh2rr" path="res://asset/Tower/Kaelio/Idle/Idle 2.png" id="9_4g1xp"]
+[ext_resource type="Texture2D" uid="uid://1jlve7bg8h8o" path="res://asset/Tower/Kaelio/Idle/Idle 3.png" id="10_ted16"]
+[ext_resource type="Texture2D" uid="uid://nkmah0grg5ci" path="res://asset/Tower/Kaelio/Idle/Idle 4.png" id="11_3c3g6"]
+[ext_resource type="Texture2D" uid="uid://c5gp5bc1gxg0u" path="res://asset/Tower/Kaelio/Idle/Idle 5.png" id="12_y1y7l"]
+[ext_resource type="Texture2D" uid="uid://w6vs88ufkhjh" path="res://asset/Tower/Kaelio/Idle/Idle 6.png" id="13_n7kkh"]
+[ext_resource type="Texture2D" uid="uid://dufkbxnxq4q5e" path="res://asset/Tower/Kaelio/Idle/Idle 7.png" id="14_2gnla"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nhtar"]
 animations = [{
@@ -76,6 +77,8 @@ speed = 1.2
 range = 200.0
 skill = "overload burst"
 skill_duration = 5
+skill_sprite = ExtResource("3_45kid")
+cooldown = 3
 sprite = SubResource("SpriteFrames_nhtar")
 projectile = ExtResource("1_7kj1q")
 projectile_speed = 20

@@ -51,6 +51,7 @@ func _ready() -> void:
 	skill_cooldown = tower_data.cooldown
 	current_hp = max_hp
 	sprite.sprite_frames = tower_data.sprite
+	skill_sprite.texture = tower_data.skill_sprite
 	print("Tower initialized with data: ", tower_data.chara)
 	print("Damage: ", damage, " Fire Rate: ", fire_rate, " Range: ", detection_range, " HP: ", max_hp)
 	if tower_data.chara == "lilitia":
@@ -76,7 +77,10 @@ func _process(delta: float) -> void:
 	
 	# Update skill cooldown
 	if current_skill_cooldown > 0:
+		skill_sprite.modulate = Color(0.5,0.5,0.5,1.0)
 		current_skill_cooldown -= delta
+	else:
+		skill_sprite.modulate = Color(1.0,1.0,1.0,1.0)
 	
 	update_animation()
 	if is_lilitia:
@@ -595,6 +599,7 @@ func bullet_requiem_counter():
 		fire_rate = tower_data.speed
 		shot_fired.disconnect(bullet_requiem_counter)
 		aura_node.queue_free()
+		
 
 
 func _on_sprite_3d_animation_finished() -> void:

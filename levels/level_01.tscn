@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=4 uid="uid://cj0xxw8ewgpqy"]
+[gd_scene load_steps=42 format=4 uid="uid://cj0xxw8ewgpqy"]
 
 [ext_resource type="Material" uid="uid://ctd55tbm5xssh" path="res://asset/Shader/Sky/night.tres" id="1_d3o6j"]
 [ext_resource type="PackedScene" uid="uid://dr5mh3wmxd7uu" path="res://scenes/Base.tscn" id="1_jy02f"]
@@ -20,19 +20,18 @@
 [ext_resource type="Script" path="res://scripts/LevelInit.gd" id="11_kjd3d"]
 [ext_resource type="Resource" uid="uid://duvfgb70bw3fq" path="res://resources/res_tower/leciana.tres" id="11_t6f3f"]
 [ext_resource type="Resource" uid="uid://bxhddhmrf4wrn" path="res://resources/res_tower/rosemary.tres" id="12_5mixh"]
-[ext_resource type="Resource" uid="uid://bvmvodx3qv0rw" path="res://resources/res_tower/vigilante.tres" id="13_d8db5"]
-[ext_resource type="Texture2D" uid="uid://b7qifoldq86iw" path="res://asset/UI_Gameplay/Heart_BG.png" id="15_xt52j"]
-[ext_resource type="Texture2D" uid="uid://cv6c00us8popd" path="res://asset/UI_Gameplay/Heart.png" id="16_m68c3"]
-[ext_resource type="FontFile" uid="uid://c5f4vbou88gt1" path="res://asset/UI_Gameplay/effortless.ttf" id="17_p6fww"]
-[ext_resource type="Texture2D" uid="uid://48psaorsobfy" path="res://asset/UI_Gameplay/Energy_BG.png" id="18_p6fww"]
-[ext_resource type="Texture2D" uid="uid://dwnlur60y67oc" path="res://asset/UI_Gameplay/Enemy_BG.png" id="18_q27ur"]
-[ext_resource type="Texture2D" uid="uid://cj6o02fnm0rj2" path="res://asset/UI_Gameplay/Energy_Fill.png" id="19_6g61c"]
-[ext_resource type="Texture2D" uid="uid://b3v5c7iygi500" path="res://asset/UI_Gameplay/Enemy.png" id="19_685d6"]
-[ext_resource type="Texture2D" uid="uid://b57c8oiv8ljnq" path="res://asset/UI_Gameplay/Wave.png" id="20_6044w"]
-[ext_resource type="Texture2D" uid="uid://mbc83cpasp43" path="res://asset/UI_Gameplay/Chara_BG.png" id="20_g2xra"]
+[ext_resource type="Resource" uid="uid://b253lnqawjdve" path="res://resources/res_tower/vigilante.tres" id="13_d8db5"]
+[ext_resource type="Texture2D" uid="uid://b12vcxaju3drt" path="res://asset/UI_Gameplay/Heart_BG.png" id="15_xt52j"]
+[ext_resource type="Texture2D" uid="uid://dgh3o7a60ljhb" path="res://asset/UI_Gameplay/Heart.png" id="16_m68c3"]
+[ext_resource type="FontFile" uid="uid://y7e0cejceotv" path="res://asset/UI_Gameplay/effortless.ttf" id="17_p6fww"]
+[ext_resource type="Texture2D" uid="uid://cci18kuxibjpy" path="res://asset/UI_Gameplay/Energy_BG.png" id="18_p6fww"]
+[ext_resource type="Texture2D" uid="uid://bwp1jf5ljg3rb" path="res://asset/UI_Gameplay/Enemy_BG.png" id="18_q27ur"]
+[ext_resource type="Texture2D" uid="uid://ds45sauhw3tjq" path="res://asset/UI_Gameplay/Enemy.png" id="19_685d6"]
+[ext_resource type="Texture2D" uid="uid://dcjddmsrg8vdy" path="res://asset/UI_Gameplay/Wave.png" id="20_6044w"]
+[ext_resource type="Texture2D" uid="uid://qgwf3s20g5g" path="res://asset/UI_Gameplay/Chara_BG.png" id="20_g2xra"]
 [ext_resource type="Texture2D" uid="uid://c0biiiaj1qxo4" path="res://asset/UI_Gameplay/Example.png" id="21_g2xra"]
-[ext_resource type="Texture2D" uid="uid://bkp3qx8xknkys" path="res://asset/UI_Gameplay/History_Box.png" id="25_6044w"]
-[ext_resource type="Texture2D" uid="uid://ctr5qhm7y5iey" path="res://asset/UI_Gameplay/Type_Box.png" id="26_t6f3f"]
+[ext_resource type="Texture2D" uid="uid://ej7fvjdun2vt" path="res://asset/UI_Gameplay/History_Box.png" id="25_6044w"]
+[ext_resource type="Texture2D" uid="uid://omvvnc2d3cag" path="res://asset/UI_Gameplay/Type_Box.png" id="26_t6f3f"]
 
 [sub_resource type="Sky" id="Sky_main"]
 sky_material = ExtResource("1_d3o6j")
@@ -401,21 +400,17 @@ theme_override_fonts/font = ExtResource("17_p6fww")
 theme_override_font_sizes/font_size = 40
 text = "120"
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="UI"]
-anchors_preset = 7
-anchor_left = 0.5
+[node name="TextureProgressBar" type="TextureRect" parent="UI"]
+anchors_preset = 3
+anchor_left = 1.0
 anchor_top = 1.0
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -301.0
-offset_top = -215.0
-offset_right = 301.0
-offset_bottom = -174.0
-grow_horizontal = 2
+offset_left = -131.0
+offset_top = -129.0
+grow_horizontal = 0
 grow_vertical = 0
-value = 50.0
-texture_under = ExtResource("18_p6fww")
-texture_progress = ExtResource("19_6g61c")
+texture = ExtResource("18_p6fww")
 
 [node name="Label" type="Label" parent="UI/TextureProgressBar"]
 layout_mode = 1
@@ -430,9 +425,8 @@ offset_right = 20.0
 offset_bottom = 13.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.5137255, 0.50980395, 0.50980395, 1)
 theme_override_fonts/font = ExtResource("17_p6fww")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 64
 text = "16"
 horizontal_alignment = 1
 

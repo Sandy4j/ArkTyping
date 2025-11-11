@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 @onready var hp_label: Label = $HP/Health_Con/Cur
-@onready var currency_label: Label = $Panel/VBoxContainer/CurrencyLabel
+@onready var currency_label: Label = $TextureProgressBar/Label
 @onready var wave_label: Label = $Wave/Wave_Con/Cur
 @onready var wavesystem = $"../WaveManager"
 @onready var message: Label = $Label
@@ -15,7 +15,7 @@ func _ready() -> void:
 	message.visible = false
 
 func _on_currency_changed(amount: int) -> void:
-	currency_label.text = "Currency: " + str(amount)
+	currency_label.text = str(amount)
 
 func _on_base_hp_changed(hp: int) -> void:
 	hp_label.text = str(hp)

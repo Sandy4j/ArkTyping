@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="TowerData" load_steps=21 format=3 uid="uid://bvmvodx3qv0rw"]
+[gd_resource type="Resource" script_class="TowerData" load_steps=22 format=3 uid="uid://b253lnqawjdve"]
 
 [ext_resource type="Script" uid="uid://g85gwfmcln8s" path="res://scripts/Tower/Tower_Res.gd" id="1_0vi2l"]
 [ext_resource type="PackedScene" path="res://asset/Vfx/Effect/dark_dagger.tscn" id="1_r1kqw"]
 [ext_resource type="Texture2D" uid="uid://crc4j2lsv31ri" path="res://asset/Tower/Vigilante/Attack/Attack 1.png" id="2_r1kqw"]
+[ext_resource type="Texture2D" uid="uid://bl7n2hma4ttj6" path="res://asset/Tower/Skill/Group (4).png" id="3_kudlk"]
 [ext_resource type="Texture2D" uid="uid://cewcri2ang2gr" path="res://asset/Tower/Vigilante/Attack/Attack 2.png" id="3_mglro"]
 [ext_resource type="Texture2D" uid="uid://wnav2dupdyre" path="res://asset/Tower/Vigilante/Attack/Attack 3.png" id="4_kudlk"]
 [ext_resource type="Texture2D" uid="uid://bj7prq4ibwk5r" path="res://asset/Tower/Vigilante/Attack/Attack 4.png" id="5_uuy6l"]
@@ -92,6 +93,7 @@ speed = 1.0
 range = 150.0
 skill = "bloody opus"
 skill_duration = 10
+skill_sprite = ExtResource("3_kudlk")
 cooldown = 10
 sprite = SubResource("SpriteFrames_scyxh")
 projectile = ExtResource("1_r1kqw")
