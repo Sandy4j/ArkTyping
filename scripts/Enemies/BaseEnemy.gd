@@ -8,15 +8,20 @@ signal reached_end(damage: int)
 signal hp_changed(current: float, maximum: float)
 
 @export var enemy_data: EnemyData
+@export var bob_height: float = 0.2
+@export var bob_speed: float = 2.0
 
+var bob_timer: float = 0.0
 var current_hp: float = 0.0
 var path_to_follow: Path3D = null
 var path_follow: PathFollow3D = null
 var pool_name: String = ""  # tracking asal pool
 
-@onready var sprite: Sprite3D = $Sprite3D
+@onready var sprite: AnimatedSprite3D = $Anim
+
 
 func _ready() -> void:
+	sprite.play("default")
 	if not enemy_data:
 		push_error("Enemy has no data assigned!")
 		queue_free()
@@ -53,6 +58,9 @@ func _move(delta: float) -> void:
 	path_follow.progress += enemy_data.move_speed * delta
 	global_position = path_follow.global_position
 	
+	bob_timer += delta * bob_speed
+	global_position.y += sin(bob_timer) * bob_height
+	
 	if path_follow.progress_ratio >= 1.0:
 		reach_end()
 
@@ -80,6 +88,7 @@ func reach_end() -> void:
 
 func return_to_pool() -> void:
 	remove_from_group("enemies")
+	bob_timer = 0.0
 	
 	# Disconnect all signals before returning to pool
 	for connection in died.get_connections():

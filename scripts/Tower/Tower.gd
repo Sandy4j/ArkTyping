@@ -5,13 +5,13 @@ signal skill_activated(skill_name: String)
 signal tower_destroyed
 
 @export var tower_data: TowerData
-@export var projectile_scene: PackedScene
 
 # Stats yang akan diambil dari TowerData
 var detection_range: float = 0.0
 var fire_rate: float = 0.0
 var damage: float = 0.0
 var projectile_speed: float = 0.0
+var projectile_scene: PackedScene = null
 var skill_type: String = ""
 var enemies_in_range: Array[CharacterBody3D] = []
 var overload_burst_active:bool
@@ -41,6 +41,7 @@ func _ready() -> void:
 	max_hp = tower_data.max_hp
 	current_hp = max_hp
 	sprite.texture = tower_data.sprite
+	projectile_scene = tower_data.projectile_scene
 	print("Tower initialized with data: ", tower_data.chara)
 	print("Damage: ", damage, " Fire Rate: ", fire_rate, " Range: ", detection_range, " HP: ", max_hp)
 	if tower_data.chara == "lilitia":
@@ -96,7 +97,7 @@ func shoot(target: Node3D) -> void:
 	if not projectile_scene:
 		return
 	
-	var pool_key = "tower_projectile"
+	var pool_key = "tower_projectile_" + tower_data.chara
 	var projectile = ObjectPool.get_pooled_object(pool_key)
 	
 	if not projectile:
@@ -119,7 +120,7 @@ func double_shoot(target: CharacterBody3D) -> void:
 	if not projectile_scene:
 		return
 	
-	var pool_key = "tower_projectile"
+	var pool_key = "tower_projectile_" + tower_data.chara
 	
 	# First projectile
 	var projectile1 = ObjectPool.get_pooled_object(pool_key)
@@ -174,7 +175,7 @@ func overload_burst() -> void:
 	if targets.size() == 0:
 		return
 	
-	var pool_key = "tower_projectile"
+	var pool_key = "tower_projectile_" + tower_data.chara
 	
 	for i in range(targets.size()):
 		var target = targets[i]

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3 uid="uid://crmk4fyxjfv8u"]
+
+[ext_resource type="Script" path="res://resources/EnemyData.gd" id="1_gmjmk"]
+
+[resource]
+script = ExtResource("1_gmjmk")
+enemy_name = "Basic Crawler"
+max_hp = 1250.0
+move_speed = 1.0
+reward = 3

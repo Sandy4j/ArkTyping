@@ -11,3 +11,4 @@ class_name TowerData
 @export var sprite:CompressedTexture2D
 @export var projectile:CompressedTexture2D
 @export var projectile_speed:int
+@export var projectile_scene:PackedScene

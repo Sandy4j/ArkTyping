@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3 uid="uid://duxh40etvv6qo"]
+
+[ext_resource type="Script" path="res://resources/EnemyData.gd" id="1_p1f8y"]
+
+[resource]
+script = ExtResource("1_p1f8y")
+enemy_name = "Ranged Skull"
+max_hp = 750.0
+move_speed = 1.5
+reward = 5
+can_attack = true
+attack_damage = 200.0
+projectile_speed = 10.0

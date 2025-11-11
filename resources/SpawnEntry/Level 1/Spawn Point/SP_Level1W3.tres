@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SpawnPointConfig" load_steps=5 format=3 uid="uid://cf0y60fsgoc2g"]
+
+[ext_resource type="Script" path="res://resources/EnemySpawnEntry.gd" id="1_x1iwp"]
+[ext_resource type="Resource" uid="uid://c1o4l7vvltmn7" path="res://resources/SpawnEntry/Level 1/Enemy Entry/Eye_Lvl1_W3.tres" id="2_x1iwp"]
+[ext_resource type="Resource" uid="uid://ciqn5h4ggotkx" path="res://resources/SpawnEntry/Level 1/Enemy Entry/Bat_Lvl1_W3.tres" id="3_076ax"]
+[ext_resource type="Script" path="res://resources/SpawnPointConfig.gd" id="4_fi0sk"]
+
+[resource]
+script = ExtResource("4_fi0sk")
+enemy_spawn_entries = Array[ExtResource("1_x1iwp")]([ExtResource("2_x1iwp"), ExtResource("3_076ax")])
+enemies_to_spawn = 10

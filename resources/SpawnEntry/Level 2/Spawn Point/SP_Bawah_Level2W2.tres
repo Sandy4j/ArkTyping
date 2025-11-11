@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="SpawnPointConfig" load_steps=5 format=3 uid="uid://1xq2mx5epjac"]
+
+[ext_resource type="Script" path="res://resources/EnemySpawnEntry.gd" id="1_w0nos"]
+[ext_resource type="Resource" uid="uid://ntp6dq1161gj" path="res://resources/SpawnEntry/Level 2/Enemy Entry/Bat_Lvl2_W2.tres" id="2_7l1xt"]
+[ext_resource type="Script" path="res://resources/SpawnPointConfig.gd" id="2_20seg"]
+[ext_resource type="Resource" uid="uid://rvhuart3iw7v" path="res://resources/SpawnEntry/Level 2/Enemy Entry/Crawler_Lvl2_W2.tres" id="3_53dpm"]
+
+[resource]
+script = ExtResource("2_20seg")
+enemy_spawn_entries = Array[ExtResource("1_w0nos")]([ExtResource("2_7l1xt"), ExtResource("3_53dpm")])
+enemies_to_spawn = 3
+spawn_interval = 2.0

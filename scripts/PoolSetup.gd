@@ -1,11 +1,25 @@
 ﻿extends Node
 class_name PoolSetup
 
-static func setup_pools_for_waves(wave_configs: Array[WaveConfig]) -> void:
-	var tower_projectile_scene = preload("res://scenes/Tower/Projectile.tscn")
+static func setup_pools_for_waves(wave_configs: Array[WaveConfig], tower_datas: Array[TowerData] = []) -> void:
 	var enemy_projectile_scene = preload("res://scenes/Enemy/ProjectileE.tscn")
 	
-	ObjectPool.register_pool("tower_projectile", tower_projectile_scene, 20, 100)
+	# Register tower projectile pools dari tower resources
+	var registered_tower_projectiles: Dictionary = {}
+	for tower_data in tower_datas:
+		if tower_data and tower_data.projectile_scene:
+			var scene_path = tower_data.projectile_scene.resource_path
+			if not registered_tower_projectiles.has(scene_path):
+				var pool_name = "tower_projectile_" + tower_data.chara
+				ObjectPool.register_pool(pool_name, tower_data.projectile_scene, 20, 100)
+				registered_tower_projectiles[scene_path] = pool_name
+				print("Registered tower projectile pool: ", pool_name)
+	
+	# Fallback: register default tower projectile jika tidak ada tower data
+	if tower_datas.is_empty():
+		var tower_projectile_scene = preload("res://scenes/Tower/Projectile.tscn")
+		ObjectPool.register_pool("tower_projectile", tower_projectile_scene, 20, 100)
+	
 	ObjectPool.register_pool("enemy_projectile", enemy_projectile_scene, 15, 80)
 	
 	var registered_enemies: Dictionary = {}

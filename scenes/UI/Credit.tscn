@@ -1,0 +1,206 @@
+[gd_scene format=3 uid="uid://dc8bk4wkejumx"]
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1, 0.15, 0.2, 1)
+
+[node name="TitleLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -150.0
+offset_top = 80.0
+offset_right = 150.0
+offset_bottom = 150.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.85, 0.65, 0.3, 1)
+theme_override_font_sizes/font_size = 72
+text = "Credit"
+horizontal_alignment = 1
+
+[node name="CloseButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -80.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 80.0
+grow_horizontal = 0
+text = "X"
+flat = true
+
+[node name="CreditsContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -150.0
+offset_right = 500.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="LeftColumn" type="VBoxContainer" parent="CreditsContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="GameDesigner" type="VBoxContainer" parent="CreditsContainer/LeftColumn"]
+layout_mode = 2
+
+[node name="Role" type="Label" parent="CreditsContainer/LeftColumn/GameDesigner"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.65, 0.3, 1)
+theme_override_font_sizes/font_size = 24
+text = "game
+designer"
+horizontal_alignment = 1
+
+[node name="Name" type="Label" parent="CreditsContainer/LeftColumn/GameDesigner"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "rayhan elmo"
+horizontal_alignment = 1
+
+[node name="Programmer" type="VBoxContainer" parent="CreditsContainer/LeftColumn"]
+layout_mode = 2
+
+[node name="Role" type="Label" parent="CreditsContainer/LeftColumn/Programmer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.65, 0.3, 1)
+theme_override_font_sizes/font_size = 24
+text = "programer"
+horizontal_alignment = 1
+
+[node name="Name" type="Label" parent="CreditsContainer/LeftColumn/Programmer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "yoga sandy
+ardy teguh y"
+horizontal_alignment = 1
+
+[node name="MiddleColumn" type="VBoxContainer" parent="CreditsContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="2DArtist" type="VBoxContainer" parent="CreditsContainer/MiddleColumn"]
+layout_mode = 2
+
+[node name="Role" type="Label" parent="CreditsContainer/MiddleColumn/2DArtist"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.65, 0.3, 1)
+theme_override_font_sizes/font_size = 24
+text = "2d artist"
+horizontal_alignment = 1
+
+[node name="Name" type="Label" parent="CreditsContainer/MiddleColumn/2DArtist"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "m pimas ordiansyah
+fina salsabila p"
+horizontal_alignment = 1
+
+[node name="VFXArtist" type="VBoxContainer" parent="CreditsContainer/MiddleColumn"]
+layout_mode = 2
+
+[node name="Role" type="Label" parent="CreditsContainer/MiddleColumn/VFXArtist"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.65, 0.3, 1)
+theme_override_font_sizes/font_size = 24
+text = "vfx artist"
+horizontal_alignment = 1
+
+[node name="Name" type="Label" parent="CreditsContainer/MiddleColumn/VFXArtist"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "hiroya herdinanto"
+horizontal_alignment = 1
+
+[node name="SoundDesign" type="VBoxContainer" parent="CreditsContainer/MiddleColumn"]
+layout_mode = 2
+
+[node name="Role" type="Label" parent="CreditsContainer/MiddleColumn/SoundDesign"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.65, 0.3, 1)
+theme_override_font_sizes/font_size = 24
+text = "sound design"
+horizontal_alignment = 1
+
+[node name="Name" type="Label" parent="CreditsContainer/MiddleColumn/SoundDesign"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "bintang
+bimantara"
+horizontal_alignment = 1
+
+[node name="RightColumn" type="VBoxContainer" parent="CreditsContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="3DArtist" type="VBoxContainer" parent="CreditsContainer/RightColumn"]
+layout_mode = 2
+
+[node name="Role" type="Label" parent="CreditsContainer/RightColumn/3DArtist"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.65, 0.3, 1)
+theme_override_font_sizes/font_size = 24
+text = "3d artist"
+horizontal_alignment = 1
+
+[node name="Name" type="Label" parent="CreditsContainer/RightColumn/3DArtist"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "labib bayu aji"
+horizontal_alignment = 1
+
+[node name="UIUX" type="VBoxContainer" parent="CreditsContainer/RightColumn"]
+layout_mode = 2
+
+[node name="Role" type="Label" parent="CreditsContainer/RightColumn/UIUX"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.65, 0.3, 1)
+theme_override_font_sizes/font_size = 24
+text = "ui/ux"
+horizontal_alignment = 1
+
+[node name="Name" type="Label" parent="CreditsContainer/RightColumn/UIUX"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "m hikmal muzaffir"
+horizontal_alignment = 1
+
+[node name="CharacterSprite" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -300.0
+offset_right = -50.0
+offset_bottom = -50.0
+grow_horizontal = 0
+grow_vertical = 0
+expand_mode = 1
+stretch_mode = 5

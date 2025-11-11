@@ -1,0 +1,685 @@
+[gd_scene load_steps=21 format=3 uid="uid://cnj1iuxvobnl6"]
+
+[ext_resource type="Texture2D" uid="uid://c3x70vb046pjr" path="res://asset/UI/Hero/BG.png" id="1_0hg5w"]
+[ext_resource type="Script" uid="uid://b6s5qxp2nqpgv" path="res://scripts/UI/heroUI.gd" id="1_eo8df"]
+[ext_resource type="Texture2D" uid="uid://dic7k45vmvawv" path="res://asset/UI/Hero/lilitia.png" id="1_v4vlb"]
+[ext_resource type="Texture2D" uid="uid://d315gtwj035gi" path="res://asset/UI/Hero/silvanna.png" id="2_1xsbb"]
+[ext_resource type="Texture2D" uid="uid://y8xblrnkxrsb" path="res://asset/UI/Hero/Skill/Lilitia.png" id="2_a3bn8"]
+[ext_resource type="Texture2D" uid="uid://8roivsmoinom" path="res://asset/UI/Hero/Skill/Silvanna.png" id="5_gxhdo"]
+[ext_resource type="Texture2D" uid="uid://b1i75xv5y2y5j" path="res://asset/UI/Hero/morriden.png" id="6_v401o"]
+[ext_resource type="Texture2D" uid="uid://d08vhj4o613j1" path="res://asset/UI/Hero/Skill/Morriden.png" id="7_eo8df"]
+[ext_resource type="Texture2D" uid="uid://bxkaxj4f30wt8" path="res://asset/UI/Hero/vigilante.png" id="8_dhouu"]
+[ext_resource type="Texture2D" uid="uid://cfdbh8o7xqi80" path="res://asset/UI/Hero/Skill/Vigilante.png" id="9_oy08c"]
+[ext_resource type="Texture2D" uid="uid://dk1800hxvlrmk" path="res://asset/UI/Hero/leciana.png" id="10_sylqr"]
+[ext_resource type="Texture2D" uid="uid://buteixucvi4np" path="res://asset/UI/Hero/Skill/Leciana.png" id="11_itcjo"]
+[ext_resource type="Texture2D" uid="uid://c6ab24y3bv0up" path="res://asset/UI/Hero/kaelio.png" id="12_upfl7"]
+[ext_resource type="Texture2D" uid="uid://bty5gg3a66rpr" path="res://asset/UI/Hero/Skill/Kaelio.png" id="13_iqo81"]
+[ext_resource type="Texture2D" uid="uid://dupxsacx3aqj7" path="res://asset/UI/Hero/rosemary.png" id="14_glprv"]
+[ext_resource type="Texture2D" uid="uid://criqsbjrp3way" path="res://asset/UI/Hero/Skill/Rosemary.png" id="15_hgboo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_closebutton"]
+bg_color = Color(0, 0, 0, 0)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v4vlb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v4vlb"]
+bg_color = Color(0.25, 0.25, 0.25, 0.9)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iconbg"]
+bg_color = Color(0.15, 0.15, 0.15, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[node name="CharacterMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_eo8df")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_0hg5w")
+expand_mode = 1
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 20.0
+offset_bottom = 100.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.84313726, 0.5294118, 1)
+theme_override_colors/font_shadow_color = Color(0.9137255, 0.6862745, 0.33333334, 1)
+theme_override_font_sizes/font_size = 64
+text = "Hero"
+horizontal_alignment = 1
+
+[node name="CloseButton" type="Button" parent="."]
+z_index = 10
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -80.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 80.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_closebutton")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_closebutton")
+theme_override_styles/hover = SubResource("StyleBoxFlat_closebutton")
+text = "×"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 100.0
+offset_top = 120.0
+offset_right = -100.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 30
+
+[node name="Lilitia" type="PanelContainer" parent="ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 220)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_v4vlb")
+
+[node name="CardBackground" type="Panel" parent="ScrollContainer/VBoxContainer/Lilitia"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v4vlb")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/Lilitia"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="CharacterSprite" type="TextureRect" parent="ScrollContainer/VBoxContainer/Lilitia/HBoxContainer"]
+custom_minimum_size = Vector2(180, 200)
+layout_mode = 2
+texture = ExtResource("1_v4vlb")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="InfoContainer" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/Lilitia/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="CharacterName" type="Label" parent="ScrollContainer/VBoxContainer/Lilitia/HBoxContainer/InfoContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 28
+text = "lilitia - the fallen angel"
+
+[node name="StatsContainer" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/Lilitia/HBoxContainer/InfoContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="StatsLine1" type="Label" parent="ScrollContainer/VBoxContainer/Lilitia/HBoxContainer/InfoContainer/StatsContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "cost: 13    hp: 1500    damage: 350    attack interval: -"
+
+[node name="Range" type="Label" parent="ScrollContainer/VBoxContainer/Lilitia/HBoxContainer/InfoContainer/StatsContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "range: menengah"
+
+[node name="Skill" type="Label" parent="ScrollContainer/VBoxContainer/Lilitia/HBoxContainer/InfoContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "skill - holy divine: bola cahaya bertambah menjadi 3 dan berputar lebih cepat selama 5 detik."
+autowrap_mode = 3
+
+[node name="Cooldown" type="Label" parent="ScrollContainer/VBoxContainer/Lilitia/HBoxContainer/InfoContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "[CD: 10s]"
+
+[node name="IconContainer" type="CenterContainer" parent="ScrollContainer/VBoxContainer/Lilitia/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="IconBackground" type="Panel" parent="ScrollContainer/VBoxContainer/Lilitia/HBoxContainer/IconContainer"]
+custom_minimum_size = Vector2(130, 130)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_iconbg")
+
+[node name="SkillIcon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Lilitia/HBoxContainer/IconContainer/IconBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_a3bn8")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Silvanna" type="PanelContainer" parent="ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 220)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_v4vlb")
+
+[node name="CardBackground" type="Panel" parent="ScrollContainer/VBoxContainer/Silvanna"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v4vlb")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/Silvanna"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="CharacterSprite" type="TextureRect" parent="ScrollContainer/VBoxContainer/Silvanna/HBoxContainer"]
+custom_minimum_size = Vector2(180, 200)
+layout_mode = 2
+texture = ExtResource("2_1xsbb")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="InfoContainer" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/Silvanna/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="CharacterName" type="Label" parent="ScrollContainer/VBoxContainer/Silvanna/HBoxContainer/InfoContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 28
+text = "lilitia - the fallen angel"
+
+[node name="StatsContainer" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/Silvanna/HBoxContainer/InfoContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="StatsLine1" type="Label" parent="ScrollContainer/VBoxContainer/Silvanna/HBoxContainer/InfoContainer/StatsContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "cost: 13    hp: 1500    damage: 350    attack interval: -"
+
+[node name="Range" type="Label" parent="ScrollContainer/VBoxContainer/Silvanna/HBoxContainer/InfoContainer/StatsContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "range: menengah"
+
+[node name="Skill" type="Label" parent="ScrollContainer/VBoxContainer/Silvanna/HBoxContainer/InfoContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "skill - holy divine: bola cahaya bertambah menjadi 3 dan berputar lebih cepat selama 5 detik."
+autowrap_mode = 3
+
+[node name="Cooldown" type="Label" parent="ScrollContainer/VBoxContainer/Silvanna/HBoxContainer/InfoContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "[CD: 10s]"
+
+[node name="IconContainer" type="CenterContainer" parent="ScrollContainer/VBoxContainer/Silvanna/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="IconBackground" type="Panel" parent="ScrollContainer/VBoxContainer/Silvanna/HBoxContainer/IconContainer"]
+custom_minimum_size = Vector2(130, 130)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_iconbg")
+
+[node name="SkillIcon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Silvanna/HBoxContainer/IconContainer/IconBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_gxhdo")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Morriden" type="PanelContainer" parent="ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 220)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_v4vlb")
+
+[node name="CardBackground" type="Panel" parent="ScrollContainer/VBoxContainer/Morriden"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v4vlb")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/Morriden"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="CharacterSprite" type="TextureRect" parent="ScrollContainer/VBoxContainer/Morriden/HBoxContainer"]
+custom_minimum_size = Vector2(180, 200)
+layout_mode = 2
+texture = ExtResource("6_v401o")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="InfoContainer" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/Morriden/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="CharacterName" type="Label" parent="ScrollContainer/VBoxContainer/Morriden/HBoxContainer/InfoContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 28
+text = "lilitia - the fallen angel"
+
+[node name="StatsContainer" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/Morriden/HBoxContainer/InfoContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="StatsLine1" type="Label" parent="ScrollContainer/VBoxContainer/Morriden/HBoxContainer/InfoContainer/StatsContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "cost: 13    hp: 1500    damage: 350    attack interval: -"
+
+[node name="Range" type="Label" parent="ScrollContainer/VBoxContainer/Morriden/HBoxContainer/InfoContainer/StatsContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "range: menengah"
+
+[node name="Skill" type="Label" parent="ScrollContainer/VBoxContainer/Morriden/HBoxContainer/InfoContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "skill - holy divine: bola cahaya bertambah menjadi 3 dan berputar lebih cepat selama 5 detik."
+autowrap_mode = 3
+
+[node name="Cooldown" type="Label" parent="ScrollContainer/VBoxContainer/Morriden/HBoxContainer/InfoContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "[CD: 10s]"
+
+[node name="IconContainer" type="CenterContainer" parent="ScrollContainer/VBoxContainer/Morriden/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="IconBackground" type="Panel" parent="ScrollContainer/VBoxContainer/Morriden/HBoxContainer/IconContainer"]
+custom_minimum_size = Vector2(130, 130)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_iconbg")
+
+[node name="SkillIcon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Morriden/HBoxContainer/IconContainer/IconBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_eo8df")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Vigilante" type="PanelContainer" parent="ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 220)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_v4vlb")
+
+[node name="CardBackground" type="Panel" parent="ScrollContainer/VBoxContainer/Vigilante"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v4vlb")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/Vigilante"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="CharacterSprite" type="TextureRect" parent="ScrollContainer/VBoxContainer/Vigilante/HBoxContainer"]
+custom_minimum_size = Vector2(180, 200)
+layout_mode = 2
+texture = ExtResource("8_dhouu")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="InfoContainer" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/Vigilante/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="CharacterName" type="Label" parent="ScrollContainer/VBoxContainer/Vigilante/HBoxContainer/InfoContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 28
+text = "lilitia - the fallen angel"
+
+[node name="StatsContainer" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/Vigilante/HBoxContainer/InfoContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="StatsLine1" type="Label" parent="ScrollContainer/VBoxContainer/Vigilante/HBoxContainer/InfoContainer/StatsContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "cost: 13    hp: 1500    damage: 350    attack interval: -"
+
+[node name="Range" type="Label" parent="ScrollContainer/VBoxContainer/Vigilante/HBoxContainer/InfoContainer/StatsContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "range: menengah"
+
+[node name="Skill" type="Label" parent="ScrollContainer/VBoxContainer/Vigilante/HBoxContainer/InfoContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "skill - holy divine: bola cahaya bertambah menjadi 3 dan berputar lebih cepat selama 5 detik."
+autowrap_mode = 3
+
+[node name="Cooldown" type="Label" parent="ScrollContainer/VBoxContainer/Vigilante/HBoxContainer/InfoContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "[CD: 10s]"
+
+[node name="IconContainer" type="CenterContainer" parent="ScrollContainer/VBoxContainer/Vigilante/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="IconBackground" type="Panel" parent="ScrollContainer/VBoxContainer/Vigilante/HBoxContainer/IconContainer"]
+custom_minimum_size = Vector2(130, 130)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_iconbg")
+
+[node name="SkillIcon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Vigilante/HBoxContainer/IconContainer/IconBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_oy08c")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Leciana" type="PanelContainer" parent="ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 220)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_v4vlb")
+
+[node name="CardBackground" type="Panel" parent="ScrollContainer/VBoxContainer/Leciana"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v4vlb")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/Leciana"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="CharacterSprite" type="TextureRect" parent="ScrollContainer/VBoxContainer/Leciana/HBoxContainer"]
+custom_minimum_size = Vector2(180, 200)
+layout_mode = 2
+texture = ExtResource("10_sylqr")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="InfoContainer" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/Leciana/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="CharacterName" type="Label" parent="ScrollContainer/VBoxContainer/Leciana/HBoxContainer/InfoContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 28
+text = "lilitia - the fallen angel"
+
+[node name="StatsContainer" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/Leciana/HBoxContainer/InfoContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="StatsLine1" type="Label" parent="ScrollContainer/VBoxContainer/Leciana/HBoxContainer/InfoContainer/StatsContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "cost: 13    hp: 1500    damage: 350    attack interval: -"
+
+[node name="Range" type="Label" parent="ScrollContainer/VBoxContainer/Leciana/HBoxContainer/InfoContainer/StatsContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "range: menengah"
+
+[node name="Skill" type="Label" parent="ScrollContainer/VBoxContainer/Leciana/HBoxContainer/InfoContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "skill - holy divine: bola cahaya bertambah menjadi 3 dan berputar lebih cepat selama 5 detik."
+autowrap_mode = 3
+
+[node name="Cooldown" type="Label" parent="ScrollContainer/VBoxContainer/Leciana/HBoxContainer/InfoContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "[CD: 10s]"
+
+[node name="IconContainer" type="CenterContainer" parent="ScrollContainer/VBoxContainer/Leciana/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="IconBackground" type="Panel" parent="ScrollContainer/VBoxContainer/Leciana/HBoxContainer/IconContainer"]
+custom_minimum_size = Vector2(130, 130)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_iconbg")
+
+[node name="SkillIcon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Leciana/HBoxContainer/IconContainer/IconBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_itcjo")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Kaelio" type="PanelContainer" parent="ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 220)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_v4vlb")
+
+[node name="CardBackground" type="Panel" parent="ScrollContainer/VBoxContainer/Kaelio"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v4vlb")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/Kaelio"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="CharacterSprite" type="TextureRect" parent="ScrollContainer/VBoxContainer/Kaelio/HBoxContainer"]
+custom_minimum_size = Vector2(180, 200)
+layout_mode = 2
+texture = ExtResource("12_upfl7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="InfoContainer" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/Kaelio/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="CharacterName" type="Label" parent="ScrollContainer/VBoxContainer/Kaelio/HBoxContainer/InfoContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 28
+text = "lilitia - the fallen angel"
+
+[node name="StatsContainer" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/Kaelio/HBoxContainer/InfoContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="StatsLine1" type="Label" parent="ScrollContainer/VBoxContainer/Kaelio/HBoxContainer/InfoContainer/StatsContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "cost: 13    hp: 1500    damage: 350    attack interval: -"
+
+[node name="Range" type="Label" parent="ScrollContainer/VBoxContainer/Kaelio/HBoxContainer/InfoContainer/StatsContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "range: menengah"
+
+[node name="Skill" type="Label" parent="ScrollContainer/VBoxContainer/Kaelio/HBoxContainer/InfoContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "skill - holy divine: bola cahaya bertambah menjadi 3 dan berputar lebih cepat selama 5 detik."
+autowrap_mode = 3
+
+[node name="Cooldown" type="Label" parent="ScrollContainer/VBoxContainer/Kaelio/HBoxContainer/InfoContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "[CD: 10s]"
+
+[node name="IconContainer" type="CenterContainer" parent="ScrollContainer/VBoxContainer/Kaelio/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="IconBackground" type="Panel" parent="ScrollContainer/VBoxContainer/Kaelio/HBoxContainer/IconContainer"]
+custom_minimum_size = Vector2(130, 130)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_iconbg")
+
+[node name="SkillIcon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Kaelio/HBoxContainer/IconContainer/IconBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("13_iqo81")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Rosemary" type="PanelContainer" parent="ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 220)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_v4vlb")
+
+[node name="CardBackground" type="Panel" parent="ScrollContainer/VBoxContainer/Rosemary"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v4vlb")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/Rosemary"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="CharacterSprite" type="TextureRect" parent="ScrollContainer/VBoxContainer/Rosemary/HBoxContainer"]
+custom_minimum_size = Vector2(180, 200)
+layout_mode = 2
+texture = ExtResource("14_glprv")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="InfoContainer" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/Rosemary/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="CharacterName" type="Label" parent="ScrollContainer/VBoxContainer/Rosemary/HBoxContainer/InfoContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 28
+text = "lilitia - the fallen angel"
+
+[node name="StatsContainer" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/Rosemary/HBoxContainer/InfoContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="StatsLine1" type="Label" parent="ScrollContainer/VBoxContainer/Rosemary/HBoxContainer/InfoContainer/StatsContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "cost: 13    hp: 1500    damage: 350    attack interval: -"
+
+[node name="Range" type="Label" parent="ScrollContainer/VBoxContainer/Rosemary/HBoxContainer/InfoContainer/StatsContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "range: menengah"
+
+[node name="Skill" type="Label" parent="ScrollContainer/VBoxContainer/Rosemary/HBoxContainer/InfoContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "skill - holy divine: bola cahaya bertambah menjadi 3 dan berputar lebih cepat selama 5 detik."
+autowrap_mode = 3
+
+[node name="Cooldown" type="Label" parent="ScrollContainer/VBoxContainer/Rosemary/HBoxContainer/InfoContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "[CD: 10s]"
+
+[node name="IconContainer" type="CenterContainer" parent="ScrollContainer/VBoxContainer/Rosemary/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="IconBackground" type="Panel" parent="ScrollContainer/VBoxContainer/Rosemary/HBoxContainer/IconContainer"]
+custom_minimum_size = Vector2(130, 130)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_iconbg")
+
+[node name="SkillIcon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Rosemary/HBoxContainer/IconContainer/IconBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("15_hgboo")
+expand_mode = 1
+stretch_mode = 5
+
+[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
