@@ -1,8 +1,59 @@
-[gd_resource type="Resource" script_class="TowerData" load_steps=3 format=3 uid="uid://bhwlp2kr8e0ir"]
+[gd_resource type="Resource" script_class="TowerData" load_steps=13 format=3 uid="uid://bhwlp2kr8e0ir"]
 
 [ext_resource type="Script" uid="uid://g85gwfmcln8s" path="res://scripts/Tower/Tower_Res.gd" id="1_h3o12"]
+[ext_resource type="Texture2D" uid="uid://dojhd6q0i4pkm" path="res://asset/Tower/Silvanna/Skill/Skill 1.png" id="2_ky5px"]
+[ext_resource type="Texture2D" uid="uid://b468ot5ed3c60" path="res://asset/Tower/Silvanna/Skill/Skill 2.png" id="3_3waq0"]
+[ext_resource type="Texture2D" uid="uid://dlmyqsjgp4sib" path="res://asset/Tower/Silvanna/Skill/Skill 3.png" id="4_8e85y"]
+[ext_resource type="Texture2D" uid="uid://b5yrrvhlojnrv" path="res://asset/Tower/Silvanna/Skill/Skill 4.png" id="5_7y1np"]
+[ext_resource type="Texture2D" uid="uid://dtmxv5l16fw24" path="res://asset/Tower/Silvanna/Skill/Skill 5.png" id="6_exrmv"]
+[ext_resource type="Texture2D" uid="uid://ogbmitx2ypf5" path="res://asset/Tower/Silvanna/Idle/Idle 1.png" id="7_lniv3"]
+[ext_resource type="Texture2D" uid="uid://dfu3xdoneuucr" path="res://asset/Tower/Silvanna/Idle/Idle 2.png" id="8_5piew"]
+[ext_resource type="Texture2D" uid="uid://cibhr8y3mj0ma" path="res://asset/Tower/Silvanna/Idle/Idle 3.png" id="9_1mo65"]
+[ext_resource type="Texture2D" uid="uid://bce6mlxhdndld" path="res://asset/Tower/Silvanna/Idle/Idle 4.png" id="10_ounyl"]
+[ext_resource type="Texture2D" uid="uid://cdtaujmjxy755" path="res://asset/Tower/Silvanna/Idle/Idle 5.png" id="11_rwjyi"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ebbtt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ky5px")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3waq0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8e85y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_7y1np")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_exrmv")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_lniv3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_5piew")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_1mo65")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ounyl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_rwjyi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [resource]
 script = ExtResource("1_h3o12")

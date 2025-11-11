@@ -1,0 +1,84 @@
+[gd_resource type="Resource" script_class="TowerData" load_steps=17 format=3 uid="uid://cx6tmdsyukxcy"]
+
+[ext_resource type="Script" uid="uid://g85gwfmcln8s" path="res://scripts/Tower/Tower_Res.gd" id="1_5wdxo"]
+[ext_resource type="Texture2D" uid="uid://ctjcgaytvbkoc" path="res://asset/Tower/Rosemary/attack/Skill 1.png" id="2_hhrno"]
+[ext_resource type="Texture2D" uid="uid://cc2atyub5stst" path="res://asset/Tower/Rosemary/attack/Skill 2.png" id="3_06iej"]
+[ext_resource type="Texture2D" uid="uid://dpkryevqqb3a2" path="res://asset/Tower/Rosemary/attack/Skill 3.png" id="4_y73jg"]
+[ext_resource type="Texture2D" uid="uid://dck85lj4nvvuh" path="res://asset/Tower/Rosemary/attack/Skill 4.png" id="5_vygpc"]
+[ext_resource type="Texture2D" uid="uid://cmnaw67t7cr50" path="res://asset/Tower/Rosemary/attack/Skill 5.png" id="6_2otcp"]
+[ext_resource type="Texture2D" uid="uid://cfuldp5d6ouit" path="res://asset/Tower/Rosemary/attack/Skill 6.png" id="7_1kkq2"]
+[ext_resource type="Texture2D" uid="uid://b5co4t64hqm2h" path="res://asset/Tower/Rosemary/attack/Skill 7.png" id="8_ciw6g"]
+[ext_resource type="Texture2D" uid="uid://dhcmhsx6lubk4" path="res://asset/Tower/Rosemary/Idle/Idle 1.png" id="9_6lxli"]
+[ext_resource type="Texture2D" uid="uid://ge5ahml7ejyl" path="res://asset/Tower/Rosemary/Idle/Idle 2.png" id="10_nghwd"]
+[ext_resource type="Texture2D" uid="uid://dqq2yd3cbc5mr" path="res://asset/Tower/Rosemary/Idle/Idle 3.png" id="11_xdg6b"]
+[ext_resource type="Texture2D" uid="uid://bl1016mxv2n26" path="res://asset/Tower/Rosemary/Idle/Idle 4.png" id="12_ysa34"]
+[ext_resource type="Texture2D" uid="uid://dbbdpql2ypunk" path="res://asset/Tower/Rosemary/Idle/Idle 5.png" id="13_gqs4k"]
+[ext_resource type="Texture2D" uid="uid://bn7ractf3t0il" path="res://asset/Tower/Rosemary/Idle/Idle 6.png" id="14_7q6o5"]
+[ext_resource type="Texture2D" uid="uid://c3vf486mt5hwf" path="res://asset/Tower/Rosemary/Idle/Idle 7.png" id="15_tk873"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7nq2s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hhrno")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_06iej")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_y73jg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_vygpc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2otcp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_1kkq2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ciw6g")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_6lxli")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_nghwd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_xdg6b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ysa34")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_gqs4k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_7q6o5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_tk873")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_5wdxo")
+chara = "rosemary"
+damage = 15
+speed = 0.2
+range = 300.0
+skill = "bullet requiem"
+skill_duration = 5
+cooldown = 15
+sprite = SubResource("SpriteFrames_7nq2s")
+metadata/_custom_type_script = "uid://g85gwfmcln8s"
