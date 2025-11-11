@@ -124,6 +124,7 @@ func active_tower_at_selected(v:String) -> void:
 		if !spot.has_tower:
 			var msg = str("Spot ", selected_spot_index + 1, " belum ada tower!")
 			ui.show_message(msg)
+			return
 		if spot.tower_data.skill == v:
 			spot.tower_node.Skill(v)
 			var msg =str("mengaktifkan skill ", v)

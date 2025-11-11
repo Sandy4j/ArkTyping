@@ -1,7 +1,5 @@
 extends Node3D
 
-## Projectile tower
-
 var target: Node3D = null
 var damage: float = 10.0
 var speed: float = 10.0

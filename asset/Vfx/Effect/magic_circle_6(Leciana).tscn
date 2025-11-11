@@ -1,6 +1,6 @@
 [gd_scene load_steps=58 format=4 uid="uid://cse1tbs8i5ejh"]
 
-[ext_resource type="Texture2D" uid="uid://d1nk5jtsf2tyx" path="res://asset/Vfx/Texture/Circle_Aura4.png" id="1_iwis7"]
+[ext_resource type="Texture2D" uid="uid://dgkgncr683s1g" path="res://asset/Vfx/Texture/Circle_Aura5.png" id="1_iwis7"]
 [ext_resource type="Texture2D" uid="uid://30l25vf0j81" path="res://asset/Vfx/Texture/T_Noise27.png" id="2_lddba"]
 [ext_resource type="Texture2D" uid="uid://bt18hcmxkk5yw" path="res://asset/Vfx/Texture/T_Noise31.png" id="3_owoqv"]
 [ext_resource type="Texture2D" uid="uid://cauwvp6yxon2i" path="res://asset/Vfx/Texture/T_Aura8.png" id="4_ytlmg"]

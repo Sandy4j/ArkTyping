@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://cj0xxw8ewgpqy"]
+[gd_scene load_steps=43 format=4 uid="uid://cj0xxw8ewgpqy"]
 
 [ext_resource type="Material" uid="uid://ctd55tbm5xssh" path="res://asset/Shader/Sky/night.tres" id="1_d3o6j"]
 [ext_resource type="PackedScene" uid="uid://dr5mh3wmxd7uu" path="res://scenes/Base.tscn" id="1_jy02f"]
@@ -18,20 +18,21 @@
 [ext_resource type="Resource" uid="uid://dgw4ukvn22bjs" path="res://resources/WaveData/Level 1/Wave1_lvl1.tres" id="9_5dxk1"]
 [ext_resource type="Script" uid="uid://bbexpquh4b3ip" path="res://scripts/UI/UI.gd" id="9_pdl2l"]
 [ext_resource type="Script" path="res://scripts/LevelInit.gd" id="11_kjd3d"]
-[ext_resource type="Resource" uid="uid://7dsn0fluin02" path="res://resources/res_tower/leciana.tres" id="11_t6f3f"]
-[ext_resource type="Resource" uid="uid://cx6tmdsyukxcy" path="res://resources/res_tower/rosemary.tres" id="12_5mixh"]
-[ext_resource type="Texture2D" uid="uid://b12vcxaju3drt" path="res://asset/UI_Gameplay/Heart_BG.png" id="15_xt52j"]
-[ext_resource type="Texture2D" uid="uid://dgh3o7a60ljhb" path="res://asset/UI_Gameplay/Heart.png" id="16_m68c3"]
-[ext_resource type="FontFile" uid="uid://y7e0cejceotv" path="res://asset/UI_Gameplay/effortless.ttf" id="17_p6fww"]
-[ext_resource type="Texture2D" uid="uid://cci18kuxibjpy" path="res://asset/UI_Gameplay/Energy_BG.png" id="18_p6fww"]
-[ext_resource type="Texture2D" uid="uid://bwp1jf5ljg3rb" path="res://asset/UI_Gameplay/Enemy_BG.png" id="18_q27ur"]
-[ext_resource type="Texture2D" uid="uid://byrrwlu8yvxo1" path="res://asset/UI_Gameplay/Energy_Fill.png" id="19_6g61c"]
-[ext_resource type="Texture2D" uid="uid://ds45sauhw3tjq" path="res://asset/UI_Gameplay/Enemy.png" id="19_685d6"]
-[ext_resource type="Texture2D" uid="uid://dcjddmsrg8vdy" path="res://asset/UI_Gameplay/Wave.png" id="20_6044w"]
-[ext_resource type="Texture2D" uid="uid://qgwf3s20g5g" path="res://asset/UI_Gameplay/Chara_BG.png" id="20_g2xra"]
+[ext_resource type="Resource" uid="uid://duvfgb70bw3fq" path="res://resources/res_tower/leciana.tres" id="11_t6f3f"]
+[ext_resource type="Resource" uid="uid://bxhddhmrf4wrn" path="res://resources/res_tower/rosemary.tres" id="12_5mixh"]
+[ext_resource type="Resource" uid="uid://bvmvodx3qv0rw" path="res://resources/res_tower/vigilante.tres" id="13_d8db5"]
+[ext_resource type="Texture2D" uid="uid://b7qifoldq86iw" path="res://asset/UI_Gameplay/Heart_BG.png" id="15_xt52j"]
+[ext_resource type="Texture2D" uid="uid://cv6c00us8popd" path="res://asset/UI_Gameplay/Heart.png" id="16_m68c3"]
+[ext_resource type="FontFile" uid="uid://c5f4vbou88gt1" path="res://asset/UI_Gameplay/effortless.ttf" id="17_p6fww"]
+[ext_resource type="Texture2D" uid="uid://48psaorsobfy" path="res://asset/UI_Gameplay/Energy_BG.png" id="18_p6fww"]
+[ext_resource type="Texture2D" uid="uid://dwnlur60y67oc" path="res://asset/UI_Gameplay/Enemy_BG.png" id="18_q27ur"]
+[ext_resource type="Texture2D" uid="uid://cj6o02fnm0rj2" path="res://asset/UI_Gameplay/Energy_Fill.png" id="19_6g61c"]
+[ext_resource type="Texture2D" uid="uid://b3v5c7iygi500" path="res://asset/UI_Gameplay/Enemy.png" id="19_685d6"]
+[ext_resource type="Texture2D" uid="uid://b57c8oiv8ljnq" path="res://asset/UI_Gameplay/Wave.png" id="20_6044w"]
+[ext_resource type="Texture2D" uid="uid://mbc83cpasp43" path="res://asset/UI_Gameplay/Chara_BG.png" id="20_g2xra"]
 [ext_resource type="Texture2D" uid="uid://c0biiiaj1qxo4" path="res://asset/UI_Gameplay/Example.png" id="21_g2xra"]
-[ext_resource type="Texture2D" uid="uid://ej7fvjdun2vt" path="res://asset/UI_Gameplay/History_Box.png" id="25_6044w"]
-[ext_resource type="Texture2D" uid="uid://omvvnc2d3cag" path="res://asset/UI_Gameplay/Type_Box.png" id="26_t6f3f"]
+[ext_resource type="Texture2D" uid="uid://bkp3qx8xknkys" path="res://asset/UI_Gameplay/History_Box.png" id="25_6044w"]
+[ext_resource type="Texture2D" uid="uid://ctr5qhm7y5iey" path="res://asset/UI_Gameplay/Type_Box.png" id="26_t6f3f"]
 
 [sub_resource type="Sky" id="Sky_main"]
 sky_material = ExtResource("1_d3o6j")
@@ -150,7 +151,7 @@ max_hp = 10
 
 [node name="Input" type="Node" parent="." groups=["towerinput"]]
 script = ExtResource("2_5dxk1")
-tower_list = Array[ExtResource("3_l0eo6")]([ExtResource("4_d3o6j"), ExtResource("5_pdl2l"), ExtResource("6_2t17w"), ExtResource("7_bm28l"), ExtResource("11_t6f3f"), ExtResource("12_5mixh")])
+tower_list = Array[ExtResource("3_l0eo6")]([ExtResource("4_d3o6j"), ExtResource("5_pdl2l"), ExtResource("6_2t17w"), ExtResource("7_bm28l"), ExtResource("11_t6f3f"), ExtResource("12_5mixh"), ExtResource("13_d8db5")])
 
 [node name="TxtPanel" type="Panel" parent="Input"]
 anchors_preset = 5

@@ -1,0 +1,98 @@
+[gd_resource type="Resource" script_class="TowerData" load_steps=21 format=3 uid="uid://bvmvodx3qv0rw"]
+
+[ext_resource type="Script" uid="uid://g85gwfmcln8s" path="res://scripts/Tower/Tower_Res.gd" id="1_0vi2l"]
+[ext_resource type="PackedScene" path="res://asset/Vfx/Effect/dark_dagger.tscn" id="1_r1kqw"]
+[ext_resource type="Texture2D" uid="uid://crc4j2lsv31ri" path="res://asset/Tower/Vigilante/Attack/Attack 1.png" id="2_r1kqw"]
+[ext_resource type="Texture2D" uid="uid://cewcri2ang2gr" path="res://asset/Tower/Vigilante/Attack/Attack 2.png" id="3_mglro"]
+[ext_resource type="Texture2D" uid="uid://wnav2dupdyre" path="res://asset/Tower/Vigilante/Attack/Attack 3.png" id="4_kudlk"]
+[ext_resource type="Texture2D" uid="uid://bj7prq4ibwk5r" path="res://asset/Tower/Vigilante/Attack/Attack 4.png" id="5_uuy6l"]
+[ext_resource type="Texture2D" uid="uid://b561mc3bcy7lw" path="res://asset/Tower/Vigilante/Attack/Attack 5.png" id="6_0bkjc"]
+[ext_resource type="Texture2D" uid="uid://bkgbjowx38512" path="res://asset/Tower/Vigilante/Attack/Attack 6.png" id="7_q2mdx"]
+[ext_resource type="Texture2D" uid="uid://c5qe4ltlgxvuk" path="res://asset/Tower/Vigilante/Attack/Attack 7.png" id="8_1sn4n"]
+[ext_resource type="Texture2D" uid="uid://cqe48fgge1r5w" path="res://asset/Tower/Vigilante/Attack/Attack 8.png" id="9_ro14s"]
+[ext_resource type="Texture2D" uid="uid://cubtvtxc1nlvg" path="res://asset/Tower/Vigilante/Attack/Attack 9.png" id="10_tex6o"]
+[ext_resource type="Texture2D" uid="uid://cevbc61gppiui" path="res://asset/Tower/Vigilante/Attack/Attack 10.png" id="11_cdlva"]
+[ext_resource type="Texture2D" uid="uid://dfby24nv4bunb" path="res://asset/Tower/Vigilante/Idle/Idle 1.png" id="12_xgx5w"]
+[ext_resource type="Texture2D" uid="uid://bigdaxai88cmk" path="res://asset/Tower/Vigilante/Idle/Idle 2.png" id="13_sqxog"]
+[ext_resource type="Texture2D" uid="uid://doxn7xussal6m" path="res://asset/Tower/Vigilante/Idle/Idle 3.png" id="14_pr833"]
+[ext_resource type="Texture2D" uid="uid://brhntoip4ylye" path="res://asset/Tower/Vigilante/Idle/Idle 4.png" id="15_n33me"]
+[ext_resource type="Texture2D" uid="uid://ihbguxcjyhyo" path="res://asset/Tower/Vigilante/Idle/Idle 5.png" id="16_yniv8"]
+[ext_resource type="Texture2D" uid="uid://4irc6p1i21kk" path="res://asset/Tower/Vigilante/Idle/Idle 6.png" id="17_b6rjt"]
+[ext_resource type="Texture2D" uid="uid://dlih2gwmbnr6p" path="res://asset/Tower/Vigilante/Idle/Idle 7.png" id="18_haem0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_scyxh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_r1kqw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_mglro")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_kudlk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_uuy6l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_0bkjc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_q2mdx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_1sn4n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ro14s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_tex6o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_cdlva")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_xgx5w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_sqxog")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_pr833")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_n33me")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_yniv8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_b6rjt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_haem0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_0vi2l")
+chara = "vigilante"
+damage = 15
+speed = 1.0
+range = 150.0
+skill = "bloody opus"
+skill_duration = 10
+cooldown = 10
+sprite = SubResource("SpriteFrames_scyxh")
+projectile = ExtResource("1_r1kqw")
+metadata/_custom_type_script = "uid://g85gwfmcln8s"

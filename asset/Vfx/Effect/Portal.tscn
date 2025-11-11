@@ -1,0 +1,74 @@
+[gd_scene load_steps=12 format=3 uid="uid://cyjt4ih24kcjk"]
+
+[ext_resource type="Shader" uid="uid://eocbojaqnv6y" path="res://Portal_Shader.tres" id="1_uctlg"]
+[ext_resource type="Texture2D" uid="uid://m8t6j8hicw0l" path="res://aset ril/aset vfx/Referensi/Wave.png" id="2_8167d"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2o6wq"]
+render_priority = 0
+shader = ExtResource("1_uctlg")
+shader_parameter/color_intensity = 2.0
+shader_parameter/Portal_color = Color(6.73831e-06, 0.681341, 0.912641, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_75lrq"]
+size = Vector2(1, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1q3tj"]
+blend_mode = 1
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(0, 0.681, 0.911, 1)
+albedo_texture = ExtResource("2_8167d")
+use_particle_trails = true
+
+[sub_resource type="Curve" id="Curve_1apy7"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, -0.0275228), 0.0, 0.0, 0, 0, Vector2(0.994152, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_exuro"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, -0.0275228), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_sfpvv"]
+_limits = [-2.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1e-05, -2), 0.0, 0.0, 0, 0, Vector2(1, -2), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_ju7i3"]
+curve_x = SubResource("Curve_1apy7")
+curve_y = SubResource("Curve_exuro")
+curve_z = SubResource("Curve_sfpvv")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4aj0a"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 2)
+emission_ring_height = 0.0
+emission_ring_radius = 0.32
+emission_ring_inner_radius = 0.32
+emission_ring_cone_angle = 90.0
+orbit_velocity_min = 0.2
+orbit_velocity_max = 0.2
+orbit_velocity_curve = SubResource("CurveXYZTexture_ju7i3")
+radial_velocity_min = 0.0499776
+radial_velocity_max = 0.0999776
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_g5ejl"]
+size = 0.02
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00915927, 0.142468, 0)
+material_override = SubResource("ShaderMaterial_2o6wq")
+mesh = SubResource("QuadMesh_75lrq")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.930205, 0, 0, 0, 1.78536, -0.00961662, 0, 0.0171699, 0.999954, -0.0193276, 0.148513, -0.00182264)
+material_override = SubResource("StandardMaterial3D_1q3tj")
+amount = 150
+trail_enabled = true
+trail_lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_4aj0a")
+draw_pass_1 = SubResource("RibbonTrailMesh_g5ejl")

@@ -20,7 +20,10 @@ var scarlet_harvester_active:bool
 var max_hp: float = 100.0
 var current_hp: float = 100.0
 
+var vfx_node
+var vfx_aura
 var orbit
+var orbit2
 var is_lilitia:bool
 var fire_timer: float = 0.0
 var current_target: CharacterBody3D = null
@@ -41,6 +44,9 @@ func _ready() -> void:
 	detection_range = tower_data.range
 	projectile_speed = tower_data.projectile_speed 
 	skill_type = tower_data.skill
+	if tower_data.projectile:
+		projectile_scene = tower_data.projectile
+		print("load projectile")
 	max_hp = tower_data.max_hp
 	skill_cooldown = tower_data.cooldown
 	current_hp = max_hp
@@ -60,6 +66,7 @@ func _ready() -> void:
 			collision_shape.shape.radius = detection_range
 	current_skill_cooldown = skill_cooldown
 	sprite.play("default")
+
 
 func _process(delta: float) -> void:
 	if not is_inside_tree():
@@ -93,10 +100,7 @@ func _process(delta: float) -> void:
 		elif scarlet_harvester_active:
 			scarlet_harvester()
 		elif tower_data.skill == "bloody opus":
-			shoot(current_target)
-			fire_timer = 0.0
-			await get_tree().create_timer(0.25).timeout
-			shoot(current_target)
+			double_shoot(current_target)
 		else:
 			shoot(current_target)
 		fire_timer = 0.0
@@ -135,6 +139,7 @@ func shoot(target: Node3D) -> void:
 	
 	if not projectile:
 		projectile = projectile_scene.instantiate()
+		print("shoot dengan custom")
 	else:
 		projectile.pool_name = pool_key
 	
@@ -144,12 +149,23 @@ func shoot(target: Node3D) -> void:
 		projectile.global_position = shoot_point.global_position
 	else:
 		projectile.global_position = global_position + Vector3.UP
-	
+	print("Bulet ", projectile.name)
 	projectile.initialize(target, damage, projectile_speed)
 	shot_fired.emit()
 	print("shot")
 
 func double_shoot(target: CharacterBody3D) -> void:
+	if is_animation_playing:
+		return
+	
+	is_shooting = true
+	is_animation_playing = true
+	
+	# 🎯 STOP ANIMASI IDLE DULU
+	sprite.stop()
+	
+	# 🎯 PLAY ANIMASI ATTACK
+	sprite.play("attack")
 	if not projectile_scene:
 		return
 	
@@ -172,7 +188,7 @@ func double_shoot(target: CharacterBody3D) -> void:
 	projectile1.initialize(target, damage, projectile_speed)
 	
 	# Second projectile
-	await get_tree().create_timer(0.25).timeout
+	await get_tree().create_timer(0.15).timeout
 	
 	var projectile2 = ObjectPool.get_pooled_object(pool_key)
 	if not projectile2:
@@ -192,6 +208,16 @@ func double_shoot(target: CharacterBody3D) -> void:
 	print("shot")
 
 func overload_burst() -> void:
+	if is_animation_playing:
+		return
+	
+	is_shooting = true
+	is_animation_playing = true
+	
+	sprite.stop()
+	
+	sprite.play("attack")
+	
 	if not projectile_scene:
 		return
 	
@@ -242,9 +268,24 @@ func scarlet_harvester() -> void:
 		return
 	elif enemies_in_range.size() < 2:
 		targets.append(enemies_in_range.get(0))
+	elif enemies_in_range.size() < 3:
+		targets.append(enemies_in_range.get(0))
+		targets.append(enemies_in_range.get(1))
+	elif enemies_in_range.size() < 4:
+		targets.append(enemies_in_range.get(0))
+		targets.append(enemies_in_range.get(1))
+		targets.append(enemies_in_range.get(2))
+	elif enemies_in_range.size() < 5:
+		targets.append(enemies_in_range.get(0))
+		targets.append(enemies_in_range.get(1))
+		targets.append(enemies_in_range.get(2))
+		targets.append(enemies_in_range.get(3))
 	else:
 		targets.append(enemies_in_range.get(0))
 		targets.append(enemies_in_range.get(1))
+		targets.append(enemies_in_range.get(2))
+		targets.append(enemies_in_range.get(3))
+		targets.append(enemies_in_range.get(4))
 	
 	if targets.size() == 0:
 		return
@@ -398,12 +439,17 @@ func execute_skill(delta: float) -> void:
 
 func activate_overload_burst() -> void:
 	print("Overload burst aktif!")
+	var aura_scene = load("res://asset/Vfx/Effect/magic_circle_1.tscn")
+	var aura_node = aura_scene.instantiate()
+	self.add_child(aura_node)
+	aura_node.get_child(5).play("Kaileo_FX")
 	var original_fire_rate = fire_rate
 	fire_rate = original_fire_rate * 3.0  # 3x lebih cepat
 	overload_burst_active = true
 	var skill_duration = tower_data.skill_duration
 	var timer = get_tree().create_timer(skill_duration)
 	timer.timeout.connect(func(): 
+		aura_node.queue_free()
 		overload_burst_active = false
 		fire_rate = original_fire_rate
 		print("Overload burst berakhir")
@@ -411,52 +457,79 @@ func activate_overload_burst() -> void:
 
 func activate_lunar_blessing() -> void:
 	print("lunar blessing aktif")
+	var aura_scene = load("res://asset/Vfx/Effect/magic_circle_3(Silvanna).tscn")
+	var aura_node = aura_scene.instantiate()
+	self.add_child(aura_node)
+	aura_node.get_child(5).play("Kaileo_FX")
 	var normal_damage = damage
 	var damage = normal_damage * 2
 	var skill_duration = tower_data.skill_duration
 	var timer = get_tree().create_timer(skill_duration)
 	timer.timeout.connect(func(): 
+		aura_node.queue_free()
 		damage = normal_damage
-		print("lunar blessing berakhir")
+		print("lunar blessing berakhir")
 	)
 
 func activate_holy_divine_basic() -> void:
 	print("lilitia aktif!")
 	is_lilitia = true
-	var orbit_scene = load("res://scenes/Tower/orbit.tscn")
+	var orbit_scene = load("res://asset/Vfx/Effect/Divine_Ball.tscn")
 	var orbit_node = orbit_scene.instantiate()
 	orbit_node.damage = tower_data.damage
 	orbit_node.dot_timer = tower_data.speed
 	orbit_node.speed = 1
 	orbit = orbit_node
+	var orbit_scene2 = load("res://asset/Vfx/Effect/Divine_Ball.tscn")
+	var orbit_node2 = orbit_scene2.instantiate()
+	orbit_node2.damage = tower_data.damage
+	orbit_node2.dot_timer = tower_data.speed
+	orbit_node2.speed = 1
+	orbit_node2.disabled = true
+	orbit2 = orbit_node2
+	orbit2.visible = false
 	self.add_child(orbit_node)
+	self.add_child(orbit_node2)
 
 func activate_holy_divine() -> void:
 	print("holy divine aktif!")
-	orbit.modify_skill(15, 3, 0.3)
+	var aura_scene = load("res://asset/Vfx/Effect/magic_circle_7(Lilitia).tscn")
+	var aura_node = aura_scene.instantiate()
+	self.add_child(aura_node)
+	orbit2.visible = true
+	orbit2.disabled = false
 	var skill_duration = tower_data.skill_duration
 	var timer = get_tree().create_timer(skill_duration)
 	timer.timeout.connect(func(): 
-		orbit.normalize_attack
+		aura_node.queue_free()
+		orbit2.visible = false
+		orbit2.disabled = true
 		print("holy divine berakhir")
 	)
 
 func activate_toxic_veil() -> void:
 	print("toxic veil aktif!")
-	var veil_scene = load("res://scenes/slow_scene.tscn")
-	var veil_node:MeshInstance3D = veil_scene.instantiate()
-	var area:Area3D = veil_node.get_child(0)
+	var aura_scene = load("res://asset/Vfx/Effect/magic_circle_2(plague).tscn")
+	var aura_node = aura_scene.instantiate()
+	self.add_child(aura_node)
+	aura_node.get_child(5).play("Kaileo_FX")
+	var veil_scene = load("res://asset/Vfx/Effect/Toxicveil.tscn")
+	var veil_node:Node3D = veil_scene.instantiate()
+	var area = veil_node.get_child(0).get_child(0)
 	area.collision_mask = 2
 	print(area.name)
 	area.body_entered.connect(Callable(self, "_on_body_entered_veil"))
 	area.body_exited.connect(Callable(self, "_on_body_exited_veil"))
+	veil_node.position.y = -3
 	self.add_child(veil_node)
 	veil_node.add_child(area)
+	veil_node.get_child(1).play("Toxicvwil")
 	var skill_duration = tower_data.skill_duration
 	var timer = get_tree().create_timer(skill_duration)
 	timer.timeout.connect(func(): 
+		aura_node.queue_free()
 		veil_node.queue_free()
-		print("holy divine berakhir")
+		print("Toxic Veil berakhir")
 	)
 
 func enemy_enter_veil(body:Node3D)-> void:
@@ -474,37 +547,54 @@ func enemy_exit_veil(body:Node3D)-> void:
 
 func activeate_bloody_opus()-> void:
 	print("bloody opus aktif")
+	var aura_scene = load("res://asset/Vfx/Effect/magic_circle_5(vigilante).tscn")
+	var aura_node = aura_scene.instantiate()
+	self.add_child(aura_node)
+	aura_node.get_child(5).play("Kaileo_FX")
 	var normal_speed = fire_rate
 	fire_rate = normal_speed * 2
 	var skill_duration = tower_data.skill_duration
 	var timer = get_tree().create_timer(skill_duration)
 	timer.timeout.connect(func(): 
+		aura_node.queue_free()
 		fire_rate = normal_speed
 		print("bloody opus berakhir")
 	)
 
 func activate_scarlet_harvester()-> void:
+	var aura_scene = load("res://asset/Vfx/Effect/magic_circle_6(Leciana).tscn")
+	var aura_node = aura_scene.instantiate()
+	self.add_child(aura_node)
+	aura_node.get_child(5).play("Kaileo_FX")
 	scarlet_harvester_active = true
 	var skill_duration = tower_data.skill_duration
 	var timer = get_tree().create_timer(skill_duration)
 	timer.timeout.connect(func(): 
+		aura_node.queue_free()
 		scarlet_harvester_active = false
 	)
 
 var requiem_shot: int 
 var shot_count: int 
 func activate_bullet_requiem()-> void:
-	damage = 99999
-	fire_rate = 1
+	var normal_dmg = damage
+	damage = normal_dmg * 2
+	var normal_speed = fire_rate
+	fire_rate = normal_speed / 2
 	requiem_shot = tower_data.skill_duration
 	shot_fired.connect(bullet_requiem_counter)
 
 func bullet_requiem_counter():
+	var aura_scene = load("res://asset/Vfx/Effect/magic_circle_6(Leciana).tscn")
+	var aura_node = aura_scene.instantiate()
+	self.add_child(aura_node)
+	aura_node.get_child(5).play("Kaileo_FX")
 	shot_count += 1
 	if shot_count >= requiem_shot:
 		damage = tower_data.damage
 		fire_rate = tower_data.speed
 		shot_fired.disconnect(bullet_requiem_counter)
+		aura_node.queue_free()
 
 
 func _on_sprite_3d_animation_finished() -> void:
