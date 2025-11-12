@@ -1,7 +1,11 @@
-[gd_resource type="Resource" script_class="EnemySpawnEntry" load_steps=2 format=3 uid="uid://b2ar5b4u1duy5"]
+[gd_resource type="Resource" script_class="EnemySpawnEntry" load_steps=4 format=3 uid="uid://b2ar5b4u1duy5"]
 
+[ext_resource type="Resource" uid="uid://4vnkysnhwpoy" path="res://resources/Enemy Data/BasicEye.tres" id="1_2w43y"]
 [ext_resource type="Script" path="res://resources/EnemySpawnEntry.gd" id="1_oql0v"]
+[ext_resource type="PackedScene" uid="uid://iv56om7n6qae" path="res://scenes/Enemy/BasicEye.tscn" id="2_omopf"]
 
 [resource]
 script = ExtResource("1_oql0v")
-spawn_weight = 0.2
+enemy_scene = ExtResource("2_omopf")
+enemy_data = ExtResource("1_2w43y")
+spawn_weight = 0.0

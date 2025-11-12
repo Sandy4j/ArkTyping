@@ -8,4 +8,6 @@
 
 [resource]
 script = ExtResource("1_pdfyb")
+wave_number = 3
+time_until_next_wave = 10.0
 spawn_point_configs = Array[ExtResource("2_71f8n")]([ExtResource("3_2urgl"), ExtResource("4_g7mk1"), ExtResource("5_vn542")])

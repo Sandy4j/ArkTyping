@@ -6,6 +6,9 @@ extends Control
 @onready var creditbtn = $CanvasLayer/ButtonContainer/CreditBtn
 @onready var quitbtn = $CanvasLayer/ButtonContainer/QuitBtn
 
+func _ready() -> void:
+	AudioManager.play_bgm("mainmenu")
+
 func _on_start_btn_pressed() -> void:
 	get_tree().change_scene_to_file("res://levels/level_01.tscn")
 

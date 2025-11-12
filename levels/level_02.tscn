@@ -1,12 +1,12 @@
 [gd_scene load_steps=21 format=3 uid="uid://dn8wlb3ouseqs"]
 
-[ext_resource type="PackedScene" path="res://asset/Envi/props_lvl_2.tscn" id="1_g685p"]
+[ext_resource type="PackedScene" uid="uid://bwd7cjnmkj54c" path="res://asset/Envi/props_lvl_2.tscn" id="1_g685p"]
 [ext_resource type="PackedScene" uid="uid://ci8240p5goqft" path="res://asset/Envi/ENV lvl 2 ground.fbx" id="2_8yqd8"]
 [ext_resource type="Script" uid="uid://dgxccv80klhc7" path="res://scripts/Tower/TowerCon.gd" id="3_gia0r"]
 [ext_resource type="PackedScene" uid="uid://dfql5k5psmgxn" path="res://scenes/Tower/TowerSpot.tscn" id="4_mihb8"]
 [ext_resource type="PackedScene" uid="uid://cjhp6v8qnx4qm" path="res://scenes/Tower/Tower.tscn" id="5_2owmk"]
-[ext_resource type="PackedScene" path="res://asset/Envi/fireflies.tscn" id="6_cwmx8"]
-[ext_resource type="PackedScene" uid="uid://dr5mh3wmxd7uu" path="res://scenes/Base.tscn" id="7_50fh4"]
+[ext_resource type="PackedScene" uid="uid://csob2dk5jrcb5" path="res://asset/Envi/fireflies.tscn" id="6_cwmx8"]
+[ext_resource type="PackedScene" uid="uid://drlwka2ahedj4" path="res://scenes/Base.tscn" id="7_50fh4"]
 [ext_resource type="PackedScene" uid="uid://b6ot4uwb74jwf" path="res://scenes/ui.tscn" id="14_50fh4"]
 [ext_resource type="Script" uid="uid://4ipxb665lopb" path="res://scripts/WaveManager.gd" id="15_jhp1k"]
 [ext_resource type="Script" path="res://resources/WaveConfig.gd" id="16_oaki6"]
@@ -138,8 +138,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1, 2)
 tower_scene = ExtResource("5_2owmk")
 
 [node name="Base" parent="." instance=ExtResource("7_50fh4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.92783, 0, -0.06091523)
-max_hp = 10
+transform = Transform3D(-0.99999994, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -0.99999994, -4.9637575, 0, -0.06091523)
 
 [node name="UI" parent="." instance=ExtResource("14_50fh4")]
 

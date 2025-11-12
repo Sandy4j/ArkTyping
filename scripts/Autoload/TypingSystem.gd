@@ -11,6 +11,7 @@ func _input(event) -> void:
 			var character = char(event.unicode).to_lower()
 			_current_text += character
 			text_typed.emit(_current_text)
+			AudioManager.play_sfx("typing_random", randf_range(0.95, 1.05))
 		elif event.keycode == KEY_BACKSPACE:
 			if _current_text.length() > 0:
 				_current_text = _current_text.substr(0, _current_text.length() - 1)
@@ -18,6 +19,7 @@ func _input(event) -> void:
 		elif event.keycode == KEY_SPACE:
 			_current_text += " "
 			text_typed.emit(_current_text)
+			AudioManager.play_sfx("typing_random", randf_range(0.95, 1.05))
 		elif event.keycode == KEY_ENTER:
 			submit_text()
 			

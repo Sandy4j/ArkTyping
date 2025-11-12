@@ -41,7 +41,13 @@ func _update_logic(delta: float) -> void:
 		attack_timer = 0.0
 
 func find_nearest_tower() -> Node3D:
+	if not get_tree():
+		return null
+	
 	var towers = get_tree().get_nodes_in_group("tower")
+	if towers.is_empty():
+		return null
+	
 	var nearest: Node3D = null
 	var nearest_distance: float = INF
 	
@@ -51,14 +57,12 @@ func find_nearest_tower() -> Node3D:
 			if distance <= enemy_data.attack_range and distance < nearest_distance:
 				nearest = tower
 				nearest_distance = distance
-	
 	return nearest
 
 func attack(target: Node3D) -> void:
 	if not target or not is_instance_valid(target):
 		return
 	
-	# Create projectile toward tower
 	var projectile_scene = preload("res://scenes/Enemy/ProjectileE.tscn")
 	if projectile_scene:
 	
@@ -72,6 +76,7 @@ func attack(target: Node3D) -> void:
 		
 		get_tree().current_scene.add_child(projectile)
 		projectile.global_position = global_position + Vector3.UP * 0.5
+		AudioManager.play_sfx("enemy_hit")
 		
 		if projectile.has_method("initialize"):
 			projectile.initialize(target, enemy_data.attack_damage, enemy_data.projectile_speed)

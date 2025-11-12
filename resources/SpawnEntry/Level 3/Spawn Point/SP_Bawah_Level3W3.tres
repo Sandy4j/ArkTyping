@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SpawnPointConfig" load_steps=5 format=3 uid="uid://lbf3y2ql20nl"]
+
+[ext_resource type="Script" path="res://resources/EnemySpawnEntry.gd" id="1_71t83"]
+[ext_resource type="Resource" uid="uid://0vo1smblpjm1" path="res://resources/SpawnEntry/Level 3/Enemy Entry/Bat_Lvl3_W3.tres" id="2_fddvf"]
+[ext_resource type="Script" path="res://resources/SpawnPointConfig.gd" id="3_8qmh2"]
+[ext_resource type="Resource" uid="uid://dnilbn5sv7fwj" path="res://resources/SpawnEntry/Level 3/Enemy Entry/Eye_Lvl3_W3.tres" id="3_e51ul"]
+
+[resource]
+script = ExtResource("3_8qmh2")
+spawn_path_node = NodePath("WaveManager/PathBot")
+enemy_spawn_entries = Array[ExtResource("1_71t83")]([ExtResource("2_fddvf"), ExtResource("3_e51ul")])
+enemies_to_spawn = 15
+spawn_interval = 2.0

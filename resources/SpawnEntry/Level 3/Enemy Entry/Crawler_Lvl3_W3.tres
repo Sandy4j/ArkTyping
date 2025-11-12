@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EnemySpawnEntry" load_steps=4 format=3 uid="uid://cmqa5r6ewja68"]
+
+[ext_resource type="Resource" uid="uid://crmk4fyxjfv8u" path="res://resources/Enemy Data/BasicCrawler.tres" id="1_msltb"]
+[ext_resource type="PackedScene" uid="uid://cqlv1757tkesm" path="res://scenes/Enemy/BasicCrawler.tscn" id="2_q3d0o"]
+[ext_resource type="Script" path="res://resources/EnemySpawnEntry.gd" id="3_adwhw"]
+
+[resource]
+script = ExtResource("3_adwhw")
+enemy_scene = ExtResource("2_q3d0o")
+enemy_data = ExtResource("1_msltb")

@@ -1,11 +1,11 @@
 [gd_scene load_steps=20 format=3 uid="uid://cj0xxw8ewgpqy"]
 
-[ext_resource type="PackedScene" uid="uid://dr5mh3wmxd7uu" path="res://scenes/Base.tscn" id="1_jy02f"]
 [ext_resource type="Script" uid="uid://dgxccv80klhc7" path="res://scripts/Tower/TowerCon.gd" id="3_kjd3d"]
 [ext_resource type="PackedScene" uid="uid://dfql5k5psmgxn" path="res://scenes/Tower/TowerSpot.tscn" id="4_qdeet"]
 [ext_resource type="PackedScene" uid="uid://cjhp6v8qnx4qm" path="res://scenes/Tower/Tower.tscn" id="6_xw3ee"]
 [ext_resource type="Script" uid="uid://4ipxb665lopb" path="res://scripts/WaveManager.gd" id="7_l0eo6"]
 [ext_resource type="Script" path="res://resources/WaveConfig.gd" id="8_jy02f"]
+[ext_resource type="PackedScene" uid="uid://drlwka2ahedj4" path="res://scenes/Base.tscn" id="8_l0eo6"]
 [ext_resource type="Resource" uid="uid://dgw4ukvn22bjs" path="res://resources/WaveData/Level 1/Wave1_lvl1.tres" id="9_5dxk1"]
 [ext_resource type="Script" path="res://scripts/LevelInit.gd" id="11_kjd3d"]
 [ext_resource type="PackedScene" uid="uid://dqmlunqfclena" path="res://asset/Vfx/Effect/Portalem.tscn" id="13_y72ps"]
@@ -109,9 +109,8 @@ tower_scene = ExtResource("6_xw3ee")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1, -1)
 tower_scene = ExtResource("6_xw3ee")
 
-[node name="Base" parent="." instance=ExtResource("1_jy02f")]
+[node name="Base" parent="." instance=ExtResource("8_l0eo6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.609604, 0, 0.34087634)
-max_hp = 10
 
 [node name="UI" parent="." instance=ExtResource("14_2t17w")]
 

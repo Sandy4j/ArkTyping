@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EnemySpawnEntry" load_steps=4 format=3 uid="uid://0fs7w8sl0shq"]
+
+[ext_resource type="Script" path="res://resources/EnemySpawnEntry.gd" id="1_7gd0g"]
+[ext_resource type="Resource" uid="uid://duxh40etvv6qo" path="res://resources/Enemy Data/RangedSkull.tres" id="1_x682e"]
+[ext_resource type="PackedScene" uid="uid://c0kl54ny82siw" path="res://scenes/Enemy/RangedSkull.tscn" id="2_a4qfg"]
+
+[resource]
+script = ExtResource("1_7gd0g")
+enemy_scene = ExtResource("2_a4qfg")
+enemy_data = ExtResource("1_x682e")

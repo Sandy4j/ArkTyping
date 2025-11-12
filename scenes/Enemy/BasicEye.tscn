@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://iv56om7n6qae"]
 
 [ext_resource type="Script" path="res://scripts/Enemies/BasicEnemy.gd" id="1_pie8b"]
-[ext_resource type="Resource" uid="uid://crmk4fyxjfv8u" path="res://resources/Enemy Data/BasicCrawler.tres" id="2_h7g2a"]
+[ext_resource type="Resource" uid="uid://4vnkysnhwpoy" path="res://resources/Enemy Data/BasicEye.tres" id="2_pie8b"]
 [ext_resource type="Texture2D" uid="uid://cj8e4ujlbumub" path="res://asset/Enemy/Enemy 2/Idle/1.png" id="3_0sema"]
 [ext_resource type="Texture2D" uid="uid://do31xuhralch2" path="res://asset/Enemy/Enemy 2/Idle/2.png" id="4_y2qoj"]
 [ext_resource type="Texture2D" uid="uid://n5xokqmy8665" path="res://asset/Enemy/Enemy 2/Idle/3.png" id="5_1aa1b"]
@@ -39,7 +39,7 @@ animations = [{
 
 [node name="BasicEye" type="CharacterBody3D"]
 script = ExtResource("1_pie8b")
-enemy_data = ExtResource("2_h7g2a")
+enemy_data = ExtResource("2_pie8b")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_inemf")
