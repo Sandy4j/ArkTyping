@@ -1,23 +1,23 @@
 [gd_scene load_steps=23 format=3 uid="uid://cnj1iuxvobnl6"]
 
-[ext_resource type="Texture2D" uid="uid://c3x70vb046pjr" path="res://asset/UI/Hero/BG.png" id="1_0hg5w"]
+[ext_resource type="Texture2D" uid="uid://dh0rh2og8hxvu" path="res://asset/UI/Hero/BG.png" id="1_0hg5w"]
 [ext_resource type="Script" uid="uid://b6s5qxp2nqpgv" path="res://scripts/UI/heroUI.gd" id="1_eo8df"]
-[ext_resource type="Texture2D" uid="uid://dic7k45vmvawv" path="res://asset/UI/Hero/lilitia.png" id="1_v4vlb"]
-[ext_resource type="Texture2D" uid="uid://d315gtwj035gi" path="res://asset/UI/Hero/silvanna.png" id="2_1xsbb"]
-[ext_resource type="Texture2D" uid="uid://y8xblrnkxrsb" path="res://asset/UI/Hero/Skill/Lilitia.png" id="2_a3bn8"]
-[ext_resource type="FontFile" uid="uid://bidkq3k8s4itr" path="res://asset/Font/Lovato-Bold.ttf" id="3_oy08c"]
-[ext_resource type="FontFile" uid="uid://b5as20pm4j1e0" path="res://asset/Font/effortless.ttf" id="4_dhouu"]
-[ext_resource type="Texture2D" uid="uid://8roivsmoinom" path="res://asset/UI/Hero/Skill/Silvanna.png" id="5_gxhdo"]
-[ext_resource type="Texture2D" uid="uid://b1i75xv5y2y5j" path="res://asset/UI/Hero/morriden.png" id="6_v401o"]
-[ext_resource type="Texture2D" uid="uid://d08vhj4o613j1" path="res://asset/UI/Hero/Skill/Morriden.png" id="7_eo8df"]
-[ext_resource type="Texture2D" uid="uid://bxkaxj4f30wt8" path="res://asset/UI/Hero/vigilante.png" id="8_dhouu"]
-[ext_resource type="Texture2D" uid="uid://cfdbh8o7xqi80" path="res://asset/UI/Hero/Skill/Vigilante.png" id="9_oy08c"]
-[ext_resource type="Texture2D" uid="uid://dk1800hxvlrmk" path="res://asset/UI/Hero/leciana.png" id="10_sylqr"]
-[ext_resource type="Texture2D" uid="uid://buteixucvi4np" path="res://asset/UI/Hero/Skill/Leciana.png" id="11_itcjo"]
-[ext_resource type="Texture2D" uid="uid://c6ab24y3bv0up" path="res://asset/UI/Hero/kaelio.png" id="12_upfl7"]
-[ext_resource type="Texture2D" uid="uid://bty5gg3a66rpr" path="res://asset/UI/Hero/Skill/Kaelio.png" id="13_iqo81"]
-[ext_resource type="Texture2D" uid="uid://dupxsacx3aqj7" path="res://asset/UI/Hero/rosemary.png" id="14_glprv"]
-[ext_resource type="Texture2D" uid="uid://criqsbjrp3way" path="res://asset/UI/Hero/Skill/Rosemary.png" id="15_hgboo"]
+[ext_resource type="Texture2D" uid="uid://bc0ot6kntw0ky" path="res://asset/UI/Hero/lilitia.png" id="1_v4vlb"]
+[ext_resource type="Texture2D" uid="uid://cd8tweng75w4n" path="res://asset/UI/Hero/silvanna.png" id="2_1xsbb"]
+[ext_resource type="Texture2D" uid="uid://6ij6xj8clpkt" path="res://asset/UI/Hero/Skill/Lilitia.png" id="2_a3bn8"]
+[ext_resource type="FontFile" uid="uid://cggjjwu7bfhpo" path="res://asset/Font/Lovato-Bold.ttf" id="3_oy08c"]
+[ext_resource type="FontFile" uid="uid://cyqrnpq2pn04k" path="res://asset/Font/effortless.ttf" id="4_dhouu"]
+[ext_resource type="Texture2D" uid="uid://d0umkif7hs07v" path="res://asset/UI/Hero/Skill/Silvanna.png" id="5_gxhdo"]
+[ext_resource type="Texture2D" uid="uid://d06vqbxy46box" path="res://asset/UI/Hero/morriden.png" id="6_v401o"]
+[ext_resource type="Texture2D" uid="uid://mat1iwcy7jav" path="res://asset/UI/Hero/Skill/Morriden.png" id="7_eo8df"]
+[ext_resource type="Texture2D" uid="uid://62acimean55" path="res://asset/UI/Hero/vigilante.png" id="8_dhouu"]
+[ext_resource type="Texture2D" uid="uid://cjltclvvgkdy1" path="res://asset/UI/Hero/Skill/Vigilante.png" id="9_oy08c"]
+[ext_resource type="Texture2D" uid="uid://bp0e2p11jx8ke" path="res://asset/UI/Hero/leciana.png" id="10_sylqr"]
+[ext_resource type="Texture2D" uid="uid://b004gx3ln2ij6" path="res://asset/UI/Hero/Skill/Leciana.png" id="11_itcjo"]
+[ext_resource type="Texture2D" uid="uid://dp2kyderc7xkk" path="res://asset/UI/Hero/kaelio.png" id="12_upfl7"]
+[ext_resource type="Texture2D" uid="uid://bpwqxe3e836jh" path="res://asset/UI/Hero/Skill/Kaelio.png" id="13_iqo81"]
+[ext_resource type="Texture2D" uid="uid://q6yv7t8mlk8y" path="res://asset/UI/Hero/rosemary.png" id="14_glprv"]
+[ext_resource type="Texture2D" uid="uid://clxhemtv7ktkl" path="res://asset/UI/Hero/Skill/Rosemary.png" id="15_hgboo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_closebutton"]
 bg_color = Color(0, 0, 0, 0)
@@ -164,14 +164,15 @@ text = "range: menengah"
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_dhouu")
 theme_override_font_sizes/font_size = 20
-text = "skill - holy divine: bola cahaya bertambah menjadi 3 dan berputar lebih cepat selama 5 detik."
+text = "skill - holy divine: 
+bola cahaya bertambah menjadi 3 dan berputar lebih cepat selama 5 detik."
 autowrap_mode = 3
 
 [node name="Cooldown" type="Label" parent="ScrollContainer/VBoxContainer/Lilitia/HBoxContainer/InfoContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_dhouu")
 theme_override_font_sizes/font_size = 20
-text = "[CD: 10s]"
+text = "Cooldown: 10.0 detik"
 
 [node name="IconContainer" type="CenterContainer" parent="ScrollContainer/VBoxContainer/Lilitia/HBoxContainer"]
 custom_minimum_size = Vector2(150, 0)
@@ -229,7 +230,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("4_dhouu")
 theme_override_font_sizes/font_size = 28
-text = "lilitia - the fallen angel"
+text = "Silvanna – The Lunar Elf"
 
 [node name="StatsContainer" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/Silvanna/HBoxContainer/InfoContainer"]
 layout_mode = 2
@@ -239,26 +240,27 @@ theme_override_constants/separation = 5
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_dhouu")
 theme_override_font_sizes/font_size = 20
-text = "cost: 13    hp: 1500    damage: 350    attack interval: -"
+text = "Cost: 9 HP: 800 Damage: 250 Attack Interval: 1.0 detik "
 
 [node name="Range" type="Label" parent="ScrollContainer/VBoxContainer/Silvanna/HBoxContainer/InfoContainer/StatsContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_dhouu")
 theme_override_font_sizes/font_size = 20
-text = "range: menengah"
+text = "range: Jauh"
 
 [node name="Skill" type="Label" parent="ScrollContainer/VBoxContainer/Silvanna/HBoxContainer/InfoContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_dhouu")
 theme_override_font_sizes/font_size = 20
-text = "skill - holy divine: bola cahaya bertambah menjadi 3 dan berputar lebih cepat selama 5 detik."
+text = "skill - lunar blessing:
+Damage meningkat 2x selama 5 detik. "
 autowrap_mode = 3
 
 [node name="Cooldown" type="Label" parent="ScrollContainer/VBoxContainer/Silvanna/HBoxContainer/InfoContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_dhouu")
 theme_override_font_sizes/font_size = 20
-text = "[CD: 10s]"
+text = "Cooldown: 10.0 detik"
 
 [node name="IconContainer" type="CenterContainer" parent="ScrollContainer/VBoxContainer/Silvanna/HBoxContainer"]
 custom_minimum_size = Vector2(150, 0)
@@ -316,7 +318,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("4_dhouu")
 theme_override_font_sizes/font_size = 28
-text = "lilitia - the fallen angel"
+text = "Morriden – The Plague Doctor"
 
 [node name="StatsContainer" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/Morriden/HBoxContainer/InfoContainer"]
 layout_mode = 2
@@ -326,7 +328,7 @@ theme_override_constants/separation = 5
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_dhouu")
 theme_override_font_sizes/font_size = 20
-text = "cost: 13    hp: 1500    damage: 350    attack interval: -"
+text = "Cost: 10 HP: 1250 Damage: 200 Attack Interval: 1.5 Detik"
 
 [node name="Range" type="Label" parent="ScrollContainer/VBoxContainer/Morriden/HBoxContainer/InfoContainer/StatsContainer"]
 layout_mode = 2
@@ -338,14 +340,15 @@ text = "range: menengah"
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_dhouu")
 theme_override_font_sizes/font_size = 20
-text = "skill - holy divine: bola cahaya bertambah menjadi 3 dan berputar lebih cepat selama 5 detik."
+text = "skill - toxic veil:
+Memberikan area efek yang memperlambat musuh menjadi 75% selama 10 detik. "
 autowrap_mode = 3
 
 [node name="Cooldown" type="Label" parent="ScrollContainer/VBoxContainer/Morriden/HBoxContainer/InfoContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_dhouu")
 theme_override_font_sizes/font_size = 20
-text = "[CD: 10s]"
+text = "Cooldown: 10.0 detik"
 
 [node name="IconContainer" type="CenterContainer" parent="ScrollContainer/VBoxContainer/Morriden/HBoxContainer"]
 custom_minimum_size = Vector2(150, 0)
@@ -403,7 +406,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("4_dhouu")
 theme_override_font_sizes/font_size = 28
-text = "lilitia - the fallen angel"
+text = "Vigilante – The Nameless Assassin"
 
 [node name="StatsContainer" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/Vigilante/HBoxContainer/InfoContainer"]
 layout_mode = 2
@@ -413,7 +416,7 @@ theme_override_constants/separation = 5
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_dhouu")
 theme_override_font_sizes/font_size = 20
-text = "cost: 13    hp: 1500    damage: 350    attack interval: -"
+text = "Cost: 17 HP: 900 Damage: 300 Attack Interval: 1.5s "
 
 [node name="Range" type="Label" parent="ScrollContainer/VBoxContainer/Vigilante/HBoxContainer/InfoContainer/StatsContainer"]
 layout_mode = 2
@@ -425,14 +428,15 @@ text = "range: menengah"
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_dhouu")
 theme_override_font_sizes/font_size = 20
-text = "skill - holy divine: bola cahaya bertambah menjadi 3 dan berputar lebih cepat selama 5 detik."
+text = "skill - bloody opus:
+Menurunkan attack interval menjadi 1.0 detik, selama 5 detik. "
 autowrap_mode = 3
 
 [node name="Cooldown" type="Label" parent="ScrollContainer/VBoxContainer/Vigilante/HBoxContainer/InfoContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_dhouu")
 theme_override_font_sizes/font_size = 20
-text = "[CD: 10s]"
+text = "Cooldown: 10.0 detik"
 
 [node name="IconContainer" type="CenterContainer" parent="ScrollContainer/VBoxContainer/Vigilante/HBoxContainer"]
 custom_minimum_size = Vector2(150, 0)
@@ -490,7 +494,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("4_dhouu")
 theme_override_font_sizes/font_size = 28
-text = "lilitia - the fallen angel"
+text = "Leciana – The Scarlet Noble"
 
 [node name="StatsContainer" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/Leciana/HBoxContainer/InfoContainer"]
 layout_mode = 2
@@ -500,7 +504,7 @@ theme_override_constants/separation = 5
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_dhouu")
 theme_override_font_sizes/font_size = 20
-text = "cost: 13    hp: 1500    damage: 350    attack interval: -"
+text = "Cost: 13 HP: 1000 Damage: 200 Attack Interval: 1.0 detik"
 
 [node name="Range" type="Label" parent="ScrollContainer/VBoxContainer/Leciana/HBoxContainer/InfoContainer/StatsContainer"]
 layout_mode = 2
@@ -512,14 +516,15 @@ text = "range: menengah"
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_dhouu")
 theme_override_font_sizes/font_size = 20
-text = "skill - holy divine: bola cahaya bertambah menjadi 3 dan berputar lebih cepat selama 5 detik."
+text = "skill -  scarlet harvester:
+Menyerang 5 target sekaligus selama 5 detik."
 autowrap_mode = 3
 
 [node name="Cooldown" type="Label" parent="ScrollContainer/VBoxContainer/Leciana/HBoxContainer/InfoContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_dhouu")
 theme_override_font_sizes/font_size = 20
-text = "[CD: 10s]"
+text = "Cooldown: 10.0 detik"
 
 [node name="IconContainer" type="CenterContainer" parent="ScrollContainer/VBoxContainer/Leciana/HBoxContainer"]
 custom_minimum_size = Vector2(150, 0)
@@ -577,7 +582,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("4_dhouu")
 theme_override_font_sizes/font_size = 28
-text = "lilitia - the fallen angel"
+text = "Kaelio – The Gunslinger Mercenary"
 
 [node name="StatsContainer" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/Kaelio/HBoxContainer/InfoContainer"]
 layout_mode = 2
@@ -587,26 +592,27 @@ theme_override_constants/separation = 5
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_dhouu")
 theme_override_font_sizes/font_size = 20
-text = "cost: 13    hp: 1500    damage: 350    attack interval: -"
+text = "Cost: 7 HP: 600 Damage: 100 Attack Interval: 0.5 detik"
 
 [node name="Range" type="Label" parent="ScrollContainer/VBoxContainer/Kaelio/HBoxContainer/InfoContainer/StatsContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_dhouu")
 theme_override_font_sizes/font_size = 20
-text = "range: menengah"
+text = "range: Jauh"
 
 [node name="Skill" type="Label" parent="ScrollContainer/VBoxContainer/Kaelio/HBoxContainer/InfoContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_dhouu")
 theme_override_font_sizes/font_size = 20
-text = "skill - holy divine: bola cahaya bertambah menjadi 3 dan berputar lebih cepat selama 5 detik."
+text = "skill - hoverload burst:
+Menyerang dua target sekaligus selama 10 detik. "
 autowrap_mode = 3
 
 [node name="Cooldown" type="Label" parent="ScrollContainer/VBoxContainer/Kaelio/HBoxContainer/InfoContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_dhouu")
 theme_override_font_sizes/font_size = 20
-text = "[CD: 10s]"
+text = "Cooldown: 10.0 detik"
 
 [node name="IconContainer" type="CenterContainer" parent="ScrollContainer/VBoxContainer/Kaelio/HBoxContainer"]
 custom_minimum_size = Vector2(150, 0)
@@ -664,7 +670,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("4_dhouu")
 theme_override_font_sizes/font_size = 28
-text = "lilitia - the fallen angel"
+text = "Rosemary – The Elite Marksman"
 
 [node name="StatsContainer" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/Rosemary/HBoxContainer/InfoContainer"]
 layout_mode = 2
@@ -674,26 +680,27 @@ theme_override_constants/separation = 5
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_dhouu")
 theme_override_font_sizes/font_size = 20
-text = "cost: 13    hp: 1500    damage: 350    attack interval: -"
+text = "Cost: 20 HP: 850 Damage: 500 Attack Interval: 2.0 detik"
 
 [node name="Range" type="Label" parent="ScrollContainer/VBoxContainer/Rosemary/HBoxContainer/InfoContainer/StatsContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_dhouu")
 theme_override_font_sizes/font_size = 20
-text = "range: menengah"
+text = "range: jauh"
 
 [node name="Skill" type="Label" parent="ScrollContainer/VBoxContainer/Rosemary/HBoxContainer/InfoContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_dhouu")
 theme_override_font_sizes/font_size = 20
-text = "skill - holy divine: bola cahaya bertambah menjadi 3 dan berputar lebih cepat selama 5 detik."
+text = "skill - bullet requiem:
+Attack meningkat 2x dan menembak secara beruntun selama 5x. "
 autowrap_mode = 3
 
 [node name="Cooldown" type="Label" parent="ScrollContainer/VBoxContainer/Rosemary/HBoxContainer/InfoContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_dhouu")
 theme_override_font_sizes/font_size = 20
-text = "[CD: 10s]"
+text = "Cooldown: 15.0 detik"
 
 [node name="IconContainer" type="CenterContainer" parent="ScrollContainer/VBoxContainer/Rosemary/HBoxContainer"]
 custom_minimum_size = Vector2(150, 0)
