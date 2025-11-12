@@ -70,6 +70,9 @@ func _update_logic(delta: float) -> void:
 func take_damage(damage: float) -> void:
 	current_hp -= damage
 	hp_changed.emit(current_hp, enemy_data.max_hp)
+	sprite.modulate = Color(1, 0, 0)
+	await get_tree().create_timer(0.1).timeout
+	sprite.modulate = Color(1, 1, 1)
 	var vfx_sc = load("res://asset/Vfx/Effect/hit.tscn")
 	var vfx_nd = vfx_sc.instantiate()
 	self.add_child(vfx_nd)

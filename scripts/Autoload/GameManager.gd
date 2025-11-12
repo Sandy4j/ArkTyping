@@ -4,7 +4,7 @@ signal game_over(stars: int)
 signal currency_changed(new_amount: int)
 signal base_hp_changed(new_hp: int)
 
-@export var starting_currency: int = 100
+@export var starting_currency: int = 15
 
 var currency: int = 0
 var is_game_over: bool = false
