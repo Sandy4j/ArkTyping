@@ -606,7 +606,7 @@ _data = {
 [node name="Magic_Circle7" type="Node3D"]
 
 [node name="circle" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.2, 0)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.3, 0)
 material_override = SubResource("ShaderMaterial_afy1t")
 mesh = SubResource("PlaneMesh_mxmyx")
 
