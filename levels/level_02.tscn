@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dn8wlb3ouseqs"]
+[gd_scene load_steps=21 format=3 uid="uid://dn8wlb3ouseqs"]
 
 [ext_resource type="PackedScene" uid="uid://bwd7cjnmkj54c" path="res://asset/Envi/props_lvl_2.tscn" id="1_g685p"]
 [ext_resource type="PackedScene" uid="uid://ci8240p5goqft" path="res://asset/Envi/ENV lvl 2 ground.fbx" id="2_8yqd8"]
@@ -6,13 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dfql5k5psmgxn" path="res://scenes/Tower/TowerSpot.tscn" id="4_mihb8"]
 [ext_resource type="PackedScene" uid="uid://cjhp6v8qnx4qm" path="res://scenes/Tower/Tower.tscn" id="5_2owmk"]
 [ext_resource type="PackedScene" uid="uid://csob2dk5jrcb5" path="res://asset/Envi/fireflies.tscn" id="6_cwmx8"]
-[ext_resource type="PackedScene" uid="uid://dr5mh3wmxd7uu" path="res://scenes/Base.tscn" id="7_50fh4"]
-[ext_resource type="Script" uid="uid://bpdh0cu6naavy" path="res://scripts/Tower/inputtower.gd" id="8_icmn4"]
-[ext_resource type="Script" uid="uid://g85gwfmcln8s" path="res://scripts/Tower/Tower_Res.gd" id="9_62sbm"]
-[ext_resource type="Resource" uid="uid://bk8grfmo48v2h" path="res://resources/res_tower/kaelio.tres" id="10_gcsue"]
-[ext_resource type="Resource" uid="uid://dvfphesh2a4nj" path="res://resources/res_tower/lilitia.tres" id="11_cypj3"]
-[ext_resource type="Resource" uid="uid://buqk2061a1dx5" path="res://resources/res_tower/morriden.tres" id="12_ksitj"]
-[ext_resource type="Resource" uid="uid://bhwlp2kr8e0ir" path="res://resources/res_tower/silvanna.tres" id="13_go1sc"]
+[ext_resource type="PackedScene" uid="uid://drlwka2ahedj4" path="res://scenes/Base.tscn" id="7_50fh4"]
 [ext_resource type="PackedScene" uid="uid://b6ot4uwb74jwf" path="res://scenes/ui.tscn" id="14_50fh4"]
 [ext_resource type="Script" uid="uid://4ipxb665lopb" path="res://scripts/WaveManager.gd" id="15_jhp1k"]
 [ext_resource type="Script" path="res://resources/WaveConfig.gd" id="16_oaki6"]
@@ -144,36 +138,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1, 2)
 tower_scene = ExtResource("5_2owmk")
 
 [node name="Base" parent="." instance=ExtResource("7_50fh4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.92783, 0, -0.06091523)
-max_hp = 10
-
-[node name="Input" type="Node" parent="." groups=["towerinput"]]
-script = ExtResource("8_icmn4")
-tower_list = Array[ExtResource("9_62sbm")]([ExtResource("10_gcsue"), ExtResource("11_cypj3"), ExtResource("12_ksitj"), ExtResource("13_go1sc")])
-
-[node name="TxtPanel" type="Panel" parent="Input"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -119.5
-offset_right = 119.5
-offset_bottom = 98.0
-grow_horizontal = 2
-size_flags_horizontal = 4
-
-[node name="Label" type="Label" parent="Input/TxtPanel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
+transform = Transform3D(-0.99999994, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -0.99999994, -4.9637575, 0, -0.06091523)
 
 [node name="UI" parent="." instance=ExtResource("14_50fh4")]
 

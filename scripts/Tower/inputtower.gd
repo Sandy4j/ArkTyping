@@ -43,10 +43,12 @@ func _on_text_submitted(full_text: String) -> void:
 				request_tower_placement(typed_text)
 				print("Spot yang kepilih: ", selected_spot_index + 1)
 				HIstory_add(typed_text,Color.GREEN)
+				AudioManager.play_sfx("type_correct")
 				inputLbl.text = ""
 				return
 			else:
 				print("Spot belum dipilih bro.")
+				AudioManager.play_sfx("type_wrong")
 				
 	for word in SKILL_KEYWORD:
 		if typed_text == word:
@@ -54,21 +56,26 @@ func _on_text_submitted(full_text: String) -> void:
 				request_tower_skill(typed_text)
 				print("Mengaktifkan skill di slot: ", selected_spot_index + 1)
 				HIstory_add(typed_text,Color.GREEN)
+				AudioManager.play_sfx("type_correct")
 				inputLbl.text = ""
 				return
 			else:
 				print("Spot belum dipilih bro.")
+				AudioManager.play_sfx("type_wrong")
 	if typed_text == "retreat":
 		if selected_spot_index >= 0:
 			request_delete_tower()
 			print("Hapus Tower di slot: ", selected_spot_index + 1)
 			HIstory_add(typed_text,Color.GREEN)
+			AudioManager.play_sfx("type_correct")
 			inputLbl.text = ""
 			return
 		else:
 			print("Spot belum dipilih bro.")
+			AudioManager.play_sfx("type_wrong")
 	else:
 		HIstory_add(typed_text,Color.RED)
+		AudioManager.play_sfx("type_wrong")
 		print("Input Salah Woi.")
 	inputLbl.text = ""
 

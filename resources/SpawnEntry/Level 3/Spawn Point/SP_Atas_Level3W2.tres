@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="SpawnPointConfig" load_steps=4 format=3 uid="uid://s5sqf8f36k1v"]
+
+[ext_resource type="Script" path="res://resources/EnemySpawnEntry.gd" id="1_vf78l"]
+[ext_resource type="Script" path="res://resources/SpawnPointConfig.gd" id="2_8rry2"]
+[ext_resource type="Resource" uid="uid://0fs7w8sl0shq" path="res://resources/SpawnEntry/Level 3/Enemy Entry/Skull_Lvl3_W2.tres" id="2_wmvps"]
+
+[resource]
+script = ExtResource("2_8rry2")
+spawn_path_node = NodePath("WaveManager/PathUp")
+enemy_spawn_entries = Array[ExtResource("1_vf78l")]([ExtResource("2_wmvps")])
+enemies_to_spawn = 2
+spawn_interval = 2.0

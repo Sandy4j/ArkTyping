@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="WaveConfig" load_steps=6 format=3 uid="uid://bbmnux0b6xmd4"]
+
+[ext_resource type="Script" path="res://resources/WaveConfig.gd" id="1_o1be5"]
+[ext_resource type="Script" path="res://resources/SpawnPointConfig.gd" id="2_i7n0c"]
+[ext_resource type="Resource" uid="uid://s5sqf8f36k1v" path="res://resources/SpawnEntry/Level 3/Spawn Point/SP_Atas_Level3W2.tres" id="3_i7n0c"]
+[ext_resource type="Resource" uid="uid://dhyc75s1b6hph" path="res://resources/SpawnEntry/Level 3/Spawn Point/SP_Bawah_Level3W2.tres" id="4_5wwma"]
+[ext_resource type="Resource" uid="uid://c71ju580v1uio" path="res://resources/SpawnEntry/Level 3/Spawn Point/SP_Tengah_Level3W2.tres" id="5_5sy6n"]
+
+[resource]
+script = ExtResource("1_o1be5")
+wave_number = 2
+time_until_next_wave = 10.0
+spawn_mode = 1
+spawn_point_configs = Array[ExtResource("2_i7n0c")]([ExtResource("3_i7n0c"), ExtResource("4_5wwma"), ExtResource("5_5sy6n")])

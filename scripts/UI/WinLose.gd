@@ -32,11 +32,13 @@ func show_game_over() -> void:
 	current_state = EndState.GAME_OVER
 	game_over_panel.visible = true
 	victory_panel.visible = false
+	get_tree().paused = true
 
 func show_victory() -> void:
 	current_state = EndState.VICTORY
 	game_over_panel.visible = false
 	victory_panel.visible = true
+	get_tree().paused = true
 	
 	if GameManager.final_stars == 0:
 		stars_earned = GameManager.calculate_stars()
@@ -96,13 +98,16 @@ func _animate_star_async(star: TextureRect, delay: float) -> void:
 	tween.chain().tween_property(star, "scale", Vector2(1.0, 1.0), 0.15).set_trans(Tween.TRANS_BACK)
 
 func _on_restart_pressed() -> void:
+	get_tree().paused = false
 	GameManager.reset_game_state()
 	get_tree().change_scene_to_file(LevelManager.current_level_path)
 
 func _on_next_level_pressed() -> void:
+	get_tree().paused = false
 	GameManager.reset_game_state()
 	LevelManager.load_next_level()
 
 func _on_menu_pressed() -> void:
+	get_tree().paused = false
 	GameManager.reset_game_state()
 	get_tree().change_scene_to_file("res://scenes/UI/main_menu.tscn")

@@ -9,5 +9,6 @@ max_hp = 300.0
 move_speed = 2.0
 reward = 100
 base_damage = 5
+can_attack = true
 is_boss = true
 boss_scale_multiplier = 2.5

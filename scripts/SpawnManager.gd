@@ -189,6 +189,9 @@ func spawn_enemy(config: SpawnPointConfig, spawn_point_index: int) -> void:
 		enemy._setup_path()
 		enemy._setup_visual()
 	
+	# Play spawn sound
+	AudioManager.play_sfx("enemy_spawn")
+	
 	active_enemies += 1
 	
 	if spawn_mode == 0:  # SEQUENTIAL

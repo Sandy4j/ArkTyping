@@ -76,6 +76,7 @@ func take_damage(damage: float) -> void:
 
 func die() -> void:
 	died.emit(enemy_data.reward)
+	AudioManager.play_sfx("enemy_die")
 	_on_death()
 	return_to_pool()
 
