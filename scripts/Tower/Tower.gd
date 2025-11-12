@@ -11,7 +11,7 @@ var detection_range: float = 0.0
 var fire_rate: float = 0.0
 var damage: float = 0.0
 var projectile_speed: float = 0.0
-var projectile_scene: PackedScene = null
+var projectile: PackedScene = null
 var skill_type: String = ""
 var enemies_in_range: Array[CharacterBody3D] = []
 var overload_burst_active:bool
@@ -46,7 +46,7 @@ func _ready() -> void:
 	projectile_speed = tower_data.projectile_speed 
 	skill_type = tower_data.skill
 	if tower_data.projectile:
-		projectile_scene = tower_data.projectile
+		projectile = tower_data.projectile
 		print("load projectile")
 	max_hp = tower_data.max_hp
 	skill_cooldown = tower_data.cooldown
@@ -137,20 +137,23 @@ func shoot(target: Node3D) -> void:
 	
 	# 🎯 PLAY ANIMASI ATTACK
 	sprite.play("attack")
-	if not projectile_scene:
+	if not projectile:
 		return
 	
-	var pool_key = "tower_projectile_" + tower_data.chara
+	var pool_key = PoolSetup.register_tower_projectile_pool(tower_data)
+	if pool_key == "":
+		pool_key = "tower_projectile_" + tower_data.chara
+	
 	var projectile = ObjectPool.get_pooled_object(pool_key)
 	
 	if not projectile:
-		projectile = projectile_scene.instantiate()
+		projectile = projectile.instantiate()
 		print("shoot dengan custom")
 	else:
 		projectile.pool_name = pool_key
 	
 	get_tree().current_scene.add_child(projectile)
-	
+
 	if shoot_point:
 		projectile.global_position = shoot_point.global_position
 	else:
@@ -170,7 +173,7 @@ func double_shoot(target: CharacterBody3D) -> void:
 	sprite.stop()
 	sprite.play("attack")
 	
-	if not projectile_scene:
+	if not projectile:
 		return
 	
 	var pool_key = "tower_projectile_" + tower_data.chara
@@ -178,11 +181,9 @@ func double_shoot(target: CharacterBody3D) -> void:
 	# First projectile
 	var projectile1 = ObjectPool.get_pooled_object(pool_key)
 	if not projectile1:
-		projectile1 = projectile_scene.instantiate()
+		projectile1 = projectile.instantiate()
 	else:
 		projectile1.pool_name = pool_key
-	
-	get_tree().current_scene.add_child(projectile1)
 	
 	if shoot_point:
 		projectile1.global_position = shoot_point.global_position
@@ -196,7 +197,7 @@ func double_shoot(target: CharacterBody3D) -> void:
 	
 	var projectile2 = ObjectPool.get_pooled_object(pool_key)
 	if not projectile2:
-		projectile2 = projectile_scene.instantiate()
+		projectile2 = projectile.instantiate()
 	else:
 		projectile2.pool_name = pool_key
 	
@@ -222,7 +223,7 @@ func overload_burst() -> void:
 	
 	sprite.play("attack")
 	
-	if not projectile_scene:
+	if not projectile:
 		return
 	
 	var targets:Array
@@ -246,7 +247,7 @@ func overload_burst() -> void:
 			var projectile = ObjectPool.get_pooled_object(pool_key)
 			
 			if not projectile:
-				projectile = projectile_scene.instantiate()
+				projectile = projectile.instantiate()
 			else:
 				projectile.pool_name = pool_key
 			
@@ -263,7 +264,7 @@ func overload_burst() -> void:
 	print("Triple Shot! Hit ", targets.size(), " enemies")
 
 func scarlet_harvester() -> void:
-	if not projectile_scene:
+	if not projectile:
 		return
 	
 	var targets:Array
@@ -302,7 +303,7 @@ func scarlet_harvester() -> void:
 			var projectile = ObjectPool.get_pooled_object(pool_key)
 			
 			if not projectile:
-				projectile = projectile_scene.instantiate()
+				projectile = projectile.instantiate()
 			else:
 				projectile.pool_name = pool_key
 			

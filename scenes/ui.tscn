@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b6ot4uwb74jwf"]
+[gd_scene load_steps=22 format=3 uid="uid://b6ot4uwb74jwf"]
 
 [ext_resource type="Script" uid="uid://bbexpquh4b3ip" path="res://scripts/UI/UI.gd" id="1_6rmj2"]
 [ext_resource type="Texture2D" uid="uid://r0jk5u3l805y" path="res://asset/UI_Gameplay/Heart_BG.png" id="2_vsj0x"]
@@ -20,6 +20,7 @@
 [ext_resource type="Resource" uid="uid://bxhddhmrf4wrn" path="res://resources/res_tower/rosemary.tres" id="18_jkdwc"]
 [ext_resource type="Resource" uid="uid://duvfgb70bw3fq" path="res://resources/res_tower/leciana.tres" id="19_rlppe"]
 [ext_resource type="PackedScene" uid="uid://b8y7ehgxvep5v" path="res://scenes/UI/pause.tscn" id="20_pause"]
+[ext_resource type="PackedScene" uid="uid://bj5dtcmvpkfwk" path="res://scenes/UI/WinLose.tscn" id="21_ycmcx"]
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_6rmj2")
@@ -350,3 +351,5 @@ script = ExtResource("13_jkdwc")
 tower_list = Array[ExtResource("14_rlppe")]([ExtResource("15_ycmcx"), ExtResource("16_kupmu"), ExtResource("17_catpy"), ExtResource("18_41akx"), ExtResource("18_jkdwc"), ExtResource("19_rlppe")])
 
 [node name="Pause" parent="." instance=ExtResource("20_pause")]
+
+[node name="WinLose" parent="." instance=ExtResource("21_ycmcx")]

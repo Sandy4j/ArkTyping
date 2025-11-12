@@ -12,6 +12,7 @@ extends CanvasLayer
 @onready var NPR: NinePatchRect = $NinePatchRect
 @onready var input: TowerInput = $Input
 @onready var icon_con: HBoxContainer = $NinePatchRect/MarginContainer/HBoxContainer
+@onready var winlose = $WinLose
 
 func _ready() -> void:
 	GameManager.currency_changed.connect(_on_currency_changed)
@@ -60,19 +61,13 @@ func _on_wave_started(wave: int) -> void:
 		enemy_max_label.text = str(max_enemies)
 
 func _on_game_over(stars: int) -> void:
-	var winlose_scene = load("res://scenes/UI/WinLose.tscn")
-	if winlose_scene:
-		var winlose_instance = winlose_scene.instantiate()
-		get_tree().current_scene.add_child(winlose_instance)
-		winlose_instance.show_game_over()
+	if winlose:
+		winlose.show_game_over()
 
 func _on_victory() -> void:
 	await get_tree().create_timer(1.0).timeout
-	var winlose_scene = load("res://scenes/UI/WinLose.tscn")
-	if winlose_scene:
-		var winlose_instance = winlose_scene.instantiate()
-		get_tree().current_scene.add_child(winlose_instance)
-		winlose_instance.show_victory()
+	if winlose:
+		winlose.show_victory()
 
 
 func _on_tower_gone(data:TowerData) -> void:

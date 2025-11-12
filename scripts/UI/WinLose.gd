@@ -5,17 +5,17 @@ enum EndState { GAME_OVER, VICTORY }
 @onready var game_over_panel: Panel = $GameOverPanel
 @onready var victory_panel: Panel = $VictoryPanel
 
-@onready var go_restart_button: Button = $GameOverPanel/VBoxContainer/RestartButton
-@onready var go_menu_button: Button = $GameOverPanel/VBoxContainer/MenuButton
+@onready var go_restart_button: TextureButton = $GameOverPanel/VBoxContainer/RetryBtn
+@onready var go_menu_button: TextureButton = $GameOverPanel/VBoxContainer/MenuBtn
 
 @onready var vstar1: TextureRect = $VictoryPanel/VBoxContainer/StarsContainer/Star1
 @onready var vstar2: TextureRect = $VictoryPanel/VBoxContainer/StarsContainer/Star2
 @onready var vstar3: TextureRect = $VictoryPanel/VBoxContainer/StarsContainer/Star3
 @onready var vhp_label: Label = $VictoryPanel/VBoxContainer/HPLabel
 @onready var vwave_label: Label = $VictoryPanel/VBoxContainer/WaveLabel
-@onready var next_button: Button = $VictoryPanel/VBoxContainer/NextButton
-@onready var replay_button: Button = $VictoryPanel/VBoxContainer/ReplayButton
-@onready var menu_button: Button = $VictoryPanel/VBoxContainer/MenuButton
+@onready var next_button: TextureButton = $VictoryPanel/VBoxContainer/NextBtn
+@onready var replay_button: TextureButton = $VictoryPanel/VBoxContainer/ReplayBtn
+@onready var menu_button: TextureButton = $VictoryPanel/VBoxContainer/MenuBtn
 
 var stars_earned: int = 0
 var current_state: EndState = EndState.GAME_OVER
