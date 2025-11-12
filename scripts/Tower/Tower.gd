@@ -124,8 +124,10 @@ func _process(delta: float) -> void:
 	if current_target and is_instance_valid(current_target) and current_target.is_in_group("enemies") and fire_timer >= 1.0 / fire_rate:
 		is_shooting = true
 		sfx.play()
-		if is_kaelio or is_rosemary:
+		if is_kaelio and overload_burst_active or is_rosemary:
 			vfx_shoot.play("gun")
+		elif is_kaelio:
+			vfx_shoot.play("gun_slow")
 		if overload_burst_active:
 			overload_burst()
 		elif scarlet_harvester_active:
@@ -468,7 +470,7 @@ func activate_overload_burst() -> void:
 	altar.add_child(aura_node)
 	aura_node.get_child(5).play("Kaileo_FX")
 	var original_fire_rate = fire_rate
-	fire_rate = original_fire_rate * 3.0  # 3x lebih cepat
+	fire_rate = 1.0
 	overload_burst_active = true
 	var skill_duration = tower_data.skill_duration
 	var timer = get_tree().create_timer(skill_duration)

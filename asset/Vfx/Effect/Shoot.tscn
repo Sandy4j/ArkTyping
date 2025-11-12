@@ -1,7 +1,7 @@
-[gd_scene load_steps=26 format=3 uid="uid://dotj22b2oyv68"]
+[gd_scene load_steps=27 format=3 uid="uid://dotj22b2oyv68"]
 
 [ext_resource type="Texture2D" uid="uid://cgw8v64qa3q5v" path="res://asset/Vfx/Texture/Muzzle.png" id="1_f7du8"]
-[ext_resource type="ArrayMesh" uid="uid://bb3ixupcuy1jc" path="res://asset/Vfx/Obj/MuzzlePlane.obj" id="2_ornhe"]
+[ext_resource type="ArrayMesh" uid="uid://t0ogf7v8en0f" path="res://asset/Vfx/Obj/MuzzlePlane.obj" id="2_ornhe"]
 [ext_resource type="Texture2D" uid="uid://dbnq13jiha8oc" path="res://asset/Vfx/Texture/T_VFX_Glo31.png" id="3_ujau8"]
 [ext_resource type="Texture2D" uid="uid://d2i4b8n2qgd45" path="res://asset/Vfx/Texture/T_VFX_Flare_251.jpg" id="4_da2ke"]
 
@@ -201,10 +201,63 @@ tracks/3/keys = {
 "values": [0.0, 0.0, 4.0, 0.0]
 }
 
+[sub_resource type="Animation" id="Animation_f7du8"]
+resource_name = "gun_slow"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Muzzle:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Flash:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sparks:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("OmniLight3D:light_energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.35, 0.45, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 4.0, 0.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bdanm"]
 _data = {
 &"RESET": SubResource("Animation_p0bpt"),
-&"gun": SubResource("Animation_bocd8")
+&"gun": SubResource("Animation_bocd8"),
+&"gun_slow": SubResource("Animation_f7du8")
 }
 
 [node name="Gun" type="Node3D"]

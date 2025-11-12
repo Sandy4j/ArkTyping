@@ -2,12 +2,14 @@
 
 [ext_resource type="Script" path="res://resources/EnemySpawnEntry.gd" id="1_5pqle"]
 [ext_resource type="Resource" uid="uid://bq4231ilgt53l" path="res://resources/Enemy Data/BossDevil.tres" id="1_6cfrx"]
-[ext_resource type="PackedScene" uid="uid://orr3oexwxv50" path="res://scenes/Enemy/BossDevil.tscn" id="2_uekud"]
 [ext_resource type="Script" path="res://resources/SpawnPointConfig.gd" id="2_vwj8h"]
+
+[sub_resource type="Resource" id="Resource_vwj8h"]
+metadata/__load_path__ = "res://scenes/Enemy/BasicDevil.tscn"
 
 [sub_resource type="Resource" id="Resource_6cfrx"]
 script = ExtResource("1_5pqle")
-enemy_scene = ExtResource("2_uekud")
+enemy_scene = SubResource("Resource_vwj8h")
 enemy_data = ExtResource("1_6cfrx")
 
 [resource]
