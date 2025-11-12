@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://xdr8sj3vmn7e"]
+[gd_scene load_steps=11 format=3 uid="uid://cj1oprebspu6a"]
 
 [ext_resource type="Texture2D" uid="uid://daxc7d810vm0b" path="res://asset/Vfx/Texture/T_flare12.png" id="1_5g70h"]
 [ext_resource type="Script" uid="uid://bkso2a2sv0efi" path="res://scripts/Tower/Projectile.gd" id="1_qoqwa"]
@@ -51,8 +51,8 @@ emission_sphere_radius = 0.25
 initial_velocity_min = 1.0
 initial_velocity_max = 1.0
 gravity = Vector3(3, 0, 0)
-scale_min = 0.19999999
-scale_max = 0.29999998
+scale_min = 0.5
+scale_max = 0.5
 alpha_curve = SubResource("CurveTexture_vw73x")
 
 [sub_resource type="QuadMesh" id="QuadMesh_plu7r"]
@@ -65,12 +65,10 @@ light_color = Color(0.7953644, 0, 0, 1)
 omni_range = 1.0
 
 [node name="Bijih" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_fv3ls")
 mesh = SubResource("SphereMesh_rhika")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_2o7th")
 amount = 20
 process_material = SubResource("ParticleProcessMaterial_ksqum")

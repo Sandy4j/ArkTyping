@@ -11,7 +11,7 @@ cull_mode = 2
 shading_mode = 0
 vertex_color_use_as_albedo = true
 vertex_color_is_srgb = true
-albedo_color = Color(0.5059666, 0.2656186, 9.62615e-08, 1)
+albedo_color = Color(0.30187938, 0.1494002, 2.4065375e-08, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7voma"]
 transparency = 1
@@ -29,15 +29,15 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_spcpa"]
-lifetime_randomness = 1.0
 emission_shape = 1
 emission_sphere_radius = 0.1
 velocity_pivot = Vector3(1, 0, 0)
-initial_velocity_min = 0.19999999
-initial_velocity_max = 0.19999999
+spread = 109.834
+initial_velocity_min = 0.5
+initial_velocity_max = 0.5
 gravity = Vector3(3, 0, 0)
-scale_min = 0.099999994
-scale_max = 0.19999999
+scale_min = 0.5
+scale_max = 0.5
 
 [sub_resource type="QuadMesh" id="QuadMesh_aum4f"]
 
@@ -45,12 +45,12 @@ scale_max = 0.19999999
 script = ExtResource("1_n23nu")
 
 [node name="Bullet" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.2618149, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.133975, 0, 0)
 material_override = SubResource("StandardMaterial3D_ywaxx")
 mesh = ExtResource("1_jw6q4")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0066960156, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06526244, 0)
 material_override = SubResource("StandardMaterial3D_7voma")
 amount = 10
 process_material = SubResource("ParticleProcessMaterial_spcpa")

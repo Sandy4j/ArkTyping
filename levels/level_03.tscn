@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cq5sf3fg38dtf"]
+[gd_scene load_steps=22 format=3 uid="uid://csf6jqmmtahw1"]
 
 [ext_resource type="Material" uid="uid://ctd55tbm5xssh" path="res://asset/Shader/Sky/night.tres" id="1_6hrdw"]
 [ext_resource type="Script" uid="uid://dgxccv80klhc7" path="res://scripts/Tower/TowerCon.gd" id="3_2wlag"]
@@ -7,14 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://cb6pqwqtsnts0" path="res://asset/Envi/env_lvl_3_ground.tscn" id="5_wq170"]
 [ext_resource type="PackedScene" uid="uid://csob2dk5jrcb5" path="res://asset/Envi/fireflies.tscn" id="6_6181x"]
 [ext_resource type="PackedScene" uid="uid://dpxgr2wk7y01u" path="res://asset/Envi/props_lvl_3.tscn" id="6_wq170"]
-[ext_resource type="PackedScene" uid="uid://bq8igmvv8iosm" path="res://asset/Envi/Props lvl 3.fbx" id="6_xgj7h"]
-[ext_resource type="PackedScene" uid="uid://dr5mh3wmxd7uu" path="res://scenes/Base.tscn" id="8_2la83"]
+[ext_resource type="PackedScene" uid="uid://brhl3jursipw0" path="res://asset/Envi/Props lvl 3.fbx" id="6_xgj7h"]
+[ext_resource type="PackedScene" uid="uid://drlwka2ahedj4" path="res://scenes/Base.tscn" id="8_2la83"]
 [ext_resource type="Resource" uid="uid://d4nr4jpcakmc0" path="res://resources/WaveData/Level 3/Wave1_lvl3.tres" id="12_gj5ie"]
 [ext_resource type="Resource" uid="uid://bbmnux0b6xmd4" path="res://resources/WaveData/Level 3/Wave2_lvl3.tres" id="13_xgj7h"]
 [ext_resource type="Resource" uid="uid://dhifykxglre0u" path="res://resources/WaveData/Level 3/Wave3_lvl3.tres" id="14_l32du"]
 [ext_resource type="Script" uid="uid://4ipxb665lopb" path="res://scripts/WaveManager.gd" id="16_lbtiq"]
 [ext_resource type="Script" path="res://resources/WaveConfig.gd" id="17_bueam"]
-[ext_resource type="PackedScene" uid="uid://dqmlunqfclena" path="res://asset/Vfx/Effect/Portalem.tscn" id="17_l32du"]
 [ext_resource type="PackedScene" uid="uid://b6ot4uwb74jwf" path="res://scenes/ui.tscn" id="19_2la83"]
 [ext_resource type="Script" path="res://scripts/LevelInit.gd" id="19_vxifu"]
 
@@ -189,12 +188,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4492683, 0, 3.4048185)
 curve = SubResource("Curve3D_gj5ie")
 
 [node name="UI" parent="." instance=ExtResource("19_2la83")]
-
-[node name="Port_al" parent="." instance=ExtResource("17_l32du")]
-transform = Transform3D(1.6, 0, 0, 0, 2.685, 0, 0, 0, 1.995, -1.24728, 0.75861776, 3.5522199)
-
-[node name="Port_al2" parent="." instance=ExtResource("17_l32du")]
-transform = Transform3D(1.6, 0, 0, 0, 2.685, 0, 0, 0, 1.995, -2.6027675, 0.75861776, -3.9276962)
-
-[node name="Port_al3" parent="." instance=ExtResource("17_l32du")]
-transform = Transform3D(1.6, 0, 0, 0, 2.685, 0, 0, 0, 1.995, 16.272434, 0.75861776, -0.9602022)

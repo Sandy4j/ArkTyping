@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://elymhaiwcixo"]
+[gd_scene load_steps=9 format=3 uid="uid://bp5td02i78gru"]
 
 [ext_resource type="Script" uid="uid://bkso2a2sv0efi" path="res://scripts/Tower/Projectile.gd" id="1_ihmcn"]
-[ext_resource type="ArrayMesh" uid="uid://cb34kl2plsx5v" path="res://asset/Vfx/Obj/Dagger.obj" id="1_qv1rf"]
+[ext_resource type="ArrayMesh" uid="uid://bje3hc5dl78yw" path="res://asset/Vfx/Obj/Dagger.obj" id="1_qv1rf"]
 [ext_resource type="Texture2D" uid="uid://b7ykjo211uxxq" path="res://asset/Vfx/Texture/Wave.png" id="2_ihmcn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wp4ef"]
@@ -12,6 +12,12 @@ shading_mode = 0
 vertex_color_use_as_albedo = true
 vertex_color_is_srgb = true
 albedo_color = Color(0.5847179, 0, 0.85430586, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dmt7s"]
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+scale_max = 0.5
+color = Color(0.5847179, 0, 0.85430586, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_58j12"]
 transparency = 1
@@ -29,15 +35,15 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ohxug"]
-lifetime_randomness = 1.0
 emission_shape = 1
 emission_sphere_radius = 0.1
 velocity_pivot = Vector3(1, 0, 0)
-initial_velocity_min = 0.099999994
-initial_velocity_max = 0.099999994
-gravity = Vector3(3, 0, 0)
-scale_min = 0.19999999
-scale_max = 0.19999999
+spread = 109.834
+initial_velocity_min = 0.5
+initial_velocity_max = 0.5
+gravity = Vector3(7, 0, 0)
+scale_min = 0.5
+scale_max = 0.5
 
 [sub_resource type="QuadMesh" id="QuadMesh_gtor4"]
 
@@ -48,13 +54,14 @@ script = ExtResource("1_ihmcn")
 light_color = Color(0.58383155, 0, 0.85430586, 1)
 omni_range = 1.0
 
-[node name="dagger" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.21981907, 0.015938282, 0)
+[node name="dagger" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3414335, 0, 0)
 material_override = SubResource("StandardMaterial3D_wp4ef")
-mesh = ExtResource("1_qv1rf")
+process_material = SubResource("ParticleProcessMaterial_dmt7s")
+draw_pass_1 = ExtResource("1_qv1rf")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28282964, 0.049306393, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06526244, 0)
 material_override = SubResource("StandardMaterial3D_58j12")
 amount = 100
 process_material = SubResource("ParticleProcessMaterial_ohxug")
