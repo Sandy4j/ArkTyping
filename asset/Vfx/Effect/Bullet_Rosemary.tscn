@@ -1,6 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cb5pwexkrc36k"]
 
 [ext_resource type="ArrayMesh" uid="uid://bub4e0m55gj1y" path="res://asset/Vfx/Obj/Bullet.obj" id="1_jw6q4"]
+[ext_resource type="Script" uid="uid://bkso2a2sv0efi" path="res://scripts/Tower/Projectile.gd" id="1_n23nu"]
 [ext_resource type="Texture2D" uid="uid://ctktxam6r2fe2" path="res://asset/Vfx/Texture/T_Wave66.png" id="2_p8ljx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ywaxx"]
@@ -11,11 +12,6 @@ shading_mode = 0
 vertex_color_use_as_albedo = true
 vertex_color_is_srgb = true
 albedo_color = Color(0.30187938, 0.1494002, 2.4065375e-08, 1)
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1d2kv"]
-gravity = Vector3(0, 0, 0)
-scale_min = 0.5
-scale_max = 0.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7voma"]
 transparency = 1
@@ -46,12 +42,12 @@ scale_max = 0.5
 [sub_resource type="QuadMesh" id="QuadMesh_aum4f"]
 
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_n23nu")
 
-[node name="Bullet" type="GPUParticles3D" parent="."]
+[node name="Bullet" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.133975, 0, 0)
 material_override = SubResource("StandardMaterial3D_ywaxx")
-process_material = SubResource("ParticleProcessMaterial_1d2kv")
-draw_pass_1 = ExtResource("1_jw6q4")
+mesh = ExtResource("1_jw6q4")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06526244, 0)

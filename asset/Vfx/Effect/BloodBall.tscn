@@ -1,9 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://cj1oprebspu6a"]
+[gd_scene load_steps=11 format=3 uid="uid://cj1oprebspu6a"]
 
 [ext_resource type="Texture2D" uid="uid://daxc7d810vm0b" path="res://asset/Vfx/Texture/T_flare12.png" id="1_5g70h"]
+[ext_resource type="Script" uid="uid://bkso2a2sv0efi" path="res://scripts/Tower/Projectile.gd" id="1_qoqwa"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qoqwa"]
-load_path = "res://.godot/imported/T_PerlinNoise_Tiled.png-b123038ac2d568fd612f900e3487cb25.s3tc.ctex"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fv3ls"]
 transparency = 1
@@ -58,6 +58,7 @@ alpha_curve = SubResource("CurveTexture_vw73x")
 [sub_resource type="QuadMesh" id="QuadMesh_plu7r"]
 
 [node name="Bloodball" type="Node3D"]
+script = ExtResource("1_qoqwa")
 
 [node name="MeshInstance3D" type="OmniLight3D" parent="."]
 light_color = Color(0.7953644, 0, 0, 1)

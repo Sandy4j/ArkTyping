@@ -24,7 +24,10 @@ func _process(delta: float) -> void:
 		return
 	
 	var direction = (target.global_position - global_position).normalized()
+	var angle = atan2(direction.z, direction.x)
+	self.rotation.y = angle + deg_to_rad(180)
 	global_position += direction * speed * delta
+	
 	if global_position.distance_to(target.global_position) < 0.5:
 		hit_target()
 

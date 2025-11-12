@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://d0hsa1u25wbb1"]
+[gd_scene load_steps=27 format=4 uid="uid://5xfqitwq1h01"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nhbi6"]
 load_path = "res://.godot/imported/Muzzle.png-e15f17d3aa3f6d22746937a537d916c8.s3tc.ctex"
@@ -242,6 +242,7 @@ _data = {
 }
 
 [node name="Gun_Silvanna" type="Node3D"]
+transform = Transform3D(-0.08419947, 0, -0.996449, 0, 1, 0, 0.996449, 0, -0.08419947, 0.15555853, 0.16149247, 0.12845433)
 
 [node name="Muzzle" type="GPUParticles3D" parent="."]
 material_override = SubResource("StandardMaterial3D_nt0wh")

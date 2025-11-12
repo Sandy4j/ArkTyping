@@ -21,10 +21,13 @@ var max_hp: float = 100.0
 var current_hp: float = 100.0
 
 var vfx_node
+var vfx_shoot
 var vfx_aura
 var orbit
 var orbit2
 var is_lilitia:bool
+var is_kaelio:bool
+var is_rosemary:bool
 var fire_timer: float = 0.0
 var current_target: CharacterBody3D = null
 var skill_active: bool = false
@@ -34,11 +37,13 @@ var is_shooting:bool
 var is_animation_playing: bool = false
 @onready var sprite: AnimatedSprite3D = $Sprite3D
 @onready var range_area: Area3D = $RangeArea
+@onready var sfx: AudioStreamPlayer = $AudioStreamPlayer
 @onready var shoot_point: Node3D = $ShootPoint
 @onready var skill_sprite: Sprite3D = $SkillSprite
 var altar
 
 func _ready() -> void:
+	sfx.stream = tower_data.atk_sfx
 	shot_fired.connect(after_shoot)
 	damage = tower_data.damage
 	fire_rate = tower_data.speed 
@@ -55,20 +60,35 @@ func _ready() -> void:
 	skill_sprite.texture = tower_data.skill_sprite
 	print("Tower initialized with data: ", tower_data.chara)
 	print("Damage: ", damage, " Fire Rate: ", fire_rate, " Range: ", detection_range, " HP: ", max_hp)
-	if tower_data.chara == "lilitia":
-		is_lilitia = true
-		activate_holy_divine_basic()
-		return
 	
 	add_to_group("tower")
+	match tower_data.chara:
+			"lilitia":
+				is_lilitia = true
+				activate_holy_divine_basic()
+			"kaelio":
+				is_kaelio = true
+				var vfx_scene = load("res://asset/Vfx/Effect/Shoot.tscn")
+				var vfx_node = vfx_scene.instantiate()
+				self.add_child(vfx_node)
+				var light:OmniLight3D = vfx_node.get_child(3)
+				light.light_energy = 0
+				vfx_shoot = vfx_node.get_child(4)
+			"rosemary":
+				is_rosemary = true
+				var vfx_scene = load("res://asset/Vfx/Effect/gun_Rosemary.tscn")
+				var vfx_node = vfx_scene.instantiate()
+				self.add_child(vfx_node)
+				var light:OmniLight3D = vfx_node.get_child(3)
+				light.light_energy = 0
+				vfx_shoot = vfx_node.get_child(4)
 	
-	if range_area:
+	if range_area and tower_data.chara != "lilitia" :
 		var collision_shape = range_area.get_node("CollisionShape3D")
 		if collision_shape and collision_shape.shape is SphereShape3D:
 			collision_shape.shape.radius = detection_range
 	current_skill_cooldown = skill_cooldown
 	sprite.play("default")
-
 
 func _process(delta: float) -> void:
 	if not is_inside_tree():
@@ -100,6 +120,9 @@ func _process(delta: float) -> void:
 	# Shoot at target
 	if current_target and is_instance_valid(current_target) and current_target.is_in_group("enemies") and fire_timer >= 1.0 / fire_rate:
 		is_shooting = true
+		sfx.play()
+		if is_kaelio or is_rosemary:
+			vfx_shoot.play("gun")
 		if overload_burst_active:
 			overload_burst()
 		elif scarlet_harvester_active:
@@ -151,7 +174,7 @@ func shoot(target: Node3D) -> void:
 		print("shoot dengan custom")
 	else:
 		projectile.pool_name = pool_key
-	
+	projectile.scale = Vector3(0.25,0.25,0.25)
 	get_tree().current_scene.add_child(projectile)
 
 	if shoot_point:
@@ -405,9 +428,9 @@ func take_damage(dmg: float) -> void:
 		destroy()
 
 func destroy() -> void:
+	SFX.play_death_sfx()
 	tower_destroyed.emit()
 	print("Tower destroyed!")
-	queue_free()
 
 func get_hp_percentage() -> float:
 	return current_hp / max_hp if max_hp > 0 else 0.0
@@ -416,7 +439,7 @@ func Skill(skill_name: String) -> void:
 	if current_skill_cooldown > 0:
 		print("Skill on cooldown: ", current_skill_cooldown, "s remaining")
 		return
-	
+	SFX.play_skill_sfx()
 	match skill_name:
 		"overload burst":
 			activate_overload_burst()
@@ -446,6 +469,7 @@ func execute_skill(delta: float) -> void:
 
 func activate_overload_burst() -> void:
 	print("Overload burst aktif!")
+	sfx.stream = tower_data.skl_sfx
 	var aura_scene = load("res://asset/Vfx/Effect/magic_circle_1.tscn")
 	var aura_node = aura_scene.instantiate()
 	altar.add_child(aura_node)
@@ -457,6 +481,7 @@ func activate_overload_burst() -> void:
 	var timer = get_tree().create_timer(skill_duration)
 	timer.timeout.connect(func(): 
 		aura_node.queue_free()
+		sfx.stream = tower_data.atk_sfx
 		overload_burst_active = false
 		fire_rate = original_fire_rate
 		print("Overload burst berakhir")
@@ -464,6 +489,7 @@ func activate_overload_burst() -> void:
 
 func activate_lunar_blessing() -> void:
 	print("lunar blessing aktif")
+	sfx.stream = tower_data.skl_sfx
 	var aura_scene = load("res://asset/Vfx/Effect/magic_circle_3(Silvanna).tscn")
 	var aura_node = aura_scene.instantiate()
 	altar.add_child(aura_node)
@@ -474,6 +500,7 @@ func activate_lunar_blessing() -> void:
 	var skill_duration = tower_data.skill_duration
 	var timer = get_tree().create_timer(skill_duration)
 	timer.timeout.connect(func(): 
+		sfx.stream = tower_data.atk_sfx
 		aura_node.queue_free()
 		damage = normal_damage
 		print("lunar blessing berakhir")
@@ -497,7 +524,9 @@ func activate_holy_divine_basic() -> void:
 	orbit2 = orbit_node2
 	orbit2.visible = false
 	self.add_child(orbit_node)
+	orbit_node.sfx.stream = tower_data.atk_sfx
 	self.add_child(orbit_node2)
+	orbit_node2.sfx.stream = tower_data.atk_sfx
 
 func activate_holy_divine() -> void:
 	print("holy divine aktif!")
@@ -519,6 +548,7 @@ func activate_holy_divine() -> void:
 
 func activate_toxic_veil() -> void:
 	print("toxic veil aktif!")
+	sfx.stream = tower_data.skl_sfx
 	var aura_scene = load("res://asset/Vfx/Effect/magic_circle_2(plague).tscn")
 	var aura_node = aura_scene.instantiate()
 	altar.add_child(aura_node)
@@ -537,6 +567,7 @@ func activate_toxic_veil() -> void:
 	var skill_duration = tower_data.skill_duration
 	var timer = get_tree().create_timer(skill_duration)
 	timer.timeout.connect(func(): 
+		sfx.stream = tower_data.atk_sfx
 		aura_node.queue_free()
 		veil_node.queue_free()
 		print("Toxic Veil berakhir")
@@ -587,8 +618,10 @@ func activate_scarlet_harvester()-> void:
 var requiem_shot: int 
 var shot_count: int 
 func activate_bullet_requiem()-> void:
+	shot_count = 0
 	var aura_scene = load("res://asset/Vfx/Effect/magic_circle_4(Rosemary).tscn")
 	var aura_node = aura_scene.instantiate()
+	sfx.stream = tower_data.skl_sfx
 	vfx_aura = aura_node
 	altar.add_child(aura_node)
 	aura_node.get_child(5).play("Kaileo_FX")
@@ -602,6 +635,8 @@ func activate_bullet_requiem()-> void:
 	var timer = get_tree().create_timer(skill_duration)
 	timer.timeout.connect(func(): 
 		if bullet_requiem_active:
+			shot_count = 0
+			sfx.stream = tower_data.atk_sfx
 			shot_fired.disconnect(bullet_requiem_counter)
 			aura_node.queue_free()
 			damage = tower_data.damage
@@ -612,6 +647,8 @@ func activate_bullet_requiem()-> void:
 func bullet_requiem_counter():
 	shot_count += 1
 	if shot_count >= requiem_shot and bullet_requiem_active:
+		shot_count = 0
+		sfx.stream = tower_data.atk_sfx
 		damage = tower_data.damage
 		fire_rate = tower_data.speed
 		shot_fired.disconnect(bullet_requiem_counter)

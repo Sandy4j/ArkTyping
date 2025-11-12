@@ -1,6 +1,6 @@
 extends Area3D
 ## TowerSpot - Marks valid locations for tower placement
-
+signal tower_gone(v:TowerData)
 @export var tower_scene: PackedScene
 var tower_data:TowerData
 var tower_node
@@ -35,6 +35,7 @@ func place_tower(data:TowerData) -> void:
 		tower_data = data
 		tower.tower_data = data
 		tower.altar = mesh_instance
+		tower.tower_destroyed.connect(remove_tower)
 		self.add_child(tower)
 		has_tower = true
 		
@@ -42,6 +43,7 @@ func place_tower(data:TowerData) -> void:
 		print("Kurang")
 
 func remove_tower():
+	tower_gone.emit(tower_data)
 	tower_node.queue_free()
 	tower_data = null
 	has_tower = false

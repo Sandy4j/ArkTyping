@@ -6,6 +6,7 @@ var selected_spot_index: int = -1
 var outline_material: ShaderMaterial
 var tower_input: Node = null
 @onready var ui: CanvasLayer = $"../UI"
+var placed_tower:Array[String]
 
 func _ready() -> void:
 	outline_material = ShaderMaterial.new()
@@ -38,6 +39,7 @@ func collect_tower_spots() -> void:
 	for child in get_children():
 		if child is Area3D and child.has_method("place_tower"):
 			tower_spots.append(child)
+			child.tower_gone.connect(tower_gone)
 	
 	print("Found ", tower_spots.size(), " tower spots")
 
@@ -108,11 +110,18 @@ func place_tower_at_selected(data:TowerData) -> void:
 			var msg:String = str(data.chara, " sedang dalam cooldown!")
 			ui.show_message(msg)
 			return
+		for name in placed_tower:
+			if name == data.chara:
+				var msg:String = str("Sudah ada ",data.chara, " yang di panggil!")
+				ui.show_message(msg)
+				return
 		if spot.has_tower:
 			var msg:String = str("Spot ", selected_spot_index + 1, " sudah ada tower!")
 			ui.show_message(msg)
 			return
 		spot.place_tower(data)
+		SFX.play_deploy_sfx()
+		placed_tower.append(data.chara)
 		var msg =str("memasang tower ", data.chara)
 		ui.show_message(msg)
 		update_spot_labels()
@@ -147,12 +156,18 @@ func delete_tower_at_selected() -> void:
 			ui.show_message("Spot ini belum ada tower")
 			return
 		var msg =str("menghapus tower ", spot.tower_data.chara)
-		ui._on_tower_gone(spot.tower_data)
 		GameManager.set_tower_state(spot.tower_data,false)
 		spot.remove_tower()
+		SFX.play_retreat_sfx()
 		update_spot_labels()
 		ui.show_message(msg)
 		TypingSystem.clear_text()
+
+func tower_gone(v:TowerData):
+	ui._on_tower_gone(v)
+	for name in placed_tower:
+			if name == v.chara:
+				placed_tower.erase(name)
 
 func _process(_delta: float) -> void:
 	pass

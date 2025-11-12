@@ -10,10 +10,10 @@
 [ext_resource type="Script" path="res://scripts/LevelInit.gd" id="11_kjd3d"]
 [ext_resource type="PackedScene" uid="uid://dqmlunqfclena" path="res://asset/Vfx/Effect/Portalem.tscn" id="13_y72ps"]
 [ext_resource type="PackedScene" uid="uid://b6ot4uwb74jwf" path="res://scenes/ui.tscn" id="14_2t17w"]
-[ext_resource type="PackedScene" uid="uid://dh34gp23bbucb" path="res://asset/Envi/env_lvl_1_ground.tscn" id="16_pdl2l"]
-[ext_resource type="PackedScene" uid="uid://dmcrg4ny4bb3n" path="res://asset/Envi/props_lvl_1.tscn" id="17_2t17w"]
+[ext_resource type="PackedScene" path="res://asset/Envi/env_lvl_1_ground.tscn" id="16_pdl2l"]
+[ext_resource type="PackedScene" path="res://asset/Envi/props_lvl_1.tscn" id="17_2t17w"]
 [ext_resource type="Resource" uid="uid://baoxfgqvytd5c" path="res://resources/WaveData/Level 1/Wave2_lvl1.tres" id="18_2qse1"]
-[ext_resource type="PackedScene" uid="uid://csob2dk5jrcb5" path="res://asset/Envi/fireflies.tscn" id="18_2t17w"]
+[ext_resource type="PackedScene" path="res://asset/Envi/fireflies.tscn" id="18_2t17w"]
 [ext_resource type="Resource" uid="uid://bb62puqosayiy" path="res://resources/WaveData/Level 1/Wave3_lvl1.tres" id="19_xt52j"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bm28l"]

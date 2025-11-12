@@ -1,10 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://cguadgldcdeki"]
+[gd_scene load_steps=19 format=3 uid="uid://cguadgldcdeki"]
 
 [ext_resource type="Shader" uid="uid://btlagn6h7s7lr" path="res://asset/Vfx/Effect/Toxicball.tres" id="1_7j74i"]
+[ext_resource type="Script" uid="uid://bkso2a2sv0efi" path="res://scripts/Tower/Projectile.gd" id="1_doewy"]
 [ext_resource type="Texture2D" uid="uid://bodgameib6b3" path="res://asset/Vfx/Texture/T_Noise21.png" id="2_doewy"]
-[ext_resource type="Texture2D" uid="uid://btmqfjjmuxm26" path="res://asset/Vfx/Texture/T_VFX_Glow_1.PNG" id="3_k3dry"]
+[ext_resource type="Texture2D" uid="uid://cpw0wnhq6w6yo" path="res://asset/Vfx/Texture/T_VFX_Glow_1.PNG" id="3_k3dry"]
 [ext_resource type="Shader" uid="uid://coauk4bbvmhgx" path="res://asset/Vfx/Effect/Toxicveil.tres" id="4_3w54r"]
-[ext_resource type="ArrayMesh" uid="uid://iotm0untdscf" path="res://asset/Vfx/Obj/Cloud.obj" id="5_qvif2"]
+[ext_resource type="ArrayMesh" uid="uid://516kx5xi1sgu" path="res://asset/Vfx/Obj/Cloud.obj" id="5_qvif2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a4cmf"]
 render_priority = 0
@@ -75,6 +76,7 @@ color = Color(0, 0, 0, 1)
 alpha_curve = SubResource("CurveTexture_hhn1i")
 
 [node name="Toxicball" type="Node3D"]
+script = ExtResource("1_doewy")
 
 [node name="Flare" type="GPUParticles3D" parent="."]
 material_override = SubResource("ShaderMaterial_a4cmf")

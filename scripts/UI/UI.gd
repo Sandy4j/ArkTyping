@@ -1,5 +1,6 @@
 extends CanvasLayer
 
+
 @onready var hp_label: Label = $HP/Health_Con/Cur
 @onready var hp_max_label: Label = $HP/Health_Con/Max
 @onready var currency_label: Label = $TextureProgressBar/Label
@@ -68,7 +69,6 @@ func _on_victory() -> void:
 	await get_tree().create_timer(1.0).timeout
 	if winlose:
 		winlose.show_victory()
-
 
 func _on_tower_gone(data:TowerData) -> void:
 	var v = 0

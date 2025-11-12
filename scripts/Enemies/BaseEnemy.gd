@@ -70,9 +70,12 @@ func _update_logic(delta: float) -> void:
 func take_damage(damage: float) -> void:
 	current_hp -= damage
 	hp_changed.emit(current_hp, enemy_data.max_hp)
-	
+	var vfx_sc = load("res://asset/Vfx/Effect/hit.tscn")
+	var vfx_nd = vfx_sc.instantiate()
+	self.add_child(vfx_nd)
 	if current_hp <= 0:
 		die()
+
 
 func die() -> void:
 	died.emit(enemy_data.reward)

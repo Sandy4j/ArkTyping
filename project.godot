@@ -21,6 +21,7 @@ GameManager="*res://scripts/Autoload/GameManager.gd"
 TypingSystem="*res://scripts/Autoload/TypingSystem.gd"
 LevelManager="*res://scripts/Autoload/LevelManager.gd"
 ObjectPool="*res://scripts/Autoload/ObjectPool.gd"
+SFX="*res://scenes/audio_plauer.tscn"
 
 [display]
 

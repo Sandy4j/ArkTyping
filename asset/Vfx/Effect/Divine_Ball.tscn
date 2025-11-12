@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://btsbps07xmdkk"]
 
-[ext_resource type="Texture2D" uid="uid://btmqfjjmuxm26" path="res://asset/Vfx/Texture/T_VFX_Glow_1.PNG" id="1_ofqfl"]
+[ext_resource type="Texture2D" uid="uid://cpw0wnhq6w6yo" path="res://asset/Vfx/Texture/T_VFX_Glow_1.PNG" id="1_ofqfl"]
 [ext_resource type="Script" uid="uid://csfl7rlx78to1" path="res://scripts/Tower/orbit_skill.gd" id="1_vp5ry"]
 [ext_resource type="Texture2D" uid="uid://c4u62dfftwjec" path="res://asset/Vfx/Texture/T_flare81.png" id="2_yk8ee"]
 
@@ -237,6 +237,8 @@ shape = SubResource("SphereShape3D_dssvg")
 libraries = {
 &"": SubResource("AnimationLibrary_j7aad")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [connection signal="body_entered" from="Ball/Area3D" to="." method="_enemy_near"]
 [connection signal="body_exited" from="Ball/Area3D" to="." method="_enemy_out"]

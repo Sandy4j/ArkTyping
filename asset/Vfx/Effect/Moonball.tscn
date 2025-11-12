@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://digrhep77tlo1"]
+[gd_scene load_steps=11 format=3 uid="uid://digrhep77tlo1"]
 
+[ext_resource type="Script" uid="uid://bkso2a2sv0efi" path="res://scripts/Tower/Projectile.gd" id="1_1kssw"]
 [ext_resource type="Texture2D" uid="uid://bd3rattmqerxy" path="res://asset/Vfx/Texture/T_VFX_hit22.jpg" id="1_a6ttf"]
 [ext_resource type="Texture2D" uid="uid://ko1n4nr3iwh3" path="res://asset/Vfx/Texture/T_trail12.png" id="2_1kssw"]
 
@@ -53,6 +54,7 @@ alpha_curve = SubResource("CurveTexture_vw73x")
 [sub_resource type="QuadMesh" id="QuadMesh_ig2wy"]
 
 [node name="MoonBall" type="Node3D"]
+script = ExtResource("1_1kssw")
 
 [node name="Bijih" type="MeshInstance3D" parent="."]
 material_override = SubResource("StandardMaterial3D_46oii")

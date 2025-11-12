@@ -2,6 +2,8 @@ extends Resource
 class_name TowerData
 
 @export var chara:String
+@export var atk_sfx:AudioStreamWAV
+@export var skl_sfx:AudioStreamWAV
 @export var cost:int
 @export var slot:CompressedTexture2D
 @export var damage:int

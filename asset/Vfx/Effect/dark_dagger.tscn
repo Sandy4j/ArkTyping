@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://bp5td02i78gru"]
+[gd_scene load_steps=9 format=3 uid="uid://bp5td02i78gru"]
 
-[ext_resource type="ArrayMesh" uid="uid://cb34kl2plsx5v" path="res://asset/Vfx/Obj/Dagger.obj" id="1_qv1rf"]
+[ext_resource type="Script" uid="uid://bkso2a2sv0efi" path="res://scripts/Tower/Projectile.gd" id="1_ihmcn"]
+[ext_resource type="ArrayMesh" uid="uid://bje3hc5dl78yw" path="res://asset/Vfx/Obj/Dagger.obj" id="1_qv1rf"]
 [ext_resource type="Texture2D" uid="uid://b7ykjo211uxxq" path="res://asset/Vfx/Texture/Wave.png" id="2_ihmcn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wp4ef"]
@@ -47,6 +48,7 @@ scale_max = 0.5
 [sub_resource type="QuadMesh" id="QuadMesh_gtor4"]
 
 [node name="Dark_Dagger" type="Node3D"]
+script = ExtResource("1_ihmcn")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 light_color = Color(0.58383155, 0, 0.85430586, 1)

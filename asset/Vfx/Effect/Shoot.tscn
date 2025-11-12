@@ -1,7 +1,7 @@
 [gd_scene load_steps=26 format=3 uid="uid://dotj22b2oyv68"]
 
 [ext_resource type="Texture2D" uid="uid://cgw8v64qa3q5v" path="res://asset/Vfx/Texture/Muzzle.png" id="1_f7du8"]
-[ext_resource type="ArrayMesh" uid="uid://t0ogf7v8en0f" path="res://asset/Vfx/Obj/MuzzlePlane.obj" id="2_ornhe"]
+[ext_resource type="ArrayMesh" uid="uid://bb3ixupcuy1jc" path="res://asset/Vfx/Obj/MuzzlePlane.obj" id="2_ornhe"]
 [ext_resource type="Texture2D" uid="uid://dbnq13jiha8oc" path="res://asset/Vfx/Texture/T_VFX_Glo31.png" id="3_ujau8"]
 [ext_resource type="Texture2D" uid="uid://d2i4b8n2qgd45" path="res://asset/Vfx/Texture/T_VFX_Flare_251.jpg" id="4_da2ke"]
 
@@ -151,7 +151,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_bocd8"]
 resource_name = "gun"
-length = 0.5
+length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -159,7 +159,7 @@ tracks/0/path = NodePath("Muzzle:emitting")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.25),
+"times": PackedFloat32Array(0.05),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -171,7 +171,7 @@ tracks/1/path = NodePath("Flash:emitting")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.25),
+"times": PackedFloat32Array(0.05),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -183,7 +183,7 @@ tracks/2/path = NodePath("Sparks:emitting")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.25),
+"times": PackedFloat32Array(0.05),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -195,7 +195,7 @@ tracks/3/path = NodePath("OmniLight3D:light_energy")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.16666667, 0.25, 0.26),
+"times": PackedFloat32Array(0, 0.02, 0.03, 0.07),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [0.0, 0.0, 4.0, 0.0]
@@ -208,6 +208,7 @@ _data = {
 }
 
 [node name="Gun" type="Node3D"]
+transform = Transform3D(-0.054437257, 0.30212614, -0.95171237, -0.9841523, -0.17732517, -6.8722894e-09, -0.16876255, 0.93662995, 0.30699116, 0.2427504, -0.1719296, 0.28618443)
 
 [node name="Muzzle" type="GPUParticles3D" parent="."]
 material_override = SubResource("StandardMaterial3D_st83g")

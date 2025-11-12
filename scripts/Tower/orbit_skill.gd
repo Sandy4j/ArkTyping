@@ -2,6 +2,7 @@ extends Node3D
 @onready var area1: Area3D = $Ball/Area3D
 @onready var area2: Area3D = $Ball2/Area3D
 @onready var anim: AnimationPlayer = $AnimationPlayer
+@onready var sfx: AudioStreamPlayer = $AudioStreamPlayer
 
 var damage:int 
 var timer:float 
@@ -31,12 +32,14 @@ func _enemy_near(body:Node3D)-> void:
 	if body.is_in_group("enemies") and body is CharacterBody3D and body.has_method("take_damage") and !disabled:
 		near_enemy.append(body)
 		body.take_damage(damage)
+		sfx.play()
 		print("body masuk")
 
 func _enemy_take_damage()-> void:
 	for body in near_enemy:
 		body.take_damage(damage)
 		print("body damage")
+		sfx.play()
 
 func _enemy_out(body:Node3D)-> void:
 	if body.is_in_group("enemies") and body is CharacterBody3D and body.has_method("take_damage") and !disabled:
