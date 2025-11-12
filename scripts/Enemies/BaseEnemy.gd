@@ -8,7 +8,7 @@ signal reached_end(damage: int)
 signal hp_changed(current: float, maximum: float)
 
 @export var enemy_data: EnemyData
-@export var bob_height: float = 0.2
+@export var bob_height: float = 0.1
 @export var bob_speed: float = 2.0
 
 var bob_timer: float = 0.0

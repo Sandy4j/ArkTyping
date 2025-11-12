@@ -66,4 +66,3 @@ func normalize_attack():
 func _exit_tree() -> void:
 	# Clean up all enemy references when this node is removed
 	near_enemy.clear()
-

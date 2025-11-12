@@ -45,6 +45,12 @@ enemy_data = ExtResource("2_fl4p0")
 shape = SubResource("SphereShape3D_inemf")
 
 [node name="Anim" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(0.1, 0, 0, 0, 0.09396926, 0.034202013, 0, -0.034202013, 0.09396926, 0, 0, 0)
+transform = Transform3D(0.3, 0, 0, 0, 0.2819078, 0.10260604, 0, -0.10260604, 0.2819078, 0, 0, 0)
 sprite_frames = SubResource("SpriteFrames_rkjbc")
 frame_progress = 0.25783524
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.100949466, 0)
+light_color = Color(1, 0.24313726, 0, 1)
+light_energy = 2.0
+omni_range = 3.0
