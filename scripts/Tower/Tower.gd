@@ -201,39 +201,27 @@ func double_shoot(target: CharacterBody3D) -> void:
 		return
 	
 	var pool_key = "tower_projectile_" + tower_data.chara
-	var pool_key1 = "tower_projectile_" + tower_data.chara
 	
-	# First projectile
-	var projectile1 = ObjectPool.get_pooled_object(pool_key)
-	if not projectile1:
-		projectile1 = projectile.instantiate()
-	else:
-		projectile1.pool_name = pool_key
-	
-	if shoot_point:
-		projectile1.global_position = shoot_point.global_position
-	else:
-		projectile1.global_position = global_position + Vector3.UP
-	
-	projectile1.initialize(target, damage, projectile_speed)
-	
-	# Second projectile
-	await get_tree().create_timer(0.5).timeout
-	
-	var projectile2 = ObjectPool.get_pooled_object(pool_key1)
-	if not projectile2:
-		projectile2 = projectile.instantiate()
-	else:
-		projectile2.pool_name = pool_key
-	
-	get_tree().current_scene.add_child(projectile2)
-	
-	if shoot_point:
-		projectile2.global_position = shoot_point.global_position
-	else:
-		projectile2.global_position = global_position + Vector3.UP
-	
-	projectile2.initialize(target, damage, projectile_speed)
+	for i in 2:
+		if is_instance_valid(target):
+			var projectile = ObjectPool.get_pooled_object(pool_key)
+			print("tembakan ", str(i + 1))
+			if not projectile:
+				projectile = projectile.instantiate()
+			else:
+				projectile.pool_name = pool_key
+			
+			get_tree().current_scene.add_child(projectile)
+			
+			if shoot_point:
+				projectile.global_position = shoot_point.global_position
+			else:
+				projectile.global_position = global_position + Vector3.UP
+			
+			projectile.initialize(target, damage, projectile_speed)
+			if i == 0:
+				await get_tree().create_timer(0.25).timeout
+			
 	shot_fired.emit()
 	print("shot")
 
