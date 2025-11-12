@@ -318,26 +318,26 @@ func scarlet_harvester() -> void:
 	if targets.size() == 0:
 		return
 	
-	var pool_key = "tower_projectile"
+	var pool_key = "tower_projectile_" + tower_data.chara
 	
 	for i in range(targets.size()):
 		var target = targets[i]
 		if is_instance_valid(target):
-			var projectile = ObjectPool.get_pooled_object(pool_key)
+			var proj = ObjectPool.get_pooled_object(pool_key)
 			
-			if not projectile:
-				projectile = projectile.instantiate()
+			if not proj:
+				proj = projectile.instantiate()
 			else:
-				projectile.pool_name = pool_key
+				proj.pool_name = pool_key
 			
-			get_tree().current_scene.add_child(projectile)
+			get_tree().current_scene.add_child(proj)
 			
 			if shoot_point:
-				projectile.global_position = shoot_point.global_position
+				proj.global_position = shoot_point.global_position
 			else:
-				projectile.global_position = global_position + Vector3.UP
+				proj.global_position = global_position + Vector3.UP
 			
-			projectile.initialize(target, damage, projectile_speed)
+			proj.initialize(target, damage, projectile_speed)
 	
 	shot_fired.emit()
 
