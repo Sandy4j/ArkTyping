@@ -1,11 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://bf8e3lgui0tgs"]
+[gd_scene load_steps=27 format=3 uid="uid://dn8wlb3ouseqs"]
 
-[ext_resource type="PackedScene" path="res://asset/Envi/props_lvl_2.tscn" id="1_g685p"]
+[ext_resource type="PackedScene" uid="uid://bwd7cjnmkj54c" path="res://asset/Envi/props_lvl_2.tscn" id="1_g685p"]
 [ext_resource type="PackedScene" uid="uid://ci8240p5goqft" path="res://asset/Envi/ENV lvl 2 ground.fbx" id="2_8yqd8"]
 [ext_resource type="Script" uid="uid://dgxccv80klhc7" path="res://scripts/Tower/TowerCon.gd" id="3_gia0r"]
 [ext_resource type="PackedScene" uid="uid://dfql5k5psmgxn" path="res://scenes/Tower/TowerSpot.tscn" id="4_mihb8"]
 [ext_resource type="PackedScene" uid="uid://cjhp6v8qnx4qm" path="res://scenes/Tower/Tower.tscn" id="5_2owmk"]
-[ext_resource type="PackedScene" path="res://asset/Envi/fireflies.tscn" id="6_cwmx8"]
+[ext_resource type="PackedScene" uid="uid://csob2dk5jrcb5" path="res://asset/Envi/fireflies.tscn" id="6_cwmx8"]
 [ext_resource type="PackedScene" uid="uid://dr5mh3wmxd7uu" path="res://scenes/Base.tscn" id="7_50fh4"]
 [ext_resource type="Script" uid="uid://bpdh0cu6naavy" path="res://scripts/Tower/inputtower.gd" id="8_icmn4"]
 [ext_resource type="Script" uid="uid://g85gwfmcln8s" path="res://scripts/Tower/Tower_Res.gd" id="9_62sbm"]
@@ -16,8 +16,10 @@
 [ext_resource type="PackedScene" uid="uid://b6ot4uwb74jwf" path="res://scenes/ui.tscn" id="14_50fh4"]
 [ext_resource type="Script" uid="uid://4ipxb665lopb" path="res://scripts/WaveManager.gd" id="15_jhp1k"]
 [ext_resource type="Script" path="res://resources/WaveConfig.gd" id="16_oaki6"]
-[ext_resource type="Resource" uid="uid://dgw4ukvn22bjs" path="res://resources/WaveData/Level 1/Wave1_lvl1.tres" id="17_trlnf"]
+[ext_resource type="Resource" uid="uid://g7keyomklb4g" path="res://resources/WaveData/Level 2/Wave1_lvl2.tres" id="17_62sbm"]
+[ext_resource type="Resource" uid="uid://dlusbxt0a43tq" path="res://resources/WaveData/Level 2/Wave2_lvl2.tres" id="18_gcsue"]
 [ext_resource type="Script" path="res://scripts/LevelInit.gd" id="18_wbcm7"]
+[ext_resource type="Resource" uid="uid://b8mlqhwnsco2x" path="res://resources/WaveData/Level 2/Wave3_lvl2.tres" id="19_cypj3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_05651"]
 sky_top_color = Color(0.20850936, 0.256172, 0.3196701, 1)
@@ -40,35 +42,65 @@ fog_light_energy = 0.15
 fog_density = 1.0
 volumetric_fog_density = 0.0
 
+[sub_resource type="Curve3D" id="Curve3D_ksitj"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.02333641, -0.0026993752, -0.0071177483, 0, 0, 0, 0, 0, 0, -12.16044, 0.21439695, 0.069722265, 0, 0, 0, 0, 0, 0, -12.301224, 0.29039288, -2.0461302, 0, 0, 0, 0, 0, 0, -16.453915, 0.50530005, -1.6478955, 0, 0, 0, 0, 0, 0, -16.666739, 0.34425926, -0.043302596, 0, 0, 0, 0, 0, 0, -25.576918, 0.29490137, 0.10003972),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 6
+
+[sub_resource type="Curve3D" id="Curve3D_go1sc"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.03504181, -0.010915518, 0.015470743, 0, 0, 0, 0, 0, 0, -12.628124, 0.1145252, 0.29874086, 0, 0, 0, 0, 0, 0, -12.485738, 0.04718697, -5.873392, 0, 0, 0, 0, 0, 0, -16.843155, 0.395756, -6.1128225, 0, 0, 0, 0, 0, 0, -16.598715, 0.3608818, -4.006143, 0, 0, 0, 0, 0, 0, -24.698082, 0.54687315, -3.5707526),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 6
+
+[sub_resource type="Curve3D" id="Curve3D_hmhyh"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.031261444, -0.018350005, -0.010514617, 0, 0, 0, 0, 0, 0, -12.305484, 0.19526505, 0.45279384, 0, 0, 0, 0, 0, 0, -12.529549, 0.06746209, 6.1162415, 0, 0, 0, 0, 0, 0, -16.505697, 0.4473946, 5.935356, 0, 0, 0, 0, 0, 0, -16.445873, 0.43562746, 4.1407948, 0, 0, 0, 0, 0, 0, -25.30618, 0.46191502, 4.0063806),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 6
+
 [node name="Level02" type="Node3D"]
+script = ExtResource("18_wbcm7")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_xxuo2")
 
 [node name="fireflies" parent="WorldEnvironment" instance=ExtResource("6_cwmx8")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.9788948, 2.130024, -1.9608755)
+metadata/_edit_lock_ = true
 
 [node name="fireflies2" parent="WorldEnvironment" instance=ExtResource("6_cwmx8")]
 transform = Transform3D(1.9728585, 0, -0.32837367, 0, 2, 0, 0.32837367, 0, 1.9728585, 0.99932766, 2.130024, 1.9814351)
+metadata/_edit_lock_ = true
 
 [node name="fireflies3" parent="WorldEnvironment" instance=ExtResource("6_cwmx8")]
 transform = Transform3D(1.9728585, 0, -0.32837367, 0, 2, 0, 0.32837367, 0, 1.9728585, 4.9480047, 2.130024, 0.32718706)
+metadata/_edit_lock_ = true
 
 [node name="fireflies4" parent="WorldEnvironment" instance=ExtResource("6_cwmx8")]
 transform = Transform3D(1.9728585, 0, -0.32837367, 0, 2, 0, 0.32837367, 0, 1.9728585, 8.652671, 2.130024, -1.5470502)
+metadata/_edit_lock_ = true
 
 [node name="fireflies5" parent="WorldEnvironment" instance=ExtResource("6_cwmx8")]
 transform = Transform3D(1.9728585, 0, -0.32837367, 0, 2, 0, 0.32837367, 0, 1.9728585, 8.652671, 2.130024, 2.1884544)
+metadata/_edit_lock_ = true
 
 [node name="OmniLight3D" type="OmniLight3D" parent="WorldEnvironment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.667522, 2.3672886, 0)
 light_color = Color(1, 0.45999998, 0.45999998, 1)
 omni_range = 9.54
 omni_attenuation = 1.194
+metadata/_edit_lock_ = true
 
 [node name="Props lvl 2" parent="WorldEnvironment" instance=ExtResource("1_g685p")]
+metadata/_edit_lock_ = true
 
 [node name="ENV lvl 2 ground" parent="WorldEnvironment" instance=ExtResource("2_8yqd8")]
+metadata/_edit_lock_ = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.37870607, -0.74707997, -0.5463085, -0.49369705, -0.6623454, 0.5635261, -0.7828441, 0.056300182, -0.6196655, 0, 10, 2.6227646)
@@ -147,8 +179,17 @@ grow_vertical = 2
 
 [node name="WaveManager" type="Node" parent="."]
 script = ExtResource("15_jhp1k")
-wave_configs = Array[ExtResource("16_oaki6")]([ExtResource("17_trlnf")])
+wave_configs = Array[ExtResource("16_oaki6")]([ExtResource("17_62sbm"), ExtResource("18_gcsue"), ExtResource("19_cypj3")])
 metadata/_custom_type_script = "uid://4ipxb665lopb"
 
-[node name="LevelInit" type="Node" parent="."]
-script = ExtResource("18_wbcm7")
+[node name="PathMid" type="Path3D" parent="WaveManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.595272, 0, 0)
+curve = SubResource("Curve3D_ksitj")
+
+[node name="PathBot" type="Path3D" parent="WaveManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.595272, 0, 3.9011145)
+curve = SubResource("Curve3D_go1sc")
+
+[node name="PathUp" type="Path3D" parent="WaveManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.595272, 0, -3.97522)
+curve = SubResource("Curve3D_hmhyh")

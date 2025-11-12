@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://biar3j3bf1jix" path="res://asset/UI/main menu/main bg 2.png" id="1_bm8t2"]
 [ext_resource type="Script" uid="uid://d3bjk64bt6a4k" path="res://scripts/UI/main_menu.gd" id="1_n3ahy"]
-[ext_resource type="Texture2D" uid="uid://be3mycma3x04k" path="res://asset/UI/main menu/logo.png" id="1_ngj32"]
 [ext_resource type="Shader" uid="uid://do0kguycoq3ub" path="res://asset/Shader/UI/BgMM.gdshader" id="2_d0t0a"]
 [ext_resource type="Texture2D" uid="uid://diwo1xb6bwxhc" path="res://asset/UI/main menu/Property 1=Default-1.png" id="2_ngj32"]
 [ext_resource type="Texture2D" uid="uid://sfceo856tpns" path="res://asset/UI/main menu/Property 1=Group 13.png" id="3_bm8t2"]
@@ -10,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://4o5bh017l4ey" path="res://asset/UI/main menu/Property 1=Default-2.png" id="4_5d4ag"]
 [ext_resource type="Texture2D" uid="uid://dbxb37k3pjqwb" path="res://asset/UI/main menu/startH.png" id="4_sfthw"]
 [ext_resource type="Shader" uid="uid://pbkrv8edw83r" path="res://asset/Shader/UI/titleMM.gdshader" id="4_sh0sw"]
+[ext_resource type="Texture2D" uid="uid://byq0vr27irhi4" path="res://asset/UI/Title.png" id="5_n3ahy"]
 [ext_resource type="Texture2D" uid="uid://bsbl3643h0vbb" path="res://asset/UI/main menu/Property 1=Default-3.png" id="5_um6dh"]
 [ext_resource type="Texture2D" uid="uid://dn32wdukrcb7g" path="res://asset/UI/main menu/heroH.png" id="7_n3ahy"]
 [ext_resource type="Texture2D" uid="uid://dkrihxgv6vrgd" path="res://asset/UI/main menu/tutorH.png" id="10_scr1a"]
@@ -18,9 +18,9 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wfqjx"]
 shader = ExtResource("2_d0t0a")
-shader_parameter/vignette_strength = 0.6410000304475
-shader_parameter/vignette_size = 0.5090000241775
-shader_parameter/brightness = 0.0
+shader_parameter/vignette_strength = 0.6910000328225
+shader_parameter/vignette_size = 0.554000026315
+shader_parameter/brightness = -0.01799995335500004
 shader_parameter/contrast = 1.1
 shader_parameter/saturation = 1.2
 
@@ -48,6 +48,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_lock_ = true
 
 [node name="BG" type="TextureRect" parent="CanvasLayer/MarginContainer"]
 material = SubResource("ShaderMaterial_wfqjx")
@@ -58,24 +59,23 @@ metadata/_edit_lock_ = true
 
 [node name="Title" type="TextureRect" parent="CanvasLayer"]
 material = SubResource("ShaderMaterial_mtd5q")
-offset_left = 1.0
-offset_top = 2.0
-offset_right = 566.0
-offset_bottom = 302.0
-texture = ExtResource("1_ngj32")
+offset_left = 13.0
+offset_top = -2.0
+offset_right = 799.0
+offset_bottom = 480.0
+texture = ExtResource("5_n3ahy")
 expand_mode = 1
-metadata/_edit_lock_ = true
 
 [node name="ButtonContainer" type="VBoxContainer" parent="CanvasLayer"]
-offset_left = 40.0
-offset_top = 291.0
-offset_right = 390.0
-offset_bottom = 682.0
+offset_left = 51.0
+offset_top = 391.0
+offset_right = 572.0
+offset_bottom = 990.0
 size_flags_vertical = 4
 alignment = 1
 
 [node name="StartBtn" type="TextureButton" parent="CanvasLayer/ButtonContainer"]
-custom_minimum_size = Vector2(350, 75)
+custom_minimum_size = Vector2(600, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 texture_normal = ExtResource("3_normal")
@@ -86,7 +86,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="HeroBtn" type="TextureButton" parent="CanvasLayer/ButtonContainer"]
-custom_minimum_size = Vector2(350, 75)
+custom_minimum_size = Vector2(600, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 texture_normal = ExtResource("2_ngj32")
@@ -97,7 +97,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TutorialBtn" type="TextureButton" parent="CanvasLayer/ButtonContainer"]
-custom_minimum_size = Vector2(350, 75)
+custom_minimum_size = Vector2(600, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 texture_normal = ExtResource("3_bm8t2")
@@ -108,7 +108,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="CreditBtn" type="TextureButton" parent="CanvasLayer/ButtonContainer"]
-custom_minimum_size = Vector2(350, 75)
+custom_minimum_size = Vector2(600, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 texture_normal = ExtResource("4_5d4ag")
@@ -119,7 +119,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="QuitBtn" type="TextureButton" parent="CanvasLayer/ButtonContainer"]
-custom_minimum_size = Vector2(350, 75)
+custom_minimum_size = Vector2(600, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 texture_normal = ExtResource("5_um6dh")

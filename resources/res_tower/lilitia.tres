@@ -1,15 +1,15 @@
 [gd_resource type="Resource" script_class="TowerData" load_steps=12 format=3 uid="uid://dvfphesh2a4nj"]
 
 [ext_resource type="Script" uid="uid://g85gwfmcln8s" path="res://scripts/Tower/Tower_Res.gd" id="1_r3aw5"]
-[ext_resource type="Texture2D" uid="uid://curxqfljfj038" path="res://asset/Tower/Lilitia/Idle/Idle 1.png" id="2_lan6i"]
-[ext_resource type="Texture2D" uid="uid://db67dhfakqtqu" path="res://asset/Tower/Skill/Group (2).png" id="2_yey8d"]
+[ext_resource type="Texture2D" uid="uid://qfy86g5xfv58" path="res://asset/Tower/Lilitia/Idle/Idle 1.png" id="2_lan6i"]
+[ext_resource type="Texture2D" uid="uid://c32nckqnmmkok" path="res://asset/Tower/Skill/Group (2).png" id="2_yey8d"]
 [ext_resource type="Texture2D" uid="uid://o4mqhw0y5qm6" path="res://asset/Tower/Icon/lilitia.png" id="3_74gwk"]
-[ext_resource type="Texture2D" uid="uid://drnj7j2ksw8fc" path="res://asset/Tower/Lilitia/Idle/Idle 2.png" id="3_yey8d"]
-[ext_resource type="Texture2D" uid="uid://c3pgchf81w106" path="res://asset/Tower/Lilitia/Idle/Idle 3.png" id="4_74gwk"]
-[ext_resource type="Texture2D" uid="uid://df3jq4svp5f57" path="res://asset/Tower/Lilitia/Idle/Idle 4.png" id="5_lnjyb"]
-[ext_resource type="Texture2D" uid="uid://bt4ov32syqro5" path="res://asset/Tower/Lilitia/Idle/Idle 5.png" id="6_kg1ol"]
-[ext_resource type="Texture2D" uid="uid://cprc27vtqk0m2" path="res://asset/Tower/Lilitia/Idle/Idle 6.png" id="7_j14hj"]
-[ext_resource type="Texture2D" uid="uid://b36yb7c3lqnxo" path="res://asset/Tower/Lilitia/Idle/Idle 7.png" id="8_x103h"]
+[ext_resource type="Texture2D" uid="uid://i7wiwte2aqke" path="res://asset/Tower/Lilitia/Idle/Idle 2.png" id="3_yey8d"]
+[ext_resource type="Texture2D" uid="uid://dgp4n6o1ik0sa" path="res://asset/Tower/Lilitia/Idle/Idle 3.png" id="4_74gwk"]
+[ext_resource type="Texture2D" uid="uid://dk6h141lex5fo" path="res://asset/Tower/Lilitia/Idle/Idle 4.png" id="5_lnjyb"]
+[ext_resource type="Texture2D" uid="uid://dmumdmc8hrhkt" path="res://asset/Tower/Lilitia/Idle/Idle 5.png" id="6_kg1ol"]
+[ext_resource type="Texture2D" uid="uid://6gl71psq8q0k" path="res://asset/Tower/Lilitia/Idle/Idle 6.png" id="7_j14hj"]
+[ext_resource type="Texture2D" uid="uid://vk11lts7xqc8" path="res://asset/Tower/Lilitia/Idle/Idle 7.png" id="8_x103h"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sdxv4"]
 animations = [{

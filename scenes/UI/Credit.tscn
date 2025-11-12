@@ -1,10 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://dc8bk4wkejumx"]
+[gd_scene load_steps=8 format=3 uid="uid://dc8bk4wkejumx"]
 
 [ext_resource type="Script" uid="uid://b6s5qxp2nqpgv" path="res://scripts/UI/heroUI.gd" id="1_edgvb"]
 [ext_resource type="FontFile" uid="uid://b5as20pm4j1e0" path="res://asset/Font/effortless.ttf" id="1_f6qbb"]
 [ext_resource type="Texture2D" uid="uid://c3x70vb046pjr" path="res://asset/UI/Hero/BG.png" id="1_tcwo4"]
 [ext_resource type="FontFile" uid="uid://bidkq3k8s4itr" path="res://asset/Font/Lovato-Bold.ttf" id="1_wg3bf"]
 [ext_resource type="Texture2D" uid="uid://blapk5wp5wkdu" path="res://asset/UI/Frame.png" id="3_8nxln"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_edgvb"]
+bg_color = Color(0.0768358, 0.07683582, 0.076835774, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tcwo4"]
 bg_color = Color(0, 0, 0, 0)
@@ -32,21 +35,34 @@ grow_vertical = 2
 texture = ExtResource("1_tcwo4")
 expand_mode = 1
 
+[node name="Panel2" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = -535.0
+offset_right = 640.0
+offset_bottom = 539.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="TitleLabel" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -149.5
-offset_top = 31.0
-offset_right = 150.5
-offset_bottom = 130.0
+offset_left = -327.0
+offset_right = 327.0
+offset_bottom = 179.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 0.84313726, 0.5294118, 1)
 theme_override_colors/font_shadow_color = Color(0.9137255, 0.6862745, 0.33333334, 1)
 theme_override_colors/font_outline_color = Color(0.9137255, 0.6862745, 0.33333334, 1)
 theme_override_fonts/font = ExtResource("1_wg3bf")
-theme_override_font_sizes/font_size = 72
+theme_override_font_sizes/font_size = 150
 text = "Credit"
 horizontal_alignment = 1
 
@@ -57,12 +73,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -536.0
-offset_top = -258.0
-offset_right = 537.0
-offset_bottom = 320.0
+offset_left = -640.0
+offset_top = -360.0
+offset_right = 640.0
+offset_bottom = 360.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_edgvb")
 
 [node name="CloseButton" type="Button" parent="."]
 z_index = 10
@@ -70,10 +87,10 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -162.5
-offset_top = 101.0
-offset_right = -102.5
-offset_bottom = 161.0
+offset_left = -379.0
+offset_top = 119.0
+offset_right = -319.0
+offset_bottom = 179.0
 grow_horizontal = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 40
@@ -89,10 +106,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -499.5
-offset_top = -170.0
-offset_right = 500.5
-offset_bottom = 225.0
+offset_left = -668.0
+offset_top = -233.0
+offset_right = 668.0
+offset_bottom = 233.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 100
@@ -111,14 +128,14 @@ size_flags_vertical = 0
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.84313726, 0.5294118, 1)
 theme_override_fonts/font = ExtResource("1_f6qbb")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 45
 text = "Game Designer"
 horizontal_alignment = 1
 
 [node name="Name" type="Label" parent="CreditsContainer/LeftColumn/GameDesigner"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_f6qbb")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 45
 text = "Rayhan Elmo"
 horizontal_alignment = 1
 
@@ -129,14 +146,14 @@ layout_mode = 2
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.84313726, 0.5294118, 1)
 theme_override_fonts/font = ExtResource("1_f6qbb")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 45
 text = "Programmer"
 horizontal_alignment = 1
 
 [node name="Name" type="Label" parent="CreditsContainer/LeftColumn/Programmer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_f6qbb")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 45
 text = "Yoga Sandy
 Ardy Teguh Y."
 horizontal_alignment = 1
@@ -152,14 +169,14 @@ layout_mode = 2
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.84313726, 0.5294118, 1)
 theme_override_fonts/font = ExtResource("1_f6qbb")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 45
 text = "2D Artist"
 horizontal_alignment = 1
 
 [node name="Name" type="Label" parent="CreditsContainer/MiddleColumn/2DArtist"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_f6qbb")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 45
 text = "M. Dimas Ardiansyah
 Fina Salsabila P."
 horizontal_alignment = 1
@@ -171,14 +188,14 @@ layout_mode = 2
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.84313726, 0.5294118, 1)
 theme_override_fonts/font = ExtResource("1_f6qbb")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 45
 text = "Vfx Artist"
 horizontal_alignment = 1
 
 [node name="Name" type="Label" parent="CreditsContainer/MiddleColumn/VFXArtist"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_f6qbb")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 45
 text = "Hiroya Herdinanto"
 horizontal_alignment = 1
 
@@ -189,14 +206,14 @@ layout_mode = 2
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.84313726, 0.5294118, 1)
 theme_override_fonts/font = ExtResource("1_f6qbb")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 45
 text = "Sound Design"
 horizontal_alignment = 1
 
 [node name="Name" type="Label" parent="CreditsContainer/MiddleColumn/SoundDesign"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_f6qbb")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 45
 text = "Bintang Bimantara"
 horizontal_alignment = 1
 
@@ -211,14 +228,14 @@ layout_mode = 2
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.84313726, 0.5294118, 1)
 theme_override_fonts/font = ExtResource("1_f6qbb")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 45
 text = "3D Artist"
 horizontal_alignment = 1
 
 [node name="Name" type="Label" parent="CreditsContainer/RightColumn/3DArtist"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_f6qbb")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 45
 text = "Labib Bayu Aji"
 horizontal_alignment = 1
 
@@ -229,14 +246,14 @@ layout_mode = 2
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.84313726, 0.5294118, 1)
 theme_override_fonts/font = ExtResource("1_f6qbb")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 45
 text = "UI/UX"
 horizontal_alignment = 1
 
 [node name="Name" type="Label" parent="CreditsContainer/RightColumn/UIUX"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_f6qbb")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 45
 text = "M. Hikmal Muzaffir"
 horizontal_alignment = 1
 
@@ -247,10 +264,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -491.0
-offset_top = -315.0
-offset_right = -158.0
-offset_bottom = 1.0
+offset_left = -838.0
+offset_top = -547.0
+offset_right = -276.0
+offset_bottom = -95.0
 grow_horizontal = 0
 grow_vertical = 0
 texture = ExtResource("3_8nxln")

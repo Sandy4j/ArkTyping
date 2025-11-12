@@ -1,8 +1,12 @@
 extends CanvasLayer
 
 @onready var hp_label: Label = $HP/Health_Con/Cur
+@onready var hp_max_label: Label = $HP/Health_Con/Max
 @onready var currency_label: Label = $TextureProgressBar/Label
 @onready var wave_label: Label = $Wave/Wave_Con/Cur
+@onready var wave_max_label: Label = $Wave/Wave_Con/Max
+@onready var enemy_label: Label = $Enemy/Wave_Con/Cur
+@onready var enemy_max_label: Label = $Enemy/Wave_Con/Max
 @onready var wavesystem = $"../WaveManager"
 @onready var message: Label = $Label
 @onready var NPR: NinePatchRect = $NinePatchRect
@@ -21,6 +25,21 @@ func _ready() -> void:
 		var icon_rect = TextureRect.new()
 		icon_rect.texture = tower.slot
 		icon_con.add_child(icon_rect)
+	
+	if wavesystem:
+		wave_max_label.text = str(wavesystem.get_max_waves())
+	
+	call_deferred("_set_max_hp")
+
+func _set_max_hp() -> void:
+	var base = get_tree().current_scene.get_node_or_null("Base")
+	if base and "max_hp" in base:
+		hp_max_label.text = str(base.max_hp)
+
+func _process(_delta: float) -> void:
+	if wavesystem and wavesystem.spawn_manager:
+		var enemy_count = wavesystem.spawn_manager.get_active_enemy_count()
+		enemy_label.text = str(enemy_count)
 
 func _on_currency_changed(amount: int) -> void:
 	currency_label.text = str(amount)
@@ -30,6 +49,15 @@ func _on_base_hp_changed(hp: int) -> void:
 
 func _on_wave_started(wave: int) -> void:
 	wave_label.text = str(wave)
+	
+	if wavesystem and wavesystem.current_wave_config:
+		var max_enemies = 0
+		for spawn_config in wavesystem.current_wave_config.spawn_point_configs:
+			if spawn_config:
+				max_enemies += spawn_config.enemies_to_spawn
+				if spawn_config.has_boss:
+					max_enemies += 1
+		enemy_max_label.text = str(max_enemies)
 
 func _on_game_over(stars: int) -> void:
 	var winlose_scene = load("res://scenes/UI/WinLose.tscn")

@@ -8,5 +8,6 @@
 
 [resource]
 script = ExtResource("4_jjurk")
+spawn_path_node = NodePath("PathBot")
 enemy_spawn_entries = Array[ExtResource("1_rhwch")]([ExtResource("2_o76ek"), ExtResource("3_gpvcs"), ExtResource("4_gf5pk")])
 spawn_interval = 2.0

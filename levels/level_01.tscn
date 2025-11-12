@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cj0xxw8ewgpqy"]
+[gd_scene load_steps=20 format=3 uid="uid://cj0xxw8ewgpqy"]
 
 [ext_resource type="PackedScene" uid="uid://dr5mh3wmxd7uu" path="res://scenes/Base.tscn" id="1_jy02f"]
 [ext_resource type="Script" uid="uid://dgxccv80klhc7" path="res://scripts/Tower/TowerCon.gd" id="3_kjd3d"]
@@ -12,7 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://b6ot4uwb74jwf" path="res://scenes/ui.tscn" id="14_2t17w"]
 [ext_resource type="PackedScene" uid="uid://dh34gp23bbucb" path="res://asset/Envi/env_lvl_1_ground.tscn" id="16_pdl2l"]
 [ext_resource type="PackedScene" uid="uid://dmcrg4ny4bb3n" path="res://asset/Envi/props_lvl_1.tscn" id="17_2t17w"]
+[ext_resource type="Resource" uid="uid://baoxfgqvytd5c" path="res://resources/WaveData/Level 1/Wave2_lvl1.tres" id="18_2qse1"]
 [ext_resource type="PackedScene" uid="uid://csob2dk5jrcb5" path="res://asset/Envi/fireflies.tscn" id="18_2t17w"]
+[ext_resource type="Resource" uid="uid://bb62puqosayiy" path="res://resources/WaveData/Level 1/Wave3_lvl1.tres" id="19_xt52j"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bm28l"]
 sky_top_color = Color(0.20850936, 0.256172, 0.3196701, 1)
@@ -37,12 +39,13 @@ volumetric_fog_density = 0.0
 
 [sub_resource type="Curve3D" id="Curve3D_path"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.007716179, -0.00050777197, -0.0042788386, 0, 0, 0, 0, 0, 0, 6.635499, 0.014657617, 0.24488723, 0, 0, 0, 0, 0, 0, 6.412777, 0.052482247, -2.183722, 0, 0, 0, 0, 0, 0, 10.356508, 0.13016617, -1.9482588, 0, 0, 0, 0, 0, 0, 10.333759, 0.15895164, 0.050750256, 0, 0, 0, 0, 0, 0, 20.367271, 0.11993581, -0.124624014),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.007716179, -0.00050777197, -0.0042788386, 0, 0, 0, 0, 0, 0, 6.635499, 0.014657617, 0.24488723, 0, 0, 0, 0, 0, 0, 6.412777, 0.052482247, -2.183722, 0, 0, 0, 0, 0, 0, 10.356508, 0.13016617, -1.9482588, 0, 0, 0, 0, 0, 0, 13.123932, 0.15895164, -1.9590139, 0, 0, 0, 0, 0, 0, 13.348322, 0.11993581, -0.124624014, 0, 0, 0, 0, 0, 0, 21.813784, 0.6437738, -0.54435325),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
 }
-point_count = 6
+point_count = 7
 
 [node name="Level1" type="Node3D"]
+script = ExtResource("11_kjd3d")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_main")
@@ -114,15 +117,12 @@ max_hp = 10
 
 [node name="WaveManager" type="Node" parent="."]
 script = ExtResource("7_l0eo6")
-wave_configs = Array[ExtResource("8_jy02f")]([ExtResource("9_5dxk1")])
+wave_configs = Array[ExtResource("8_jy02f")]([ExtResource("9_5dxk1"), ExtResource("18_2qse1"), ExtResource("19_xt52j")])
 metadata/_custom_type_script = "uid://4ipxb665lopb"
 
 [node name="EnemyPath" type="Path3D" parent="WaveManager"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.422686, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.422686, 0, 0.86039543)
 curve = SubResource("Curve3D_path")
-
-[node name="LevelInit" type="Node" parent="."]
-script = ExtResource("11_kjd3d")
 
 [node name="Port_al" parent="." instance=ExtResource("13_y72ps")]
 transform = Transform3D(0.68796384, 0, 3.1252592, 0, 2.9454327, 0, -1.4444219, 0, 1.48853, -1.5209916, 1.3340216, 1.2997634)

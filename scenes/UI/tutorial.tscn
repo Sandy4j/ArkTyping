@@ -1,0 +1,80 @@
+[gd_scene load_steps=5 format=3 uid="uid://dk47emq8vgvtc"]
+
+[ext_resource type="Texture2D" uid="uid://cn5y1u5v53pli" path="res://asset/UI/Tutorial/Polygon 5.png" id="2_blqdf"]
+[ext_resource type="FontFile" uid="uid://bidkq3k8s4itr" path="res://asset/Font/Lovato-Bold.ttf" id="3_7h4a3"]
+[ext_resource type="Texture2D" uid="uid://biwi1oblkpcy3" path="res://asset/UI/Tutorial/Polygon 4.png" id="3_mteb2"]
+[ext_resource type="Script" uid="uid://cpw2b5u4udvmy" path="res://scripts/UI/tutorial.gd" id="7"]
+
+[node name="Tutorial" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TutorialImage" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PrevButton" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(120, 50)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -25.0
+offset_right = 120.0
+offset_bottom = 25.0
+grow_vertical = 2
+texture_normal = ExtResource("2_blqdf")
+
+[node name="NextButton" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(120, 50)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -25.0
+offset_bottom = 25.0
+grow_horizontal = 0
+grow_vertical = 2
+texture_normal = ExtResource("3_mteb2")
+
+[node name="PageIndicator" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -50.0
+offset_right = 50.0
+offset_bottom = 30.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_7h4a3")
+theme_override_font_sizes/font_size = 25
+text = "1 / 6"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="PrevButton" to="." method="_on_prev_button_pressed"]
+[connection signal="pressed" from="NextButton" to="." method="_on_next_button_pressed"]

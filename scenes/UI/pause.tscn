@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=3 uid="uid://b8y7ehgxvep5v"]
+
+[ext_resource type="Script" uid="uid://bn6n27ttgmiyn" path="res://scripts/UI/pause.gd" id="1_h04nq"]
+[ext_resource type="Texture2D" uid="uid://dsirwbfffx68h" path="res://asset/UI/Vector.png" id="2_35g5d"]
+[ext_resource type="Texture2D" uid="uid://bkryytcnpimg2" path="res://asset/UI/resumebtn.png" id="3_gc51q"]
+[ext_resource type="Texture2D" uid="uid://c0qumn20tiu0m" path="res://asset/UI/resumehbtn.png" id="4_35g5d"]
+[ext_resource type="Texture2D" uid="uid://bpvwl8ffs6b4w" path="res://asset/UI/mmbtn.png" id="4_wgkjp"]
+[ext_resource type="Texture2D" uid="uid://c8bpfik6l48gp" path="res://asset/UI/mmhbtn.png" id="5_0f636"]
+
+[node name="Pause" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_h04nq")
+
+[node name="Panel2" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_35g5d")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -330.0
+offset_top = -130.0
+offset_bottom = 130.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="resumebtn" type="TextureButton" parent="Panel/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_gc51q")
+texture_pressed = ExtResource("4_35g5d")
+texture_hover = ExtResource("4_35g5d")
+texture_focused = ExtResource("4_35g5d")
+
+[node name="Spacing" type="Control" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="mainmenubtn" type="TextureButton" parent="Panel/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_wgkjp")
+texture_pressed = ExtResource("5_0f636")
+texture_hover = ExtResource("5_0f636")
+texture_focused = ExtResource("5_0f636")

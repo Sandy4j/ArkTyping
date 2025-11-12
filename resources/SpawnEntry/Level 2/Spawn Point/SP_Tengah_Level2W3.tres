@@ -8,5 +8,6 @@
 
 [resource]
 script = ExtResource("4_p5cwv")
+spawn_path_node = NodePath("PathMid")
 enemy_spawn_entries = Array[ExtResource("1_7qbej")]([ExtResource("2_06qco"), ExtResource("3_5e73w"), ExtResource("4_asl14")])
 spawn_interval = 2.0

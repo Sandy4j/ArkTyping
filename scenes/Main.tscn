@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dwmyf3c3kjdih"]
+[gd_scene load_steps=14 format=3 uid="uid://dwt0sim2d263d"]
 
 [ext_resource type="Script" uid="uid://bpdh0cu6naavy" path="res://scripts/Tower/inputtower.gd" id="2_jlsqs"]
 [ext_resource type="Script" uid="uid://dgxccv80klhc7" path="res://scripts/Tower/TowerCon.gd" id="3_q8u5g"]
@@ -126,8 +126,6 @@ tower_scene = ExtResource("6_tower")
 
 [node name="WaveManager" type="Node" parent="."]
 script = ExtResource("6_jlsqs")
-spawn_path_node = NodePath("../EnemyPath")
-base_node = NodePath("../Base")
 metadata/_custom_type_script = "uid://4ipxb665lopb"
 
 [node name="UI" type="CanvasLayer" parent="."]
