@@ -61,7 +61,7 @@ nodes/fragment/connections = PackedInt32Array(9, 0, 0, 0, 4, 0, 0, 1, 9, 4, 4, 0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3t8xt"]
 render_priority = 0
 shader = SubResource("VisualShader_cpwq4")
-shader_parameter/ColorParameter = Color(0.7977378, 0, 0, 1)
+shader_parameter/ColorParameter = Color(0.8392056, 0.36128765, 1, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_vaqed"]
 
@@ -210,7 +210,7 @@ curve = SubResource("Curve_3qwqx")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1dm37"]
 gravity = Vector3(0, 0, 0)
 scale_curve = SubResource("CurveTexture_je8ek")
-color = Color(0.7977378, 0, 0, 1)
+color = Color(0.609818, 0.0029571534, 0.8877956, 1)
 alpha_curve = SubResource("CurveTexture_fq8v0")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_khihn"]
@@ -383,7 +383,7 @@ gravity = Vector3(0, 0, 0)
 scale_min = 1.5
 scale_max = 1.5
 scale_curve = SubResource("CurveTexture_je8ek")
-color = Color(0.7977378, 0, 0, 1)
+color = Color(0.58951926, 0.0012735396, 0.741081, 1)
 alpha_curve = SubResource("CurveTexture_if0c5")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_snt4h"]
@@ -409,7 +409,7 @@ cull_mode = 2
 shading_mode = 0
 vertex_color_use_as_albedo = true
 vertex_color_is_srgb = true
-albedo_color = Color(0.7977378, 0, 0, 1)
+albedo_color = Color(0.6679234, 0.0016530025, 0.8359877, 1)
 albedo_texture = ExtResource("2_c6v4y")
 billboard_mode = 3
 billboard_keep_scale = true
@@ -644,7 +644,7 @@ draw_pass_1 = SubResource("QuadMesh_xj31t")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11783326, 0)
-light_color = Color(0.7977378, 0, 0, 1)
+light_color = Color(0.7246721, 0.0007854939, 0.791992, 1)
 light_energy = 0.0
 omni_range = 1.0
 

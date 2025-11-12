@@ -89,5 +89,5 @@ cooldown = 17
 max_hp = 750.0
 sprite = SubResource("SpriteFrames_nhtar")
 projectile = ExtResource("1_7kj1q")
-projectile_speed = 20
+projectile_speed = 15
 metadata/_custom_type_script = "uid://g85gwfmcln8s"

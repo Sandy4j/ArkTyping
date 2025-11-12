@@ -1,4 +1,4 @@
-﻿extends Node
+extends Node
 class_name PoolSetup
 
 static func setup_pools_for_waves(wave_configs: Array[WaveConfig], tower_datas: Array[TowerData] = []) -> void:
@@ -63,4 +63,3 @@ static func register_tower_projectile_pool(tower_data: TowerData) -> String:
 		print("Registered tower projectile pool on-demand: ", pool_name)
 	
 	return pool_name
-

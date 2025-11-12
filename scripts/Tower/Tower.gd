@@ -40,6 +40,7 @@ var is_animation_playing: bool = false
 @onready var sfx: AudioStreamPlayer = $AudioStreamPlayer
 @onready var shoot_point: Node3D = $ShootPoint
 @onready var skill_sprite: Sprite3D = $SkillSprite
+@onready var HPBar: TextureProgressBar = $SubViewport/TextureProgressBar
 var altar
 
 func _ready() -> void:
@@ -54,8 +55,10 @@ func _ready() -> void:
 		projectile = tower_data.projectile
 		print("load projectile")
 	max_hp = tower_data.max_hp
+	HPBar.max_value = max_hp
 	skill_cooldown = tower_data.cooldown
 	current_hp = max_hp
+	HPBar.value = current_hp
 	sprite.sprite_frames = tower_data.sprite
 	skill_sprite.texture = tower_data.skill_sprite
 	print("Tower initialized with data: ", tower_data.chara)
@@ -129,7 +132,6 @@ func _process(delta: float) -> void:
 			scarlet_harvester()
 		elif tower_data.skill == "bloody opus":
 			double_shoot(current_target)
-			print("vigilante nembak")
 		else:
 			shoot(current_target)
 		fire_timer = 0.0
@@ -174,7 +176,6 @@ func shoot(target: Node3D) -> void:
 		print("shoot dengan custom")
 	else:
 		projectile.pool_name = pool_key
-	projectile.scale = Vector3(0.25,0.25,0.25)
 	get_tree().current_scene.add_child(projectile)
 
 	if shoot_point:
@@ -201,37 +202,26 @@ func double_shoot(target: CharacterBody3D) -> void:
 	
 	var pool_key = "tower_projectile_" + tower_data.chara
 	
-	# First projectile
-	var projectile1 = ObjectPool.get_pooled_object(pool_key)
-	if not projectile1:
-		projectile1 = projectile.instantiate()
-	else:
-		projectile1.pool_name = pool_key
-	
-	if shoot_point:
-		projectile1.global_position = shoot_point.global_position
-	else:
-		projectile1.global_position = global_position + Vector3.UP
-	
-	projectile1.initialize(target, damage, projectile_speed)
-	
-	# Second projectile
-	await get_tree().create_timer(0.15).timeout
-	
-	var projectile2 = ObjectPool.get_pooled_object(pool_key)
-	if not projectile2:
-		projectile2 = projectile.instantiate()
-	else:
-		projectile2.pool_name = pool_key
-	
-	get_tree().current_scene.add_child(projectile2)
-	
-	if shoot_point:
-		projectile2.global_position = shoot_point.global_position
-	else:
-		projectile2.global_position = global_position + Vector3.UP
-	
-	projectile2.initialize(target, damage, projectile_speed)
+	for i in 2:
+		if is_instance_valid(target):
+			var projectile = ObjectPool.get_pooled_object(pool_key)
+			print("tembakan ", str(i + 1))
+			if not projectile:
+				projectile = projectile.instantiate()
+			else:
+				projectile.pool_name = pool_key
+			
+			get_tree().current_scene.add_child(projectile)
+			
+			if shoot_point:
+				projectile.global_position = shoot_point.global_position
+			else:
+				projectile.global_position = global_position + Vector3.UP
+			
+			projectile.initialize(target, damage, projectile_speed)
+			if i == 0:
+				await get_tree().create_timer(0.25).timeout
+			
 	shot_fired.emit()
 	print("shot")
 
@@ -423,6 +413,7 @@ func cleanup_enemies_array() -> void:
 
 func take_damage(dmg: float) -> void:
 	current_hp -= dmg
+	HPBar.value = current_hp
 	var vfx_sc = load("res://asset/Vfx/Effect/hit_Tower.tscn")
 	var vfx_nd = vfx_sc.instantiate()
 	self.add_child(vfx_nd)

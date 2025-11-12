@@ -12,10 +12,6 @@ var near_enemy:Array
 var disabled:bool
 
 func _ready() -> void:
-	#area1.body_entered.connect(_enemy_near)
-	#area2.body_entered.connect(_enemy_near)
-	#area1.body_exited.connect(_enemy_out)
-	#area2.body_exited.connect(_enemy_out)
 	if disabled:
 		anim.play("orbit2")
 	else:
@@ -23,10 +19,22 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	timer += delta
+	cleanup_near_enemy_array()
 	if timer >= dot_timer:
 		if near_enemy.size() != 0 and !disabled:
 			_enemy_take_damage()
 		timer = 0
+
+func cleanup_near_enemy_array():
+	var invalid_enemies = []
+	
+	for enemy in near_enemy:
+		if not is_instance_valid(enemy):
+			invalid_enemies.append(enemy)
+		elif not enemy.is_inside_tree() or not enemy.is_in_group("enemies"):
+			invalid_enemies.append(enemy)
+	for invalid_enemy in invalid_enemies:
+		near_enemy.erase(invalid_enemy)
 
 func _enemy_near(body:Node3D)-> void:
 	if is_instance_valid(body) and body.is_in_group("enemies") and body is CharacterBody3D and body.has_method("take_damage") and !disabled:
