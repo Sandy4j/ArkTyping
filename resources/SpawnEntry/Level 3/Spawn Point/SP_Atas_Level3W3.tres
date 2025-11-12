@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="SpawnPointConfig" load_steps=7 format=3 uid="uid://d0qcdsilab6ul"]
 
 [ext_resource type="Script" path="res://resources/EnemySpawnEntry.gd" id="1_5pqle"]
-[ext_resource type="Resource" uid="uid://bq4231ilgt53l" path="res://resources/Enemy Data/BossDevil.tres" id="1_6cfrx"]
+[ext_resource type="Resource" path="res://resources/Enemy Data/BossDevil.tres" id="1_6cfrx"]
 [ext_resource type="Script" path="res://resources/SpawnPointConfig.gd" id="2_vwj8h"]
 
 [sub_resource type="Resource" id="Resource_vwj8h"]

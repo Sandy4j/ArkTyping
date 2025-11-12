@@ -47,8 +47,8 @@ curve = SubResource("Curve_wnpih")
 emission_shape = 1
 emission_sphere_radius = 0.25
 gravity = Vector3(3, 0, 0)
-scale_min = 0.5
-scale_max = 0.5
+scale_min = 0.099999994
+scale_max = 0.099999994
 alpha_curve = SubResource("CurveTexture_vw73x")
 
 [sub_resource type="QuadMesh" id="QuadMesh_ig2wy"]
@@ -57,6 +57,7 @@ alpha_curve = SubResource("CurveTexture_vw73x")
 script = ExtResource("1_1kssw")
 
 [node name="Bijih" type="MeshInstance3D" parent="."]
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_46oii")
 mesh = SubResource("QuadMesh_5ejvd")
 

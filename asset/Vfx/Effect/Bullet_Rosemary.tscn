@@ -36,8 +36,8 @@ spread = 109.834
 initial_velocity_min = 0.5
 initial_velocity_max = 0.5
 gravity = Vector3(3, 0, 0)
-scale_min = 0.5
-scale_max = 0.5
+scale_min = 0.099999994
+scale_max = 0.099999994
 
 [sub_resource type="QuadMesh" id="QuadMesh_aum4f"]
 
@@ -45,7 +45,7 @@ scale_max = 0.5
 script = ExtResource("1_n23nu")
 
 [node name="Bullet" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.133975, 0, 0)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_ywaxx")
 mesh = ExtResource("1_jw6q4")
 

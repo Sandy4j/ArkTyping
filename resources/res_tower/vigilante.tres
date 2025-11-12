@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://g85gwfmcln8s" path="res://scripts/Tower/Tower_Res.gd" id="1_0vi2l"]
 [ext_resource type="AudioStream" uid="uid://bbg848x0bxta5" path="res://asset/SFX_IGame/Tower/Vigilante/Vigilante Basic Attack.wav" id="1_kudlk"]
-[ext_resource type="PackedScene" uid="uid://elymhaiwcixo" path="res://asset/Vfx/Effect/dark_dagger.tscn" id="1_r1kqw"]
+[ext_resource type="PackedScene" uid="uid://bp5td02i78gru" path="res://asset/Vfx/Effect/dark_dagger.tscn" id="1_r1kqw"]
 [ext_resource type="Texture2D" uid="uid://crc4j2lsv31ri" path="res://asset/Tower/Vigilante/Attack/Attack 1.png" id="2_r1kqw"]
 [ext_resource type="Texture2D" uid="uid://bl7n2hma4ttj6" path="res://asset/Tower/Skill/Group (4).png" id="3_kudlk"]
 [ext_resource type="Texture2D" uid="uid://cewcri2ang2gr" path="res://asset/Tower/Vigilante/Attack/Attack 2.png" id="3_mglro"]

@@ -40,6 +40,7 @@ var is_animation_playing: bool = false
 @onready var sfx: AudioStreamPlayer = $AudioStreamPlayer
 @onready var shoot_point: Node3D = $ShootPoint
 @onready var skill_sprite: Sprite3D = $SkillSprite
+@onready var HPBar: TextureProgressBar = $SubViewport/TextureProgressBar
 var altar
 
 func _ready() -> void:
@@ -54,8 +55,10 @@ func _ready() -> void:
 		projectile = tower_data.projectile
 		print("load projectile")
 	max_hp = tower_data.max_hp
+	HPBar.max_value = max_hp
 	skill_cooldown = tower_data.cooldown
 	current_hp = max_hp
+	HPBar.value = current_hp
 	sprite.sprite_frames = tower_data.sprite
 	skill_sprite.texture = tower_data.skill_sprite
 	print("Tower initialized with data: ", tower_data.chara)
@@ -423,6 +426,7 @@ func cleanup_enemies_array() -> void:
 
 func take_damage(dmg: float) -> void:
 	current_hp -= dmg
+	HPBar.value = current_hp
 	var vfx_sc = load("res://asset/Vfx/Effect/hit_Tower.tscn")
 	var vfx_nd = vfx_sc.instantiate()
 	self.add_child(vfx_nd)
