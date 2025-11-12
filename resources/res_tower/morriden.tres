@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="TowerData" load_steps=19 format=3 uid="uid://buqk2061a1dx5"]
+[gd_resource type="Resource" script_class="TowerData" load_steps=20 format=3 uid="uid://buqk2061a1dx5"]
 
 [ext_resource type="PackedScene" uid="uid://cguadgldcdeki" path="res://asset/Vfx/Effect/Toxicball.tscn" id="1_4fch3"]
 [ext_resource type="Script" uid="uid://g85gwfmcln8s" path="res://scripts/Tower/Tower_Res.gd" id="1_ij4bj"]
 [ext_resource type="Texture2D" uid="uid://dso8g82mhgt0a" path="res://asset/Tower/Morriden/attack/Skill 1.png" id="2_psi17"]
 [ext_resource type="Texture2D" uid="uid://b82vm62mjc0sr" path="res://asset/Tower/Morriden/attack/Skill 2.png" id="3_4fch3"]
 [ext_resource type="Texture2D" uid="uid://byqswygwdwj2q" path="res://asset/Tower/Skill/Group (5).png" id="3_m2pgc"]
+[ext_resource type="Texture2D" uid="uid://cbsudml4v6so8" path="res://asset/Tower/Icon/morriden.png" id="4_8ujri"]
 [ext_resource type="Texture2D" uid="uid://cuj8ccr2cptcs" path="res://asset/Tower/Morriden/attack/Skill 3.png" id="4_m2pgc"]
 [ext_resource type="Texture2D" uid="uid://ujnwjwy8whhh" path="res://asset/Tower/Morriden/attack/Skill 4.png" id="5_8ujri"]
 [ext_resource type="Texture2D" uid="uid://b4oxyw54djlty" path="res://asset/Tower/Morriden/attack/Skill 5.png" id="6_s2ut6"]
@@ -76,6 +77,8 @@ animations = [{
 [resource]
 script = ExtResource("1_ij4bj")
 chara = "morriden"
+cost = 10
+slot = ExtResource("4_8ujri")
 damage = 20
 speed = 0.9
 range = 100.0

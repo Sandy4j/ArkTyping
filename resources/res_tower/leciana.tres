@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="TowerData" load_steps=20 format=3 uid="uid://duvfgb70bw3fq"]
+[gd_resource type="Resource" script_class="TowerData" load_steps=21 format=3 uid="uid://duvfgb70bw3fq"]
 
 [ext_resource type="Script" uid="uid://g85gwfmcln8s" path="res://scripts/Tower/Tower_Res.gd" id="1_buyxb"]
 [ext_resource type="PackedScene" uid="uid://cj1oprebspu6a" path="res://asset/Vfx/Effect/BloodBall.tscn" id="1_jf8tk"]
 [ext_resource type="Texture2D" uid="uid://jjoikjnhxbnw" path="res://asset/Tower/Leciana/Attack/Skill 1.png" id="2_pw78m"]
 [ext_resource type="Texture2D" uid="uid://bronsqodwaheq" path="res://asset/Tower/Leciana/Attack/Skill 2.png" id="3_jf8tk"]
 [ext_resource type="Texture2D" uid="uid://bkr8tjeewk2ig" path="res://asset/Tower/Skill/Group (3).png" id="3_wtv25"]
+[ext_resource type="Texture2D" uid="uid://b8hb8g5ahvr2l" path="res://asset/Tower/Icon/leciana.png" id="4_p6mwc"]
 [ext_resource type="Texture2D" uid="uid://mu2e31dtqlvn" path="res://asset/Tower/Leciana/Attack/Skill 3.png" id="4_wtv25"]
 [ext_resource type="Texture2D" uid="uid://doe765qle0p5j" path="res://asset/Tower/Leciana/Attack/Skill 4.png" id="5_p6mwc"]
 [ext_resource type="Texture2D" uid="uid://m8lgy7tebg2f" path="res://asset/Tower/Leciana/Attack/Skill 5.png" id="6_c2k8j"]
@@ -80,6 +81,8 @@ animations = [{
 [resource]
 script = ExtResource("1_buyxb")
 chara = "leciana"
+cost = 13
+slot = ExtResource("4_p6mwc")
 damage = 15
 speed = 1.2
 range = 150.0

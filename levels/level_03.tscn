@@ -1,11 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://cq5sf3fg38dtf"]
+[gd_scene load_steps=22 format=3 uid="uid://csf6jqmmtahw1"]
 
 [ext_resource type="Material" uid="uid://ctd55tbm5xssh" path="res://asset/Shader/Sky/night.tres" id="1_6hrdw"]
 [ext_resource type="Script" uid="uid://dgxccv80klhc7" path="res://scripts/Tower/TowerCon.gd" id="3_2wlag"]
 [ext_resource type="PackedScene" uid="uid://dfql5k5psmgxn" path="res://scenes/Tower/TowerSpot.tscn" id="4_3ew82"]
 [ext_resource type="PackedScene" uid="uid://cjhp6v8qnx4qm" path="res://scenes/Tower/Tower.tscn" id="5_0bj1y"]
 [ext_resource type="PackedScene" path="res://asset/Envi/env_lvl_3_ground.tscn" id="5_wq170"]
-[ext_resource type="PackedScene" uid="uid://csob2dk5jrcb5" path="res://asset/Envi/fireflies.tscn" id="6_6181x"]
+[ext_resource type="PackedScene" path="res://asset/Envi/fireflies.tscn" id="6_6181x"]
 [ext_resource type="PackedScene" path="res://asset/Envi/props_lvl_3.tscn" id="6_wq170"]
 [ext_resource type="PackedScene" uid="uid://dr5mh3wmxd7uu" path="res://scenes/Base.tscn" id="8_2la83"]
 [ext_resource type="Script" uid="uid://bpdh0cu6naavy" path="res://scripts/Tower/inputtower.gd" id="9_myllq"]
@@ -14,10 +14,10 @@
 [ext_resource type="Resource" uid="uid://dvfphesh2a4nj" path="res://resources/res_tower/lilitia.tres" id="12_my8pt"]
 [ext_resource type="Resource" uid="uid://buqk2061a1dx5" path="res://resources/res_tower/morriden.tres" id="13_phrv1"]
 [ext_resource type="Resource" uid="uid://bhwlp2kr8e0ir" path="res://resources/res_tower/silvanna.tres" id="14_t7pr7"]
-[ext_resource type="Script" uid="uid://bbexpquh4b3ip" path="res://scripts/UI/UI.gd" id="15_q5run"]
 [ext_resource type="Script" uid="uid://4ipxb665lopb" path="res://scripts/WaveManager.gd" id="16_lbtiq"]
 [ext_resource type="Script" path="res://resources/WaveConfig.gd" id="17_bueam"]
 [ext_resource type="Resource" uid="uid://dgw4ukvn22bjs" path="res://resources/WaveData/Level 1/Wave1_lvl1.tres" id="18_u6lkg"]
+[ext_resource type="PackedScene" uid="uid://b6ot4uwb74jwf" path="res://scenes/ui.tscn" id="19_2la83"]
 [ext_resource type="Script" path="res://scripts/LevelInit.gd" id="19_vxifu"]
 
 [sub_resource type="Sky" id="Sky_2qse1"]
@@ -167,43 +167,6 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="UI" type="CanvasLayer" parent="."]
-script = ExtResource("15_q5run")
-
-[node name="Panel" type="Panel" parent="UI"]
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 210.0
-offset_bottom = 110.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = 10.0
-offset_right = -10.0
-offset_bottom = -10.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="HPLabel" type="Label" parent="UI/Panel/VBoxContainer"]
-layout_mode = 2
-text = "Base HP: 20"
-
-[node name="CurrencyLabel" type="Label" parent="UI/Panel/VBoxContainer"]
-layout_mode = 2
-text = "Currency: 100"
-
-[node name="WaveLabel" type="Label" parent="UI/Panel/VBoxContainer"]
-layout_mode = 2
-text = "Wave: 0"
-
-[node name="Label" type="Label" parent="UI"]
-offset_right = 40.0
-offset_bottom = 23.0
-
 [node name="WaveManager" type="Node" parent="."]
 script = ExtResource("16_lbtiq")
 wave_configs = Array[ExtResource("17_bueam")]([ExtResource("18_u6lkg")])
@@ -211,3 +174,5 @@ metadata/_custom_type_script = "uid://4ipxb665lopb"
 
 [node name="LevelInit" type="Node" parent="."]
 script = ExtResource("19_vxifu")
+
+[node name="UI" parent="." instance=ExtResource("19_2la83")]

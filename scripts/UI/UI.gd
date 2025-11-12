@@ -5,6 +5,9 @@ extends CanvasLayer
 @onready var wave_label: Label = $Wave/Wave_Con/Cur
 @onready var wavesystem = $"../WaveManager"
 @onready var message: Label = $Label
+@onready var NPR: NinePatchRect = $NinePatchRect
+@onready var input: TowerInput = $Input
+@onready var icon_con: HBoxContainer = $NinePatchRect/MarginContainer/HBoxContainer
 
 func _ready() -> void:
 	GameManager.currency_changed.connect(_on_currency_changed)
@@ -13,6 +16,11 @@ func _ready() -> void:
 	LevelManager.victory.connect(_on_victory)
 	wavesystem.wave_started.connect(_on_wave_started)
 	message.visible = false
+	NPR.size = Vector2((145 * input.tower_list.size()),169)
+	for tower in input.tower_list:
+		var icon_rect = TextureRect.new()
+		icon_rect.texture = tower.slot
+		icon_con.add_child(icon_rect)
 
 func _on_currency_changed(amount: int) -> void:
 	currency_label.text = str(amount)
@@ -37,6 +45,47 @@ func _on_victory() -> void:
 		var winlose_instance = winlose_scene.instantiate()
 		get_tree().current_scene.add_child(winlose_instance)
 		winlose_instance.show_victory()
+
+
+func _on_tower_gone(data:TowerData) -> void:
+	var v = 0
+	var tmp = -1
+	for tower in input.tower_list:
+		tmp += 1
+		if data == tower:
+			v = tmp
+	var target:TextureRect = icon_con.get_child(v)
+	target.self_modulate = Color(0.5,0.5,0.5)
+	var CD = Label.new()
+	target.add_child(CD)
+	CD.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	CD.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	var cus_fnt = load("res://asset/UI_Gameplay/effortless.ttf")
+	CD.anchor_bottom = 1
+	CD.anchor_right = 1
+	CD.add_theme_font_override("font", cus_fnt)
+	CD.add_theme_color_override("font_color", Color.WHITE)
+	CD.add_theme_font_size_override("font_size", 35)
+	
+	start_countdown(data, target, CD)
+
+func start_countdown(data:TowerData, target: TextureRect, countdown_label: Label):
+	var countdown_time: int = 10  # 10 detik
+	var current_time: int = countdown_time
+	
+	while current_time > 0:
+		countdown_label.text = str(ceil(current_time))  
+		await get_tree().create_timer(1.0).timeout 
+		current_time -= 1.0
+	
+	countdown_finished(data, target, countdown_label)
+
+func countdown_finished(data:TowerData, target: TextureRect, countdown_label: Label):
+	target.self_modulate = Color(1.0, 1.0, 1.0)
+	GameManager.set_tower_state(data,true)
+	countdown_label.queue_free()
+	
+	print("Countdown finished for tower ", data.chara)
 
 func show_message(v:String):
 	message.text = v

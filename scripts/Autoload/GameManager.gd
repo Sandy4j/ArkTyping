@@ -73,3 +73,6 @@ func reset_game_state() -> void:
 	base_reference = null
 	currency = starting_currency
 	currency_changed.emit(currency)
+
+func set_tower_state(data:TowerData,v:bool):
+	data.available = v

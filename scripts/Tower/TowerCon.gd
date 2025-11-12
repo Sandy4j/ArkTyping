@@ -104,6 +104,10 @@ func update_spot_labels() -> void:
 func place_tower_at_selected(data:TowerData) -> void:
 	if selected_spot_index >= 0 and selected_spot_index < tower_spots.size():
 		var spot = tower_spots[selected_spot_index]
+		if !data.available:
+			var msg:String = str(data.chara, " sedang dalam cooldown!")
+			ui.show_message(msg)
+			return
 		if spot.has_tower:
 			var msg:String = str("Spot ", selected_spot_index + 1, " sudah ada tower!")
 			ui.show_message(msg)
@@ -143,6 +147,8 @@ func delete_tower_at_selected() -> void:
 			ui.show_message("Spot ini belum ada tower")
 			return
 		var msg =str("menghapus tower ", spot.tower_data.chara)
+		ui._on_tower_gone(spot.tower_data)
+		GameManager.set_tower_state(spot.tower_data,false)
 		spot.remove_tower()
 		update_spot_labels()
 		ui.show_message(msg)

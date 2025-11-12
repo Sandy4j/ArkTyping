@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="TowerData" load_steps=15 format=3 uid="uid://bhwlp2kr8e0ir"]
+[gd_resource type="Resource" script_class="TowerData" load_steps=16 format=3 uid="uid://bhwlp2kr8e0ir"]
 
 [ext_resource type="PackedScene" uid="uid://digrhep77tlo1" path="res://asset/Vfx/Effect/Moonball.tscn" id="1_3waq0"]
 [ext_resource type="Script" uid="uid://g85gwfmcln8s" path="res://scripts/Tower/Tower_Res.gd" id="1_h3o12"]
 [ext_resource type="Texture2D" uid="uid://dojhd6q0i4pkm" path="res://asset/Tower/Silvanna/Skill/Skill 1.png" id="2_ky5px"]
 [ext_resource type="Texture2D" uid="uid://b468ot5ed3c60" path="res://asset/Tower/Silvanna/Skill/Skill 2.png" id="3_3waq0"]
 [ext_resource type="Texture2D" uid="uid://dqycj11p0j71g" path="res://asset/Tower/Skill/Group (1).png" id="3_8e85y"]
+[ext_resource type="Texture2D" uid="uid://clh72ftxl4rjq" path="res://asset/Tower/Icon/silvanna.png" id="4_7y1np"]
 [ext_resource type="Texture2D" uid="uid://dlmyqsjgp4sib" path="res://asset/Tower/Silvanna/Skill/Skill 3.png" id="4_8e85y"]
 [ext_resource type="Texture2D" uid="uid://b5yrrvhlojnrv" path="res://asset/Tower/Silvanna/Skill/Skill 4.png" id="5_7y1np"]
 [ext_resource type="Texture2D" uid="uid://dtmxv5l16fw24" path="res://asset/Tower/Silvanna/Skill/Skill 5.png" id="6_exrmv"]
@@ -60,6 +61,8 @@ animations = [{
 [resource]
 script = ExtResource("1_h3o12")
 chara = "silvanna"
+cost = 9
+slot = ExtResource("4_7y1np")
 damage = 20
 speed = 0.8
 range = 200.0

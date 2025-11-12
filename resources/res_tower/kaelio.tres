@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="TowerData" load_steps=18 format=3 uid="uid://bk8grfmo48v2h"]
+[gd_resource type="Resource" script_class="TowerData" load_steps=19 format=3 uid="uid://bk8grfmo48v2h"]
 
 [ext_resource type="PackedScene" uid="uid://csgdym37gysnc" path="res://asset/Vfx/Effect/Bullet_Kaelio.tscn" id="1_7kj1q"]
 [ext_resource type="Script" uid="uid://g85gwfmcln8s" path="res://scripts/Tower/Tower_Res.gd" id="1_ekg0c"]
 [ext_resource type="Texture2D" uid="uid://b4ltm1v3v0koq" path="res://asset/Tower/Kaelio/Attack/Skill 1.png" id="2_0jynn"]
 [ext_resource type="Texture2D" uid="uid://lvkn0a71cx7i" path="res://asset/Tower/Kaelio/Attack/Skill 2.png" id="3_7kj1q"]
 [ext_resource type="Texture2D" uid="uid://bxhxv4arheov4" path="res://asset/Tower/Skill/Group.png" id="3_45kid"]
+[ext_resource type="Texture2D" uid="uid://efhxgc32kqwv" path="res://asset/Tower/Icon/kaelio.png" id="4_3xivg"]
 [ext_resource type="Texture2D" uid="uid://d0t3knmdnyy5f" path="res://asset/Tower/Kaelio/Attack/Skill 3.png" id="4_45kid"]
 [ext_resource type="Texture2D" uid="uid://53liuwxfj4ag" path="res://asset/Tower/Kaelio/Attack/Skill 4.png" id="5_3xivg"]
 [ext_resource type="Texture2D" uid="uid://b1onhl0gn58cc" path="res://asset/Tower/Kaelio/Attack/Skill 5.png" id="6_v2kk4"]
@@ -72,6 +73,8 @@ animations = [{
 [resource]
 script = ExtResource("1_ekg0c")
 chara = "kaelio"
+cost = 7
+slot = ExtResource("4_3xivg")
 damage = 10
 speed = 1.2
 range = 200.0

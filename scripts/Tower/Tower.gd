@@ -105,6 +105,7 @@ func _process(delta: float) -> void:
 			scarlet_harvester()
 		elif tower_data.skill == "bloody opus":
 			double_shoot(current_target)
+			print("vigilante nembak")
 		else:
 			shoot(current_target)
 		fire_timer = 0.0
@@ -165,11 +166,9 @@ func double_shoot(target: CharacterBody3D) -> void:
 	is_shooting = true
 	is_animation_playing = true
 	
-	# 🎯 STOP ANIMASI IDLE DULU
 	sprite.stop()
-	
-	# 🎯 PLAY ANIMASI ATTACK
 	sprite.play("attack")
+	
 	if not projectile_scene:
 		return
 	
@@ -316,7 +315,6 @@ func scarlet_harvester() -> void:
 			projectile.initialize(target, damage, projectile_speed)
 	
 	shot_fired.emit()
-	print("Triple Shot! Hit ", targets.size(), " enemies")
 
 func find_nearest_enemy() -> CharacterBody3D:
 	var enemies = get_tree().get_nodes_in_group("enemies")

@@ -29,7 +29,7 @@ func place_tower(data:TowerData) -> void:
 	if has_tower or not tower_scene:
 		return
 	
-	if GameManager.spend_currency(tower_cost):
+	if GameManager.spend_currency(data.cost):
 		var tower = tower_scene.instantiate()
 		tower_node = tower
 		tower_data = data

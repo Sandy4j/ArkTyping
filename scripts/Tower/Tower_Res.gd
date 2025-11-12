@@ -2,6 +2,8 @@ extends Resource
 class_name TowerData
 
 @export var chara:String
+@export var cost:int
+@export var slot:CompressedTexture2D
 @export var damage:int
 @export var speed:float
 @export var range:float
@@ -14,3 +16,4 @@ class_name TowerData
 @export var projectile:PackedScene
 @export var projectile_speed:int
 @export var projectile_scene:PackedScene
+var available:bool = true

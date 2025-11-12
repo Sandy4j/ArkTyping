@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b6ot4uwb74jwf"]
+[gd_scene load_steps=20 format=3 uid="uid://b6ot4uwb74jwf"]
 
 [ext_resource type="Script" uid="uid://bbexpquh4b3ip" path="res://scripts/UI/UI.gd" id="1_6rmj2"]
 [ext_resource type="Texture2D" uid="uid://b12vcxaju3drt" path="res://asset/UI_Gameplay/Heart_BG.png" id="2_vsj0x"]
@@ -9,16 +9,34 @@
 [ext_resource type="Texture2D" uid="uid://dcjddmsrg8vdy" path="res://asset/UI_Gameplay/Wave.png" id="7_8k7j3"]
 [ext_resource type="Texture2D" uid="uid://cci18kuxibjpy" path="res://asset/UI_Gameplay/Energy_BG.png" id="8_jkdwc"]
 [ext_resource type="Texture2D" uid="uid://qgwf3s20g5g" path="res://asset/UI_Gameplay/Chara_BG.png" id="9_rlppe"]
-[ext_resource type="Texture2D" uid="uid://c0biiiaj1qxo4" path="res://asset/UI_Gameplay/Example.png" id="10_ycmcx"]
 [ext_resource type="Texture2D" uid="uid://ej7fvjdun2vt" path="res://asset/UI_Gameplay/History_Box.png" id="11_kupmu"]
 [ext_resource type="Texture2D" uid="uid://omvvnc2d3cag" path="res://asset/UI_Gameplay/Type_Box.png" id="12_catpy"]
+[ext_resource type="Script" uid="uid://bpdh0cu6naavy" path="res://scripts/Tower/inputtower.gd" id="13_jkdwc"]
+[ext_resource type="Script" uid="uid://g85gwfmcln8s" path="res://scripts/Tower/Tower_Res.gd" id="14_rlppe"]
+[ext_resource type="Resource" uid="uid://bk8grfmo48v2h" path="res://resources/res_tower/kaelio.tres" id="15_ycmcx"]
+[ext_resource type="Resource" uid="uid://dvfphesh2a4nj" path="res://resources/res_tower/lilitia.tres" id="16_kupmu"]
+[ext_resource type="Resource" uid="uid://buqk2061a1dx5" path="res://resources/res_tower/morriden.tres" id="17_catpy"]
+[ext_resource type="Resource" uid="uid://bhwlp2kr8e0ir" path="res://resources/res_tower/silvanna.tres" id="18_41akx"]
+[ext_resource type="Resource" uid="uid://bxhddhmrf4wrn" path="res://resources/res_tower/rosemary.tres" id="18_jkdwc"]
+[ext_resource type="Resource" uid="uid://duvfgb70bw3fq" path="res://resources/res_tower/leciana.tres" id="19_rlppe"]
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_6rmj2")
 
 [node name="Label" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 102.0
+offset_right = 20.0
+offset_bottom = 157.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_h1mc3")
+theme_override_font_sizes/font_size = 40
 
 [node name="HP" type="TextureRect" parent="."]
 offset_top = 49.0
@@ -218,29 +236,19 @@ text = "16"
 horizontal_alignment = 1
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
-custom_minimum_size = Vector2(0, 166)
+custom_minimum_size = Vector2(0, 169)
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -310.5
-offset_top = -170.0
-offset_right = 310.5
+offset_top = -169.0
+offset_right = -310.5
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("9_rlppe")
 region_rect = Rect2(0, 0, 602, 171)
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="NinePatchRect"]
-layout_mode = 0
-offset_left = 7.0
-offset_top = 7.0
-offset_right = 621.0
-offset_bottom = 30.0
-
-[node name="Label" type="Label" parent="NinePatchRect/HBoxContainer2"]
-layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="NinePatchRect"]
 layout_mode = 1
@@ -256,10 +264,7 @@ theme_override_constants/margin_left = 7
 custom_minimum_size = Vector2(140, 0)
 layout_mode = 2
 size_flags_vertical = 8
-
-[node name="TextureRect" type="TextureRect" parent="NinePatchRect/MarginContainer/HBoxContainer"]
-layout_mode = 2
-texture = ExtResource("10_ycmcx")
+alignment = 1
 
 [node name="HistoryBox" type="TextureRect" parent="."]
 anchors_preset = 2
@@ -338,3 +343,7 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("4_h1mc3")
 theme_override_font_sizes/font_size = 24
 vertical_alignment = 1
+
+[node name="Input" type="Node" parent="." groups=["towerinput"]]
+script = ExtResource("13_jkdwc")
+tower_list = Array[ExtResource("14_rlppe")]([ExtResource("15_ycmcx"), ExtResource("16_kupmu"), ExtResource("17_catpy"), ExtResource("18_41akx"), ExtResource("18_jkdwc"), ExtResource("19_rlppe")])

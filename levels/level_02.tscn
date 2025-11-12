@@ -1,11 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://dn8wlb3ouseqs"]
+[gd_scene load_steps=22 format=3 uid="uid://bf8e3lgui0tgs"]
 
 [ext_resource type="PackedScene" path="res://asset/Envi/props_lvl_2.tscn" id="1_g685p"]
 [ext_resource type="PackedScene" uid="uid://ci8240p5goqft" path="res://asset/Envi/ENV lvl 2 ground.fbx" id="2_8yqd8"]
 [ext_resource type="Script" uid="uid://dgxccv80klhc7" path="res://scripts/Tower/TowerCon.gd" id="3_gia0r"]
 [ext_resource type="PackedScene" uid="uid://dfql5k5psmgxn" path="res://scenes/Tower/TowerSpot.tscn" id="4_mihb8"]
 [ext_resource type="PackedScene" uid="uid://cjhp6v8qnx4qm" path="res://scenes/Tower/Tower.tscn" id="5_2owmk"]
-[ext_resource type="PackedScene" uid="uid://csob2dk5jrcb5" path="res://asset/Envi/fireflies.tscn" id="6_cwmx8"]
+[ext_resource type="PackedScene" path="res://asset/Envi/fireflies.tscn" id="6_cwmx8"]
 [ext_resource type="PackedScene" uid="uid://dr5mh3wmxd7uu" path="res://scenes/Base.tscn" id="7_50fh4"]
 [ext_resource type="Script" uid="uid://bpdh0cu6naavy" path="res://scripts/Tower/inputtower.gd" id="8_icmn4"]
 [ext_resource type="Script" uid="uid://g85gwfmcln8s" path="res://scripts/Tower/Tower_Res.gd" id="9_62sbm"]
@@ -13,7 +13,7 @@
 [ext_resource type="Resource" uid="uid://dvfphesh2a4nj" path="res://resources/res_tower/lilitia.tres" id="11_cypj3"]
 [ext_resource type="Resource" uid="uid://buqk2061a1dx5" path="res://resources/res_tower/morriden.tres" id="12_ksitj"]
 [ext_resource type="Resource" uid="uid://bhwlp2kr8e0ir" path="res://resources/res_tower/silvanna.tres" id="13_go1sc"]
-[ext_resource type="Script" uid="uid://bbexpquh4b3ip" path="res://scripts/UI/UI.gd" id="14_hmhyh"]
+[ext_resource type="PackedScene" uid="uid://b6ot4uwb74jwf" path="res://scenes/ui.tscn" id="14_50fh4"]
 [ext_resource type="Script" uid="uid://4ipxb665lopb" path="res://scripts/WaveManager.gd" id="15_jhp1k"]
 [ext_resource type="Script" path="res://resources/WaveConfig.gd" id="16_oaki6"]
 [ext_resource type="Resource" uid="uid://dgw4ukvn22bjs" path="res://resources/WaveData/Level 1/Wave1_lvl1.tres" id="17_trlnf"]
@@ -143,42 +143,7 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="UI" type="CanvasLayer" parent="."]
-script = ExtResource("14_hmhyh")
-
-[node name="Panel" type="Panel" parent="UI"]
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 210.0
-offset_bottom = 110.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = 10.0
-offset_right = -10.0
-offset_bottom = -10.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="HPLabel" type="Label" parent="UI/Panel/VBoxContainer"]
-layout_mode = 2
-text = "Base HP: 20"
-
-[node name="CurrencyLabel" type="Label" parent="UI/Panel/VBoxContainer"]
-layout_mode = 2
-text = "Currency: 100"
-
-[node name="WaveLabel" type="Label" parent="UI/Panel/VBoxContainer"]
-layout_mode = 2
-text = "Wave: 0"
-
-[node name="Label" type="Label" parent="UI"]
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="UI" parent="." instance=ExtResource("14_50fh4")]
 
 [node name="WaveManager" type="Node" parent="."]
 script = ExtResource("15_jhp1k")

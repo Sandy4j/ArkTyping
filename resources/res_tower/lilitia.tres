@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="TowerData" load_steps=11 format=3 uid="uid://dvfphesh2a4nj"]
+[gd_resource type="Resource" script_class="TowerData" load_steps=12 format=3 uid="uid://dvfphesh2a4nj"]
 
 [ext_resource type="Script" uid="uid://g85gwfmcln8s" path="res://scripts/Tower/Tower_Res.gd" id="1_r3aw5"]
 [ext_resource type="Texture2D" uid="uid://gevsqmrrjh2w" path="res://asset/Tower/Lilitia/Idle/Idle 1.png" id="2_lan6i"]
 [ext_resource type="Texture2D" uid="uid://db67dhfakqtqu" path="res://asset/Tower/Skill/Group (2).png" id="2_yey8d"]
+[ext_resource type="Texture2D" uid="uid://o4mqhw0y5qm6" path="res://asset/Tower/Icon/lilitia.png" id="3_74gwk"]
 [ext_resource type="Texture2D" uid="uid://c2bvnxsxdyagq" path="res://asset/Tower/Lilitia/Idle/Idle 2.png" id="3_yey8d"]
 [ext_resource type="Texture2D" uid="uid://npginklt2aik" path="res://asset/Tower/Lilitia/Idle/Idle 3.png" id="4_74gwk"]
 [ext_resource type="Texture2D" uid="uid://dpbyca584mmuy" path="res://asset/Tower/Lilitia/Idle/Idle 4.png" id="5_lnjyb"]
@@ -42,6 +43,8 @@ animations = [{
 [resource]
 script = ExtResource("1_r3aw5")
 chara = "lilitia"
+cost = 13
+slot = ExtResource("3_74gwk")
 damage = 1000
 speed = 0.8
 range = 15.0

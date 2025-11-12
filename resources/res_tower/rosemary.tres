@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="TowerData" load_steps=19 format=3 uid="uid://bxhddhmrf4wrn"]
+[gd_resource type="Resource" script_class="TowerData" load_steps=20 format=3 uid="uid://bxhddhmrf4wrn"]
 
 [ext_resource type="Script" uid="uid://g85gwfmcln8s" path="res://scripts/Tower/Tower_Res.gd" id="1_5wdxo"]
 [ext_resource type="PackedScene" uid="uid://cb5pwexkrc36k" path="res://asset/Vfx/Effect/Bullet_Rosemary.tscn" id="1_hhrno"]
 [ext_resource type="Texture2D" uid="uid://ctjcgaytvbkoc" path="res://asset/Tower/Rosemary/attack/Skill 1.png" id="2_hhrno"]
 [ext_resource type="Texture2D" uid="uid://cc2atyub5stst" path="res://asset/Tower/Rosemary/attack/Skill 2.png" id="3_06iej"]
 [ext_resource type="Texture2D" uid="uid://dy2qxpwrxl2d4" path="res://asset/Tower/Skill/Group (6).png" id="3_y73jg"]
+[ext_resource type="Texture2D" uid="uid://btxa1j5ci3tkf" path="res://asset/Tower/Icon/rosemarry.png" id="4_vygpc"]
 [ext_resource type="Texture2D" uid="uid://dpkryevqqb3a2" path="res://asset/Tower/Rosemary/attack/Skill 3.png" id="4_y73jg"]
 [ext_resource type="Texture2D" uid="uid://dck85lj4nvvuh" path="res://asset/Tower/Rosemary/attack/Skill 4.png" id="5_vygpc"]
 [ext_resource type="Texture2D" uid="uid://cmnaw67t7cr50" path="res://asset/Tower/Rosemary/attack/Skill 5.png" id="6_2otcp"]
@@ -76,6 +77,8 @@ animations = [{
 [resource]
 script = ExtResource("1_5wdxo")
 chara = "rosemary"
+cost = 20
+slot = ExtResource("4_vygpc")
 damage = 15
 speed = 0.2
 range = 300.0

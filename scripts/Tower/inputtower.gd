@@ -2,8 +2,8 @@ extends Node
 class_name TowerInput
 
 @export var tower_list:Array[TowerData]
-@onready var inputLbl: Label = $"../UI/TypeBox/Label"
-@onready var history_box: TextureRect = $"../UI/HistoryBox"
+@onready var inputLbl: Label = $"../TypeBox/Label"
+@onready var history_box: TextureRect = $"../HistoryBox"
 var HistoryLbl:Array[Node]
 var count:int = 0
 var TOWER_KEYWORD:Array[String]
