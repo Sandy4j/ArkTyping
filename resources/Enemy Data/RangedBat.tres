@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3 uid="uid://bpwnq55cbyk7n"]
+
+[ext_resource type="Script" path="res://resources/EnemyData.gd" id="1_ftwvm"]
+
+[resource]
+script = ExtResource("1_ftwvm")
+enemy_name = "Ranged Bat"
+max_hp = 500.0
+move_speed = 2.0
+reward = 2
+can_attack = true
+attack_range = 3.0
+attack_damage = 100.0

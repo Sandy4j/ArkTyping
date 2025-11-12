@@ -8,6 +8,7 @@ class_name SpawnPointConfig
 @export var spawn_interval: float = 1.0  # Interval waktu antara spawn musuh (dalam detik)
 
 ## Konfigurasi boss (opsional)
+@export_group("boss")
 @export var has_boss: bool = false
 @export var boss_scene: PackedScene
 @export var boss_data: EnemyData

@@ -25,7 +25,13 @@ func _ready() -> void:
 	add_child(spawn_manager)
 	spawn_manager.all_spawn_points_completed.connect(_on_all_spawn_points_completed)
 	
-	PoolSetup.setup_pools_for_waves(wave_configs)
+	# Get tower data dari TowerInput
+	var tower_datas: Array[TowerData] = []
+	var tower_input = get_tree().get_first_node_in_group("towerinput")
+	if tower_input and "tower_list" in tower_input:
+		tower_datas = tower_input.tower_list
+	
+	PoolSetup.setup_pools_for_waves(wave_configs, tower_datas)
 
 
 func _process(delta: float) -> void:

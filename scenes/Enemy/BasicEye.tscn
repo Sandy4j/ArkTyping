@@ -1,0 +1,50 @@
+[gd_scene load_steps=11 format=3 uid="uid://iv56om7n6qae"]
+
+[ext_resource type="Script" path="res://scripts/Enemies/BasicEnemy.gd" id="1_pie8b"]
+[ext_resource type="Resource" uid="uid://crmk4fyxjfv8u" path="res://resources/Enemy Data/BasicCrawler.tres" id="2_h7g2a"]
+[ext_resource type="Texture2D" uid="uid://cj8e4ujlbumub" path="res://asset/Enemy/Enemy 2/Idle/1.png" id="3_0sema"]
+[ext_resource type="Texture2D" uid="uid://do31xuhralch2" path="res://asset/Enemy/Enemy 2/Idle/2.png" id="4_y2qoj"]
+[ext_resource type="Texture2D" uid="uid://n5xokqmy8665" path="res://asset/Enemy/Enemy 2/Idle/3.png" id="5_1aa1b"]
+[ext_resource type="Texture2D" uid="uid://bo4p0argbhak8" path="res://asset/Enemy/Enemy 2/Idle/4.png" id="6_qwwnn"]
+[ext_resource type="Texture2D" uid="uid://bunmpbkpg43bc" path="res://asset/Enemy/Enemy 2/Idle/5.png" id="7_4lppl"]
+[ext_resource type="Texture2D" uid="uid://bendw5pmg1l38" path="res://asset/Enemy/Enemy 2/Idle/6.png" id="8_kwb55"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_inemf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wbm55"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_0sema")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_y2qoj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1aa1b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_qwwnn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_4lppl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_kwb55")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="BasicEye" type="CharacterBody3D"]
+script = ExtResource("1_pie8b")
+enemy_data = ExtResource("2_h7g2a")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_inemf")
+
+[node name="Anim" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+sprite_frames = SubResource("SpriteFrames_wbm55")
+frame_progress = 0.7626761

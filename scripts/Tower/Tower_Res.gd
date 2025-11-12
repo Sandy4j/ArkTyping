@@ -13,3 +13,4 @@ class_name TowerData
 @export var sprite:SpriteFrames
 @export var projectile:PackedScene
 @export var projectile_speed:int
+@export var projectile_scene:PackedScene

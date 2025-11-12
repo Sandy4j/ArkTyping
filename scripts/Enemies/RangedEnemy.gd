@@ -1,10 +1,10 @@
-﻿extends BaseEnemy
+extends BaseEnemy
 class_name RangedEnemy
 
 var attack_timer: float = 0.0
 var current_target: Node3D = null
 
-@onready var attack_range_area: Area3D = $AttackRangeArea
+@onready var attack_range_area: Area3D = $RadiusArea
 
 func _on_ready() -> void:
 	if not enemy_data or not enemy_data.can_attack:

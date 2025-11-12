@@ -1,7 +1,6 @@
 [gd_resource type="VisualShader" load_steps=5 format=3 uid="uid://1pldl8bk7dgr"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_r7blv"]
-load_path = "res://.godot/imported/Circle_Aura2w.png-0025c530fe53a0167a34d2aac6d90b75.s3tc.ctex"
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_3mjpu"]
 output_port_for_preview = 0
