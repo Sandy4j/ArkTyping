@@ -97,7 +97,7 @@ func _animate_star_async(star: TextureRect, delay: float) -> void:
 
 func _on_restart_pressed() -> void:
 	GameManager.reset_game_state()
-	LevelManager.reload_current_level()
+	get_tree().change_scene_to_file(LevelManager.current_level_path)
 
 func _on_next_level_pressed() -> void:
 	GameManager.reset_game_state()

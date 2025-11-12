@@ -17,7 +17,7 @@
 [ext_resource type="Script" path="res://scripts/LevelInit.gd" id="11_kjd3d"]
 [ext_resource type="PackedScene" uid="uid://dh34gp23bbucb" path="res://asset/Envi/env_lvl_1_ground.tscn" id="16_pdl2l"]
 [ext_resource type="PackedScene" uid="uid://dmcrg4ny4bb3n" path="res://asset/Envi/props_lvl_1.tscn" id="17_2t17w"]
-[ext_resource type="PackedScene" uid="uid://bxcrj82wl8bhf" path="res://asset/Envi/fireflies.tscn" id="18_2t17w"]
+[ext_resource type="PackedScene" uid="uid://csob2dk5jrcb5" path="res://asset/Envi/fireflies.tscn" id="18_2t17w"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bm28l"]
 sky_top_color = Color(0.20850936, 0.256172, 0.3196701, 1)
@@ -52,6 +52,28 @@ point_count = 6
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_main")
 
+[node name="ENV lvl 1 ground" parent="WorldEnvironment" instance=ExtResource("16_pdl2l")]
+
+[node name="Props lvl 1" parent="WorldEnvironment" instance=ExtResource("17_2t17w")]
+
+[node name="fireflies" parent="WorldEnvironment" instance=ExtResource("18_2t17w")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.9788948, 2.130024, -0.54739374)
+
+[node name="fireflies2" parent="WorldEnvironment" instance=ExtResource("18_2t17w")]
+transform = Transform3D(1.9728585, 0, -0.32837367, 0, 2, 0, 0.32837367, 0, 1.9728585, 4.849866, 2.130024, 1.210681)
+
+[node name="fireflies3" parent="WorldEnvironment" instance=ExtResource("18_2t17w")]
+transform = Transform3D(1.9728585, 0, -0.32837367, 0, 2, 0, 0.32837367, 0, 1.9728585, 7.898345, 2.130024, 1.210681)
+
+[node name="fireflies4" parent="WorldEnvironment" instance=ExtResource("18_2t17w")]
+transform = Transform3D(1.9728585, 0, -0.32837367, 0, 2, 0, 0.32837367, 0, 1.9728585, 11.539082, 2.130024, -0.5306618)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7855268, 2.3672886, 1.6348174)
+light_color = Color(1, 0.45999998, 0.45999998, 1)
+omni_range = 9.54
+omni_attenuation = 1.194
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.37870607, -0.74707997, -0.5463085, -0.49369705, -0.6623454, 0.5635261, -0.7828441, 0.056300182, -0.6196655, 0, 10, 2.6227646)
 visible = false
@@ -69,6 +91,25 @@ shadow_blur = 0.0
 transform = Transform3D(1, 0, 0, 0, 0.6087614, 0.7933533, 0, -0.7933533, 0.6087614, 7, 21, 16)
 current = true
 fov = 22.5
+
+[node name="TowerCon" type="Node" parent="." groups=["towercon"]]
+script = ExtResource("3_kjd3d")
+
+[node name="TowerSpot1" parent="TowerCon" instance=ExtResource("4_qdeet")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -1)
+tower_scene = ExtResource("6_xw3ee")
+
+[node name="TowerSpot2" parent="TowerCon" instance=ExtResource("4_qdeet")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 1)
+tower_scene = ExtResource("6_xw3ee")
+
+[node name="TowerSpot3" parent="TowerCon" instance=ExtResource("4_qdeet")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, 1)
+tower_scene = ExtResource("6_xw3ee")
+
+[node name="TowerSpot4" parent="TowerCon" instance=ExtResource("4_qdeet")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1, -1)
+tower_scene = ExtResource("6_xw3ee")
 
 [node name="Base" parent="." instance=ExtResource("1_jy02f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.609604, 0, 0.34087634)
@@ -101,25 +142,6 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="TowerCon" type="Node" parent="." groups=["towercon"]]
-script = ExtResource("3_kjd3d")
-
-[node name="TowerSpot1" parent="TowerCon" instance=ExtResource("4_qdeet")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -1)
-tower_scene = ExtResource("6_xw3ee")
-
-[node name="TowerSpot2" parent="TowerCon" instance=ExtResource("4_qdeet")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 1)
-tower_scene = ExtResource("6_xw3ee")
-
-[node name="TowerSpot3" parent="TowerCon" instance=ExtResource("4_qdeet")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, 1)
-tower_scene = ExtResource("6_xw3ee")
-
-[node name="TowerSpot4" parent="TowerCon" instance=ExtResource("4_qdeet")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1, -1)
-tower_scene = ExtResource("6_xw3ee")
 
 [node name="UI" type="CanvasLayer" parent="."]
 script = ExtResource("9_pdl2l")
@@ -169,25 +191,3 @@ curve = SubResource("Curve3D_path")
 
 [node name="LevelInit" type="Node" parent="."]
 script = ExtResource("11_kjd3d")
-
-[node name="ENV lvl 1 ground" parent="." instance=ExtResource("16_pdl2l")]
-
-[node name="Props lvl 1" parent="." instance=ExtResource("17_2t17w")]
-
-[node name="fireflies" parent="." instance=ExtResource("18_2t17w")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.9788948, 2.130024, -0.54739374)
-
-[node name="fireflies2" parent="." instance=ExtResource("18_2t17w")]
-transform = Transform3D(1.9728585, 0, -0.32837367, 0, 2, 0, 0.32837367, 0, 1.9728585, 4.849866, 2.130024, 1.210681)
-
-[node name="fireflies3" parent="." instance=ExtResource("18_2t17w")]
-transform = Transform3D(1.9728585, 0, -0.32837367, 0, 2, 0, 0.32837367, 0, 1.9728585, 7.898345, 2.130024, 1.210681)
-
-[node name="fireflies4" parent="." instance=ExtResource("18_2t17w")]
-transform = Transform3D(1.9728585, 0, -0.32837367, 0, 2, 0, 0.32837367, 0, 1.9728585, 11.539082, 2.130024, -0.5306618)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7855268, 2.3672886, 1.6348174)
-light_color = Color(1, 0.45999998, 0.45999998, 1)
-omni_range = 9.54
-omni_attenuation = 1.194

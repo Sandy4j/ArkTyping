@@ -28,7 +28,7 @@ func _ready() -> void:
 	# Get tower data dari TowerInput
 	var tower_datas: Array[TowerData] = []
 	var tower_input = get_tree().get_first_node_in_group("towerinput")
-	if tower_input and tower_input.has("tower_list"):
+	if tower_input and "tower_list" in tower_input:
 		tower_datas = tower_input.tower_list
 	
 	PoolSetup.setup_pools_for_waves(wave_configs, tower_datas)

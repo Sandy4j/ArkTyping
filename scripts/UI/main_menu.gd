@@ -5,29 +5,18 @@ extends Control
 @onready var tutorialbtn = $CanvasLayer/ButtonContainer/TutorialBtn
 @onready var creditbtn = $CanvasLayer/ButtonContainer/CreditBtn
 @onready var quitbtn = $CanvasLayer/ButtonContainer/QuitBtn
-@onready var creditpnl = $CanvasLayer/Panel
-
-func _ready() -> void:
-	creditpnl.visible = false
-	
 
 func _on_start_btn_pressed() -> void:
 	get_tree().change_scene_to_file("res://levels/level_01.tscn")
 
-
 func _on_hero_btn_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/UI/hero.tscn")
 
-
 func _on_credit_btn_pressed() -> void:
-	creditpnl.visible = true
+	get_tree().change_scene_to_file("res://scenes/UI/Credit.tscn")
 
 func _on_tutorial_btn_pressed() -> void:
 	pass # Replace with function body.
 
 func _on_quit_btn_pressed() -> void:
 	get_tree().quit()
-
-
-func _on_button_pressed() -> void:
-	creditpnl.visible = false

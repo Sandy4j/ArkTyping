@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=4 uid="uid://bxcrj82wl8bhf"]
+[gd_scene load_steps=6 format=4 uid="uid://csob2dk5jrcb5"]
 
 [ext_resource type="Texture2D" uid="uid://bxytw07ohf33m" path="res://asset/Envi/fireflies.png" id="1_6evkc"]
+[ext_resource type="Script" uid="uid://jmkfrmma8su6" path="res://scripts/fireflies.gd" id="1_wxxyb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6evkc"]
 resource_name = "fireflies"
@@ -43,6 +44,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_4pwtb")
 
 [node name="fireflies" type="Node3D"]
+script = ExtResource("1_wxxyb")
 
 [node name="Plane_001" type="MeshInstance3D" parent="."]
 transform = Transform3D(100, 0, 0, 0, 70.71067, 70.710686, 0, -70.710686, 70.71067, 0.004196048, -1.1920929e-07, -0.00082689524)
