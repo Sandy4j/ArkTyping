@@ -423,7 +423,9 @@ func cleanup_enemies_array() -> void:
 
 func take_damage(dmg: float) -> void:
 	current_hp -= dmg
-	
+	var vfx_sc = load("res://asset/Vfx/Effect/hit_Tower.tscn")
+	var vfx_nd = vfx_sc.instantiate()
+	self.add_child(vfx_nd)
 	if current_hp <= 0:
 		destroy()
 
@@ -558,8 +560,8 @@ func activate_toxic_veil() -> void:
 	var area = veil_node.get_child(0).get_child(0)
 	area.collision_mask = 2
 	print(area.name)
-	area.body_entered.connect(Callable(self, "_on_body_entered_veil"))
-	area.body_exited.connect(Callable(self, "_on_body_exited_veil"))
+	area.body_entered.connect(Callable(self, "enemy_enter_veil"))
+	area.body_exited.connect(Callable(self, "enemy_exit_veil"))
 	veil_node.position.y = -3
 	self.add_child(veil_node)
 	veil_node.add_child(area)
@@ -577,7 +579,7 @@ func enemy_enter_veil(body:Node3D)-> void:
 	print("veil trigger enemy")
 	if body.is_in_group("enemies") and body is CharacterBody3D:
 		var original_speed = body.move_speed
-		body.move_speed = original_speed * 0.5
+		body.move_speed = original_speed * 0.1
 		print(body.name, "telah ter slow", str(body.move_speed))
 
 func enemy_exit_veil(body:Node3D)-> void:
