@@ -29,12 +29,12 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_spcpa"]
+lifetime_randomness = 1.0
 emission_shape = 1
 emission_sphere_radius = 0.1
 velocity_pivot = Vector3(1, 0, 0)
-spread = 109.834
-initial_velocity_min = 0.5
-initial_velocity_max = 0.5
+initial_velocity_min = 0.19999999
+initial_velocity_max = 0.19999999
 gravity = Vector3(3, 0, 0)
 scale_min = 0.099999994
 scale_max = 0.099999994
@@ -45,12 +45,12 @@ scale_max = 0.099999994
 script = ExtResource("1_n23nu")
 
 [node name="Bullet" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.24637514, 0, 0)
 material_override = SubResource("StandardMaterial3D_ywaxx")
 mesh = ExtResource("1_jw6q4")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06526244, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.01889348, 0.010407597, 0)
 material_override = SubResource("StandardMaterial3D_7voma")
 amount = 10
 process_material = SubResource("ParticleProcessMaterial_spcpa")

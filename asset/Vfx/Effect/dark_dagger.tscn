@@ -8,10 +8,9 @@
 transparency = 1
 blend_mode = 1
 cull_mode = 2
-shading_mode = 0
 vertex_color_use_as_albedo = true
 vertex_color_is_srgb = true
-albedo_color = Color(0.5847179, 0, 0.85430586, 1)
+albedo_color = Color(0.5953632, 0.0005343476, 0.6560186, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_58j12"]
 transparency = 1
@@ -20,7 +19,7 @@ cull_mode = 2
 shading_mode = 0
 vertex_color_use_as_albedo = true
 vertex_color_is_srgb = true
-albedo_color = Color(0.73337764, 0, 1, 1)
+albedo_color = Color(0.6589839, 0.0004380861, 0.6849939, 1)
 albedo_texture = ExtResource("2_ihmcn")
 billboard_mode = 3
 billboard_keep_scale = true
@@ -29,13 +28,14 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ohxug"]
+lifetime_randomness = 1.0
 emission_shape = 1
 emission_sphere_radius = 0.1
 velocity_pivot = Vector3(1, 0, 0)
 spread = 109.834
 initial_velocity_min = 0.5
 initial_velocity_max = 0.5
-gravity = Vector3(7, 0, 0)
+gravity = Vector3(3, 0, 0)
 scale_min = 0.099999994
 scale_max = 0.099999994
 
@@ -49,12 +49,12 @@ light_color = Color(0.58383155, 0, 0.85430586, 1)
 omni_range = 1.0
 
 [node name="dagger" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.3134613, 0.03656006, 0)
 material_override = SubResource("StandardMaterial3D_wp4ef")
 mesh = ExtResource("1_qv1rf")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06526244, 0)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.06526244, 0)
 material_override = SubResource("StandardMaterial3D_58j12")
 amount = 100
 process_material = SubResource("ParticleProcessMaterial_ohxug")

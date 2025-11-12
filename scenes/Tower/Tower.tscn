@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cjhp6v8qnx4qm"]
+[gd_scene load_steps=14 format=3 uid="uid://cjhp6v8qnx4qm"]
 
 [ext_resource type="Script" uid="uid://cqhh8jen48v85" path="res://scripts/Tower/Tower.gd" id="1_tower"]
 [ext_resource type="Texture2D" uid="uid://dunhge3h6b4tl" path="res://asset/Tower/Capture.PNG" id="3_02lgm"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dqycj11p0j71g" path="res://asset/Tower/Skill/Group (1).png" id="4_oopld"]
 [ext_resource type="Texture2D" uid="uid://dvavok4g82b2p" path="res://asset/UI_Gameplay/Blod bar (1).png" id="5_yc5to"]
 [ext_resource type="Texture2D" uid="uid://bp43pnshm55sw" path="res://asset/UI_Gameplay/Blod bar.png" id="6_f3260"]
+[ext_resource type="PackedScene" uid="uid://csgdym37gysnc" path="res://asset/Vfx/Effect/Bullet_Kaelio.tscn" id="7_f3260"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oopld"]
 animations = [{
@@ -97,6 +98,9 @@ billboard = 1
 transparent = false
 no_depth_test = true
 texture = SubResource("ViewportTexture_yc5to")
+
+[node name="Bullet_Kaelio" parent="." instance=ExtResource("7_f3260")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.130438, -1.1706529, -1.097178)
 
 [connection signal="animation_finished" from="Sprite3D" to="." method="_on_sprite_3d_animation_finished"]
 [connection signal="body_entered" from="RangeArea" to="." method="_on_enemy_entered_range"]

@@ -132,7 +132,6 @@ func _process(delta: float) -> void:
 			scarlet_harvester()
 		elif tower_data.skill == "bloody opus":
 			double_shoot(current_target)
-			print("vigilante nembak")
 		else:
 			shoot(current_target)
 		fire_timer = 0.0
@@ -177,7 +176,6 @@ func shoot(target: Node3D) -> void:
 		print("shoot dengan custom")
 	else:
 		projectile.pool_name = pool_key
-	projectile.scale = Vector3(0.25,0.25,0.25)
 	get_tree().current_scene.add_child(projectile)
 
 	if shoot_point:
@@ -203,6 +201,7 @@ func double_shoot(target: CharacterBody3D) -> void:
 		return
 	
 	var pool_key = "tower_projectile_" + tower_data.chara
+	var pool_key1 = "tower_projectile_" + tower_data.chara
 	
 	# First projectile
 	var projectile1 = ObjectPool.get_pooled_object(pool_key)
@@ -219,9 +218,9 @@ func double_shoot(target: CharacterBody3D) -> void:
 	projectile1.initialize(target, damage, projectile_speed)
 	
 	# Second projectile
-	await get_tree().create_timer(0.15).timeout
+	await get_tree().create_timer(0.5).timeout
 	
-	var projectile2 = ObjectPool.get_pooled_object(pool_key)
+	var projectile2 = ObjectPool.get_pooled_object(pool_key1)
 	if not projectile2:
 		projectile2 = projectile.instantiate()
 	else:
@@ -321,7 +320,7 @@ func scarlet_harvester() -> void:
 	if targets.size() == 0:
 		return
 	
-	var pool_key = "tower_projectile"
+	var pool_key = "tower_projectile_" + tower_data.chara
 	
 	for i in range(targets.size()):
 		var target = targets[i]
