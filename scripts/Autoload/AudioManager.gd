@@ -10,6 +10,14 @@ var type_wrong: AudioStream
 var typing_1: AudioStream
 var typing_2: AudioStream
 
+var base_hit: AudioStream
+var notif_win: AudioStream
+var notif_lose: AudioStream
+var tower_deploy: AudioStream
+var tower_retreat: AudioStream
+var tower_skill : AudioStream
+var tower_dead: AudioStream
+
 var bgm_player: AudioStreamPlayer
 var sfx_players: Array[AudioStreamPlayer] = []
 const MAX_SFX_PLAYERS = 16
@@ -30,6 +38,13 @@ func _ready() -> void:
 	type_wrong = load("res://asset/Audio/Sfx/Typing/Wrong.wav")
 	typing_1 = load("res://asset/Audio/Sfx/Typing/Typing 1.wav")
 	typing_2 = load("res://asset/Audio/Sfx/Typing/Typing 2.wav")
+	base_hit = load("res://asset/Audio/Base get Hit.wav")
+	notif_win = load("res://asset/Audio/notif win-lose/notifier Win mastering.wav")
+	notif_lose = load("res://asset/Audio/notif win-lose/Notifier lose mastering.wav")
+	tower_deploy = load("res://asset/Audio/Tower/Tower Deploy Spawn .wav")
+	tower_retreat = load("res://asset/Audio/Tower/Tarik Tower.wav")
+	tower_skill = load("res://asset/Audio/Tower/Activate Skill.wav")
+	tower_dead = load("res://asset/Audio/Tower/Drop dead.wav")
 	
 	bgm_player = AudioStreamPlayer.new()
 	bgm_player.bus = "Master"
@@ -76,6 +91,20 @@ func play_sfx(sfx_name: String, pitch_scale: float = 1.0) -> void:
 	var stream: AudioStream = null
 	
 	match sfx_name.to_lower():
+		"base_hit":
+			stream = base_hit
+		"notif_win":
+			stream = notif_win
+		"notif_lose":
+			stream = notif_lose
+		"tower_deploy":
+			stream = tower_deploy
+		"tower_retreat":
+			stream = tower_retreat
+		"tower_skill":
+			stream = tower_skill
+		"tower_dead":
+			stream = tower_dead
 		"enemy_die":
 			stream = enemy_die
 		"enemy_spawn":

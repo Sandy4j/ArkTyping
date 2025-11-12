@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cb6pqwqtsnts0" path="res://asset/Envi/env_lvl_3_ground.tscn" id="5_wq170"]
 [ext_resource type="PackedScene" uid="uid://csob2dk5jrcb5" path="res://asset/Envi/fireflies.tscn" id="6_6181x"]
 [ext_resource type="PackedScene" uid="uid://dpxgr2wk7y01u" path="res://asset/Envi/props_lvl_3.tscn" id="6_wq170"]
-[ext_resource type="PackedScene" uid="uid://brhl3jursipw0" path="res://asset/Envi/Props lvl 3.fbx" id="6_xgj7h"]
+[ext_resource type="PackedScene" uid="uid://hgpjf4isuejp" path="res://asset/Envi/Props lvl 3.fbx" id="6_xgj7h"]
 [ext_resource type="PackedScene" uid="uid://drlwka2ahedj4" path="res://scenes/Base.tscn" id="8_2la83"]
 [ext_resource type="Resource" uid="uid://d4nr4jpcakmc0" path="res://resources/WaveData/Level 3/Wave1_lvl3.tres" id="12_gj5ie"]
 [ext_resource type="Resource" uid="uid://bbmnux0b6xmd4" path="res://resources/WaveData/Level 3/Wave2_lvl3.tres" id="13_xgj7h"]
@@ -168,7 +168,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 2)
 tower_scene = ExtResource("5_0bj1y")
 
 [node name="Base" parent="." instance=ExtResource("8_2la83")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.338346, 0, 4.1265583)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.940315, 0, 4.1265583)
 
 [node name="WaveManager" type="Node" parent="."]
 script = ExtResource("16_lbtiq")

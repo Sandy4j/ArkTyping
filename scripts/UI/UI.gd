@@ -63,11 +63,13 @@ func _on_wave_started(wave: int) -> void:
 
 func _on_game_over(stars: int) -> void:
 	if winlose:
+		AudioManager.play_sfx("notif_lose")
 		winlose.show_game_over()
 
 func _on_victory() -> void:
 	await get_tree().create_timer(1.0).timeout
 	if winlose:
+		AudioManager.play_sfx("notif_win")
 		winlose.show_victory()
 
 func _on_tower_gone(data:TowerData) -> void:

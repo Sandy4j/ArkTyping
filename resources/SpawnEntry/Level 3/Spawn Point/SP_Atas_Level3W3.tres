@@ -16,7 +16,4 @@ spawn_path_node = NodePath("WaveManager/PathUp")
 enemy_spawn_entries = Array[ExtResource("1_5pqle")]([SubResource("Resource_6cfrx")])
 enemies_to_spawn = 1
 spawn_interval = 2.0
-has_boss = true
-boss_scene = ExtResource("2_uekud")
-boss_data = ExtResource("1_6cfrx")
 boss_spawn_timing = 0.1

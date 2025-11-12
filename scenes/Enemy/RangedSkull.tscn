@@ -41,6 +41,7 @@ animations = [{
 }]
 
 [node name="RangedSkull" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.9396926, 0.34202012, 0, -0.34202012, 0.9396926, 0, 0, 0)
 script = ExtResource("1_kam6h")
 enemy_data = ExtResource("2_kam6h")
 

@@ -15,6 +15,7 @@ func _emit_initial_hp() -> void:
 
 func take_damage(damage: int) -> void:
 	current_hp -= damage
+	AudioManager.play_sfx("base_hit")
 	hp_changed.emit(current_hp, max_hp)
 	
 	if current_hp <= 0:

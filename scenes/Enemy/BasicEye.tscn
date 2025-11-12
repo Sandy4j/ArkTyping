@@ -38,6 +38,7 @@ animations = [{
 }]
 
 [node name="BasicEye" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.9396926, 0.34202012, 0, -0.34202012, 0.9396926, 0, 0, 0)
 script = ExtResource("1_pie8b")
 enemy_data = ExtResource("2_pie8b")
 

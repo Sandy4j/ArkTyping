@@ -120,7 +120,7 @@ func place_tower_at_selected(data:TowerData) -> void:
 			ui.show_message(msg)
 			return
 		spot.place_tower(data)
-		SFX.play_deploy_sfx()
+		AudioManager.play_sfx("tower_deploy")
 		placed_tower.append(data.chara)
 		var msg =str("memasang tower ", data.chara)
 		ui.show_message(msg)
@@ -158,7 +158,7 @@ func delete_tower_at_selected() -> void:
 		var msg =str("menghapus tower ", spot.tower_data.chara)
 		GameManager.set_tower_state(spot.tower_data,false)
 		spot.remove_tower()
-		SFX.play_retreat_sfx()
+        AudioManager.play_sfx("tower_retreat")
 		update_spot_labels()
 		ui.show_message(msg)
 		TypingSystem.clear_text()

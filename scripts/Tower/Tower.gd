@@ -430,7 +430,7 @@ func take_damage(dmg: float) -> void:
 		destroy()
 
 func destroy() -> void:
-	SFX.play_death_sfx()
+	AudioManager.play_sfx("tower_dead")
 	tower_destroyed.emit()
 	print("Tower destroyed!")
 
@@ -441,7 +441,7 @@ func Skill(skill_name: String) -> void:
 	if current_skill_cooldown > 0:
 		print("Skill on cooldown: ", current_skill_cooldown, "s remaining")
 		return
-	SFX.play_skill_sfx()
+	AudioManager.play_sfx("tower_skill")
 	match skill_name:
 		"overload burst":
 			activate_overload_burst()

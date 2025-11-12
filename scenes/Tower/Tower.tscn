@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://cjhp6v8qnx4qm"]
 
 [ext_resource type="Script" uid="uid://cqhh8jen48v85" path="res://scripts/Tower/Tower.gd" id="1_tower"]
-[ext_resource type="Texture2D" uid="uid://dunhge3h6b4tl" path="res://asset/Tower/Capture.PNG" id="3_02lgm"]
-[ext_resource type="Texture2D" uid="uid://4yws4q3bmt5x" path="res://asset/Tower/Kaelio/Attack/Skill 6.png" id="3_3tc4n"]
-[ext_resource type="Texture2D" uid="uid://dqycj11p0j71g" path="res://asset/Tower/Skill/Group (1).png" id="4_oopld"]
+[ext_resource type="Texture2D" uid="uid://dtibubuamy3s4" path="res://asset/Tower/Capture.PNG" id="3_02lgm"]
+[ext_resource type="Texture2D" uid="uid://dtgpwa7ymvxds" path="res://asset/Tower/Kaelio/Attack/Skill 6.png" id="3_3tc4n"]
+[ext_resource type="Texture2D" uid="uid://c2djxhycgwsmk" path="res://asset/Tower/Skill/Group (1).png" id="4_oopld"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oopld"]
 animations = [{
