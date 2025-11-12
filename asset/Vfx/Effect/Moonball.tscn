@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://digrhep77tlo1"]
+[gd_scene load_steps=11 format=3 uid="uid://cj2hi0iptmx46"]
 
 [ext_resource type="Script" uid="uid://bkso2a2sv0efi" path="res://scripts/Tower/Projectile.gd" id="1_1kssw"]
 [ext_resource type="Texture2D" uid="uid://bd3rattmqerxy" path="res://asset/Vfx/Texture/T_VFX_hit22.jpg" id="1_a6ttf"]
@@ -45,10 +45,10 @@ curve = SubResource("Curve_wnpih")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cr2sx"]
 emission_shape = 1
-emission_sphere_radius = 0.25
+emission_sphere_radius = 0.1
 gravity = Vector3(3, 0, 0)
-scale_min = 0.5
-scale_max = 0.5
+scale_min = 0.19999999
+scale_max = 0.19999999
 alpha_curve = SubResource("CurveTexture_vw73x")
 
 [sub_resource type="QuadMesh" id="QuadMesh_ig2wy"]
@@ -57,6 +57,7 @@ alpha_curve = SubResource("CurveTexture_vw73x")
 script = ExtResource("1_1kssw")
 
 [node name="Bijih" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_46oii")
 mesh = SubResource("QuadMesh_5ejvd")
 

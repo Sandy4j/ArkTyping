@@ -1,13 +1,14 @@
-[gd_scene load_steps=21 format=3 uid="uid://dn8wlb3ouseqs"]
+[gd_scene load_steps=22 format=3 uid="uid://dn8wlb3ouseqs"]
 
 [ext_resource type="PackedScene" uid="uid://bwd7cjnmkj54c" path="res://asset/Envi/props_lvl_2.tscn" id="1_g685p"]
-[ext_resource type="PackedScene" uid="uid://ci8240p5goqft" path="res://asset/Envi/ENV lvl 2 ground.fbx" id="2_8yqd8"]
+[ext_resource type="PackedScene" uid="uid://brmjbdiogrcqq" path="res://asset/Envi/ENV lvl 2 ground.fbx" id="2_8yqd8"]
 [ext_resource type="Script" uid="uid://dgxccv80klhc7" path="res://scripts/Tower/TowerCon.gd" id="3_gia0r"]
 [ext_resource type="PackedScene" uid="uid://dfql5k5psmgxn" path="res://scenes/Tower/TowerSpot.tscn" id="4_mihb8"]
 [ext_resource type="PackedScene" uid="uid://cjhp6v8qnx4qm" path="res://scenes/Tower/Tower.tscn" id="5_2owmk"]
 [ext_resource type="PackedScene" uid="uid://csob2dk5jrcb5" path="res://asset/Envi/fireflies.tscn" id="6_cwmx8"]
-[ext_resource type="PackedScene" uid="uid://drlwka2ahedj4" path="res://scenes/Base.tscn" id="7_50fh4"]
+[ext_resource type="PackedScene" uid="uid://dr5mh3wmxd7uu" path="res://scenes/Base.tscn" id="7_50fh4"]
 [ext_resource type="PackedScene" uid="uid://b6ot4uwb74jwf" path="res://scenes/ui.tscn" id="14_50fh4"]
+[ext_resource type="PackedScene" uid="uid://dqmlunqfclena" path="res://asset/Vfx/Effect/Portalem.tscn" id="15_ddsyl"]
 [ext_resource type="Script" uid="uid://4ipxb665lopb" path="res://scripts/WaveManager.gd" id="15_jhp1k"]
 [ext_resource type="Script" path="res://resources/WaveConfig.gd" id="16_oaki6"]
 [ext_resource type="Resource" uid="uid://g7keyomklb4g" path="res://resources/WaveData/Level 2/Wave1_lvl2.tres" id="17_62sbm"]
@@ -90,6 +91,20 @@ omni_range = 9.54
 omni_attenuation = 1.194
 metadata/_edit_lock_ = true
 
+[node name="OmniLight3D2" type="OmniLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.667522, 2.3672886, 3.5734873)
+light_color = Color(1, 0.45999998, 0.45999998, 1)
+omni_range = 9.48776
+omni_attenuation = 1.194
+metadata/_edit_lock_ = true
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.667522, 2.3672886, -3.633359)
+light_color = Color(1, 0.45999998, 0.45999998, 1)
+omni_range = 9.48776
+omni_attenuation = 1.194
+metadata/_edit_lock_ = true
+
 [node name="Props lvl 2" parent="WorldEnvironment" instance=ExtResource("1_g685p")]
 metadata/_edit_lock_ = true
 
@@ -158,3 +173,12 @@ curve = SubResource("Curve3D_go1sc")
 [node name="PathUp" type="Path3D" parent="WaveManager"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.595272, 0, -3.97522)
 curve = SubResource("Curve3D_hmhyh")
+
+[node name="Port_al" parent="." instance=ExtResource("15_ddsyl")]
+transform = Transform3D(1.6, 0, 0, 0, 2.685, 0, 0, 0, 1.995, 15.818769, 0.868, -0.11)
+
+[node name="Port_al2" parent="." instance=ExtResource("15_ddsyl")]
+transform = Transform3D(1.6, 0, 0, 0, 2.685, 0, 0, 0, 1.995, 16.36034, 0.868, -3.641)
+
+[node name="Port_al3" parent="." instance=ExtResource("15_ddsyl")]
+transform = Transform3D(1.6, 0, 0, 0, 2.685, 0, 0, 0, 1.995, 15.331154, 0.868, 4.201)
