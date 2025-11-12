@@ -10,6 +10,7 @@ func _ready() -> void:
 	
 	# Play gameplay BGM
 	AudioManager.play_bgm("gameplay")
+	
 
 func toggle_pause() -> void:
 	if pause.visible:
