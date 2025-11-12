@@ -1,11 +1,11 @@
 [gd_resource type="VisualShader" load_steps=5 format=3 uid="uid://1pldl8bk7dgr"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_r7blv"]
+[ext_resource type="Texture2D" uid="uid://bwsjom8momm8g" path="res://asset/Vfx/Texture/Circle_Aura2.png" id="1_afvy1"]
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_3mjpu"]
 output_port_for_preview = 0
 expanded_output_ports = [0]
-texture = SubResource("CompressedTexture2D_r7blv")
+texture = ExtResource("1_afvy1")
 texture_type = 1
 
 [sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_46wof"]

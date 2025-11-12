@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c02co3gcdkd8"]
+[gd_scene load_steps=18 format=3 uid="uid://cj0xxw8ewgpqy"]
 
 [ext_resource type="PackedScene" uid="uid://dr5mh3wmxd7uu" path="res://scenes/Base.tscn" id="1_jy02f"]
 [ext_resource type="Script" uid="uid://dgxccv80klhc7" path="res://scripts/Tower/TowerCon.gd" id="3_kjd3d"]
@@ -8,10 +8,11 @@
 [ext_resource type="Script" path="res://resources/WaveConfig.gd" id="8_jy02f"]
 [ext_resource type="Resource" uid="uid://dgw4ukvn22bjs" path="res://resources/WaveData/Level 1/Wave1_lvl1.tres" id="9_5dxk1"]
 [ext_resource type="Script" path="res://scripts/LevelInit.gd" id="11_kjd3d"]
+[ext_resource type="PackedScene" uid="uid://dqmlunqfclena" path="res://asset/Vfx/Effect/Portalem.tscn" id="13_y72ps"]
 [ext_resource type="PackedScene" uid="uid://b6ot4uwb74jwf" path="res://scenes/ui.tscn" id="14_2t17w"]
-[ext_resource type="PackedScene" path="res://asset/Envi/env_lvl_1_ground.tscn" id="16_pdl2l"]
-[ext_resource type="PackedScene" path="res://asset/Envi/props_lvl_1.tscn" id="17_2t17w"]
-[ext_resource type="PackedScene" path="res://asset/Envi/fireflies.tscn" id="18_2t17w"]
+[ext_resource type="PackedScene" uid="uid://dh34gp23bbucb" path="res://asset/Envi/env_lvl_1_ground.tscn" id="16_pdl2l"]
+[ext_resource type="PackedScene" uid="uid://dmcrg4ny4bb3n" path="res://asset/Envi/props_lvl_1.tscn" id="17_2t17w"]
+[ext_resource type="PackedScene" uid="uid://csob2dk5jrcb5" path="res://asset/Envi/fireflies.tscn" id="18_2t17w"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bm28l"]
 sky_top_color = Color(0.20850936, 0.256172, 0.3196701, 1)
@@ -51,7 +52,7 @@ environment = SubResource("Environment_main")
 [node name="Props lvl 1" parent="WorldEnvironment" instance=ExtResource("17_2t17w")]
 
 [node name="fireflies" parent="WorldEnvironment" instance=ExtResource("18_2t17w")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.9788948, 2.130024, -0.54739374)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.99984205, 2.130024, -0.53972733)
 
 [node name="fireflies2" parent="WorldEnvironment" instance=ExtResource("18_2t17w")]
 transform = Transform3D(1.9728585, 0, -0.32837367, 0, 2, 0, 0.32837367, 0, 1.9728585, 4.849866, 2.130024, 1.210681)
@@ -122,3 +123,6 @@ curve = SubResource("Curve3D_path")
 
 [node name="LevelInit" type="Node" parent="."]
 script = ExtResource("11_kjd3d")
+
+[node name="Port_al" parent="." instance=ExtResource("13_y72ps")]
+transform = Transform3D(0.68796384, 0, 3.1252592, 0, 2.9454327, 0, -1.4444219, 0, 1.48853, -1.5209916, 1.3340216, 1.2997634)

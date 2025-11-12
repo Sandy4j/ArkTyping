@@ -452,7 +452,7 @@ alpha_curve = SubResource("CurveTexture_mxr3e")
 
 [sub_resource type="Animation" id="Animation_jh3fg"]
 resource_name = "Kaileo_FX"
-length = 10.0
+length = 5.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -460,7 +460,7 @@ tracks/0/path = NodePath("circle:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 8.99716, 9.087159),
+"times": PackedFloat32Array(0, 0.5, 4.533803, 4.623802),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(0.1, 0.1, 0.1), Vector3(1, 1, 1), Vector3(1, 1, 1), Vector3(0.1, 0.1, 0.1)]
@@ -472,7 +472,7 @@ tracks/1/path = NodePath("circle:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5, 8.99716),
+"times": PackedFloat32Array(0, 0.5, 4.533803),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 3.1415927, 0)]
@@ -508,7 +508,7 @@ tracks/4/path = NodePath("OmniLight3D:light_energy")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.45, 0.5, 9.01669, 9.09669),
+"times": PackedFloat32Array(0, 0.45, 0.5, 4.5533333, 4.633333),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [0.0, 0.0, 4.0, 4.0, 0.0]
@@ -610,7 +610,7 @@ _data = {
 [node name="Magic_Circle3" type="Node3D"]
 
 [node name="circle" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.2, 0)
 material_override = SubResource("ShaderMaterial_hggol")
 mesh = SubResource("PlaneMesh_k8225")
 
@@ -618,7 +618,7 @@ mesh = SubResource("PlaneMesh_k8225")
 material_override = SubResource("ShaderMaterial_jk7bh")
 emitting = false
 amount = 1
-lifetime = 9.0
+lifetime = 4.0
 one_shot = true
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_d7k76")
@@ -627,7 +627,7 @@ draw_pass_1 = SubResource("ArrayMesh_stlf4")
 [node name="Outer" type="GPUParticles3D" parent="."]
 material_override = SubResource("ShaderMaterial_8yu12")
 amount = 1
-lifetime = 9.0
+lifetime = 4.0
 one_shot = true
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_1nl4p")
@@ -638,7 +638,7 @@ transform = Transform3D(0.17034353, 0, 0, 0, 0.21853967, 0, 0, 0, 0.18725428, 0,
 material_override = SubResource("StandardMaterial3D_dpawo")
 emitting = false
 amount = 100
-lifetime = 8.0
+lifetime = 4.0
 one_shot = true
 randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_4kk5o")
