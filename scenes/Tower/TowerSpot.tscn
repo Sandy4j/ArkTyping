@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=4 uid="uid://dfql5k5psmgxn"]
+[gd_scene load_steps=8 format=4 uid="uid://dfql5k5psmgxn"]
 
 [ext_resource type="Script" uid="uid://c3se0vriuqej6" path="res://scripts/Tower/TowerSpot.gd" id="1_towerspot"]
-[ext_resource type="PackedScene" uid="uid://cmav3d7euxap4" path="res://asset/Vfx/Effect/magic_circle_2(plague).tscn" id="2_hxmb5"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape_spot"]
 height = 0.2
@@ -121,6 +120,3 @@ shape = SubResource("CylinderShape_spot")
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 mesh = SubResource("ArrayMesh_kfiy4")
 skeleton = NodePath("")
-
-[node name="Magic_Circle2" parent="." instance=ExtResource("2_hxmb5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.059277713, 0, 0.0119463205)

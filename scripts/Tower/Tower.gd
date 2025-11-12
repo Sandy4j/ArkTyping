@@ -16,7 +16,7 @@ var skill_type: String = ""
 var enemies_in_range: Array[CharacterBody3D] = []
 var overload_burst_active:bool
 var scarlet_harvester_active:bool
-
+var bullet_requiem_active:bool
 var max_hp: float = 100.0
 var current_hp: float = 100.0
 
@@ -36,6 +36,7 @@ var is_animation_playing: bool = false
 @onready var range_area: Area3D = $RangeArea
 @onready var shoot_point: Node3D = $ShootPoint
 @onready var skill_sprite: Sprite3D = $SkillSprite
+var altar
 
 func _ready() -> void:
 	shot_fired.connect(after_shoot)
@@ -428,6 +429,9 @@ func Skill(skill_name: String) -> void:
 			activate_scarlet_harvester()
 		"bullet requiem":
 			activate_bullet_requiem()
+			print("bul req")
+		"lunar blessing":
+			activate_lunar_blessing()
 		_:
 			print("Unknown skill: ", skill_name)
 			return
@@ -443,7 +447,7 @@ func activate_overload_burst() -> void:
 	print("Overload burst aktif!")
 	var aura_scene = load("res://asset/Vfx/Effect/magic_circle_1.tscn")
 	var aura_node = aura_scene.instantiate()
-	self.add_child(aura_node)
+	altar.add_child(aura_node)
 	aura_node.get_child(5).play("Kaileo_FX")
 	var original_fire_rate = fire_rate
 	fire_rate = original_fire_rate * 3.0  # 3x lebih cepat
@@ -461,7 +465,8 @@ func activate_lunar_blessing() -> void:
 	print("lunar blessing aktif")
 	var aura_scene = load("res://asset/Vfx/Effect/magic_circle_3(Silvanna).tscn")
 	var aura_node = aura_scene.instantiate()
-	self.add_child(aura_node)
+	altar.add_child(aura_node)
+	print(aura_node.get_child(5).name)
 	aura_node.get_child(5).play("Kaileo_FX")
 	var normal_damage = damage
 	var damage = normal_damage * 2
@@ -497,7 +502,9 @@ func activate_holy_divine() -> void:
 	print("holy divine aktif!")
 	var aura_scene = load("res://asset/Vfx/Effect/magic_circle_7(Lilitia).tscn")
 	var aura_node = aura_scene.instantiate()
-	self.add_child(aura_node)
+	altar.add_child(aura_node)
+	print(aura_node.get_child(5).name)
+	aura_node.get_child(5).play("Kaileo_FX")
 	orbit2.visible = true
 	orbit2.disabled = false
 	var skill_duration = tower_data.skill_duration
@@ -513,7 +520,7 @@ func activate_toxic_veil() -> void:
 	print("toxic veil aktif!")
 	var aura_scene = load("res://asset/Vfx/Effect/magic_circle_2(plague).tscn")
 	var aura_node = aura_scene.instantiate()
-	self.add_child(aura_node)
+	altar.add_child(aura_node)
 	aura_node.get_child(5).play("Kaileo_FX")
 	var veil_scene = load("res://asset/Vfx/Effect/Toxicveil.tscn")
 	var veil_node:Node3D = veil_scene.instantiate()
@@ -551,7 +558,7 @@ func activeate_bloody_opus()-> void:
 	print("bloody opus aktif")
 	var aura_scene = load("res://asset/Vfx/Effect/magic_circle_5(vigilante).tscn")
 	var aura_node = aura_scene.instantiate()
-	self.add_child(aura_node)
+	altar.add_child(aura_node)
 	aura_node.get_child(5).play("Kaileo_FX")
 	var normal_speed = fire_rate
 	fire_rate = normal_speed * 2
@@ -566,7 +573,7 @@ func activeate_bloody_opus()-> void:
 func activate_scarlet_harvester()-> void:
 	var aura_scene = load("res://asset/Vfx/Effect/magic_circle_6(Leciana).tscn")
 	var aura_node = aura_scene.instantiate()
-	self.add_child(aura_node)
+	altar.add_child(aura_node)
 	aura_node.get_child(5).play("Kaileo_FX")
 	scarlet_harvester_active = true
 	var skill_duration = tower_data.skill_duration
@@ -579,25 +586,36 @@ func activate_scarlet_harvester()-> void:
 var requiem_shot: int 
 var shot_count: int 
 func activate_bullet_requiem()-> void:
+	var aura_scene = load("res://asset/Vfx/Effect/magic_circle_4(Rosemary).tscn")
+	var aura_node = aura_scene.instantiate()
+	vfx_aura = aura_node
+	altar.add_child(aura_node)
+	aura_node.get_child(5).play("Kaileo_FX")
 	var normal_dmg = damage
 	damage = normal_dmg * 2
 	var normal_speed = fire_rate
-	fire_rate = normal_speed / 2
+	fire_rate = 1
 	requiem_shot = tower_data.skill_duration
 	shot_fired.connect(bullet_requiem_counter)
+	var skill_duration = tower_data.skill_duration
+	var timer = get_tree().create_timer(skill_duration)
+	timer.timeout.connect(func(): 
+		if bullet_requiem_active:
+			shot_fired.disconnect(bullet_requiem_counter)
+			aura_node.queue_free()
+			damage = tower_data.damage
+			fire_rate = tower_data.speed
+			bullet_requiem_active = false
+	)
 
 func bullet_requiem_counter():
-	var aura_scene = load("res://asset/Vfx/Effect/magic_circle_6(Leciana).tscn")
-	var aura_node = aura_scene.instantiate()
-	self.add_child(aura_node)
-	aura_node.get_child(5).play("Kaileo_FX")
 	shot_count += 1
-	if shot_count >= requiem_shot:
+	if shot_count >= requiem_shot and bullet_requiem_active:
 		damage = tower_data.damage
 		fire_rate = tower_data.speed
 		shot_fired.disconnect(bullet_requiem_counter)
-		aura_node.queue_free()
-		
+		vfx_aura.queue_free()
+
 
 
 func _on_sprite_3d_animation_finished() -> void:

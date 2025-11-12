@@ -34,6 +34,7 @@ func place_tower(data:TowerData) -> void:
 		tower_node = tower
 		tower_data = data
 		tower.tower_data = data
+		tower.altar = mesh_instance
 		self.add_child(tower)
 		has_tower = true
 		
