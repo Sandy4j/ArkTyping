@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://csf6jqmmtahw1"]
+[gd_scene load_steps=22 format=3 uid="uid://csf6jqmmtahw1"]
 
 [ext_resource type="Material" uid="uid://ctd55tbm5xssh" path="res://asset/Shader/Sky/night.tres" id="1_6hrdw"]
 [ext_resource type="Script" uid="uid://dgxccv80klhc7" path="res://scripts/Tower/TowerCon.gd" id="3_2wlag"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cb6pqwqtsnts0" path="res://asset/Envi/env_lvl_3_ground.tscn" id="5_wq170"]
 [ext_resource type="PackedScene" uid="uid://csob2dk5jrcb5" path="res://asset/Envi/fireflies.tscn" id="6_6181x"]
 [ext_resource type="PackedScene" uid="uid://dpxgr2wk7y01u" path="res://asset/Envi/props_lvl_3.tscn" id="6_wq170"]
+[ext_resource type="PackedScene" uid="uid://brhl3jursipw0" path="res://asset/Envi/Props lvl 3.fbx" id="6_xgj7h"]
 [ext_resource type="PackedScene" uid="uid://drlwka2ahedj4" path="res://scenes/Base.tscn" id="8_2la83"]
 [ext_resource type="Resource" uid="uid://d4nr4jpcakmc0" path="res://resources/WaveData/Level 3/Wave1_lvl3.tres" id="12_gj5ie"]
 [ext_resource type="Resource" uid="uid://bbmnux0b6xmd4" path="res://resources/WaveData/Level 3/Wave2_lvl3.tres" id="13_xgj7h"]
@@ -114,7 +115,8 @@ metadata/_edit_lock_ = true
 metadata/_edit_lock_ = true
 
 [node name="Props lvl 3" parent="WorldEnvironment" instance=ExtResource("6_wq170")]
-metadata/_edit_lock_ = true
+
+[node name="Props lvl 4" parent="WorldEnvironment" instance=ExtResource("6_xgj7h")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.37870607, -0.74707997, -0.5463085, -0.49369705, -0.6623454, 0.5635261, -0.7828441, 0.056300182, -0.6196655, 0, 10, 2.6227646)
@@ -142,27 +144,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.75, 1, -2)
 tower_scene = ExtResource("5_0bj1y")
 
 [node name="TowerSpot2" parent="TowerCon" instance=ExtResource("4_3ew82")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.25, 1, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 1, -2)
 tower_scene = ExtResource("5_0bj1y")
 
 [node name="TowerSpot3" parent="TowerCon" instance=ExtResource("4_3ew82")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.25, 1, -2)
 tower_scene = ExtResource("5_0bj1y")
 
 [node name="TowerSpot4" parent="TowerCon" instance=ExtResource("4_3ew82")]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 7.25, 1, 2)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 12, 1, 2)
 tower_scene = ExtResource("5_0bj1y")
 
 [node name="TowerSpot5" parent="TowerCon" instance=ExtResource("4_3ew82")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1, 2)
 tower_scene = ExtResource("5_0bj1y")
 
 [node name="TowerSpot6" parent="TowerCon" instance=ExtResource("4_3ew82")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.95, 1, 5.848)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 1, 2)
 tower_scene = ExtResource("5_0bj1y")
 
 [node name="TowerSpot7" parent="TowerCon" instance=ExtResource("4_3ew82")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, 5.848)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 2)
 tower_scene = ExtResource("5_0bj1y")
 
 [node name="Base" parent="." instance=ExtResource("8_2la83")]
