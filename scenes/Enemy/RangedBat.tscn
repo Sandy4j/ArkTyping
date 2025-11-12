@@ -53,6 +53,6 @@ shape = SubResource("SphereShape3D_aw3p5")
 shape = SubResource("SphereShape3D_icdvm")
 
 [node name="Anim" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(0.2, 0, 0, 0, 0.18793853, 0.06840403, 0, -0.06840403, 0.18793853, 0, 0, 0)
+transform = Transform3D(0.2, 0, 0, 0, 0.18793853, 0.06840403, 0, -0.06840403, 0.18793853, 0, 1, 0)
 sprite_frames = SubResource("SpriteFrames_mvnst")
 frame_progress = 0.3577953

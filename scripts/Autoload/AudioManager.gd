@@ -30,9 +30,9 @@ var current_bgm: String = ""
 
 func _ready() -> void:
 	bgm_gameplay = load("res://asset/Audio/BGM Gameplay.wav")
-	bgm_gameplay.loop = true
+	bgm_gameplay.loop_mode = AudioStreamWAV.LOOP_FORWARD
 	bgm_mainmenu = load("res://asset/Audio/BGM MainMenu.wav")
-	bgm_mainmenu.loop = true
+	bgm_mainmenu.loop_mode = AudioStreamWAV.LOOP_FORWARD
 	enemy_die = load("res://asset/Audio/Sfx/Enemy/EnemyDie.wav")
 	enemy_spawn = load("res://asset/Audio/Sfx/Enemy/Enemy Spawn.wav")
 	enemy_hit = load("res://asset/Audio/Sfx/Enemy/Enemy Hit Tower.wav")
