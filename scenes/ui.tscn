@@ -1,0 +1,340 @@
+[gd_scene load_steps=13 format=3 uid="uid://b6ot4uwb74jwf"]
+
+[ext_resource type="Script" uid="uid://bbexpquh4b3ip" path="res://scripts/UI/UI.gd" id="1_6rmj2"]
+[ext_resource type="Texture2D" uid="uid://b12vcxaju3drt" path="res://asset/UI_Gameplay/Heart_BG.png" id="2_vsj0x"]
+[ext_resource type="Texture2D" uid="uid://dgh3o7a60ljhb" path="res://asset/UI_Gameplay/Heart.png" id="3_qsv74"]
+[ext_resource type="FontFile" uid="uid://y7e0cejceotv" path="res://asset/UI_Gameplay/effortless.ttf" id="4_h1mc3"]
+[ext_resource type="Texture2D" uid="uid://bwp1jf5ljg3rb" path="res://asset/UI_Gameplay/Enemy_BG.png" id="5_cof4p"]
+[ext_resource type="Texture2D" uid="uid://ds45sauhw3tjq" path="res://asset/UI_Gameplay/Enemy.png" id="6_f7tlh"]
+[ext_resource type="Texture2D" uid="uid://dcjddmsrg8vdy" path="res://asset/UI_Gameplay/Wave.png" id="7_8k7j3"]
+[ext_resource type="Texture2D" uid="uid://cci18kuxibjpy" path="res://asset/UI_Gameplay/Energy_BG.png" id="8_jkdwc"]
+[ext_resource type="Texture2D" uid="uid://qgwf3s20g5g" path="res://asset/UI_Gameplay/Chara_BG.png" id="9_rlppe"]
+[ext_resource type="Texture2D" uid="uid://c0biiiaj1qxo4" path="res://asset/UI_Gameplay/Example.png" id="10_ycmcx"]
+[ext_resource type="Texture2D" uid="uid://ej7fvjdun2vt" path="res://asset/UI_Gameplay/History_Box.png" id="11_kupmu"]
+[ext_resource type="Texture2D" uid="uid://omvvnc2d3cag" path="res://asset/UI_Gameplay/Type_Box.png" id="12_catpy"]
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_6rmj2")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="HP" type="TextureRect" parent="."]
+offset_top = 49.0
+offset_right = 285.0
+offset_bottom = 143.0
+texture = ExtResource("2_vsj0x")
+
+[node name="TextureRect" type="TextureRect" parent="HP"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -126.5
+offset_top = -40.5
+offset_right = -23.5
+offset_bottom = 36.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_qsv74")
+
+[node name="Health_Con" type="HBoxContainer" parent="HP"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -9.5
+offset_top = -35.0
+offset_right = 120.5
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Cur" type="Label" parent="HP/Health_Con"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_h1mc3")
+theme_override_font_sizes/font_size = 40
+text = "12"
+
+[node name="Ph" type="Label" parent="HP/Health_Con"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_h1mc3")
+theme_override_font_sizes/font_size = 40
+text = "/"
+
+[node name="Max" type="Label" parent="HP/Health_Con"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_h1mc3")
+theme_override_font_sizes/font_size = 40
+text = "120"
+
+[node name="Enemy" type="TextureRect" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -285.0
+offset_top = 49.0
+offset_bottom = 143.0
+grow_horizontal = 0
+texture = ExtResource("5_cof4p")
+
+[node name="TextureRect" type="TextureRect" parent="Enemy"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 32.5
+offset_top = -49.5
+offset_right = 125.5
+offset_bottom = 47.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_f7tlh")
+
+[node name="Wave_Con" type="HBoxContainer" parent="Enemy"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -111.0
+offset_top = -31.5
+offset_right = 19.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Cur" type="Label" parent="Enemy/Wave_Con"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_h1mc3")
+theme_override_font_sizes/font_size = 40
+text = "12"
+
+[node name="Ph" type="Label" parent="Enemy/Wave_Con"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_h1mc3")
+theme_override_font_sizes/font_size = 40
+text = "/"
+
+[node name="Max" type="Label" parent="Enemy/Wave_Con"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_h1mc3")
+theme_override_font_sizes/font_size = 40
+text = "120"
+
+[node name="Wave" type="TextureRect" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -285.0
+offset_top = 162.0
+offset_bottom = 256.0
+grow_horizontal = 0
+texture = ExtResource("5_cof4p")
+
+[node name="TextureRect" type="TextureRect" parent="Wave"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 26.5
+offset_top = -45.5
+offset_right = 139.5
+offset_bottom = 45.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_8k7j3")
+
+[node name="Wave_Con" type="HBoxContainer" parent="Wave"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -111.0
+offset_top = -31.5
+offset_right = 19.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Cur" type="Label" parent="Wave/Wave_Con"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_h1mc3")
+theme_override_font_sizes/font_size = 40
+text = "12"
+
+[node name="Ph" type="Label" parent="Wave/Wave_Con"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_h1mc3")
+theme_override_font_sizes/font_size = 40
+text = "/"
+
+[node name="Max" type="Label" parent="Wave/Wave_Con"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_h1mc3")
+theme_override_font_sizes/font_size = 40
+text = "120"
+
+[node name="TextureProgressBar" type="TextureRect" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -131.0
+offset_top = -129.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("8_jkdwc")
+
+[node name="Label" type="Label" parent="TextureProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -13.0
+offset_right = 20.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_h1mc3")
+theme_override_font_sizes/font_size = 64
+text = "16"
+horizontal_alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(0, 166)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -310.5
+offset_top = -170.0
+offset_right = 310.5
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("9_rlppe")
+region_rect = Rect2(0, 0, 602, 171)
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 621.0
+offset_bottom = 30.0
+
+[node name="Label" type="Label" parent="NinePatchRect/HBoxContainer2"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 7
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/MarginContainer"]
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("10_ycmcx")
+
+[node name="HistoryBox" type="TextureRect" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -422.0
+offset_right = 306.0
+offset_bottom = -311.0
+grow_vertical = 0
+texture = ExtResource("11_kupmu")
+
+[node name="History1" type="Label" parent="HistoryBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = 77.0
+offset_right = -19.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_h1mc3")
+theme_override_font_sizes/font_size = 24
+vertical_alignment = 1
+
+[node name="History2" type="Label" parent="HistoryBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = 44.0
+offset_right = -19.0
+offset_bottom = -41.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_h1mc3")
+theme_override_font_sizes/font_size = 24
+vertical_alignment = 1
+
+[node name="History3" type="Label" parent="HistoryBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = 8.0
+offset_right = -19.0
+offset_bottom = -77.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_h1mc3")
+theme_override_font_sizes/font_size = 24
+vertical_alignment = 1
+
+[node name="TypeBox" type="TextureRect" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -291.0
+offset_right = 306.0
+offset_bottom = -247.0
+grow_vertical = 0
+texture = ExtResource("12_catpy")
+
+[node name="Label" type="Label" parent="TypeBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_right = -19.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_h1mc3")
+theme_override_font_sizes/font_size = 24
+vertical_alignment = 1
