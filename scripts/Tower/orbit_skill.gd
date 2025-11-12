@@ -29,13 +29,19 @@ func _physics_process(delta: float) -> void:
 		timer = 0
 
 func _enemy_near(body:Node3D)-> void:
-	if body.is_in_group("enemies") and body is CharacterBody3D and body.has_method("take_damage") and !disabled:
+	if is_instance_valid(body) and body.is_in_group("enemies") and body is CharacterBody3D and body.has_method("take_damage") and !disabled:
 		near_enemy.append(body)
 		body.take_damage(damage)
 		sfx.play()
 		print("body masuk")
 
 func _enemy_take_damage()-> void:
+	var valid_enemies = []
+	for body in near_enemy:
+		if is_instance_valid(body) and body.is_in_group("enemies"):
+			valid_enemies.append(body)
+	near_enemy = valid_enemies
+	
 	for body in near_enemy:
 		body.take_damage(damage)
 		print("body damage")
@@ -56,3 +62,8 @@ func normalize_attack():
 	dot_timer = 0.8
 	anim.stop()
 	anim.play("spin")
+
+func _exit_tree() -> void:
+	# Clean up all enemy references when this node is removed
+	near_enemy.clear()
+

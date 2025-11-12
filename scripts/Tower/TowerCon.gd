@@ -13,7 +13,7 @@ func _ready() -> void:
 	var outline_shader = load("res://asset/Shader/outline_highlight.gdshader")
 	outline_material.shader = outline_shader
 	outline_material.set_shader_parameter("outline_color", Color(1.0, 1.0, 0.0, 1.0))
-	outline_material.set_shader_parameter("outline_width", 0.05)
+	outline_material.set_shader_parameter("outline_width", 0.5)
 	
 	collect_tower_spots()
 	
@@ -94,14 +94,12 @@ func update_spot_labels() -> void:
 			label = Label3D.new()
 			label.name = "NumberLabel"
 			spot.add_child(label)
-			label.position = Vector3(0, 1.5, 0)
+			label.position = Vector3(0, 3, 0)
 			label.pixel_size = 0.01
 			label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
 		
 		label.text = str(i + 1)
 		label.modulate = Color.YELLOW
-		if spot.has_tower:
-			label.visible = false
 
 func place_tower_at_selected(data:TowerData) -> void:
 	if selected_spot_index >= 0 and selected_spot_index < tower_spots.size():
@@ -158,7 +156,7 @@ func delete_tower_at_selected() -> void:
 		var msg =str("menghapus tower ", spot.tower_data.chara)
 		GameManager.set_tower_state(spot.tower_data,false)
 		spot.remove_tower()
-        AudioManager.play_sfx("tower_retreat")
+		AudioManager.play_sfx("tower_retreat")
 		update_spot_labels()
 		ui.show_message(msg)
 		TypingSystem.clear_text()
