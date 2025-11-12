@@ -1,7 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://bj5dtcmvpkfwk"]
+[gd_scene load_steps=14 format=3 uid="uid://bj5dtcmvpkfwk"]
 
 [ext_resource type="Script" path="res://scripts/UI/WinLose.gd" id="1_ha5wc"]
-[ext_resource type="Texture2D" uid="uid://c8x1w4k2bnq3p" path="res://star.svg" id="2_m44ry"]
+[ext_resource type="Texture2D" uid="uid://bvydxrtay4jjx" path="res://asset/UI/retry.png" id="2_11wgb"]
+[ext_resource type="FontFile" uid="uid://bidkq3k8s4itr" path="res://asset/Font/Lovato-Bold.ttf" id="2_blvgp"]
+[ext_resource type="Texture2D" uid="uid://bpvwl8ffs6b4w" path="res://asset/UI/mmbtn.png" id="2_l3gyh"]
+[ext_resource type="Texture2D" uid="uid://b2yc1xuo6hgv1" path="res://asset/UI/retryH.png" id="3_ds3jj"]
+[ext_resource type="Texture2D" uid="uid://bfq4oa1exfecl" path="res://asset/UI/star kosong.png" id="3_prtmj"]
+[ext_resource type="Texture2D" uid="uid://c8bpfik6l48gp" path="res://asset/UI/mmhbtn.png" id="3_qg4dt"]
+[ext_resource type="Texture2D" uid="uid://d4m2okydgg10v" path="res://asset/UI/nextlevel.png" id="7_blvgp"]
+[ext_resource type="Texture2D" uid="uid://dp72l3ammf8il" path="res://asset/UI/star isi.png" id="8_hlqwi"]
+[ext_resource type="FontFile" uid="uid://b5as20pm4j1e0" path="res://asset/Font/effortless.ttf" id="9_hlqwi"]
+[ext_resource type="Texture2D" uid="uid://colcgkvo4ppak" path="res://asset/UI/nextlevelH.png" id="11_v3cyd"]
+[ext_resource type="Texture2D" uid="uid://dejfr6wcw0nso" path="res://asset/UI/replay.png" id="12_k485g"]
+[ext_resource type="Texture2D" uid="uid://dpxsbxr2iu6nd" path="res://asset/UI/replayH.png" id="13_6hp1n"]
 
 [node name="WinLose" type="Control"]
 layout_mode = 3
@@ -12,16 +23,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ha5wc")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.7)
-
 [node name="GameOverPanel" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -42,25 +45,60 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 15
+theme_override_constants/separation = 25
 
 [node name="TitleLabel" type="Label" parent="GameOverPanel/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 48
-text = "GAME OVER"
+theme_override_colors/font_color = Color(1, 0.84313726, 0.5294118, 1)
+theme_override_colors/font_shadow_color = Color(0.9137255, 0.6862745, 0.33333334, 1)
+theme_override_colors/font_outline_color = Color(0.9137255, 0.6862745, 0.33333334, 1)
+theme_override_fonts/font = ExtResource("2_blvgp")
+theme_override_font_sizes/font_size = 75
+text = "Mission
+Failed"
 horizontal_alignment = 1
 
-[node name="RestartButton" type="Button" parent="GameOverPanel/VBoxContainer"]
+[node name="StarsContainer" type="HBoxContainer" parent="GameOverPanel/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 24
-text = "Restart"
+theme_override_constants/separation = 30
 
-[node name="MenuButton" type="Button" parent="GameOverPanel/VBoxContainer"]
+[node name="Star1" type="TextureRect" parent="GameOverPanel/VBoxContainer/StarsContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("3_prtmj")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Star2" type="TextureRect" parent="GameOverPanel/VBoxContainer/StarsContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("3_prtmj")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Star3" type="TextureRect" parent="GameOverPanel/VBoxContainer/StarsContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("3_prtmj")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="RetryBtn" type="TextureButton" parent="GameOverPanel/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 24
-text = "Main Menu"
+texture_normal = ExtResource("2_11wgb")
+texture_pressed = ExtResource("3_ds3jj")
+texture_hover = ExtResource("3_ds3jj")
+texture_focused = ExtResource("3_ds3jj")
+
+[node name="MenuBtn" type="TextureButton" parent="GameOverPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("2_l3gyh")
+texture_pressed = ExtResource("3_qg4dt")
+texture_hover = ExtResource("3_qg4dt")
+texture_focused = ExtResource("3_qg4dt")
 
 [node name="VictoryPanel" type="Panel" parent="."]
 visible = false
@@ -88,9 +126,17 @@ theme_override_constants/separation = 15
 
 [node name="TitleLabel" type="Label" parent="VictoryPanel/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 48
-text = "VICTORY!"
+theme_override_colors/font_color = Color(1, 0.84313726, 0.5294118, 1)
+theme_override_colors/font_shadow_color = Color(0.9137255, 0.6862745, 0.33333334, 1)
+theme_override_colors/font_outline_color = Color(0.9137255, 0.6862745, 0.33333334, 1)
+theme_override_fonts/font = ExtResource("2_blvgp")
+theme_override_font_sizes/font_size = 75
+text = "Mission
+Complete"
 horizontal_alignment = 1
+
+[node name="Spacing" type="Control" parent="VictoryPanel/VBoxContainer"]
+layout_mode = 2
 
 [node name="StarsContainer" type="HBoxContainer" parent="VictoryPanel/VBoxContainer"]
 layout_mode = 2
@@ -100,50 +146,64 @@ theme_override_constants/separation = 30
 [node name="Star1" type="TextureRect" parent="VictoryPanel/VBoxContainer/StarsContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-texture = ExtResource("2_m44ry")
+texture = ExtResource("8_hlqwi")
 expand_mode = 1
 stretch_mode = 5
 
 [node name="Star2" type="TextureRect" parent="VictoryPanel/VBoxContainer/StarsContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-texture = ExtResource("2_m44ry")
+texture = ExtResource("8_hlqwi")
 expand_mode = 1
 stretch_mode = 5
 
 [node name="Star3" type="TextureRect" parent="VictoryPanel/VBoxContainer/StarsContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-texture = ExtResource("2_m44ry")
+texture = ExtResource("8_hlqwi")
 expand_mode = 1
 stretch_mode = 5
 
+[node name="Spacing2" type="Control" parent="VictoryPanel/VBoxContainer"]
+layout_mode = 2
+
 [node name="HPLabel" type="Label" parent="VictoryPanel/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
+theme_override_fonts/font = ExtResource("9_hlqwi")
+theme_override_font_sizes/font_size = 35
 text = "Base HP: 20 / 20"
 horizontal_alignment = 1
 
 [node name="WaveLabel" type="Label" parent="VictoryPanel/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
+theme_override_fonts/font = ExtResource("9_hlqwi")
+theme_override_font_sizes/font_size = 35
 text = "Waves Completed: 10"
 horizontal_alignment = 1
 
-[node name="NextButton" type="Button" parent="VictoryPanel/VBoxContainer"]
+[node name="Spacing3" type="Control" parent="VictoryPanel/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 24
-text = "Next Level"
 
-[node name="ReplayButton" type="Button" parent="VictoryPanel/VBoxContainer"]
+[node name="NextBtn" type="TextureButton" parent="VictoryPanel/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 24
-text = "Replay"
+texture_normal = ExtResource("7_blvgp")
+texture_pressed = ExtResource("11_v3cyd")
+texture_hover = ExtResource("11_v3cyd")
+texture_focused = ExtResource("11_v3cyd")
 
-[node name="MenuButton" type="Button" parent="VictoryPanel/VBoxContainer"]
+[node name="ReplayBtn" type="TextureButton" parent="VictoryPanel/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 24
-text = "Main Menu"
+texture_normal = ExtResource("12_k485g")
+texture_pressed = ExtResource("13_6hp1n")
+texture_hover = ExtResource("13_6hp1n")
+texture_focused = ExtResource("13_6hp1n")
+
+[node name="MenuBtn" type="TextureButton" parent="VictoryPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("2_l3gyh")
+texture_pressed = ExtResource("3_qg4dt")
+texture_hover = ExtResource("3_qg4dt")
+texture_focused = ExtResource("3_qg4dt")
