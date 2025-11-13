@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_ftwvm")
 enemy_name = "Ranged Bat"
-max_hp = 600.0
+max_hp = 500.0
 move_speed = 1.0
 reward = 2
 can_attack = true

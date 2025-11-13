@@ -3,19 +3,19 @@
 [ext_resource type="PackedScene" uid="uid://digrhep77tlo1" path="res://asset/Vfx/Effect/Moonball.tscn" id="1_3waq0"]
 [ext_resource type="Script" uid="uid://g85gwfmcln8s" path="res://scripts/Tower/Tower_Res.gd" id="1_h3o12"]
 [ext_resource type="AudioStream" uid="uid://ckw6pw52cvcwx" path="res://asset/SFX_IGame/Tower/Silvanna/Silvanna Basic Attack.wav" id="1_lniv3"]
-[ext_resource type="Texture2D" uid="uid://n662m4ijsu8n" path="res://asset/Tower/Silvanna/Skill/Skill 1.png" id="2_ky5px"]
-[ext_resource type="Texture2D" uid="uid://480afuk8qths" path="res://asset/Tower/Silvanna/Skill/Skill 2.png" id="3_3waq0"]
-[ext_resource type="Texture2D" uid="uid://dqycj11p0j71g" path="res://asset/Tower/Skill/Group (1).png" id="3_8e85y"]
+[ext_resource type="Texture2D" uid="uid://dhgc48tuua78h" path="res://asset/Tower/Silvanna/Skill/Skill 1.png" id="2_ky5px"]
+[ext_resource type="Texture2D" uid="uid://stkryf4fpydt" path="res://asset/Tower/Silvanna/Skill/Skill 2.png" id="3_3waq0"]
+[ext_resource type="Texture2D" uid="uid://c2djxhycgwsmk" path="res://asset/Tower/Skill/Group (1).png" id="3_8e85y"]
 [ext_resource type="Texture2D" uid="uid://clh72ftxl4rjq" path="res://asset/Tower/Icon/silvanna.png" id="4_7y1np"]
-[ext_resource type="Texture2D" uid="uid://bus52813d3tt0" path="res://asset/Tower/Silvanna/Skill/Skill 3.png" id="4_8e85y"]
+[ext_resource type="Texture2D" uid="uid://cs61atxq8rw38" path="res://asset/Tower/Silvanna/Skill/Skill 3.png" id="4_8e85y"]
 [ext_resource type="AudioStream" uid="uid://d3wto142s5h7g" path="res://asset/SFX_IGame/Tower/Silvanna/Silvanna Skill.wav" id="5_5piew"]
-[ext_resource type="Texture2D" uid="uid://bc2tigfqmfmly" path="res://asset/Tower/Silvanna/Skill/Skill 4.png" id="5_7y1np"]
-[ext_resource type="Texture2D" uid="uid://cf6n8o4tm3l3a" path="res://asset/Tower/Silvanna/Skill/Skill 5.png" id="6_exrmv"]
-[ext_resource type="Texture2D" uid="uid://dx1wmrr0qslch" path="res://asset/Tower/Silvanna/Idle/Idle 1.png" id="7_lniv3"]
-[ext_resource type="Texture2D" uid="uid://bclc6c6ujravu" path="res://asset/Tower/Silvanna/Idle/Idle 2.png" id="8_5piew"]
-[ext_resource type="Texture2D" uid="uid://bmyneei6gpdtc" path="res://asset/Tower/Silvanna/Idle/Idle 3.png" id="9_1mo65"]
-[ext_resource type="Texture2D" uid="uid://dei04db7yxwj" path="res://asset/Tower/Silvanna/Idle/Idle 4.png" id="10_ounyl"]
-[ext_resource type="Texture2D" uid="uid://bqhdswo4u6rwo" path="res://asset/Tower/Silvanna/Idle/Idle 5.png" id="11_rwjyi"]
+[ext_resource type="Texture2D" uid="uid://catwx8ir50oh6" path="res://asset/Tower/Silvanna/Skill/Skill 4.png" id="5_7y1np"]
+[ext_resource type="Texture2D" uid="uid://cogyq53e4p6vi" path="res://asset/Tower/Silvanna/Skill/Skill 5.png" id="6_exrmv"]
+[ext_resource type="Texture2D" uid="uid://nbuy7tjut3sn" path="res://asset/Tower/Silvanna/Idle/Idle 1.png" id="7_lniv3"]
+[ext_resource type="Texture2D" uid="uid://ct8gq6chywk26" path="res://asset/Tower/Silvanna/Idle/Idle 2.png" id="8_5piew"]
+[ext_resource type="Texture2D" uid="uid://da76e8moajij7" path="res://asset/Tower/Silvanna/Idle/Idle 3.png" id="9_1mo65"]
+[ext_resource type="Texture2D" uid="uid://coilbmc8dc7nw" path="res://asset/Tower/Silvanna/Idle/Idle 4.png" id="10_ounyl"]
+[ext_resource type="Texture2D" uid="uid://ba5s7o6njr5sk" path="res://asset/Tower/Silvanna/Idle/Idle 5.png" id="11_rwjyi"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ebbtt"]
 animations = [{
@@ -65,15 +65,15 @@ script = ExtResource("1_h3o12")
 chara = "silvanna"
 atk_sfx = ExtResource("1_lniv3")
 skl_sfx = ExtResource("5_5piew")
-cost = 9
+cost = 8
 slot = ExtResource("4_7y1np")
-damage = 250
+damage = 225
 speed = 1.0
 range = 200.0
 skill = "lunar blessing"
-skill_duration = 7
+skill_duration = 5
 skill_sprite = ExtResource("3_8e85y")
-cooldown = 17
+cooldown = 10
 max_hp = 800.0
 sprite = SubResource("SpriteFrames_ebbtt")
 projectile = ExtResource("1_3waq0")
