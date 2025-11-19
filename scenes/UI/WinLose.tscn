@@ -185,9 +185,8 @@ horizontal_alignment = 1
 [node name="Spacing3" type="Control" parent="VictoryPanel/VBoxContainer"]
 layout_mode = 2
 
-[node name="NextBtn" type="TextureButton" parent="VictoryPanel/VBoxContainer"]
+[node name="Next" type="TextureButton" parent="VictoryPanel/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
 texture_normal = ExtResource("7_blvgp")
 texture_pressed = ExtResource("11_v3cyd")
 texture_hover = ExtResource("11_v3cyd")

@@ -6,10 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://boh1nycs8j3cn" path="res://asset/Tower/Kaelio/Attack/Skill 1.png" id="2_0jynn"]
 [ext_resource type="Texture2D" uid="uid://beorb7ih4p5oc" path="res://asset/Tower/Kaelio/Attack/Skill 2.png" id="3_7kj1q"]
 [ext_resource type="Texture2D" uid="uid://dx0da4swm5vxi" path="res://asset/Tower/Skill/Group.png" id="3_45kid"]
-[ext_resource type="Texture2D" uid="uid://efhxgc32kqwv" path="res://asset/Tower/Icon/kaelio.png" id="4_3xivg"]
 [ext_resource type="Texture2D" uid="uid://7fyplbpw1av0" path="res://asset/Tower/Kaelio/Attack/Skill 3.png" id="4_45kid"]
 [ext_resource type="Texture2D" uid="uid://dsdtri23qtexn" path="res://asset/Tower/Kaelio/Attack/Skill 4.png" id="5_3xivg"]
 [ext_resource type="AudioStream" uid="uid://dcy1hijgtr2b0" path="res://asset/SFX_IGame/Tower/Kaelio/Kaelio Skill.wav" id="5_w588g"]
+[ext_resource type="Texture2D" uid="uid://40b2kev6fqq8" path="res://asset/mbuh/kaelio.png" id="6_ektn4"]
 [ext_resource type="Texture2D" uid="uid://ds88hp6hibr6m" path="res://asset/Tower/Kaelio/Attack/Skill 5.png" id="6_v2kk4"]
 [ext_resource type="Texture2D" uid="uid://dtgpwa7ymvxds" path="res://asset/Tower/Kaelio/Attack/Skill 6.png" id="7_ektn4"]
 [ext_resource type="Texture2D" uid="uid://c33gcaxbd7dwf" path="res://asset/Tower/Kaelio/Idle/Idle 1.png" id="8_w588g"]
@@ -78,7 +78,7 @@ chara = "kaelio"
 atk_sfx = ExtResource("1_ektn4")
 skl_sfx = ExtResource("5_w588g")
 cost = 7
-slot = ExtResource("4_3xivg")
+slot = ExtResource("6_ektn4")
 damage = 150
 speed = 1.0
 range = 250.0

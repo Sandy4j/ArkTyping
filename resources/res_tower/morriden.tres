@@ -6,10 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://cu4m6wj10qo28" path="res://asset/Tower/Morriden/attack/Skill 1.png" id="2_psi17"]
 [ext_resource type="Texture2D" uid="uid://dt8oc50qduvad" path="res://asset/Tower/Morriden/attack/Skill 2.png" id="3_4fch3"]
 [ext_resource type="Texture2D" uid="uid://bvu6tbdxtcgtp" path="res://asset/Tower/Skill/Group (5).png" id="3_m2pgc"]
-[ext_resource type="Texture2D" uid="uid://cbsudml4v6so8" path="res://asset/Tower/Icon/morriden.png" id="4_8ujri"]
 [ext_resource type="Texture2D" uid="uid://0qfyeu2s8ooq" path="res://asset/Tower/Morriden/attack/Skill 3.png" id="4_m2pgc"]
 [ext_resource type="Texture2D" uid="uid://bbyv3tbmwg5s7" path="res://asset/Tower/Morriden/attack/Skill 4.png" id="5_8ujri"]
 [ext_resource type="AudioStream" uid="uid://tcm2jj8px5ha" path="res://asset/SFX_IGame/Tower/Morriden/Morriden Skill.wav" id="5_asmgg"]
+[ext_resource type="Texture2D" uid="uid://dwsae5eickf7s" path="res://asset/mbuh/morriden.png" id="6_d122q"]
 [ext_resource type="Texture2D" uid="uid://t34nqq4lpu4" path="res://asset/Tower/Morriden/attack/Skill 5.png" id="6_s2ut6"]
 [ext_resource type="Texture2D" uid="uid://c5qo50av3hf2r" path="res://asset/Tower/Morriden/attack/Skill 6.png" id="7_d122q"]
 [ext_resource type="Texture2D" uid="uid://vepwyqge6oqg" path="res://asset/Tower/Morriden/attack/Skill 7.png" id="8_asmgg"]
@@ -82,7 +82,7 @@ chara = "morriden"
 atk_sfx = ExtResource("1_d122q")
 skl_sfx = ExtResource("5_asmgg")
 cost = 10
-slot = ExtResource("4_8ujri")
+slot = ExtResource("6_d122q")
 damage = 250
 speed = 0.7
 range = 200.0

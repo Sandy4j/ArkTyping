@@ -13,7 +13,7 @@ enum EndState { GAME_OVER, VICTORY }
 @onready var vstar3: TextureRect = $VictoryPanel/VBoxContainer/StarsContainer/Star3
 @onready var vhp_label: Label = $VictoryPanel/VBoxContainer/HPLabel
 @onready var vwave_label: Label = $VictoryPanel/VBoxContainer/WaveLabel
-@onready var next_button: TextureButton = $VictoryPanel/VBoxContainer/NextBtn
+@onready var next_button: TextureButton = $VictoryPanel/VBoxContainer/Next
 @onready var replay_button: TextureButton = $VictoryPanel/VBoxContainer/ReplayBtn
 @onready var menu_button: TextureButton = $VictoryPanel/VBoxContainer/MenuBtn
 
@@ -48,7 +48,9 @@ func show_victory() -> void:
 	update_stats(vhp_label, vwave_label)
 	update_stars(vstar1, vstar2, vstar3)
 	
-	if not LevelManager.has_next_level():
+	if LevelManager.has_next_level():
+		next_button.visible = true
+	else:
 		next_button.visible = false
 
 func update_stats(hp_label: Label, wave_label: Label) -> void:
@@ -98,16 +100,19 @@ func _animate_star_async(star: TextureRect, delay: float) -> void:
 	tween.chain().tween_property(star, "scale", Vector2(1.0, 1.0), 0.15).set_trans(Tween.TRANS_BACK)
 
 func _on_restart_pressed() -> void:
+	AudioManager.play_sfx("button_click")
 	get_tree().paused = false
 	GameManager.reset_game_state()
 	get_tree().change_scene_to_file(LevelManager.current_level_path)
 
 func _on_next_level_pressed() -> void:
+	AudioManager.play_sfx("button_click")
 	get_tree().paused = false
 	GameManager.reset_game_state()
 	LevelManager.load_next_level()
 
 func _on_menu_pressed() -> void:
+	AudioManager.play_sfx("button_click")
 	get_tree().paused = false
 	GameManager.reset_game_state()
 	get_tree().change_scene_to_file("res://scenes/UI/main_menu.tscn")

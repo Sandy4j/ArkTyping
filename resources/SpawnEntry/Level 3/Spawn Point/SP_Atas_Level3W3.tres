@@ -14,7 +14,7 @@ enemy_data = ExtResource("1_6cfrx")
 
 [resource]
 script = ExtResource("2_vwj8h")
-spawn_path_node = NodePath("WaveManager/PathUp")
+spawn_path_node = NodePath("PathUp")
 enemy_spawn_entries = Array[ExtResource("1_5pqle")]([SubResource("Resource_6cfrx")])
 enemies_to_spawn = 1
 spawn_interval = 2.0

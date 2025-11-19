@@ -6,11 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://bkwfs84h7pjhl" path="res://asset/Tower/Rosemary/attack/Skill 1.png" id="2_hhrno"]
 [ext_resource type="Texture2D" uid="uid://l4kd7ht8vixs" path="res://asset/Tower/Rosemary/attack/Skill 2.png" id="3_06iej"]
 [ext_resource type="Texture2D" uid="uid://b7oeoksj4p11b" path="res://asset/Tower/Skill/Group (6).png" id="3_y73jg"]
-[ext_resource type="Texture2D" uid="uid://btxa1j5ci3tkf" path="res://asset/Tower/Icon/rosemarry.png" id="4_vygpc"]
 [ext_resource type="Texture2D" uid="uid://b0tggl0mo2vox" path="res://asset/Tower/Rosemary/attack/Skill 3.png" id="4_y73jg"]
 [ext_resource type="AudioStream" uid="uid://c4i7mj8g3dw3i" path="res://asset/SFX_IGame/Tower/Rosemary/Rosemary Skill.wav" id="5_1kkq2"]
 [ext_resource type="Texture2D" uid="uid://b4g1ducthrg04" path="res://asset/Tower/Rosemary/attack/Skill 4.png" id="5_vygpc"]
 [ext_resource type="Texture2D" uid="uid://dr1fyylbpnirp" path="res://asset/Tower/Rosemary/attack/Skill 5.png" id="6_2otcp"]
+[ext_resource type="Texture2D" uid="uid://b1ex3wyb2elrt" path="res://asset/mbuh/rosemarry.png" id="6_vygpc"]
 [ext_resource type="Texture2D" uid="uid://bhwpvgjk78ar0" path="res://asset/Tower/Rosemary/attack/Skill 6.png" id="7_1kkq2"]
 [ext_resource type="Texture2D" uid="uid://b5a0odtl5xgcf" path="res://asset/Tower/Rosemary/Idle/Idle 1.png" id="9_6lxli"]
 [ext_resource type="Texture2D" uid="uid://dd80jgdb5ctx2" path="res://asset/Tower/Rosemary/Idle/Idle 2.png" id="10_nghwd"]
@@ -78,7 +78,7 @@ chara = "rosemary"
 atk_sfx = ExtResource("1_2otcp")
 skl_sfx = ExtResource("5_1kkq2")
 cost = 22
-slot = ExtResource("4_vygpc")
+slot = ExtResource("6_vygpc")
 damage = 600
 speed = 0.5
 range = 350.0

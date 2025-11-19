@@ -6,11 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://dhgc48tuua78h" path="res://asset/Tower/Silvanna/Skill/Skill 1.png" id="2_ky5px"]
 [ext_resource type="Texture2D" uid="uid://stkryf4fpydt" path="res://asset/Tower/Silvanna/Skill/Skill 2.png" id="3_3waq0"]
 [ext_resource type="Texture2D" uid="uid://c2djxhycgwsmk" path="res://asset/Tower/Skill/Group (1).png" id="3_8e85y"]
-[ext_resource type="Texture2D" uid="uid://clh72ftxl4rjq" path="res://asset/Tower/Icon/silvanna.png" id="4_7y1np"]
 [ext_resource type="Texture2D" uid="uid://cs61atxq8rw38" path="res://asset/Tower/Silvanna/Skill/Skill 3.png" id="4_8e85y"]
 [ext_resource type="AudioStream" uid="uid://d3wto142s5h7g" path="res://asset/SFX_IGame/Tower/Silvanna/Silvanna Skill.wav" id="5_5piew"]
 [ext_resource type="Texture2D" uid="uid://catwx8ir50oh6" path="res://asset/Tower/Silvanna/Skill/Skill 4.png" id="5_7y1np"]
 [ext_resource type="Texture2D" uid="uid://cogyq53e4p6vi" path="res://asset/Tower/Silvanna/Skill/Skill 5.png" id="6_exrmv"]
+[ext_resource type="Texture2D" uid="uid://ctlpwkvwrfeun" path="res://asset/mbuh/silvanna.png" id="6_lniv3"]
 [ext_resource type="Texture2D" uid="uid://nbuy7tjut3sn" path="res://asset/Tower/Silvanna/Idle/Idle 1.png" id="7_lniv3"]
 [ext_resource type="Texture2D" uid="uid://ct8gq6chywk26" path="res://asset/Tower/Silvanna/Idle/Idle 2.png" id="8_5piew"]
 [ext_resource type="Texture2D" uid="uid://da76e8moajij7" path="res://asset/Tower/Silvanna/Idle/Idle 3.png" id="9_1mo65"]
@@ -66,7 +66,7 @@ chara = "silvanna"
 atk_sfx = ExtResource("1_lniv3")
 skl_sfx = ExtResource("5_5piew")
 cost = 8
-slot = ExtResource("4_7y1np")
+slot = ExtResource("6_lniv3")
 damage = 225
 speed = 1.0
 range = 200.0

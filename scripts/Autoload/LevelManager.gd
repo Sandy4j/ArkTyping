@@ -4,29 +4,15 @@ signal victory
 signal level_completed
 
 var current_level_path: String = ""
-var available_levels: Array[String] = []
+var available_levels: Array[String] = [
+	"res://levels/level_01.tscn",
+	"res://levels/level_02.tscn",
+	"res://levels/level_03.tscn"
+]
 var current_level_index: int = -1
 
 func _ready() -> void:
-	scan_levels()
-
-func scan_levels() -> void:
-	available_levels.clear()
-	var dir = DirAccess.open("res://levels/")
-	
-	if dir:
-		dir.list_dir_begin()
-		var file_name = dir.get_next()
-		
-		while file_name != "":
-			if not dir.current_is_dir() and file_name.ends_with(".tscn"):
-				available_levels.append("res://levels/" + file_name)
-			file_name = dir.get_next()
-		dir.list_dir_end()
-		
-		available_levels.sort()
-	else:
-		print("Fail")
+	pass
 
 func set_current_level(level_path: String) -> void:
 	current_level_path = level_path
@@ -45,7 +31,7 @@ func load_next_level() -> void:
 	if next_level != "":
 		get_tree().change_scene_to_file(next_level)
 	else:
-		print("Level entek")
+		get_tree().change_scene_to_file("res://scenes/UI/main_menu.tscn")
 
 func reload_current_level() -> void:
 	if current_level_path != "":

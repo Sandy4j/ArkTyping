@@ -25,9 +25,9 @@ func _on_mouse_exited() -> void:
 	if not has_tower and mesh_instance:
 		mesh_instance.material_override = default_material
 
-func place_tower(data:TowerData) -> void:
+func place_tower(data:TowerData) -> bool:
 	if has_tower or not tower_scene:
-		return
+		return false
 	
 	if GameManager.spend_currency(data.cost):
 		var tower = tower_scene.instantiate()
@@ -38,9 +38,10 @@ func place_tower(data:TowerData) -> void:
 		tower.tower_destroyed.connect(remove_tower)
 		self.add_child(tower)
 		has_tower = true
-		
+		return true
 	else:
 		print("Kurang")
+		return false
 
 func remove_tower():
 	tower_gone.emit(tower_data)

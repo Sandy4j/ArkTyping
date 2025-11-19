@@ -13,7 +13,6 @@ config_version=5
 config/name="TypeKnights"
 run/main_scene="uid://cgksfc3odlqxl"
 config/features=PackedStringArray("4.5", "Forward Plus")
-config/icon="res://icon.svg"
 
 [autoload]
 
@@ -21,7 +20,6 @@ GameManager="*res://scripts/Autoload/GameManager.gd"
 TypingSystem="*res://scripts/Autoload/TypingSystem.gd"
 LevelManager="*res://scripts/Autoload/LevelManager.gd"
 ObjectPool="*res://scripts/Autoload/ObjectPool.gd"
-SFX="*res://scenes/audio_plauer.tscn"
 AudioManager="*res://scripts/Autoload/AudioManager.gd"
 
 [display]

@@ -32,10 +32,12 @@ func update_page():
 
 func _on_prev_button_pressed():
 	if current_page > 0:
+		AudioManager.play_sfx("button_click")
 		current_page -= 1
 		update_page()
 
 func _on_next_button_pressed():
+	AudioManager.play_sfx("button_click")
 	if current_page < total_pages - 1:
 		current_page += 1
 		update_page()

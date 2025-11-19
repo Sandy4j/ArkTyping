@@ -78,9 +78,9 @@ func select_spot(index: int) -> void:
 			remove_outline_from_spot(prev_spot)
 
 	selected_spot_index = index
+	AudioManager.play_sfx("spot_select")
 	if not spot.has_tower:
 		add_outline_to_spot(spot)
-	
 	if tower_input and tower_input.has_method("set_selected_spot"):
 		tower_input.set_selected_spot(index)
 
@@ -117,7 +117,14 @@ func place_tower_at_selected(data:TowerData) -> void:
 			var msg:String = str("Spot ", selected_spot_index + 1, " sudah ada tower!")
 			ui.show_message(msg)
 			return
-		spot.place_tower(data)
+		
+		var success = spot.place_tower(data)
+		if !success:
+			var msg:String = str("Gagal memasang tower! Cost tidak cukup atau error lain.")
+			ui.show_message(msg)
+			return
+		
+		# Tower placed successfully, update game state
 		AudioManager.play_sfx("tower_deploy")
 		placed_tower.append(data.chara)
 		var msg =str("memasang tower ", data.chara)

@@ -48,7 +48,9 @@ func _on_text_submitted(full_text: String) -> void:
 				return
 			else:
 				print("Spot belum dipilih bro.")
+				show_message("Pilih spot dulu! Tekan 1-9")
 				AudioManager.play_sfx("type_wrong")
+				return
 				
 	for word in SKILL_KEYWORD:
 		if typed_text == word:
@@ -61,7 +63,9 @@ func _on_text_submitted(full_text: String) -> void:
 				return
 			else:
 				print("Spot belum dipilih bro.")
+				show_message("Pilih spot dulu! Tekan 1-9")
 				AudioManager.play_sfx("type_wrong")
+				return
 	if typed_text == "retreat":
 		if selected_spot_index >= 0:
 			request_delete_tower()
@@ -72,7 +76,9 @@ func _on_text_submitted(full_text: String) -> void:
 			return
 		else:
 			print("Spot belum dipilih bro.")
+			show_message("Pilih spot dulu! Tekan 1-9")
 			AudioManager.play_sfx("type_wrong")
+			return
 	else:
 		HIstory_add(typed_text,Color.RED)
 		AudioManager.play_sfx("type_wrong")
@@ -131,3 +137,10 @@ func HIstory_add(v:String, cl:Color):
 			HistoryLbl[1].modulate = HistoryLbl[0].modulate
 			HistoryLbl[0].text = v
 			HistoryLbl[0].modulate = cl
+
+func show_message(msg: String) -> void:
+	var ui = get_node_or_null("../")
+	if ui and ui.has_method("show_message"):
+		ui.show_message(msg)
+	else:
+		print("UI node not found, message: ", msg)

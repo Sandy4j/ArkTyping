@@ -1,10 +1,12 @@
-[gd_resource type="Resource" script_class="SpawnPointConfig" load_steps=3 format=3 uid="uid://53onkoeln3bf"]
+[gd_resource type="Resource" script_class="SpawnPointConfig" load_steps=4 format=3 uid="uid://53onkoeln3bf"]
 
 [ext_resource type="Script" path="res://resources/EnemySpawnEntry.gd" id="1_dj50n"]
 [ext_resource type="Script" path="res://resources/SpawnPointConfig.gd" id="2_4vpbe"]
+[ext_resource type="Resource" uid="uid://cmqa5r6ewja68" path="res://resources/SpawnEntry/Level 3/Enemy Entry/Crawler_Lvl3_W3.tres" id="2_k6lmg"]
 
 [resource]
 script = ExtResource("2_4vpbe")
-spawn_path_node = NodePath("WaveManager/PathMid")
-enemies_to_spawn = 15
+spawn_path_node = NodePath("PathMid")
+enemy_spawn_entries = Array[ExtResource("1_dj50n")]([ExtResource("2_k6lmg")])
+enemies_to_spawn = 2
 spawn_interval = 2.0

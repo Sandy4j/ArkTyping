@@ -8,8 +8,14 @@ func _ready() -> void:
 	if scene_path != "":
 		LevelManager.set_current_level(scene_path)
 	
-	# Play gameplay BGM
 	AudioManager.play_bgm("gameplay")
+	_setup_danger_vignette()
+
+func _setup_danger_vignette() -> void:
+	var vignette_scene = load("res://scenes/UI/Vignette.tscn")
+	if vignette_scene:
+		var vignette = vignette_scene.instantiate()
+		add_child(vignette)
 	
 
 func toggle_pause() -> void:

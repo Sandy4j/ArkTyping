@@ -9,6 +9,7 @@ var type_correct: AudioStream
 var type_wrong: AudioStream
 var typing_1: AudioStream
 var typing_2: AudioStream
+var button_click: AudioStream
 
 var base_hit: AudioStream
 var notif_win: AudioStream
@@ -17,6 +18,7 @@ var tower_deploy: AudioStream
 var tower_retreat: AudioStream
 var tower_skill : AudioStream
 var tower_dead: AudioStream
+var spot_select: AudioStream
 
 var bgm_player: AudioStreamPlayer
 var sfx_players: Array[AudioStreamPlayer] = []
@@ -30,9 +32,7 @@ var current_bgm: String = ""
 
 func _ready() -> void:
 	bgm_gameplay = load("res://asset/Audio/BGM Gameplay.wav")
-	bgm_gameplay.loop_mode = AudioStreamWAV.LOOP_FORWARD
 	bgm_mainmenu = load("res://asset/Audio/BGM MainMenu.wav")
-	bgm_mainmenu.loop_mode = AudioStreamWAV.LOOP_FORWARD
 	enemy_die = load("res://asset/Audio/Sfx/Enemy/EnemyDie.wav")
 	enemy_spawn = load("res://asset/Audio/Sfx/Enemy/Enemy Spawn.wav")
 	enemy_hit = load("res://asset/Audio/Sfx/Enemy/Enemy Hit Tower.wav")
@@ -40,6 +40,8 @@ func _ready() -> void:
 	type_wrong = load("res://asset/Audio/Sfx/Typing/Wrong.wav")
 	typing_1 = load("res://asset/Audio/Sfx/Typing/Typing 1.wav")
 	typing_2 = load("res://asset/Audio/Sfx/Typing/Typing 2.wav")
+	button_click = load("res://asset/Audio/Sfx/UI Click.wav")
+	spot_select = load("res://asset/Audio/Sfx/Tile Selected.wav")
 	base_hit = load("res://asset/Audio/Base get Hit.wav")
 	notif_win = load("res://asset/Audio/notif win-lose/notifier Win mastering.wav")
 	notif_lose = load("res://asset/Audio/notif win-lose/Notifier lose mastering.wav")
@@ -107,6 +109,8 @@ func play_sfx(sfx_name: String, pitch_scale: float = 1.0) -> void:
 			stream = tower_skill
 		"tower_dead":
 			stream = tower_dead
+		"spot_select":
+			stream = spot_select
 		"enemy_die":
 			stream = enemy_die
 		"enemy_spawn":
@@ -121,6 +125,8 @@ func play_sfx(sfx_name: String, pitch_scale: float = 1.0) -> void:
 			stream = typing_1
 		"typing_2":
 			stream = typing_2
+		"button_click":
+			stream = button_click
 		"typing_random":
 			stream = typing_1 if randf() > 0.5 else typing_2
 		_:

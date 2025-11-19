@@ -2,11 +2,14 @@ extends Control
 
 @onready var resumebtn = $Panel/VBoxContainer/resumebtn
 @onready var mainmenubtn = $Panel/VBoxContainer/mainmenubtn
+@onready var restarbtn = $Panel/VBoxContainer/retrybtn
+
 
 func _ready() -> void:
 	hide()
 	resumebtn.pressed.connect(_on_resume_pressed)
 	mainmenubtn.pressed.connect(_on_main_menu_pressed)
+	restarbtn.pressed.connect(_on_retry_pressed)
 
 func show_pause_menu() -> void:
 	show()
@@ -17,8 +20,17 @@ func hide_pause_menu() -> void:
 	get_tree().paused = false
 
 func _on_resume_pressed() -> void:
+	AudioManager.play_sfx("button_click")
 	hide_pause_menu()
+	
+func _on_retry_pressed() -> void:
+	AudioManager.play_sfx("button_click")
+	get_tree().paused = false
+	GameManager.reset_game_state()
+	LevelManager.reload_current_level()
 
 func _on_main_menu_pressed() -> void:
+	AudioManager.play_sfx("button_click")
 	get_tree().paused = false
+	GameManager.reset_game_state()
 	get_tree().change_scene_to_file("res://scenes/UI/main_menu.tscn")
