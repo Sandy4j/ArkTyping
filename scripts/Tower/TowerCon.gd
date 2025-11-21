@@ -94,7 +94,7 @@ func update_spot_labels() -> void:
 			label = Label3D.new()
 			label.name = "NumberLabel"
 			spot.add_child(label)
-			label.position = Vector3(0, 3, 0)
+			label.position = Vector3(-0.5, 0.3, 1)
 			label.pixel_size = 0.01
 			label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
 		

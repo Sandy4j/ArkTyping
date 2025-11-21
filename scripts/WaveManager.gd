@@ -4,6 +4,7 @@ class_name WaveManager
 signal wave_started(wave_number: int)
 signal wave_completed(wave_number: int)
 signal all_waves_completed
+signal wave_transition_warning(next_wave_number: int, countdown: float)
 
 ## Array berisi konfigurasi WaveConfig untuk setiap gelombang
 @export var wave_configs: Array[WaveConfig] = []
@@ -14,6 +15,8 @@ var current_wave_config: WaveConfig = null
 var victory_triggered: bool = false
 var spawn_manager: SpawnManager = null
 var wave_complete_checked: bool = false
+var waiting_for_enemies_to_die: bool = false
+var transition_warning_shown: bool = false
 
 func _ready() -> void:
 	var initial_wait = 5.0
@@ -41,8 +44,23 @@ func _process(delta: float) -> void:
 	if current_wave > 0:
 		check_wave_complete()
 	
-	if not spawn_manager.is_currently_spawning() and current_wave < get_max_waves():
+	# nunggu musuh mati
+	if waiting_for_enemies_to_die:
+		if spawn_manager.get_active_enemy_count() <= 0:
+			waiting_for_enemies_to_die = false
+			transition_warning_shown = false
+			wave_timer = 0.0
+	
+	# Only start next wave if not spawning, not waiting for enemies, and timer is ready
+	if not spawn_manager.is_currently_spawning() and not waiting_for_enemies_to_die and current_wave < get_max_waves():
 		wave_timer += delta
+		
+		# Tampilkan peringatan transisi gelombang 3 detik sebelum gelombang berikutnya dimulai
+		if not transition_warning_shown and wave_timer >= get_time_between_waves() - 3.0:
+			if current_wave > 0:  # Hanya tampilkan pada transisi wave
+				transition_warning_shown = true
+				wave_transition_warning.emit(current_wave + 1, get_time_between_waves() - wave_timer)
+		
 		if wave_timer >= get_time_between_waves():
 			start_wave()
 
@@ -65,7 +83,6 @@ func start_wave() -> void:
 		wave_started.emit(current_wave)
 		
 		var mode_name = "SEQUENTIAL" if mode == 0 else "SIMULTANEOUS"
-		print("WaveManager: Wave ", current_wave, " mulai dengan", spawn_configs.size(), " spawn points (", mode_name, " mode)")
 	else:
 		push_error("WaveManager: tidak ada konfigurasi ", current_wave)
 
@@ -87,7 +104,7 @@ func get_max_waves() -> int:
 	return wave_configs.size()
 
 func _on_all_spawn_points_completed() -> void:
-	print("WaveManager: Semua spawn point sudah selesai", current_wave)
+	waiting_for_enemies_to_die = true
 
 func check_wave_complete() -> void:
 	if wave_complete_checked:
@@ -99,7 +116,6 @@ func check_wave_complete() -> void:
 	if spawning_complete and all_enemies_defeated and not GameManager.is_game_over:
 		wave_complete_checked = true
 		wave_completed.emit(current_wave)
-		print("WaveManager: Wave ", current_wave, " completed!")
 		
 		if current_wave >= get_max_waves() and not victory_triggered:
 			victory_triggered = true
