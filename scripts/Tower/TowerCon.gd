@@ -130,6 +130,7 @@ func place_tower_at_selected(data:TowerData) -> void:
 		var msg =str("memasang tower ", data.chara)
 		ui.show_message(msg)
 		update_spot_labels()
+		remove_outline_from_spot(spot)
 		selected_spot_index = -1
 		TypingSystem.clear_text()
 	else:
