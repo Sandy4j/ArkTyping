@@ -5,15 +5,27 @@ signal currency_changed(new_amount: int)
 signal base_hp_changed(new_hp: int)
 
 @export var starting_currency: int = 15
+@export var currency_regen_amount: int = 1
+@export var currency_regen_interval: float = 2.0
 
 var currency: int = 0
 var is_game_over: bool = false
 var final_stars: int = 0
 var base_reference: Node3D = null
+var regen_timer: float = 0.0
 
 func _ready() -> void:
 	currency = starting_currency
 	call_deferred("_emit_initial_currency")
+
+func _process(delta: float) -> void:
+	if is_game_over:
+		return
+	
+	regen_timer += delta
+	if regen_timer >= currency_regen_interval:
+		add_currency(currency_regen_amount)
+		regen_timer = 0.0
 
 func _emit_initial_currency() -> void:
 	currency_changed.emit(currency)
@@ -53,16 +65,16 @@ func trigger_game_over() -> void:
 func calculate_stars() -> int:
 	if not base_reference:
 		return 0
-	
+
 	var current_hp = base_reference.current_hp
 	var max_hp = base_reference.max_hp
 	var hp_percentage: float = float(current_hp) / float(max_hp)
-	
-	if hp_percentage >= 0.7:  
+
+	if hp_percentage >= 0.7:
 		return 3
 	elif hp_percentage >= 0.4:
 		return 2
-	elif hp_percentage > 0: 
+	elif hp_percentage > 0:
 		return 1
 	else:
 		return 0
@@ -72,7 +84,8 @@ func reset_game_state() -> void:
 	final_stars = 0
 	base_reference = null
 	currency = starting_currency
+	regen_timer = 0.0
 	currency_changed.emit(currency)
 
-func set_tower_state(data:TowerData,v:bool):
+func set_tower_state(data: TowerData, v: bool):
 	data.available = v
