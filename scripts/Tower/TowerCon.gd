@@ -12,8 +12,8 @@ func _ready() -> void:
 	outline_material = ShaderMaterial.new()
 	var outline_shader = load("res://asset/Shader/outline_highlight.gdshader")
 	outline_material.shader = outline_shader
-	outline_material.set_shader_parameter("outline_color", Color(1.0, 1.0, 0.0, 1.0))
-	outline_material.set_shader_parameter("outline_width", 0.5)
+	outline_material.set_shader_parameter("outline_color", Color(1.0, 1.0, 1.0, 0.196))
+	outline_material.set_shader_parameter("outline_width", 0.015)
 	
 	collect_tower_spots()
 	
@@ -51,15 +51,17 @@ func add_outline_to_spot(spot: Area3D) -> void:
 	if not mesh_instance:
 		return
 	
+	# Create outline mesh that's slightly bigger
 	var outline_mesh = MeshInstance3D.new()
 	outline_mesh.name = "OutlineHighlight"
 	outline_mesh.mesh = mesh_instance.mesh
 	outline_mesh.material_override = outline_material
 	outline_mesh.position = mesh_instance.position
 	outline_mesh.rotation = mesh_instance.rotation
-	outline_mesh.scale = mesh_instance.scale
-	
+	outline_mesh.scale = mesh_instance.scale * 1.05
+	outline_mesh.position.y -= 0.001
 	spot.add_child(outline_mesh)
+	spot.move_child(mesh_instance, -1)
 
 func remove_outline_from_spot(spot: Area3D) -> void:
 	var outline_node = spot.get_node_or_null("OutlineHighlight")
