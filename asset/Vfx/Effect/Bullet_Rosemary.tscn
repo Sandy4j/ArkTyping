@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cb5pwexkrc36k"]
+[gd_scene load_steps=12 format=3 uid="uid://cb5pwexkrc36k"]
 
 [ext_resource type="ArrayMesh" uid="uid://bub4e0m55gj1y" path="res://asset/Vfx/Obj/Bullet.obj" id="1_jw6q4"]
 [ext_resource type="Script" uid="uid://bkso2a2sv0efi" path="res://scripts/Tower/Projectile.gd" id="1_n23nu"]
@@ -11,7 +11,8 @@ cull_mode = 2
 shading_mode = 0
 vertex_color_use_as_albedo = true
 vertex_color_is_srgb = true
-albedo_color = Color(0.30187938, 0.1494002, 2.4065375e-08, 1)
+albedo_color = Color(0.42657804, 0.22024426, 1.92523e-07, 1)
+albedo_texture_force_srgb = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7voma"]
 transparency = 1
@@ -28,6 +29,20 @@ particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
+[sub_resource type="Curve" id="Curve_n23nu"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_h7rvf"]
+curve = SubResource("Curve_n23nu")
+
+[sub_resource type="Curve" id="Curve_q6lrm"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_pv4qt"]
+curve = SubResource("Curve_q6lrm")
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_spcpa"]
 lifetime_randomness = 1.0
 emission_shape = 1
@@ -38,6 +53,8 @@ initial_velocity_max = 0.19999999
 gravity = Vector3(3, 0, 0)
 scale_min = 0.099999994
 scale_max = 0.099999994
+alpha_curve = SubResource("CurveTexture_h7rvf")
+emission_curve = SubResource("CurveTexture_pv4qt")
 
 [sub_resource type="QuadMesh" id="QuadMesh_aum4f"]
 
@@ -49,9 +66,13 @@ transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.24637514, 0, 0)
 material_override = SubResource("StandardMaterial3D_ywaxx")
 mesh = ExtResource("1_jw6q4")
 
+[node name="OmniLight3D" type="OmniLight3D" parent="Bullet"]
+light_color = Color(1, 0.45490196, 0.31764707, 1)
+
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.01889348, 0.010407597, 0)
 material_override = SubResource("StandardMaterial3D_7voma")
 amount = 10
+fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_spcpa")
 draw_pass_1 = SubResource("QuadMesh_aum4f")

@@ -1,11 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://cguadgldcdeki"]
+[gd_scene load_steps=24 format=3 uid="uid://cguadgldcdeki"]
 
 [ext_resource type="Shader" uid="uid://btlagn6h7s7lr" path="res://asset/Vfx/Effect/Toxicball.tres" id="1_7j74i"]
 [ext_resource type="Script" uid="uid://bkso2a2sv0efi" path="res://scripts/Tower/Projectile.gd" id="1_doewy"]
 [ext_resource type="Texture2D" uid="uid://bodgameib6b3" path="res://asset/Vfx/Texture/T_Noise21.png" id="2_doewy"]
-[ext_resource type="Texture2D" uid="uid://cpw0wnhq6w6yo" path="res://asset/Vfx/Texture/T_VFX_Glow_1.PNG" id="3_k3dry"]
+[ext_resource type="Texture2D" uid="uid://btmqfjjmuxm26" path="res://asset/Vfx/Texture/T_VFX_Glow_1.PNG" id="3_k3dry"]
 [ext_resource type="Shader" uid="uid://coauk4bbvmhgx" path="res://asset/Vfx/Effect/Toxicveil.tres" id="4_3w54r"]
-[ext_resource type="ArrayMesh" uid="uid://516kx5xi1sgu" path="res://asset/Vfx/Obj/Cloud.obj" id="5_qvif2"]
+[ext_resource type="ArrayMesh" uid="uid://iotm0untdscf" path="res://asset/Vfx/Obj/Cloud.obj" id="5_qvif2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xh0yq"]
 blend_mode = 1
@@ -30,27 +30,50 @@ shader_parameter/Vector2Parameter = Vector2(1, 3)
 shader_parameter/Texture2DParameter = ExtResource("2_doewy")
 shader_parameter/FloatParameter = 3.0
 
+[sub_resource type="Curve" id="Curve_doewy"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_k3dry"]
+curve = SubResource("Curve_doewy")
+
+[sub_resource type="Curve" id="Curve_3w54r"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_qvif2"]
+curve = SubResource("Curve_3w54r")
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kdvjg"]
 lifetime_randomness = 1.0
 gravity = Vector3(0, 0, 0)
 scale_min = 0.099999994
 scale_max = 0.099999994
 color = Color(0, 1, 0, 1)
+alpha_curve = SubResource("CurveTexture_k3dry")
+emission_curve = SubResource("CurveTexture_qvif2")
 
 [sub_resource type="SphereMesh" id="SphereMesh_y8vnb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x0jmf"]
 render_priority = 0
 shader = ExtResource("4_3w54r")
-shader_parameter/ColorParameter = Color(0, 0.39123023, 0, 1)
+shader_parameter/ColorParameter = Color(0, 0.30794683, 4.813075e-07, 1)
 shader_parameter/Texture_scale = Vector2(1, 1)
 
 [sub_resource type="Curve" id="Curve_we46c"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.55205274), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_hhn1i"]
 curve = SubResource("Curve_we46c")
+
+[sub_resource type="Curve" id="Curve_a4cmf"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_kdvjg"]
+curve = SubResource("Curve_a4cmf")
 
 [sub_resource type="Curve" id="Curve_dcah8"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.4253438), 0.0, 0.0, 0, 0]
@@ -72,6 +95,7 @@ scale_max = 0.099999994
 scale_curve = SubResource("CurveTexture_2r54p")
 color = Color(0, 0, 0, 1)
 alpha_curve = SubResource("CurveTexture_hhn1i")
+emission_curve = SubResource("CurveTexture_kdvjg")
 
 [node name="Toxicball" type="Node3D"]
 script = ExtResource("1_doewy")
@@ -80,6 +104,9 @@ script = ExtResource("1_doewy")
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_xh0yq")
 mesh = SubResource("SphereMesh_doewy")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Ball"]
+light_color = Color(0.29803923, 0.7019608, 0.29803923, 1)
 
 [node name="Flare" type="GPUParticles3D" parent="."]
 material_override = SubResource("ShaderMaterial_a4cmf")

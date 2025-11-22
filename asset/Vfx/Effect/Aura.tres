@@ -19,13 +19,13 @@ texture_type = 1
 source = 5
 
 [sub_resource type="Gradient" id="Gradient_i7ovy"]
-offsets = PackedFloat32Array(0, 0.36708862, 0.6835443, 1)
-colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+offsets = PackedFloat32Array(0, 0.36708862, 0.9028213, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_0dcym"]
 gradient = SubResource("Gradient_i7ovy")
-fill_from = Vector2(0.50427353, 0)
-fill_to = Vector2(0.5, 0.5811966)
+fill_from = Vector2(0.46153846, 0.4059829)
+fill_to = Vector2(0.47008547, 1)
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_actjx"]
 expanded_output_ports = [0]

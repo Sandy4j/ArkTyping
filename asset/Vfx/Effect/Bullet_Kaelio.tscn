@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://csgdym37gysnc"]
+[gd_scene load_steps=12 format=3 uid="uid://csgdym37gysnc"]
 
 [ext_resource type="Texture2D" uid="uid://ctktxam6r2fe2" path="res://asset/Vfx/Texture/T_Wave66.png" id="1_hff6l"]
 [ext_resource type="Script" uid="uid://bkso2a2sv0efi" path="res://scripts/Tower/Projectile.gd" id="1_oy55l"]
@@ -28,6 +28,20 @@ particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
+[sub_resource type="Curve" id="Curve_1xjfc"]
+_data = [Vector2(0.0071174353, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_56uhe"]
+curve = SubResource("Curve_1xjfc")
+
+[sub_resource type="Curve" id="Curve_y40hr"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_lmx7i"]
+curve = SubResource("Curve_y40hr")
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lmx7i"]
 emission_shape = 1
 emission_sphere_radius = 0.1
@@ -37,6 +51,8 @@ initial_velocity_max = 0.5
 gravity = Vector3(3, 0, 0)
 scale_min = 0.099999994
 scale_max = 0.099999994
+alpha_curve = SubResource("CurveTexture_56uhe")
+emission_curve = SubResource("CurveTexture_lmx7i")
 
 [sub_resource type="QuadMesh" id="QuadMesh_huxwy"]
 
@@ -48,8 +64,11 @@ transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.27998245, 0, 0)
 material_override = SubResource("StandardMaterial3D_oy55l")
 mesh = ExtResource("2_1xjfc")
 
+[node name="OmniLight3D" type="OmniLight3D" parent="Bullet"]
+light_color = Color(0.818799, 0.45327395, 0.36329013, 1)
+
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06526244, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.04161422, -0.008573994, 0)
 material_override = SubResource("StandardMaterial3D_y40hr")
 amount = 10
 process_material = SubResource("ParticleProcessMaterial_lmx7i")

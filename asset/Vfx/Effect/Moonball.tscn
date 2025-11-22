@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://digrhep77tlo1"]
+[gd_scene load_steps=13 format=3 uid="uid://digrhep77tlo1"]
 
 [ext_resource type="Script" uid="uid://bkso2a2sv0efi" path="res://scripts/Tower/Projectile.gd" id="1_1kssw"]
 [ext_resource type="Texture2D" uid="uid://bd3rattmqerxy" path="res://asset/Vfx/Texture/T_VFX_hit22.jpg" id="1_a6ttf"]
@@ -43,6 +43,13 @@ point_count = 2
 [sub_resource type="CurveTexture" id="CurveTexture_vw73x"]
 curve = SubResource("Curve_wnpih")
 
+[sub_resource type="Curve" id="Curve_1kssw"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.06598234), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_46oii"]
+curve = SubResource("Curve_1kssw")
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cr2sx"]
 emission_shape = 1
 emission_sphere_radius = 0.1
@@ -50,6 +57,7 @@ gravity = Vector3(3, 0, 0)
 scale_min = 0.099999994
 scale_max = 0.099999994
 alpha_curve = SubResource("CurveTexture_vw73x")
+emission_curve = SubResource("CurveTexture_46oii")
 
 [sub_resource type="QuadMesh" id="QuadMesh_ig2wy"]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=4 uid="uid://cmav3d7euxap4"]
+[gd_scene load_steps=63 format=4 uid="uid://cmav3d7euxap4"]
 
 [ext_resource type="Texture2D" uid="uid://d3ama0y1ehhux" path="res://asset/Vfx/Texture/Circle_Aura7.png" id="1_384mx"]
 [ext_resource type="Texture2D" uid="uid://4jfvjbq1plg1" path="res://asset/Vfx/Texture/T_Noise13.png" id="2_k5y0t"]
@@ -201,6 +201,13 @@ point_count = 2
 [sub_resource type="CurveTexture" id="CurveTexture_fq8v0"]
 curve = SubResource("Curve_4dram")
 
+[sub_resource type="Curve" id="Curve_384mx"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_k5y0t"]
+curve = SubResource("Curve_384mx")
+
 [sub_resource type="Curve" id="Curve_3qwqx"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.04325699, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 3
@@ -213,6 +220,7 @@ gravity = Vector3(0, 0, 0)
 scale_curve = SubResource("CurveTexture_je8ek")
 color = Color(0, 0.7723388, 0, 1)
 alpha_curve = SubResource("CurveTexture_fq8v0")
+emission_curve = SubResource("CurveTexture_k5y0t")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_khihn"]
 _surfaces = [{
@@ -379,6 +387,13 @@ point_count = 2
 [sub_resource type="CurveTexture" id="CurveTexture_if0c5"]
 curve = SubResource("Curve_ksyci")
 
+[sub_resource type="Curve" id="Curve_lhx2o"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_l3h0f"]
+curve = SubResource("Curve_lhx2o")
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tyneb"]
 gravity = Vector3(0, 0, 0)
 scale_min = 1.5
@@ -386,6 +401,7 @@ scale_max = 1.5
 scale_curve = SubResource("CurveTexture_je8ek")
 color = Color(0, 0.735357, 0, 1)
 alpha_curve = SubResource("CurveTexture_if0c5")
+emission_curve = SubResource("CurveTexture_l3h0f")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_fcqdm"]
 _surfaces = [{
@@ -425,6 +441,13 @@ point_count = 3
 [sub_resource type="CurveTexture" id="CurveTexture_mxr3e"]
 curve = SubResource("Curve_0o6sw")
 
+[sub_resource type="Curve" id="Curve_qbf5b"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_wlsyx"]
+curve = SubResource("Curve_qbf5b")
+
 [sub_resource type="Curve" id="Curve_rms8x"]
 _data = [Vector2(0, 0.23379177), 0.0, 0.0, 0, 0, Vector2(0.06615775, 0.24017686), 0.0, 0.0, 0, 0, Vector2(1, 0.048624754), 0.0, 0.0, 0, 0]
 point_count = 3
@@ -446,6 +469,7 @@ scale_min = 0.79999995
 scale_max = 0.79999995
 scale_curve = SubResource("CurveTexture_v3dt3")
 alpha_curve = SubResource("CurveTexture_mxr3e")
+emission_curve = SubResource("CurveTexture_wlsyx")
 
 [sub_resource type="QuadMesh" id="QuadMesh_a0vhk"]
 
