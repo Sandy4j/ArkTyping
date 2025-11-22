@@ -11,19 +11,19 @@ func _ready() -> void:
 
 func _on_start_btn_pressed() -> void:
 	AudioManager.play_sfx("button_click")
-	get_tree().change_scene_to_file("res://levels/level_01.tscn")
+	LevelManager.load_level_async("res://levels/level_01.tscn")
 
 func _on_hero_btn_pressed() -> void:
 	AudioManager.play_sfx("button_click")
-	get_tree().change_scene_to_file("res://scenes/UI/hero.tscn")
+	LevelManager.load_level_async("res://scenes/UI/hero.tscn")
 
 func _on_credit_btn_pressed() -> void:
 	AudioManager.play_sfx("button_click")
-	get_tree().change_scene_to_file("res://scenes/UI/Credit.tscn")
+	LevelManager.load_level_async("res://scenes/UI/Credit.tscn")
 
 func _on_tutorial_btn_pressed() -> void:
 	AudioManager.play_sfx("button_click")
-	get_tree().change_scene_to_file("res://scenes/UI/tutorial.tscn")
+	LevelManager.load_level_async("res://scenes/UI/tutorial.tscn")
 
 func _on_quit_btn_pressed() -> void:
 	AudioManager.play_sfx("button_click")

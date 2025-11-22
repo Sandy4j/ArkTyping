@@ -103,6 +103,10 @@ func get_time_between_waves() -> float:
 func get_max_waves() -> int:
 	return wave_configs.size()
 
+## Get wave configs for resource preloading
+func get_wave_configs() -> Array[WaveConfig]:
+	return wave_configs
+
 func _on_all_spawn_points_completed() -> void:
 	waiting_for_enemies_to_die = true
 

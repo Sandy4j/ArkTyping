@@ -103,7 +103,7 @@ func _on_restart_pressed() -> void:
 	AudioManager.play_sfx("button_click")
 	get_tree().paused = false
 	GameManager.reset_game_state()
-	get_tree().change_scene_to_file(LevelManager.current_level_path)
+	LevelManager.load_level_async(LevelManager.current_level_path)
 
 func _on_next_level_pressed() -> void:
 	AudioManager.play_sfx("button_click")
@@ -115,4 +115,4 @@ func _on_menu_pressed() -> void:
 	AudioManager.play_sfx("button_click")
 	get_tree().paused = false
 	GameManager.reset_game_state()
-	get_tree().change_scene_to_file("res://scenes/UI/main_menu.tscn")
+	LevelManager.load_level_async("res://scenes/UI/main_menu.tscn")
