@@ -71,20 +71,26 @@ func _ready() -> void:
 				activate_holy_divine_basic()
 			"kaelio":
 				is_kaelio = true
-				var vfx_scene = load("res://asset/Vfx/Effect/Shoot.tscn")
-				var vfx_node = vfx_scene.instantiate()
-				self.add_child(vfx_node)
-				var light:OmniLight3D = vfx_node.get_child(3)
-				light.light_energy = 0
-				vfx_shoot = vfx_node.get_child(4)
+				var vfx_scene = ResourceLoadManager.get_cached_resource("res://asset/Vfx/Effect/Shoot.tscn")
+				if not vfx_scene:
+					vfx_scene = ResourceLoadManager.load_resource_sync("res://asset/Vfx/Effect/Shoot.tscn")
+				if vfx_scene:
+					var vfx_node = vfx_scene.instantiate()
+					self.add_child(vfx_node)
+					var light:OmniLight3D = vfx_node.get_child(3)
+					light.light_energy = 0
+					vfx_shoot = vfx_node.get_child(4)
 			"rosemary":
 				is_rosemary = true
-				var vfx_scene = load("res://asset/Vfx/Effect/gun_Rosemary.tscn")
-				var vfx_node = vfx_scene.instantiate()
-				self.add_child(vfx_node)
-				var light:OmniLight3D = vfx_node.get_child(3)
-				light.light_energy = 0
-				vfx_shoot = vfx_node.get_child(4)
+				var vfx_scene = ResourceLoadManager.get_cached_resource("res://asset/Vfx/Effect/gun_Rosemary.tscn")
+				if not vfx_scene:
+					vfx_scene = ResourceLoadManager.load_resource_sync("res://asset/Vfx/Effect/gun_Rosemary.tscn")
+				if vfx_scene:
+					var vfx_node = vfx_scene.instantiate()
+					self.add_child(vfx_node)
+					var light:OmniLight3D = vfx_node.get_child(3)
+					light.light_energy = 0
+					vfx_shoot = vfx_node.get_child(4)
 	
 	if range_area and tower_data.chara != "lilitia" :
 		var collision_shape = range_area.get_node("CollisionShape3D")
@@ -416,9 +422,12 @@ func cleanup_enemies_array() -> void:
 func take_damage(dmg: float) -> void:
 	current_hp -= dmg
 	HPBar.value = current_hp
-	var vfx_sc = load("res://asset/Vfx/Effect/hit_Tower.tscn")
-	var vfx_nd = vfx_sc.instantiate()
-	self.add_child(vfx_nd)
+	var vfx_sc = ResourceLoadManager.get_vfx_resource("hit_tower")
+	if not vfx_sc:
+		vfx_sc = ResourceLoadManager.load_resource_sync("res://asset/Vfx/Effect/hit_Tower.tscn")
+	if vfx_sc:
+		var vfx_nd = vfx_sc.instantiate()
+		self.add_child(vfx_nd)
 	if current_hp <= 0:
 		destroy()
 
@@ -465,108 +474,126 @@ func execute_skill(delta: float) -> void:
 func activate_overload_burst() -> void:
 	print("Overload burst aktif!")
 	sfx.stream = tower_data.skl_sfx
-	var aura_scene = load("res://asset/Vfx/Effect/magic_circle_1.tscn")
-	var aura_node = aura_scene.instantiate()
-	altar.add_child(aura_node)
-	aura_node.get_child(5).play("Kaileo_FX")
-	var original_fire_rate = fire_rate
-	fire_rate = 1.0
-	overload_burst_active = true
-	var skill_duration = tower_data.skill_duration
-	var timer = get_tree().create_timer(skill_duration)
-	timer.timeout.connect(func(): 
-		aura_node.queue_free()
-		sfx.stream = tower_data.atk_sfx
-		overload_burst_active = false
-		fire_rate = original_fire_rate
-		print("Overload burst berakhir")
-	)
+	var aura_scene = ResourceLoadManager.get_vfx_resource("magic_circle_1")
+	if not aura_scene:
+		aura_scene = ResourceLoadManager.load_resource_sync("res://asset/Vfx/Effect/magic_circle_1.tscn")
+	if aura_scene:
+		var aura_node = aura_scene.instantiate()
+		altar.add_child(aura_node)
+		aura_node.get_child(5).play("Kaileo_FX")
+		var original_fire_rate = fire_rate
+		fire_rate = 1.0
+		overload_burst_active = true
+		var skill_duration = tower_data.skill_duration
+		var timer = get_tree().create_timer(skill_duration)
+		timer.timeout.connect(func(): 
+			aura_node.queue_free()
+			sfx.stream = tower_data.atk_sfx
+			overload_burst_active = false
+			fire_rate = original_fire_rate
+			print("Overload burst berakhir")
+		)
 
 func activate_lunar_blessing() -> void:
 	print("lunar blessing aktif")
 	sfx.stream = tower_data.skl_sfx
-	var aura_scene = load("res://asset/Vfx/Effect/magic_circle_3(Silvanna).tscn")
-	var aura_node = aura_scene.instantiate()
-	altar.add_child(aura_node)
-	print(aura_node.get_child(5).name)
-	aura_node.get_child(5).play("Kaileo_FX")
-	var normal_damage = damage
-	var damage = normal_damage * 2
-	var skill_duration = tower_data.skill_duration
-	var timer = get_tree().create_timer(skill_duration)
-	timer.timeout.connect(func(): 
-		sfx.stream = tower_data.atk_sfx
-		aura_node.queue_free()
-		damage = normal_damage
-		print("lunar blessing berakhir")
-	)
+	var aura_scene = ResourceLoadManager.get_vfx_resource("magic_circle_3")
+	if not aura_scene:
+		aura_scene = ResourceLoadManager.load_resource_sync("res://asset/Vfx/Effect/magic_circle_3(Silvanna).tscn")
+	if aura_scene:
+		var aura_node = aura_scene.instantiate()
+		altar.add_child(aura_node)
+		print(aura_node.get_child(5).name)
+		aura_node.get_child(5).play("Kaileo_FX")
+		var normal_damage = damage
+		var damage = normal_damage * 2
+		var skill_duration = tower_data.skill_duration
+		var timer = get_tree().create_timer(skill_duration)
+		timer.timeout.connect(func(): 
+			sfx.stream = tower_data.atk_sfx
+			aura_node.queue_free()
+			damage = normal_damage
+			print("lunar blessing berakhir")
+		)
 
 func activate_holy_divine_basic() -> void:
 	print("lilitia aktif!")
 	is_lilitia = true
-	var orbit_scene = load("res://asset/Vfx/Effect/Divine_Ball.tscn")
-	var orbit_node = orbit_scene.instantiate()
-	orbit_node.damage = tower_data.damage
-	orbit_node.dot_timer = tower_data.speed
-	orbit_node.speed = 1
-	orbit = orbit_node
-	var orbit_scene2 = load("res://asset/Vfx/Effect/Divine_Ball.tscn")
-	var orbit_node2 = orbit_scene2.instantiate()
-	orbit_node2.damage = tower_data.damage
-	orbit_node2.dot_timer = tower_data.speed
-	orbit_node2.speed = 1
-	orbit_node2.disabled = true
-	orbit2 = orbit_node2
-	orbit2.visible = false
-	self.add_child(orbit_node)
-	orbit_node.sfx.stream = tower_data.atk_sfx
-	self.add_child(orbit_node2)
-	orbit_node2.sfx.stream = tower_data.atk_sfx
+	var orbit_scene = ResourceLoadManager.get_vfx_resource("divine_ball")
+	if not orbit_scene:
+		orbit_scene = ResourceLoadManager.load_resource_sync("res://asset/Vfx/Effect/Divine_Ball.tscn")
+	if orbit_scene:
+		var orbit_node = orbit_scene.instantiate()
+		orbit_node.damage = tower_data.damage
+		orbit_node.dot_timer = tower_data.speed
+		orbit_node.speed = 1
+		orbit = orbit_node
+		var orbit_scene2 = orbit_scene  # Reuse same scene
+		var orbit_node2 = orbit_scene2.instantiate()
+		orbit_node2.damage = tower_data.damage
+		orbit_node2.dot_timer = tower_data.speed
+		orbit_node2.speed = 1
+		orbit_node2.disabled = true
+		orbit2 = orbit_node2
+		orbit2.visible = false
+		self.add_child(orbit_node)
+		orbit_node.sfx.stream = tower_data.atk_sfx
+		self.add_child(orbit_node2)
+		orbit_node2.sfx.stream = tower_data.atk_sfx
 
 func activate_holy_divine() -> void:
 	print("holy divine aktif!")
-	var aura_scene = load("res://asset/Vfx/Effect/magic_circle_7(Lilitia).tscn")
-	var aura_node = aura_scene.instantiate()
-	altar.add_child(aura_node)
-	print(aura_node.get_child(5).name)
-	aura_node.get_child(5).play("Kaileo_FX")
-	orbit2.visible = true
-	orbit2.disabled = false
-	var skill_duration = tower_data.skill_duration
-	var timer = get_tree().create_timer(skill_duration)
-	timer.timeout.connect(func(): 
-		aura_node.queue_free()
-		orbit2.visible = false
-		orbit2.disabled = true
-		print("holy divine berakhir")
-	)
+	var aura_scene = ResourceLoadManager.get_vfx_resource("magic_circle_7")
+	if not aura_scene:
+		aura_scene = ResourceLoadManager.load_resource_sync("res://asset/Vfx/Effect/magic_circle_7(Lilitia).tscn")
+	if aura_scene:
+		var aura_node = aura_scene.instantiate()
+		altar.add_child(aura_node)
+		print(aura_node.get_child(5).name)
+		aura_node.get_child(5).play("Kaileo_FX")
+		orbit2.visible = true
+		orbit2.disabled = false
+		var skill_duration = tower_data.skill_duration
+		var timer = get_tree().create_timer(skill_duration)
+		timer.timeout.connect(func(): 
+			aura_node.queue_free()
+			orbit2.visible = false
+			orbit2.disabled = true
+			print("holy divine berakhir")
+		)
 
 func activate_toxic_veil() -> void:
 	print("toxic veil aktif!")
 	sfx.stream = tower_data.skl_sfx
-	var aura_scene = load("res://asset/Vfx/Effect/magic_circle_2(plague).tscn")
-	var aura_node = aura_scene.instantiate()
-	altar.add_child(aura_node)
-	aura_node.get_child(5).play("Kaileo_FX")
-	var veil_scene = load("res://asset/Vfx/Effect/Toxicveil.tscn")
-	var veil_node:Node3D = veil_scene.instantiate()
-	var area = veil_node.get_child(0).get_child(0)
-	area.collision_mask = 2
-	print(area.name)
-	area.body_entered.connect(Callable(self, "enemy_enter_veil"))
-	area.body_exited.connect(Callable(self, "enemy_exit_veil"))
-	veil_node.position.y = -3
-	self.add_child(veil_node)
-	veil_node.add_child(area)
-	veil_node.get_child(1).play("Toxicvwil")
-	var skill_duration = tower_data.skill_duration
-	var timer = get_tree().create_timer(skill_duration)
-	timer.timeout.connect(func(): 
-		sfx.stream = tower_data.atk_sfx
-		aura_node.queue_free()
-		veil_node.queue_free()
-		print("Toxic Veil berakhir")
-	)
+	var aura_scene = ResourceLoadManager.get_vfx_resource("magic_circle_2")
+	if not aura_scene:
+		aura_scene = ResourceLoadManager.load_resource_sync("res://asset/Vfx/Effect/magic_circle_2(plague).tscn")
+	var veil_scene = ResourceLoadManager.get_vfx_resource("toxic_veil")
+	if not veil_scene:
+		veil_scene = ResourceLoadManager.load_resource_sync("res://asset/Vfx/Effect/Toxicveil.tscn")
+	
+	if aura_scene and veil_scene:
+		var aura_node = aura_scene.instantiate()
+		altar.add_child(aura_node)
+		aura_node.get_child(5).play("Kaileo_FX")
+		var veil_node:Node3D = veil_scene.instantiate()
+		var area = veil_node.get_child(0).get_child(0)
+		area.collision_mask = 2
+		print(area.name)
+		area.body_entered.connect(Callable(self, "enemy_enter_veil"))
+		area.body_exited.connect(Callable(self, "enemy_exit_veil"))
+		veil_node.position.y = -3
+		self.add_child(veil_node)
+		veil_node.add_child(area)
+		veil_node.get_child(1).play("Toxicvwil")
+		var skill_duration = tower_data.skill_duration
+		var timer = get_tree().create_timer(skill_duration)
+		timer.timeout.connect(func(): 
+			sfx.stream = tower_data.atk_sfx
+			aura_node.queue_free()
+			veil_node.queue_free()
+			print("Toxic Veil berakhir")
+		)
 
 func enemy_enter_veil(body:Node3D)-> void:
 	print("veil trigger enemy")
@@ -583,61 +610,70 @@ func enemy_exit_veil(body:Node3D)-> void:
 
 func activeate_bloody_opus()-> void:
 	print("bloody opus aktif")
-	var aura_scene = load("res://asset/Vfx/Effect/magic_circle_5(vigilante).tscn")
-	var aura_node = aura_scene.instantiate()
-	altar.add_child(aura_node)
-	aura_node.get_child(5).play("Kaileo_FX")
-	var normal_speed = fire_rate
-	fire_rate = normal_speed * 2
-	var skill_duration = tower_data.skill_duration
-	var timer = get_tree().create_timer(skill_duration)
-	timer.timeout.connect(func(): 
-		aura_node.queue_free()
-		fire_rate = normal_speed
-		print("bloody opus berakhir")
-	)
+	var aura_scene = ResourceLoadManager.get_vfx_resource("magic_circle_5")
+	if not aura_scene:
+		aura_scene = ResourceLoadManager.load_resource_sync("res://asset/Vfx/Effect/magic_circle_5(vigilante).tscn")
+	if aura_scene:
+		var aura_node = aura_scene.instantiate()
+		altar.add_child(aura_node)
+		aura_node.get_child(5).play("Kaileo_FX")
+		var normal_speed = fire_rate
+		fire_rate = normal_speed * 2
+		var skill_duration = tower_data.skill_duration
+		var timer = get_tree().create_timer(skill_duration)
+		timer.timeout.connect(func(): 
+			aura_node.queue_free()
+			fire_rate = normal_speed
+			print("bloody opus berakhir")
+		)
 
 func activate_scarlet_harvester()-> void:
-	var aura_scene = load("res://asset/Vfx/Effect/magic_circle_6(Leciana).tscn")
-	var aura_node = aura_scene.instantiate()
-	altar.add_child(aura_node)
-	aura_node.get_child(5).play("Kaileo_FX")
-	scarlet_harvester_active = true
-	var skill_duration = tower_data.skill_duration
-	var timer = get_tree().create_timer(skill_duration)
-	timer.timeout.connect(func(): 
-		aura_node.queue_free()
-		scarlet_harvester_active = false
-	)
+	var aura_scene = ResourceLoadManager.get_vfx_resource("magic_circle_6")
+	if not aura_scene:
+		aura_scene = ResourceLoadManager.load_resource_sync("res://asset/Vfx/Effect/magic_circle_6(Leciana).tscn")
+	if aura_scene:
+		var aura_node = aura_scene.instantiate()
+		altar.add_child(aura_node)
+		aura_node.get_child(5).play("Kaileo_FX")
+		scarlet_harvester_active = true
+		var skill_duration = tower_data.skill_duration
+		var timer = get_tree().create_timer(skill_duration)
+		timer.timeout.connect(func(): 
+			aura_node.queue_free()
+			scarlet_harvester_active = false
+		)
 
 var requiem_shot: int 
 var shot_count: int 
 func activate_bullet_requiem()-> void:
 	shot_count = 0
-	var aura_scene = load("res://asset/Vfx/Effect/magic_circle_4(Rosemary).tscn")
-	var aura_node = aura_scene.instantiate()
-	sfx.stream = tower_data.skl_sfx
-	vfx_aura = aura_node
-	altar.add_child(aura_node)
-	aura_node.get_child(5).play("Kaileo_FX")
-	var normal_dmg = damage
-	damage = normal_dmg * 2
-	var normal_speed = fire_rate
-	fire_rate = 1
-	requiem_shot = tower_data.skill_duration
-	shot_fired.connect(bullet_requiem_counter)
-	var skill_duration = tower_data.skill_duration
-	var timer = get_tree().create_timer(skill_duration)
-	timer.timeout.connect(func(): 
-		if bullet_requiem_active:
-			shot_count = 0
-			sfx.stream = tower_data.atk_sfx
-			shot_fired.disconnect(bullet_requiem_counter)
-			aura_node.queue_free()
-			damage = tower_data.damage
-			fire_rate = tower_data.speed
-			bullet_requiem_active = false
-	)
+	var aura_scene = ResourceLoadManager.get_vfx_resource("magic_circle_4")
+	if not aura_scene:
+		aura_scene = ResourceLoadManager.load_resource_sync("res://asset/Vfx/Effect/magic_circle_4(Rosemary).tscn")
+	if aura_scene:
+		var aura_node = aura_scene.instantiate()
+		sfx.stream = tower_data.skl_sfx
+		vfx_aura = aura_node
+		altar.add_child(aura_node)
+		aura_node.get_child(5).play("Kaileo_FX")
+		var normal_dmg = damage
+		damage = normal_dmg * 2
+		var normal_speed = fire_rate
+		fire_rate = 1
+		requiem_shot = tower_data.skill_duration
+		shot_fired.connect(bullet_requiem_counter)
+		var skill_duration = tower_data.skill_duration
+		var timer = get_tree().create_timer(skill_duration)
+		timer.timeout.connect(func(): 
+			if bullet_requiem_active:
+				shot_count = 0
+				sfx.stream = tower_data.atk_sfx
+				shot_fired.disconnect(bullet_requiem_counter)
+				aura_node.queue_free()
+				damage = tower_data.damage
+				fire_rate = tower_data.speed
+				bullet_requiem_active = false
+		)
 
 func bullet_requiem_counter():
 	shot_count += 1

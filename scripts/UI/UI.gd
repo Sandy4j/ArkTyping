@@ -21,6 +21,7 @@ func _ready() -> void:
 	GameManager.game_over.connect(_on_game_over)
 	LevelManager.victory.connect(_on_victory)
 	wavesystem.wave_started.connect(_on_wave_started)
+	wavesystem.wave_transition_warning.connect(_on_wave_transition_warning)
 	message.visible = false
 	NPR.size = Vector2((145 * input.tower_list.size()),169)
 	for tower in input.tower_list:
@@ -60,6 +61,10 @@ func _on_wave_started(wave: int) -> void:
 				if spawn_config.has_boss:
 					max_enemies += 1
 		enemy_max_label.text = str(max_enemies)
+
+func _on_wave_transition_warning(next_wave: int, countdown: float) -> void:
+	show_message("Wave " + str(next_wave) + " akan dimulai!")
+	AudioManager.play_sfx("notif_win")
 
 func _on_game_over(stars: int) -> void:
 	if winlose:

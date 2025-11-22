@@ -33,4 +33,4 @@ func _on_main_menu_pressed() -> void:
 	AudioManager.play_sfx("button_click")
 	get_tree().paused = false
 	GameManager.reset_game_state()
-	get_tree().change_scene_to_file("res://scenes/UI/main_menu.tscn")
+	LevelManager.load_level_async("res://scenes/UI/main_menu.tscn")

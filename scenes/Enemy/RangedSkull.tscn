@@ -56,5 +56,6 @@ shape = SubResource("SphereShape3D_icdvm")
 [node name="Anim" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 1, 0)
 flip_h = true
+billboard = 1
 sprite_frames = SubResource("SpriteFrames_oy1g3")
 frame_progress = 0.40184128

@@ -42,7 +42,7 @@ func _on_next_button_pressed():
 		current_page += 1
 		update_page()
 	else:
-		get_tree().change_scene_to_file("res://scenes/UI/main_menu.tscn")
+		LevelManager.load_level_async("res://scenes/UI/main_menu.tscn")
 
 func _input(event):
 	if event is InputEventKey and event.pressed:
@@ -51,4 +51,4 @@ func _input(event):
 		elif event.keycode == KEY_RIGHT or event.keycode == KEY_D:
 			_on_next_button_pressed()
 		elif event.keycode == KEY_ESCAPE:
-			get_tree().change_scene_to_file("res://scenes/UI/main_menu.tscn")
+			LevelManager.load_level_async("res://scenes/UI/main_menu.tscn")
