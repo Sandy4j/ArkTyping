@@ -23,7 +23,7 @@ func _ready() -> void:
 	wavesystem.wave_started.connect(_on_wave_started)
 	wavesystem.wave_transition_warning.connect(_on_wave_transition_warning)
 	message.visible = false
-	NPR.size = Vector2((145 * input.tower_list.size()),169)
+	NPR.size = Vector2((145 * input.tower_list.size()),190)
 	for tower in input.tower_list:
 		var icon_rect = TextureRect.new()
 		icon_rect.texture = tower.slot
@@ -101,6 +101,17 @@ func _on_tower_gone(data:TowerData) -> void:
 	CD.add_theme_font_size_override("font_size", 35)
 	
 	start_countdown(data, target, CD)
+
+func _on_tower_placed(name:String)-> void:
+	var v = 0
+	var tmp = -1
+	for tower in input.tower_list:
+		tmp += 1
+		if name == tower.chara:
+			v = tmp
+			last_high = tmp
+	var target:TextureRect = icon_con.get_child(v)
+	target.self_modulate = Color(0.5,0.5,0.5)
 
 var last_high:int
 func pop_hero(name:String):

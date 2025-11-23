@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://c2bvnxsxdyagq" path="res://asset/Tower/Lilitia/Idle/Idle 2.png" id="3_yey8d"]
 [ext_resource type="Texture2D" uid="uid://npginklt2aik" path="res://asset/Tower/Lilitia/Idle/Idle 3.png" id="4_74gwk"]
 [ext_resource type="Texture2D" uid="uid://cll3tft145gdf" path="res://asset/Tower/Icon/Vigilante-4.png" id="4_j14hj"]
+[ext_resource type="Texture2D" uid="uid://bta1ha8c3kx02" path="res://asset/Tower/Icon/Glow/Vigilante-4.png" id="5_kg1ol"]
 [ext_resource type="Texture2D" uid="uid://dpbyca584mmuy" path="res://asset/Tower/Lilitia/Idle/Idle 4.png" id="5_lnjyb"]
-[ext_resource type="Texture2D" uid="uid://jhgwg2em5k5s" path="res://asset/Tower/Icon/Glow/Vigilante.png" id="5_x103h"]
 [ext_resource type="Texture2D" uid="uid://bw2wfotgx6qm" path="res://asset/Tower/Lilitia/Idle/Idle 5.png" id="6_kg1ol"]
 [ext_resource type="Texture2D" uid="uid://yxfkfjv0mj1y" path="res://asset/Tower/Lilitia/Idle/Idle 6.png" id="7_j14hj"]
 [ext_resource type="Texture2D" uid="uid://b2lykflngsoha" path="res://asset/Tower/Lilitia/Idle/Idle 7.png" id="8_x103h"]
@@ -48,7 +48,7 @@ chara = "lilitia"
 atk_sfx = ExtResource("1_lnjyb")
 cost = 15
 slot = ExtResource("4_j14hj")
-slot_glow = ExtResource("5_x103h")
+slot_glow = ExtResource("5_kg1ol")
 damage = 75
 speed = 0.8
 range = 20.0

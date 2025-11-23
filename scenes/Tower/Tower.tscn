@@ -76,10 +76,11 @@ transparency = 1
 blend_mode = 1
 cull_mode = 2
 shading_mode = 0
-albedo_color = Color(0.28660065, 0.34402403, 0.8813572, 0.13333334)
+albedo_color = Color(0.41960785, 0.41960785, 0.41960785, 0.019607844)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_yc5to"]
 material = SubResource("StandardMaterial3D_oopld")
+top_radius = 50.0
 height = 0.001
 
 [node name="Tower" type="Node3D"]

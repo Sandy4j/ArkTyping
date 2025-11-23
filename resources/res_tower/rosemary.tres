@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://qr5x8fb2vmx7" path="res://asset/Tower/Icon/Vigilante-6.png" id="6_1kkq2"]
 [ext_resource type="Texture2D" uid="uid://cmnaw67t7cr50" path="res://asset/Tower/Rosemary/attack/Skill 5.png" id="6_2otcp"]
 [ext_resource type="Texture2D" uid="uid://cfuldp5d6ouit" path="res://asset/Tower/Rosemary/attack/Skill 6.png" id="7_1kkq2"]
-[ext_resource type="Texture2D" uid="uid://jhgwg2em5k5s" path="res://asset/Tower/Icon/Glow/Vigilante.png" id="7_ciw6g"]
+[ext_resource type="Texture2D" uid="uid://8bx18u6xxdvt" path="res://asset/Tower/Icon/Glow/Vigilante-6.png" id="7_2otcp"]
 [ext_resource type="Texture2D" uid="uid://dhcmhsx6lubk4" path="res://asset/Tower/Rosemary/Idle/Idle 1.png" id="9_6lxli"]
 [ext_resource type="Texture2D" uid="uid://ge5ahml7ejyl" path="res://asset/Tower/Rosemary/Idle/Idle 2.png" id="10_nghwd"]
 [ext_resource type="Texture2D" uid="uid://dqq2yd3cbc5mr" path="res://asset/Tower/Rosemary/Idle/Idle 3.png" id="11_xdg6b"]
@@ -80,7 +80,7 @@ atk_sfx = ExtResource("1_2otcp")
 skl_sfx = ExtResource("5_1kkq2")
 cost = 22
 slot = ExtResource("6_1kkq2")
-slot_glow = ExtResource("7_ciw6g")
+slot_glow = ExtResource("7_2otcp")
 damage = 600
 speed = 0.5
 range = 350.0

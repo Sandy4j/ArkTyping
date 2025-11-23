@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cmu2a1bfy4xpt" path="res://asset/Tower/Icon/Vigilante-5.png" id="5_q2mdx"]
 [ext_resource type="Texture2D" uid="uid://bj7prq4ibwk5r" path="res://asset/Tower/Vigilante/Attack/Attack 4.png" id="5_uuy6l"]
 [ext_resource type="Texture2D" uid="uid://b561mc3bcy7lw" path="res://asset/Tower/Vigilante/Attack/Attack 5.png" id="6_0bkjc"]
-[ext_resource type="Texture2D" uid="uid://jhgwg2em5k5s" path="res://asset/Tower/Icon/Glow/Vigilante.png" id="6_1sn4n"]
+[ext_resource type="Texture2D" uid="uid://biqt0s83572jx" path="res://asset/Tower/Icon/Glow/Vigilante-5.png" id="6_q2mdx"]
 [ext_resource type="Texture2D" uid="uid://bkgbjowx38512" path="res://asset/Tower/Vigilante/Attack/Attack 6.png" id="7_q2mdx"]
 [ext_resource type="Texture2D" uid="uid://c5qe4ltlgxvuk" path="res://asset/Tower/Vigilante/Attack/Attack 7.png" id="8_1sn4n"]
 [ext_resource type="Texture2D" uid="uid://cqe48fgge1r5w" path="res://asset/Tower/Vigilante/Attack/Attack 8.png" id="9_ro14s"]
@@ -94,7 +94,7 @@ chara = "vigilante"
 atk_sfx = ExtResource("1_kudlk")
 cost = 18
 slot = ExtResource("5_q2mdx")
-slot_glow = ExtResource("6_1sn4n")
+slot_glow = ExtResource("6_q2mdx")
 damage = 300
 speed = 0.65
 range = 125.0

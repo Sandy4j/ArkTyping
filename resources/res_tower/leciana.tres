@@ -8,9 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://ckigq5im4tosq" path="res://asset/Tower/Icon/Vigilante-3.png" id="4_c2k8j"]
 [ext_resource type="Texture2D" uid="uid://c1hdr53foo7iv" path="res://asset/Tower/Skill/Group.png" id="4_nvyl0"]
 [ext_resource type="Texture2D" uid="uid://mu2e31dtqlvn" path="res://asset/Tower/Leciana/Attack/Skill 3.png" id="4_wtv25"]
-[ext_resource type="Texture2D" uid="uid://jhgwg2em5k5s" path="res://asset/Tower/Icon/Glow/Vigilante.png" id="5_nvyl0"]
 [ext_resource type="Texture2D" uid="uid://doe765qle0p5j" path="res://asset/Tower/Leciana/Attack/Skill 4.png" id="5_p6mwc"]
 [ext_resource type="Texture2D" uid="uid://m8lgy7tebg2f" path="res://asset/Tower/Leciana/Attack/Skill 5.png" id="6_c2k8j"]
+[ext_resource type="Texture2D" uid="uid://snxc5gcosn3h" path="res://asset/Tower/Icon/Glow/Vigilante-3.png" id="6_nvyl0"]
 [ext_resource type="Texture2D" uid="uid://doicyn5a6a788" path="res://asset/Tower/Leciana/Attack/Skill 6.png" id="7_nvyl0"]
 [ext_resource type="Texture2D" uid="uid://bik3yuqt8qp3y" path="res://asset/Tower/Leciana/Attack/Skill 7.png" id="8_mvied"]
 [ext_resource type="Texture2D" uid="uid://caak4b52syl70" path="res://asset/Tower/Leciana/Attack/Skill 8.png" id="9_r8k7y"]
@@ -86,7 +86,7 @@ chara = "leciana"
 atk_sfx = ExtResource("1_c2k8j")
 cost = 12
 slot = ExtResource("4_c2k8j")
-slot_glow = ExtResource("5_nvyl0")
+slot_glow = ExtResource("6_nvyl0")
 damage = 200
 speed = 1.0
 range = 200.0

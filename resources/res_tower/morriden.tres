@@ -11,7 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://tcm2jj8px5ha" path="res://asset/SFX_IGame/Tower/Morriden/Morriden Skill.wav" id="5_asmgg"]
 [ext_resource type="Texture2D" uid="uid://bwgaatfi1sa4o" path="res://asset/Tower/Icon/Vigilante-2.png" id="6_mmkrx"]
 [ext_resource type="Texture2D" uid="uid://b4oxyw54djlty" path="res://asset/Tower/Morriden/attack/Skill 5.png" id="6_s2ut6"]
-[ext_resource type="Texture2D" uid="uid://jhgwg2em5k5s" path="res://asset/Tower/Icon/Glow/Vigilante.png" id="7_7pqte"]
+[ext_resource type="Texture2D" uid="uid://vurx10iim380" path="res://asset/Tower/Icon/Glow/Vigilante-2.png" id="7_asmgg"]
 [ext_resource type="Texture2D" uid="uid://dvegliy0a00u6" path="res://asset/Tower/Morriden/attack/Skill 6.png" id="7_d122q"]
 [ext_resource type="Texture2D" uid="uid://b7nd35u0nhre6" path="res://asset/Tower/Morriden/attack/Skill 7.png" id="8_asmgg"]
 [ext_resource type="Texture2D" uid="uid://kgglsb0ddas8" path="res://asset/Tower/Morriden/Idle/Idle 1.png" id="9_mmkrx"]
@@ -84,7 +84,7 @@ atk_sfx = ExtResource("1_d122q")
 skl_sfx = ExtResource("5_asmgg")
 cost = 10
 slot = ExtResource("6_mmkrx")
-slot_glow = ExtResource("7_7pqte")
+slot_glow = ExtResource("7_asmgg")
 damage = 250
 speed = 0.7
 range = 200.0

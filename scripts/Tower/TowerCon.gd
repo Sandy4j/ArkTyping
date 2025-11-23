@@ -149,6 +149,7 @@ func place_tower_at_selected(data:TowerData) -> void:
 		placed_tower.append(data.chara)
 		var msg =str("memasang tower ", data.chara)
 		ui.show_message(msg)
+		ui._on_tower_placed(data.chara)
 		update_spot_labels()
 		remove_outline_from_spot(spot)
 		selected_spot_index = -1

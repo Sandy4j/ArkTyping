@@ -245,9 +245,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -310.5
-offset_top = -169.0
-offset_right = -310.5
+offset_left = -220.0
+offset_top = -192.0
+offset_right = -220.0
+offset_bottom = -23.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("9_rlppe")
@@ -262,7 +263,8 @@ offset_top = -41.0
 offset_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 7
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_right = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/MarginContainer"]
 custom_minimum_size = Vector2(140, 0)
@@ -349,7 +351,7 @@ vertical_alignment = 1
 
 [node name="Input" type="Node" parent="." groups=["towerinput"]]
 script = ExtResource("13_jkdwc")
-tower_list = Array[ExtResource("14_rlppe")]([ExtResource("15_ycmcx"), ExtResource("16_kupmu"), ExtResource("17_catpy"), ExtResource("18_41akx"), ExtResource("18_jkdwc"), ExtResource("19_rlppe"), ExtResource("20_kupmu")])
+tower_list = Array[ExtResource("14_rlppe")]([ExtResource("15_ycmcx"), ExtResource("18_41akx"), ExtResource("17_catpy"), ExtResource("19_rlppe"), ExtResource("16_kupmu"), ExtResource("20_kupmu"), ExtResource("18_jkdwc")])
 
 [node name="WinLose" parent="." instance=ExtResource("21_ycmcx")]
 

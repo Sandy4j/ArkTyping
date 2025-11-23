@@ -11,8 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://b5yrrvhlojnrv" path="res://asset/Tower/Silvanna/Skill/Skill 4.png" id="5_7y1np"]
 [ext_resource type="Texture2D" uid="uid://ctd3lphsxlktm" path="res://asset/Tower/Icon/Vigilante-1.png" id="6_1mo65"]
 [ext_resource type="Texture2D" uid="uid://dtmxv5l16fw24" path="res://asset/Tower/Silvanna/Skill/Skill 5.png" id="6_exrmv"]
+[ext_resource type="Texture2D" uid="uid://bdhttkljgd058" path="res://asset/Tower/Icon/Glow/Vigilante-1.png" id="7_5piew"]
 [ext_resource type="Texture2D" uid="uid://ogbmitx2ypf5" path="res://asset/Tower/Silvanna/Idle/Idle 1.png" id="7_lniv3"]
-[ext_resource type="Texture2D" uid="uid://jhgwg2em5k5s" path="res://asset/Tower/Icon/Glow/Vigilante.png" id="7_ounyl"]
 [ext_resource type="Texture2D" uid="uid://dfu3xdoneuucr" path="res://asset/Tower/Silvanna/Idle/Idle 2.png" id="8_5piew"]
 [ext_resource type="Texture2D" uid="uid://cibhr8y3mj0ma" path="res://asset/Tower/Silvanna/Idle/Idle 3.png" id="9_1mo65"]
 [ext_resource type="Texture2D" uid="uid://bce6mlxhdndld" path="res://asset/Tower/Silvanna/Idle/Idle 4.png" id="10_ounyl"]
@@ -68,7 +68,7 @@ atk_sfx = ExtResource("1_lniv3")
 skl_sfx = ExtResource("5_5piew")
 cost = 8
 slot = ExtResource("6_1mo65")
-slot_glow = ExtResource("7_ounyl")
+slot_glow = ExtResource("7_5piew")
 damage = 225
 speed = 1.0
 range = 3.0
