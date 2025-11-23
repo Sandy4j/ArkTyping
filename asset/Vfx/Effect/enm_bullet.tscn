@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://7mxf5cmtcqed"]
+[gd_scene load_steps=12 format=3 uid="uid://7mxf5cmtcqed"]
 
 [ext_resource type="Texture2D" uid="uid://dd3wpcktkqlyt" path="res://asset/Vfx/Texture/T_Noise22.png" id="1_y07pa"]
 [ext_resource type="ArrayMesh" uid="uid://e63ydpc44vvn" path="res://asset/Vfx/Obj/Spike.obj" id="2_gmnwj"]
@@ -15,7 +15,11 @@ albedo_color = Color(0.3365263, 0.46358907, 0.32076252, 1)
 albedo_texture = ExtResource("1_y07pa")
 albedo_texture_force_srgb = true
 albedo_texture_msdf = true
+billboard_mode = 3
 billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pyybx"]
 transparency = 1
@@ -27,6 +31,7 @@ vertex_color_is_srgb = true
 albedo_color = Color(0.33183005, 0.40443814, 0.28707156, 0.105000004)
 albedo_texture = ExtResource("3_lriby")
 albedo_texture_force_srgb = true
+albedo_texture_msdf = true
 billboard_mode = 3
 billboard_keep_scale = true
 particles_anim_h_frames = 1
@@ -40,32 +45,41 @@ point_count = 2
 [sub_resource type="CurveTexture" id="CurveTexture_vw73x"]
 curve = SubResource("Curve_wnpih")
 
+[sub_resource type="Curve" id="Curve_y07pa"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_gmnwj"]
+curve = SubResource("Curve_y07pa")
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3b7fe"]
 emission_shape = 1
 emission_sphere_radius = 0.25
 initial_velocity_min = 1.0
 initial_velocity_max = 1.0
-gravity = Vector3(3, 0, 0)
+gravity = Vector3(-5, 0, 0)
 scale_min = 0.5
 scale_max = 0.5
 alpha_curve = SubResource("CurveTexture_vw73x")
+emission_curve = SubResource("CurveTexture_gmnwj")
 
 [sub_resource type="QuadMesh" id="QuadMesh_yt54d"]
 
 [node name="Enm_bullet" type="Node3D"]
 
 [node name="MeshInstance3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.60701454, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.074142694, 0, 0)
 light_color = Color(0.27688417, 0.41928327, 0.29067814, 1)
 omni_range = 1.0
 
 [node name="Bijih" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.5, 0, -4.371139e-08, 0, 0.5, 0, 4.371139e-08, 0, -0.5, 0.8965164, 0, 0)
+transform = Transform3D(-0.5, 0, -4.371139e-08, 0, 0.5, 0, 4.371139e-08, 0, -0.5, -0.42503625, 0, 0)
 layers = 513
 material_override = SubResource("StandardMaterial3D_pnf8t")
 mesh = ExtResource("2_gmnwj")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20792985, 0, 0)
 material_override = SubResource("StandardMaterial3D_pyybx")
 amount = 20
 process_material = SubResource("ParticleProcessMaterial_3b7fe")

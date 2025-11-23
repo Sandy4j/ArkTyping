@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cigdkifjqmdgb"]
+[gd_scene load_steps=14 format=3 uid="uid://cigdkifjqmdgb"]
 
 [ext_resource type="Texture2D" uid="uid://cgu4ddvi12d5l" path="res://asset/Vfx/Texture/T_vfx_hit122.jpg" id="1_1hfsq"]
 
@@ -10,6 +10,9 @@ shading_mode = 0
 vertex_color_use_as_albedo = true
 vertex_color_is_srgb = true
 albedo_texture = ExtResource("1_1hfsq")
+albedo_texture_msdf = true
+billboard_mode = 2
+billboard_keep_scale = true
 
 [sub_resource type="Gradient" id="Gradient_1hfsq"]
 offsets = PackedFloat32Array(0.008174387, 0.032697547, 0.21798365)
@@ -17,6 +20,13 @@ colors = PackedColorArray(0.1931151, 0.1931151, 0.1931151, 0, 0, 0, 0, 1, 1, 0, 
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_jmy5i"]
 gradient = SubResource("Gradient_1hfsq")
+
+[sub_resource type="Curve" id="Curve_1hfsq"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_jmy5i"]
+curve = SubResource("Curve_1hfsq")
 
 [sub_resource type="Curve" id="Curve_baoqn"]
 _data = [Vector2(0, 0.10609043), 0.0, 0.0, 0, 0, Vector2(1e-05, 0.14440084), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -33,6 +43,7 @@ gravity = Vector3(0, 0, 0)
 scale_curve = SubResource("CurveTexture_bsten")
 color = Color(1.1797811, 1.0039029e-05, 1.3037701e-06, 1)
 color_ramp = SubResource("GradientTexture1D_jmy5i")
+emission_curve = SubResource("CurveTexture_jmy5i")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_2cckx"]
 

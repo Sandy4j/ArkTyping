@@ -15,6 +15,7 @@ vertex_color_use_as_albedo = true
 vertex_color_is_srgb = true
 albedo_color = Color(0, 0.61055017, 0, 1)
 albedo_texture = ExtResource("3_k3dry")
+albedo_texture_msdf = true
 billboard_mode = 3
 billboard_keep_scale = true
 particles_anim_h_frames = 1

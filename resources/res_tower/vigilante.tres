@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cewcri2ang2gr" path="res://asset/Tower/Vigilante/Attack/Attack 2.png" id="3_mglro"]
 [ext_resource type="Texture2D" uid="uid://bnxawiga15try" path="res://asset/Tower/Skill/Group 36.png" id="4_0bkjc"]
 [ext_resource type="Texture2D" uid="uid://wnav2dupdyre" path="res://asset/Tower/Vigilante/Attack/Attack 3.png" id="4_kudlk"]
-[ext_resource type="Texture2D" uid="uid://cmu2a1bfy4xpt" path="res://asset/Tower/Icon/Vigilante-5.png" id="5_q2mdx"]
+[ext_resource type="Texture2D" uid="uid://dmtbx65prn7cy" path="res://asset/Tower/Icon/Vigilante-5.png" id="5_q2mdx"]
 [ext_resource type="Texture2D" uid="uid://bj7prq4ibwk5r" path="res://asset/Tower/Vigilante/Attack/Attack 4.png" id="5_uuy6l"]
 [ext_resource type="Texture2D" uid="uid://b561mc3bcy7lw" path="res://asset/Tower/Vigilante/Attack/Attack 5.png" id="6_0bkjc"]
 [ext_resource type="Texture2D" uid="uid://biqt0s83572jx" path="res://asset/Tower/Icon/Glow/Vigilante-5.png" id="6_q2mdx"]
