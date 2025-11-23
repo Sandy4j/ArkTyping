@@ -133,7 +133,7 @@ shadow_transmittance_bias = 16.0
 shadow_blur = 0.0
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.60181504, 0.79863554, 0, -0.79863554, 0.60181504, 7, 21, 16)
+transform = Transform3D(1, 0, 0, 0, 0.5855096, 0.8106655, 0, -0.8106655, 0.5855096, 6.7185163, 22.923592, 16.366596)
 current = true
 fov = 22.5
 
@@ -169,7 +169,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 2)
 tower_scene = ExtResource("5_0bj1y")
 
 [node name="Base" parent="." instance=ExtResource("8_2la83")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.940315, 0, 4.1265583)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.6700115, 0, 4.1265583)
 
 [node name="WaveManager" type="Node" parent="."]
 script = ExtResource("16_lbtiq")
@@ -191,10 +191,10 @@ curve = SubResource("Curve3D_gj5ie")
 [node name="UI" parent="." instance=ExtResource("19_2la83")]
 
 [node name="Port_al" parent="." instance=ExtResource("17_l32du")]
-transform = Transform3D(0.68796384, 0, 3.1252592, 0, 2.9454327, 0, -1.4444219, 0, 1.48853, -1.3496431, 1.3340216, 3.243524)
+transform = Transform3D(0.68796384, 0, 3.1252592, 0, 2.9454327, 0, -1.4444219, 0, 1.48853, -2.0555623, 1.3340216, 3.243524)
 
 [node name="Port_al2" parent="." instance=ExtResource("17_l32du")]
-transform = Transform3D(0.68796384, 0, 3.1252592, 0, 2.9454327, 0, -1.4444219, 0, 1.48853, -2.7300587, 1.3340216, -3.9015641)
+transform = Transform3D(0.68796384, 0, 3.1252592, 0, 2.9454327, 0, -1.4444219, 0, 1.48853, -3.3388164, 1.3340216, -3.9015641)
 
 [node name="Port_al3" parent="." instance=ExtResource("17_l32du")]
-transform = Transform3D(0.68796384, 0, 3.1252592, 0, 2.9454327, 0, -1.4444219, 0, 1.48853, 15.982286, 1.3340216, -0.36083865)
+transform = Transform3D(0.68796384, 0, 3.1252592, 0, 2.9454327, 0, -1.4444219, 0, 1.48853, 16.196882, 1.3340216, -0.36083865)

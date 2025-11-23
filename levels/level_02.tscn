@@ -85,9 +85,23 @@ transform = Transform3D(1.9728585, 0, -0.32837367, 0, 2, 0, 0.32837367, 0, 1.972
 metadata/_edit_lock_ = true
 
 [node name="OmniLight3D" type="OmniLight3D" parent="WorldEnvironment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.667522, 2.3672886, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.963, 2.367, 0)
 light_color = Color(1, 0.45999998, 0.45999998, 1)
-omni_range = 9.54
+omni_range = 9.03592
+omni_attenuation = 1.194
+metadata/_edit_lock_ = true
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.963, 2.367, 3.72)
+light_color = Color(1, 0.45999998, 0.45999998, 1)
+omni_range = 9.03592
+omni_attenuation = 1.194
+metadata/_edit_lock_ = true
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.963, 2.367, -3.445)
+light_color = Color(1, 0.45999998, 0.45999998, 1)
+omni_range = 9.03592
 omni_attenuation = 1.194
 metadata/_edit_lock_ = true
 
@@ -111,7 +125,7 @@ shadow_transmittance_bias = 16.0
 shadow_blur = 0.0
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.6087614, 0.7933533, 0, -0.7933533, 0.6087614, 7, 21, 16)
+transform = Transform3D(1, 0, 0, 0, 0.6087614, 0.7933533, 0, -0.7933533, 0.6087614, 4.1903086, 21, 16)
 current = true
 fov = 22.5
 
@@ -161,10 +175,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.595272, 0, -3.97522)
 curve = SubResource("Curve3D_hmhyh")
 
 [node name="Port_al" parent="." instance=ExtResource("15_ddsyl")]
-transform = Transform3D(0.68796384, 0, 3.1252592, 0, 2.9454327, 0, -1.4444219, 0, 1.48853, 15.809822, 1.3340216, 0.082261324)
+transform = Transform3D(0.68796384, 0, 3.1252592, 0, 2.9454327, 0, -1.4444219, 0, 1.48853, 13.0319, 1.3340216, 0.082261324)
 
 [node name="Port_al2" parent="." instance=ExtResource("15_ddsyl")]
-transform = Transform3D(0.68796384, 0, 3.1252592, 0, 2.9454327, 0, -1.4444219, 0, 1.48853, 15.235979, 1.3340216, 3.7711508)
+transform = Transform3D(0.68796384, 0, 3.1252592, 0, 2.9454327, 0, -1.4444219, 0, 1.48853, 12.3049965, 1.3340216, 3.7711508)
 
 [node name="Port_al3" parent="." instance=ExtResource("15_ddsyl")]
-transform = Transform3D(0.68796384, 0, 3.1252592, 0, 2.9454327, 0, -1.4444219, 0, 1.48853, 16.522839, 1.3340216, -3.4445417)
+transform = Transform3D(0.68796384, 0, 3.1252592, 0, 2.9454327, 0, -1.4444219, 0, 1.48853, 13.719864, 1.3340216, -3.4445417)
