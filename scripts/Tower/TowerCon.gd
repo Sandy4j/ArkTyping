@@ -7,6 +7,7 @@ var outline_material: ShaderMaterial
 var tower_input: Node = null
 @onready var ui: CanvasLayer = $"../UI"
 var placed_tower:Array[String]
+var last_index:int
 
 func _ready() -> void:
 	outline_material = ShaderMaterial.new()
@@ -72,31 +73,48 @@ func select_spot(index: int) -> void:
 	if index < 0 or index >= tower_spots.size():
 		return
 	
-	var spot = tower_spots[index]
+	var new_spot = tower_spots[index]
+	var old_spot = null
 	
+	# 🎯 1. SIMPAN SPOT LAMA JIKA ADA
 	if selected_spot_index >= 0 and selected_spot_index < tower_spots.size():
-		var prev_spot = tower_spots[selected_spot_index]
-		if not prev_spot.has_tower:
-			remove_outline_from_spot(prev_spot)
-
+		old_spot = tower_spots[selected_spot_index]
+	
+	# 🎯 2. HIDE/REMOVE DARI SPOT LAMA
+	if old_spot:
+		if not old_spot.has_tower:
+			remove_outline_from_spot(old_spot)
+		else:
+			old_spot.tower_node.hide_skill()
+	
+	# 🎯 3. UPDATE SELECTED INDEX
 	selected_spot_index = index
+	
+	# 🎯 4. SHOW/ADD KE SPOT BARU
 	AudioManager.play_sfx("spot_select")
-	if not spot.has_tower:
-		add_outline_to_spot(spot)
+	
+	if not new_spot.has_tower:
+		add_outline_to_spot(new_spot)
+	else:
+		new_spot.tower_node.show_skill()
+	
+	# 🎯 5. UPDATE TOWER INPUT
 	if tower_input and tower_input.has_method("set_selected_spot"):
 		tower_input.set_selected_spot(index)
+	
+	print("🎯 Selected: ", index, " | Had tower: ", new_spot.has_tower)
 
 func update_spot_labels() -> void:
 	for i in range(tower_spots.size()):
 		var spot = tower_spots[i]
 		
-		var label = spot.get_node_or_null("NumberLabel")
+		var label:Label3D = spot.get_node_or_null("NumberLabel")
 		
 		if not label:
 			label = Label3D.new()
 			label.name = "NumberLabel"
 			spot.add_child(label)
-			label.position = Vector3(-0.5, 0.3, 1)
+			label.position = Vector3(-0.5, 0.1, 0.75)
 			label.pixel_size = 0.01
 			label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
 		
@@ -148,6 +166,9 @@ func active_tower_at_selected(v:String) -> void:
 			return
 		if spot.tower_node.current_skill_cooldown > 0 and spot.tower_data.skill == v:
 			var msg =str("skill ", v," sedang cooldown")
+			ui.show_message(msg)
+		elif spot.tower_node.skill_active:
+			var msg =str("skill tower sedang aktif")
 			ui.show_message(msg)
 		elif spot.tower_data.skill == v:
 			spot.tower_node.Skill(v)

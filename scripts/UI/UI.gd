@@ -27,8 +27,11 @@ func _ready() -> void:
 	for tower in input.tower_list:
 		var icon_rect = TextureRect.new()
 		icon_rect.texture = tower.slot
+		icon_rect.stretch_mode =TextureRect.STRETCH_KEEP
+		icon_rect.size_flags_vertical = Control.SIZE_SHRINK_END
 		icon_con.add_child(icon_rect)
-	
+	input.Pop.connect(pop_hero)
+	input.PopBack.connect(popback_hero)
 	if wavesystem:
 		wave_max_label.text = str(wavesystem.get_max_waves())
 	
@@ -98,6 +101,39 @@ func _on_tower_gone(data:TowerData) -> void:
 	CD.add_theme_font_size_override("font_size", 35)
 	
 	start_countdown(data, target, CD)
+
+var last_high:int
+func pop_hero(name:String):
+	var v = 0
+	var tmp = -1
+	for tower in input.tower_list:
+		tmp += 1
+		if name == tower.chara:
+			v = tmp
+			last_high = tmp
+	var target:TextureRect = icon_con.get_child(v)
+	target.texture = input.tower_list[v].slot_glow
+	target.size_flags_vertical = Control.SIZE_SHRINK_BEGIN
+	#var tween:Tween = create_tween()
+	#tween.set_trans(Tween.TRANS_LINEAR)
+	#tween.set_ease(Tween.EASE_IN_OUT)
+	## 🎯 ANIMASI SIZE DAN POSITION BERSAMAAN
+	#tween.tween_property(target, "size_flags_vertical", Control.SIZE_SHRINK_BEGIN, 0.5)
+	#tween.play()
+
+func popback_hero():
+	if last_high < 0:
+		return
+	var target:TextureRect = icon_con.get_child(last_high)
+	target.texture = input.tower_list[last_high].slot
+	target.size_flags_vertical = Control.SIZE_SHRINK_END
+	#var tween = create_tween()
+	#tween.set_trans(Tween.TRANS_LINEAR)
+	##tween.set_ease(Tween.EASE_OUT)
+	## 🎯 ANIMASI SIZE DAN POSITION BERSAMAAN
+	#tween.parallel().tween_property(target, "size_flags_vertical", Control.SIZE_SHRINK_END, 0.5)
+	#tween.play()
+	last_high = -1
 
 func start_countdown(data:TowerData, target: TextureRect, countdown_label: Label):
 	var countdown_time: int = 10  # 10 detik

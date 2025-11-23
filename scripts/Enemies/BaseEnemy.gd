@@ -16,11 +16,13 @@ var current_hp: float = 0.0
 var path_to_follow: Path3D = null
 var path_follow: PathFollow3D = null
 var pool_name: String = ""  # tracking asal pool
+var move_speed
 
 @onready var sprite: AnimatedSprite3D = $Anim
 
 
 func _ready() -> void:
+	move_speed = enemy_data.move_speed
 	sprite.play("default")
 	if not enemy_data:
 		push_error("Enemy has no data assigned!")
@@ -55,7 +57,7 @@ func _process(delta: float) -> void:
 	_update_logic(delta)
 
 func _move(delta: float) -> void:
-	path_follow.progress += enemy_data.move_speed * delta
+	path_follow.progress += move_speed * delta
 	global_position = path_follow.global_position
 	
 	bob_timer += delta * bob_speed
@@ -75,9 +77,16 @@ func take_damage(damage: float) -> void:
 	sprite.modulate = Color(1, 1, 1)
 	var vfx_sc = load("res://asset/Vfx/Effect/hit.tscn")
 	var vfx_nd = vfx_sc.instantiate()
+	var gpu:GPUParticles3D = vfx_nd.get_child(0)
+	gpu.finished.connect(done_hit.bind(gpu))
 	self.add_child(vfx_nd)
 	if current_hp <= 0:
 		die()
+
+
+func done_hit(vfx_node: GPUParticles2D):
+	print("🎇 VFX finished: ")
+	vfx_node.get_parent().queue_free()
 
 
 func die() -> void:

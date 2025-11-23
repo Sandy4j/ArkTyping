@@ -3,7 +3,7 @@ extends Node3D
 signal shot_fired
 signal skill_activated(skill_name: String)
 signal tower_destroyed
-
+signal skill_done
 @export var tower_data: TowerData
 
 # Stats yang akan diambil dari TowerData
@@ -19,7 +19,7 @@ var scarlet_harvester_active:bool
 var bullet_requiem_active:bool
 var max_hp: float = 100.0
 var current_hp: float = 100.0
-
+var skill_duration:float
 var vfx_node
 var vfx_shoot
 var vfx_aura
@@ -40,10 +40,20 @@ var is_animation_playing: bool = false
 @onready var sfx: AudioStreamPlayer = $AudioStreamPlayer
 @onready var shoot_point: Node3D = $ShootPoint
 @onready var skill_sprite: Sprite3D = $SkillSprite
-@onready var HPBar: TextureProgressBar = $SubViewport/TextureProgressBar
+@onready var HPBar: ProgressBar = $SubViewport/TextureProgressBar
+@onready var SBar: ProgressBar = $SubViewport2/TextureProgressBar
+@onready var aoe: MeshInstance3D = $Aoe
 var altar
+var stylefill:StyleBoxFlat
+var mesh_aoe:CylinderMesh
 
 func _ready() -> void:
+	var temp_stylebox = SBar.get_theme_stylebox("fill")
+	stylefill = temp_stylebox.duplicate()  # 🎯 INI YANG PENTING!
+	SBar.add_theme_stylebox_override("fill", stylefill)
+	var temp_mesh = aoe.mesh
+	mesh_aoe = temp_mesh.duplicate()  # 🎯 INI JUGA!
+	aoe.mesh = mesh_aoe
 	sfx.stream = tower_data.atk_sfx
 	shot_fired.connect(after_shoot)
 	damage = tower_data.damage
@@ -57,6 +67,9 @@ func _ready() -> void:
 	max_hp = tower_data.max_hp
 	HPBar.max_value = max_hp
 	skill_cooldown = tower_data.cooldown
+	SBar.max_value = skill_cooldown
+	SBar.value = current_skill_cooldown
+	stylefill.bg_color = Color("DAC41E")
 	current_hp = max_hp
 	HPBar.value = current_hp
 	sprite.sprite_frames = tower_data.sprite
@@ -96,8 +109,10 @@ func _ready() -> void:
 		var collision_shape = range_area.get_node("CollisionShape3D")
 		if collision_shape and collision_shape.shape is SphereShape3D:
 			collision_shape.shape.radius = detection_range
+			mesh_aoe.top_radius = detection_range
 	current_skill_cooldown = skill_cooldown
 	sprite.play("default")
+	hide_skill()
 
 func _process(delta: float) -> void:
 	if not is_inside_tree():
@@ -105,27 +120,15 @@ func _process(delta: float) -> void:
 	
 	fire_timer += delta
 	
-	# Update skill cooldown
-	if current_skill_cooldown > 0:
-		skill_sprite.modulate = Color(0.5,0.5,0.5,1.0)
-		current_skill_cooldown -= delta
-	else:
-		skill_sprite.modulate = Color(1.0,1.0,1.0,1.0)
+	if current_skill_cooldown > 0 or skill_active:
+		execute_skill(delta)
 	
 	update_animation()
 	if is_lilitia:
 		return
 	
 	update_target()
-	
-	# Find target if none
-	if not current_target or not is_instance_valid(current_target) or not current_target.is_in_group("enemies"):
-		current_target = find_nearest_enemy()
-	
-	# Check if target is still in range
-	if current_target and global_position.distance_to(current_target.global_position) > detection_range:
-		current_target = null
-	
+	update_sprite_direction()
 	# Shoot at target
 	if current_target and is_instance_valid(current_target) and current_target.is_in_group("enemies") and fire_timer >= 1.0 / fire_rate:
 		is_shooting = true
@@ -143,6 +146,21 @@ func _process(delta: float) -> void:
 		else:
 			shoot(current_target)
 		fire_timer = 0.0
+
+func update_sprite_direction():
+	if not sprite:
+		return
+	
+	# 🎯 JIKA ADA TARGET, FLIP BERDASARKAN POSISI TARGET
+	if current_target and is_instance_valid(current_target):
+		var target_position = current_target.global_position
+		var tower_position = global_position
+		
+		# 🎯 CEK APAKAH TARGET DI KIRI ATAU KANAN
+		if target_position.x < tower_position.x:
+			sprite.flip_h = true
+		else:
+			sprite.flip_h = false
 
 func update_animation():
 	if is_shooting:
@@ -339,6 +357,12 @@ func scarlet_harvester() -> void:
 	
 	shot_fired.emit()
 
+func show_skill():
+	skill_sprite.visible = true
+
+func hide_skill():
+	skill_sprite.visible = false
+
 func find_nearest_enemy() -> CharacterBody3D:
 	var enemies = get_tree().get_nodes_in_group("enemies")
 	var nearest: CharacterBody3D = null
@@ -358,12 +382,10 @@ func _on_enemy_entered_range(body: Node3D) -> void:
 	if body.is_in_group("enemies") and body is CharacterBody3D:
 		var enemy = body as CharacterBody3D
 		
-		# Tambahkan ke array jika belum ada
 		if not enemy in enemies_in_range:
 			enemies_in_range.append(enemy)
 			print("Enemy entered range. Total enemies: ", enemies_in_range.size())
 			
-			# Jika belum ada target, set target ke musuh ini
 			if not current_target:
 				current_target = enemy
 				print("New target set: ", enemy.name)
@@ -378,7 +400,6 @@ func _on_enemy_exited_range(body: Node3D) -> void:
 			enemies_in_range.erase(enemy)
 			print("Enemy exited range. Total enemies: ", enemies_in_range.size())
 		
-		# Jika musuh yang keluar adalah target saat ini, cari target baru
 		if enemy == current_target:
 			current_target = null
 			update_target()
@@ -387,13 +408,11 @@ func update_target() -> void:
 	# Bersihkan array dari musuh yang sudah tidak valid
 	cleanup_enemies_array()
 	
-	# Jika tidak ada target saat ini dan ada musuh dalam range
 	if not current_target and enemies_in_range.size() > 0:
 		# Pilih musuh pertama dalam array (yang pertama masuk)
 		current_target = enemies_in_range[0]
 		print("Target updated to first enemy in range: ", current_target.name)
 	
-	# Jika target saat ini sudah tidak valid atau tidak dalam array, cari yang baru
 	elif current_target and (not is_instance_valid(current_target) or not current_target in enemies_in_range):
 		current_target = null
 		if enemies_in_range.size() > 0:
@@ -411,7 +430,6 @@ func cleanup_enemies_array() -> void:
 	for invalid_enemy in invalid_enemies:
 		enemies_in_range.erase(invalid_enemy)
 	
-	# Jika ada musuh yang dihapus, update target
 	if invalid_enemies.size() > 0:
 		print("Cleaned up ", invalid_enemies.size(), " invalid enemies")
 		if current_target and (not is_instance_valid(current_target) or not current_target.is_in_group("enemies")):
@@ -440,7 +458,7 @@ func get_hp_percentage() -> float:
 	return current_hp / max_hp if max_hp > 0 else 0.0
 
 func Skill(skill_name: String) -> void:
-	if current_skill_cooldown > 0:
+	if current_skill_cooldown > 0 or skill_active:
 		print("Skill on cooldown: ", current_skill_cooldown, "s remaining")
 		return
 	AudioManager.play_sfx("tower_skill")
@@ -463,13 +481,33 @@ func Skill(skill_name: String) -> void:
 		_:
 			print("Unknown skill: ", skill_name)
 			return
-	
+	SBar.max_value = tower_data.skill_duration
+	skill_duration = tower_data.skill_duration
+	SBar.value = skill_duration
+	skill_active = true
 	skill_activated.emit(skill_name)
-	current_skill_cooldown = skill_cooldown
+	#current_skill_cooldown = skill_cooldown
 
 func execute_skill(delta: float) -> void:
-	# Base implementation - override di subclass jika skill butuh update per frame
-	pass
+	if skill_active:
+		skill_duration -= delta
+		SBar.value = skill_duration
+		if skill_duration < 0:
+			skill_active = false
+			SBar.max_value = skill_cooldown
+			current_skill_cooldown = skill_cooldown
+			stylefill.bg_color = Color("DAC41E")
+			skill_sprite.modulate = Color(0.5,0.5,0.5,1.0)
+			skill_done.emit()
+		#DAC41E warna cooldown
+		#1E9CDA warna full
+	else:
+		current_skill_cooldown -= delta
+		var val = skill_cooldown - current_skill_cooldown
+		SBar.value = val
+		if current_skill_cooldown < 0:
+			stylefill.bg_color = Color("1E9CDA")
+			skill_sprite.modulate = Color(1.0,1.0,1.0,1.0)
 
 func activate_overload_burst() -> void:
 	print("Overload burst aktif!")
@@ -484,15 +522,13 @@ func activate_overload_burst() -> void:
 		var original_fire_rate = fire_rate
 		fire_rate = 1.0
 		overload_burst_active = true
-		var skill_duration = tower_data.skill_duration
-		var timer = get_tree().create_timer(skill_duration)
-		timer.timeout.connect(func(): 
-			aura_node.queue_free()
-			sfx.stream = tower_data.atk_sfx
-			overload_burst_active = false
-			fire_rate = original_fire_rate
-			print("Overload burst berakhir")
-		)
+		await skill_done 
+		aura_node.queue_free()
+		sfx.stream = tower_data.atk_sfx
+		overload_burst_active = false
+		fire_rate = original_fire_rate
+		print("Overload burst berakhir")
+		
 
 func activate_lunar_blessing() -> void:
 	print("lunar blessing aktif")
@@ -508,13 +544,11 @@ func activate_lunar_blessing() -> void:
 		var normal_damage = damage
 		var damage = normal_damage * 2
 		var skill_duration = tower_data.skill_duration
-		var timer = get_tree().create_timer(skill_duration)
-		timer.timeout.connect(func(): 
-			sfx.stream = tower_data.atk_sfx
-			aura_node.queue_free()
-			damage = normal_damage
-			print("lunar blessing berakhir")
-		)
+		await skill_done  
+		sfx.stream = tower_data.atk_sfx
+		aura_node.queue_free()
+		damage = normal_damage
+		print("lunar blessing berakhir")
 
 func activate_holy_divine_basic() -> void:
 	print("lilitia aktif!")
@@ -554,13 +588,12 @@ func activate_holy_divine() -> void:
 		orbit2.visible = true
 		orbit2.disabled = false
 		var skill_duration = tower_data.skill_duration
-		var timer = get_tree().create_timer(skill_duration)
-		timer.timeout.connect(func(): 
-			aura_node.queue_free()
-			orbit2.visible = false
-			orbit2.disabled = true
-			print("holy divine berakhir")
-		)
+		await skill_done 
+		aura_node.queue_free()
+		orbit2.visible = false
+		orbit2.disabled = true
+		print("holy divine berakhir")
+		
 
 func activate_toxic_veil() -> void:
 	print("toxic veil aktif!")
@@ -578,28 +611,24 @@ func activate_toxic_veil() -> void:
 		aura_node.get_child(5).play("Kaileo_FX")
 		var veil_node:Node3D = veil_scene.instantiate()
 		var area = veil_node.get_child(0).get_child(0)
-		area.collision_mask = 2
 		print(area.name)
 		area.body_entered.connect(Callable(self, "enemy_enter_veil"))
 		area.body_exited.connect(Callable(self, "enemy_exit_veil"))
 		veil_node.position.y = -3
 		self.add_child(veil_node)
-		veil_node.add_child(area)
 		veil_node.get_child(1).play("Toxicvwil")
-		var skill_duration = tower_data.skill_duration
-		var timer = get_tree().create_timer(skill_duration)
-		timer.timeout.connect(func(): 
-			sfx.stream = tower_data.atk_sfx
-			aura_node.queue_free()
-			veil_node.queue_free()
-			print("Toxic Veil berakhir")
-		)
+		await skill_done  
+		sfx.stream = tower_data.atk_sfx
+		aura_node.queue_free()
+		veil_node.queue_free()
+		print("Toxic Veil berakhir")
+		
 
 func enemy_enter_veil(body:Node3D)-> void:
 	print("veil trigger enemy")
 	if body.is_in_group("enemies") and body is CharacterBody3D:
 		var original_speed = body.move_speed
-		body.move_speed = original_speed * 0.1
+		body.move_speed = original_speed * 0.5
 		print(body.name, "telah ter slow", str(body.move_speed))
 
 func enemy_exit_veil(body:Node3D)-> void:

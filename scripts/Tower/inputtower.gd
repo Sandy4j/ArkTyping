@@ -1,6 +1,9 @@
 extends Node
 class_name TowerInput
 
+signal Pop(v:String)
+signal PopBack
+var popped:bool
 @export var tower_list:Array[TowerData]
 @onready var inputLbl: Label = $"../TypeBox/Label"
 @onready var history_box: TextureRect = $"../HistoryBox"
@@ -23,6 +26,8 @@ func _on_text_typed(current_text: String) -> void:
 	for word in TOWER_KEYWORD:
 		if current_text.to_lower() == word:
 			inputLbl.add_theme_color_override("font_color", Color.GREEN)
+			emit_signal("Pop",current_text)
+			popped = true
 			return
 	for word in SKILL_KEYWORD:
 		if current_text.to_lower() == word:
@@ -33,6 +38,9 @@ func _on_text_typed(current_text: String) -> void:
 		return
 	else:
 		inputLbl.add_theme_color_override("font_color", Color.WHITE)
+		if popped:
+			emit_signal("PopBack")
+			popped = false
 	
 
 func _on_text_submitted(full_text: String) -> void:	

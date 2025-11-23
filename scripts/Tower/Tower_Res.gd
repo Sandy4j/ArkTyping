@@ -6,6 +6,7 @@ class_name TowerData
 @export var skl_sfx:AudioStreamWAV
 @export var cost:int
 @export var slot:CompressedTexture2D
+@export var slot_glow:CompressedTexture2D
 @export var damage:int
 @export var speed:float
 @export var range:float
