@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://7mxf5cmtcqed"]
 
 [ext_resource type="Texture2D" uid="uid://dd3wpcktkqlyt" path="res://asset/Vfx/Texture/T_Noise22.png" id="1_y07pa"]
-[ext_resource type="ArrayMesh" uid="uid://bfvqk82negld1" path="res://asset/Vfx/Obj/Spike.obj" id="2_gmnwj"]
+[ext_resource type="ArrayMesh" uid="uid://e63ydpc44vvn" path="res://asset/Vfx/Obj/Spike.obj" id="2_gmnwj"]
 [ext_resource type="Texture2D" uid="uid://b7iutjr8k1jfl" path="res://asset/Vfx/Texture/T_Oval2.png" id="3_lriby"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pnf8t"]
@@ -55,6 +55,7 @@ alpha_curve = SubResource("CurveTexture_vw73x")
 [node name="Enm_bullet" type="Node3D"]
 
 [node name="MeshInstance3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.60701454, 0, 0)
 light_color = Color(0.27688417, 0.41928327, 0.29067814, 1)
 omni_range = 1.0
 

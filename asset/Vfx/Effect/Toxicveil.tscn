@@ -1,13 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://bki2t1ws2v8rl"]
+[gd_scene load_steps=16 format=3 uid="uid://bki2t1ws2v8rl"]
 
 [ext_resource type="Shader" uid="uid://coauk4bbvmhgx" path="res://asset/Vfx/Effect/Toxicveil.tres" id="1_a61vl"]
-[ext_resource type="ArrayMesh" uid="uid://516kx5xi1sgu" path="res://asset/Vfx/Obj/Cloud.obj" id="1_r2o5d"]
+[ext_resource type="ArrayMesh" uid="uid://iotm0untdscf" path="res://asset/Vfx/Obj/Cloud.obj" id="1_r2o5d"]
 [ext_resource type="Texture2D" uid="uid://rbas1wb7bknm" path="res://asset/Vfx/Texture/T_Noise10.png" id="2_a0r21"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bwa15"]
 render_priority = 0
 shader = ExtResource("1_a61vl")
-shader_parameter/ColorParameter = Color(0, 0.2640107, 0.025122168, 0.68)
+shader_parameter/ColorParameter = Color(1.4198572e-06, 0.53029865, 0.08529099, 0.6784314)
 shader_parameter/Texture_scale = Vector2(0.5, 0.5)
 shader_parameter/Texture_param = ExtResource("2_a0r21")
 
@@ -17,6 +17,13 @@ point_count = 3
 
 [sub_resource type="CurveTexture" id="CurveTexture_p1g3h"]
 curve = SubResource("Curve_6evny")
+
+[sub_resource type="Curve" id="Curve_a61vl"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_a0r21"]
+curve = SubResource("Curve_a61vl")
 
 [sub_resource type="Curve" id="Curve_806l4"]
 _data = [Vector2(0, 0), 0.0, 1.851839, 0, 0, Vector2(0.07633587, 0.5083497), 0.0, 0.0, 0, 0, Vector2(1, 0.49557954), 0.0, 0.0, 0, 0]
@@ -38,6 +45,7 @@ gravity = Vector3(0, 0, 0)
 scale_max = 1.1999999
 scale_curve = SubResource("CurveTexture_a61vl")
 alpha_curve = SubResource("CurveTexture_p1g3h")
+emission_curve = SubResource("CurveTexture_a0r21")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_a61vl"]
 height = 19.578125
