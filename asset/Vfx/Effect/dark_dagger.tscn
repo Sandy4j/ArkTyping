@@ -10,7 +10,7 @@ blend_mode = 1
 cull_mode = 2
 vertex_color_use_as_albedo = true
 vertex_color_is_srgb = true
-albedo_color = Color(0.5953632, 0.0005343476, 0.6560186, 1)
+albedo_color = Color(0.23529412, 0.45882353, 1, 1)
 albedo_texture_msdf = true
 billboard_mode = 3
 billboard_keep_scale = true
@@ -25,7 +25,7 @@ cull_mode = 2
 shading_mode = 0
 vertex_color_use_as_albedo = true
 vertex_color_is_srgb = true
-albedo_color = Color(0.6589839, 0.0004380861, 0.6849939, 1)
+albedo_color = Color(0.23529412, 0.45882353, 1, 1)
 albedo_texture = ExtResource("2_ihmcn")
 albedo_texture_msdf = true
 billboard_mode = 3
@@ -74,7 +74,7 @@ mesh = ExtResource("1_qv1rf")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="dagger"]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -3.1334014, 0, 0)
-light_color = Color(0.7137255, 0.32941177, 0.77254903, 1)
+light_color = Color(0.23529412, 0.45882353, 1, 1)
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.18364176, 0.06526244, 0)

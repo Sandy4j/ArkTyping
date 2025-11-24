@@ -1,0 +1,320 @@
+[gd_scene load_steps=35 format=3 uid="uid://dukk822on7upq"]
+
+[ext_resource type="Shader" uid="uid://bwoh8wt2d35b5" path="res://asset/Vfx/Effect/heal_aura.tres" id="1_reiqb"]
+[ext_resource type="Texture2D" uid="uid://cqoy0tghp4b2l" path="res://asset/Vfx/Texture/T_PerlinNoise_46_inv.png" id="2_reiqb"]
+[ext_resource type="ArrayMesh" uid="uid://cmulr6d1utn67" path="res://asset/Vfx/Obj/silinder_long.obj" id="2_wo0sd"]
+[ext_resource type="Texture2D" uid="uid://bdbe5uj6k8iqm" path="res://asset/Vfx/Texture/bullet.png" id="4_2xf3q"]
+[ext_resource type="Texture2D" uid="uid://d0wjormiwihug" path="res://asset/Vfx/Texture/heal.png" id="5_r5m7k"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2shu3"]
+render_priority = 0
+shader = ExtResource("1_reiqb")
+shader_parameter/Speed = Vector2(0.5, -0.5)
+shader_parameter/Texture2DParameter = ExtResource("2_reiqb")
+
+[sub_resource type="Curve" id="Curve_jpld0"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_37unp"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_1syq7"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_pb1jb"]
+curve_x = SubResource("Curve_jpld0")
+curve_y = SubResource("Curve_37unp")
+curve_z = SubResource("Curve_1syq7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ue7o2"]
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveXYZTexture_pb1jb")
+color = Color(1, 1, 0.5921569, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i783o"]
+render_priority = 0
+shader = ExtResource("1_reiqb")
+shader_parameter/Speed = Vector2(0.5, -0.5)
+shader_parameter/Texture2DParameter = ExtResource("4_2xf3q")
+
+[sub_resource type="Curve" id="Curve_3tjsn"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_u88kc"]
+curve = SubResource("Curve_3tjsn")
+
+[sub_resource type="Curve" id="Curve_pbij6"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_88y7i"]
+curve = SubResource("Curve_pbij6")
+
+[sub_resource type="Curve" id="Curve_l8w2o"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_2gg6j"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.49578062, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_alqxe"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_wl851"]
+curve_x = SubResource("Curve_l8w2o")
+curve_y = SubResource("Curve_2gg6j")
+curve_z = SubResource("Curve_alqxe")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_htthr"]
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveXYZTexture_wl851")
+color = Color(1, 1, 0.5921569, 1)
+alpha_curve = SubResource("CurveTexture_u88kc")
+emission_curve = SubResource("CurveTexture_88y7i")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_gicb2"]
+top_radius = 1.0
+bottom_radius = 1.0
+height = 0.106
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c1nd8"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_color = Color(1, 1, 0.6039216, 1)
+albedo_texture = ExtResource("5_r5m7k")
+albedo_texture_msdf = true
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_2shu3"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_jpld0"]
+curve = SubResource("Curve_2shu3")
+
+[sub_resource type="Curve" id="Curve_pb1jb"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ue7o2"]
+curve = SubResource("Curve_pb1jb")
+
+[sub_resource type="Curve" id="Curve_jdu1a"]
+_data = [Vector2(0, 0.14948446), 0.0, 0.0, 0, 0, Vector2(0.086497895, 0.2164948), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_l8w2o"]
+curve = SubResource("Curve_jdu1a")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2gg6j"]
+lifetime_randomness = 1.0
+emission_shape_scale = Vector3(1, 0.5, 1)
+emission_shape = 1
+emission_sphere_radius = 4.5
+direction = Vector3(0, 0.1, 0)
+spread = 60.0
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+gravity = Vector3(0, 1, 0)
+scale_min = 0.79999995
+scale_max = 0.79999995
+scale_curve = SubResource("CurveTexture_l8w2o")
+alpha_curve = SubResource("CurveTexture_jpld0")
+emission_curve = SubResource("CurveTexture_ue7o2")
+
+[sub_resource type="QuadMesh" id="QuadMesh_alqxe"]
+
+[sub_resource type="Animation" id="Animation_wl851"]
+resource_name = "healaura1"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("1:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("2:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Particle:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("3:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("4:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_htthr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("1:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("2:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Particle:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("3:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("4:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5k600"]
+_data = {
+&"RESET": SubResource("Animation_htthr"),
+&"healaura1": SubResource("Animation_wl851")
+}
+
+[node name="Heal" type="Node3D"]
+
+[node name="1" type="GPUParticles3D" parent="."]
+material_override = SubResource("ShaderMaterial_2shu3")
+emitting = false
+amount = 1
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_ue7o2")
+draw_pass_1 = ExtResource("2_wo0sd")
+
+[node name="2" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.79492056, 0)
+material_override = SubResource("ShaderMaterial_i783o")
+emitting = false
+amount = 2
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_htthr")
+draw_pass_1 = SubResource("CylinderMesh_gicb2")
+
+[node name="3" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2586726, 0)
+material_override = SubResource("ShaderMaterial_i783o")
+amount = 2
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_htthr")
+draw_pass_1 = SubResource("CylinderMesh_gicb2")
+
+[node name="4" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12060392, 0)
+material_override = SubResource("ShaderMaterial_i783o")
+amount = 2
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_htthr")
+draw_pass_1 = SubResource("CylinderMesh_gicb2")
+
+[node name="Particle" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.23064278, 0, 0, 0, 0.71857375, 0, 0, 0, 0.22387947, 0, 0.73782516, 0)
+material_override = SubResource("StandardMaterial3D_c1nd8")
+emitting = false
+amount = 20
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_2gg6j")
+draw_pass_1 = SubResource("QuadMesh_alqxe")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_5k600")
+}

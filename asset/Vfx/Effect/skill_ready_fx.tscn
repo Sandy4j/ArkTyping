@@ -1,8 +1,9 @@
-[gd_scene load_steps=49 format=3 uid="uid://h3vr7e0pe6g2"]
+[gd_scene load_steps=48 format=3 uid="uid://h3vr7e0pe6g2"]
 
 [ext_resource type="Texture2D" uid="uid://b7ykjo211uxxq" path="res://asset/Vfx/Texture/Wave.png" id="1_47q2e"]
 [ext_resource type="ArrayMesh" uid="uid://cmulr6d1utn67" path="res://asset/Vfx/Obj/silinder_long.obj" id="2_f4bir"]
 [ext_resource type="Texture2D" uid="uid://dwqn1ip8pvmgs" path="res://asset/Vfx/Texture/T_1_pixel.jpg" id="3_ynim6"]
+[ext_resource type="Texture2D" uid="uid://bpr48aneu687b" path="res://asset/Vfx/Texture/Diagstroke.png" id="4_f4bir"]
 
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_diogo"]
 input_name = "time"
@@ -61,7 +62,6 @@ uniform sampler2D tex_frg_5 : source_color;
 void fragment() {
 // Input:2
 	vec4 n_out2p0 = COLOR;
-	float n_out2p1 = n_out2p0.r;
 	float n_out2p4 = n_out2p0.a;
 
 
@@ -152,7 +152,7 @@ curve = SubResource("Curve_l4m7i")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3ism0"]
 gravity = Vector3(0, 0, 0)
-color = Color(1, 1, 0, 1)
+color = Color(0, 0.8239387, 0.9311015, 1)
 alpha_curve = SubResource("CurveTexture_4lg5g")
 emission_curve = SubResource("CurveTexture_7t151")
 
@@ -172,7 +172,9 @@ parameter_name = "Texture2DParameter"
 texture_type = 1
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_6e2td"]
+source = 5
 texture = ExtResource("3_ynim6")
+texture_type = 1
 
 [sub_resource type="Gradient" id="Gradient_i7ovy"]
 offsets = PackedFloat32Array(0, 0.36708862, 0.9028213, 1)
@@ -205,7 +207,6 @@ render_mode blend_add, depth_draw_opaque, depth_test_default, cull_disabled, dif
 
 uniform vec2 Speed;
 uniform sampler2D Texture2DParameter : source_color;
-uniform sampler2D tex_frg_4;
 uniform sampler2D tex_frg_5 : source_color;
 
 
@@ -233,8 +234,9 @@ void fragment() {
 	vec2 n_out8p0 = n_out11p0 * n_in8p1 + UV;
 
 
+	vec4 n_out4p0;
 // Texture2D:4
-	vec4 n_out4p0 = texture(tex_frg_4, n_out8p0);
+	n_out4p0 = texture(Texture2DParameter, n_out8p0);
 
 
 // Texture2D:5
@@ -285,14 +287,8 @@ nodes/fragment/connections = PackedInt32Array(3, 0, 4, 2, 4, 0, 6, 0, 6, 0, 7, 1
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pbtil"]
 render_priority = 0
 shader = SubResource("VisualShader_xkm64")
-shader_parameter/Speed = Vector2(0.5, 0.5)
-
-[sub_resource type="Curve" id="Curve_47q2e"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_f4bir"]
-curve = SubResource("Curve_47q2e")
+shader_parameter/Speed = Vector2(0.5, 5)
+shader_parameter/Texture2DParameter = ExtResource("4_f4bir")
 
 [sub_resource type="Curve" id="Curve_ynim6"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -321,36 +317,8 @@ curve_z = SubResource("Curve_j7n4i")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ihyjx"]
 gravity = Vector3(0, 0, 0)
 scale_curve = SubResource("CurveXYZTexture_52dhw")
-color = Color(1, 1, 0, 1)
-alpha_curve = SubResource("CurveTexture_f4bir")
+color = Color(0, 0.54269487, 0.6180184, 1)
 emission_curve = SubResource("CurveTexture_diogo")
-
-[sub_resource type="Animation" id="Animation_an0d2"]
-resource_name = "SkillReady"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("1:emitting")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("2:emitting")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="Animation" id="Animation_1spl1"]
 length = 0.001
@@ -377,6 +345,33 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_an0d2"]
+resource_name = "SkillReady"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("1:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("2:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_amfyl"]
