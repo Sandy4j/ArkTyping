@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dry7yto1vn2xt"]
+
+[ext_resource type="Texture2D" uid="uid://b18v07bb7mxbo" path="res://asset/UI/main menu/kunang-kunang.png" id="1_ahskp"]
+
+[sub_resource type="Gradient" id="Gradient_n3ahy"]
+colors = PackedColorArray(0.7647059, 0.25490198, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bw8a3"]
+gradient = SubResource("Gradient_n3ahy")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.7222222, 0.7136752)
+
+[node name="Kunang" type="Sprite2D"]
+texture = ExtResource("1_ahskp")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+show_behind_parent = true
+scale = Vector2(2.603515, 2.7452393)
+energy = 4.42
+texture = SubResource("GradientTexture2D_bw8a3")

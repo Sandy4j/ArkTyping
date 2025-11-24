@@ -1,6 +1,5 @@
-[gd_scene load_steps=20 format=3 uid="uid://cgksfc3odlqxl"]
+[gd_scene load_steps=21 format=3 uid="uid://cgksfc3odlqxl"]
 
-[ext_resource type="Texture2D" uid="uid://biar3j3bf1jix" path="res://asset/UI/main menu/main bg 2.png" id="1_bm8t2"]
 [ext_resource type="Script" uid="uid://d3bjk64bt6a4k" path="res://scripts/UI/main_menu.gd" id="1_n3ahy"]
 [ext_resource type="Shader" uid="uid://do0kguycoq3ub" path="res://asset/Shader/UI/BgMM.gdshader" id="2_d0t0a"]
 [ext_resource type="Texture2D" uid="uid://diwo1xb6bwxhc" path="res://asset/UI/main menu/Property 1=Default-1.png" id="2_ngj32"]
@@ -15,6 +14,9 @@
 [ext_resource type="Texture2D" uid="uid://dkrihxgv6vrgd" path="res://asset/UI/main menu/tutorH.png" id="10_scr1a"]
 [ext_resource type="Texture2D" uid="uid://jt7d7sahy44l" path="res://asset/UI/main menu/creditH.png" id="12_d0t0a"]
 [ext_resource type="Texture2D" uid="uid://bwpbaq3jimr44" path="res://asset/UI/main menu/quitH.png" id="14_sh0sw"]
+[ext_resource type="Script" uid="uid://b06vmxkwy27cu" path="res://scripts/fire_fly_main.gd" id="15_scr1a"]
+[ext_resource type="PackedScene" uid="uid://dry7yto1vn2xt" path="res://scenes/UI/kunang-main.tscn" id="17_d0t0a"]
+[ext_resource type="Texture2D" uid="uid://bn4q7pd333yn0" path="res://asset/UI_Gameplay/rev bg non kunang 1.png" id="17_sh0sw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wfqjx"]
 shader = ExtResource("2_d0t0a")
@@ -31,10 +33,11 @@ shader_parameter/pulse_intensity = 0.5
 shader_parameter/glow_color = Color(1, 0.8, 0.3, 1)
 shader_parameter/glow_size = 0.02
 
-[sub_resource type="Gradient" id="Gradient_n3ahy"]
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_scr1a"]
-gradient = SubResource("Gradient_n3ahy")
+[sub_resource type="Curve2D" id="Curve2D_d0t0a"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 375, -275, 0, 0, 0, 0, 566, -142, 0, 0, 0, 0, 652, 101, 0, 0, 0, 0, 539, 299, 0, 0, 0, 0, 99, 305, 0, 0, 0, 0, 7, 45, 0, 0, 0, 0, 37, -227, 0, 0, 0, 0, 375, -275)
+}
+point_count = 8
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -58,9 +61,7 @@ metadata/_edit_lock_ = true
 [node name="BG" type="TextureRect" parent="CanvasLayer/MarginContainer"]
 material = SubResource("ShaderMaterial_wfqjx")
 layout_mode = 2
-texture = ExtResource("1_bm8t2")
 expand_mode = 1
-metadata/_edit_lock_ = true
 
 [node name="Title" type="TextureRect" parent="CanvasLayer"]
 material = SubResource("ShaderMaterial_mtd5q")
@@ -134,10 +135,22 @@ texture_focused = ExtResource("14_sh0sw")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(903, 440)
-scale = Vector2(1, 536.5)
-texture = SubResource("GradientTexture1D_scr1a")
+[node name="Node2D" type="Node2D" parent="." node_paths=PackedStringArray("path_node")]
+script = ExtResource("15_scr1a")
+firefly_scene = ExtResource("17_d0t0a")
+path_node = NodePath("Path2D")
+firefly_count = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+position = Vector2(970, 540)
+texture = ExtResource("17_sh0sw")
+
+[node name="Path2D" type="Path2D" parent="Node2D"]
+position = Vector2(970, 540)
+curve = SubResource("Curve2D_d0t0a")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(1920, 1080)
 
 [connection signal="pressed" from="CanvasLayer/ButtonContainer/StartBtn" to="." method="_on_start_btn_pressed"]
 [connection signal="pressed" from="CanvasLayer/ButtonContainer/HeroBtn" to="." method="_on_hero_btn_pressed"]
