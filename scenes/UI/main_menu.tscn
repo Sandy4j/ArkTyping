@@ -1,20 +1,20 @@
-[gd_scene load_steps=18 format=3 uid="uid://cgksfc3odlqxl"]
+[gd_scene load_steps=20 format=3 uid="uid://cgksfc3odlqxl"]
 
-[ext_resource type="Texture2D" uid="uid://be6mij1a7xdhi" path="res://asset/UI/main menu/main bg 2.png" id="1_bm8t2"]
+[ext_resource type="Texture2D" uid="uid://biar3j3bf1jix" path="res://asset/UI/main menu/main bg 2.png" id="1_bm8t2"]
 [ext_resource type="Script" uid="uid://d3bjk64bt6a4k" path="res://scripts/UI/main_menu.gd" id="1_n3ahy"]
 [ext_resource type="Shader" uid="uid://do0kguycoq3ub" path="res://asset/Shader/UI/BgMM.gdshader" id="2_d0t0a"]
-[ext_resource type="Texture2D" uid="uid://drfhiswe2625w" path="res://asset/UI/main menu/Property 1=Default-1.png" id="2_ngj32"]
-[ext_resource type="Texture2D" uid="uid://5tmm3uxxs415" path="res://asset/UI/main menu/Property 1=Group 13.png" id="3_bm8t2"]
-[ext_resource type="Texture2D" uid="uid://bn0lot8j38dux" path="res://asset/UI/main menu/Property 1=Default.png" id="3_normal"]
-[ext_resource type="Texture2D" uid="uid://ex4b51fpa4ug" path="res://asset/UI/main menu/Property 1=Default-2.png" id="4_5d4ag"]
-[ext_resource type="Texture2D" uid="uid://h7tfxu0m2viw" path="res://asset/UI/main menu/startH.png" id="4_sfthw"]
+[ext_resource type="Texture2D" uid="uid://diwo1xb6bwxhc" path="res://asset/UI/main menu/Property 1=Default-1.png" id="2_ngj32"]
+[ext_resource type="Texture2D" uid="uid://sfceo856tpns" path="res://asset/UI/main menu/Property 1=Group 13.png" id="3_bm8t2"]
+[ext_resource type="Texture2D" uid="uid://bormfd26y2nig" path="res://asset/UI/main menu/Property 1=Default.png" id="3_normal"]
+[ext_resource type="Texture2D" uid="uid://4o5bh017l4ey" path="res://asset/UI/main menu/Property 1=Default-2.png" id="4_5d4ag"]
+[ext_resource type="Texture2D" uid="uid://dbxb37k3pjqwb" path="res://asset/UI/main menu/startH.png" id="4_sfthw"]
 [ext_resource type="Shader" uid="uid://pbkrv8edw83r" path="res://asset/Shader/UI/titleMM.gdshader" id="4_sh0sw"]
 [ext_resource type="Texture2D" uid="uid://byq0vr27irhi4" path="res://asset/UI/Title.png" id="5_n3ahy"]
-[ext_resource type="Texture2D" uid="uid://bjn6g6ew2e5e6" path="res://asset/UI/main menu/Property 1=Default-3.png" id="5_um6dh"]
-[ext_resource type="Texture2D" uid="uid://bx6qdpdumgewc" path="res://asset/UI/main menu/heroH.png" id="7_n3ahy"]
-[ext_resource type="Texture2D" uid="uid://7rqp6npkx0s2" path="res://asset/UI/main menu/tutorH.png" id="10_scr1a"]
-[ext_resource type="Texture2D" uid="uid://cdavnyfavu5u4" path="res://asset/UI/main menu/creditH.png" id="12_d0t0a"]
-[ext_resource type="Texture2D" uid="uid://bfebmmlhyoivx" path="res://asset/UI/main menu/quitH.png" id="14_sh0sw"]
+[ext_resource type="Texture2D" uid="uid://bsbl3643h0vbb" path="res://asset/UI/main menu/Property 1=Default-3.png" id="5_um6dh"]
+[ext_resource type="Texture2D" uid="uid://dn32wdukrcb7g" path="res://asset/UI/main menu/heroH.png" id="7_n3ahy"]
+[ext_resource type="Texture2D" uid="uid://dkrihxgv6vrgd" path="res://asset/UI/main menu/tutorH.png" id="10_scr1a"]
+[ext_resource type="Texture2D" uid="uid://jt7d7sahy44l" path="res://asset/UI/main menu/creditH.png" id="12_d0t0a"]
+[ext_resource type="Texture2D" uid="uid://bwpbaq3jimr44" path="res://asset/UI/main menu/quitH.png" id="14_sh0sw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wfqjx"]
 shader = ExtResource("2_d0t0a")
@@ -30,6 +30,11 @@ shader_parameter/pulse_speed = 2.0
 shader_parameter/pulse_intensity = 0.5
 shader_parameter/glow_color = Color(1, 0.8, 0.3, 1)
 shader_parameter/glow_size = 0.02
+
+[sub_resource type="Gradient" id="Gradient_n3ahy"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_scr1a"]
+gradient = SubResource("Gradient_n3ahy")
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -128,6 +133,11 @@ texture_hover = ExtResource("14_sh0sw")
 texture_focused = ExtResource("14_sh0sw")
 ignore_texture_size = true
 stretch_mode = 5
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(903, 440)
+scale = Vector2(1, 536.5)
+texture = SubResource("GradientTexture1D_scr1a")
 
 [connection signal="pressed" from="CanvasLayer/ButtonContainer/StartBtn" to="." method="_on_start_btn_pressed"]
 [connection signal="pressed" from="CanvasLayer/ButtonContainer/HeroBtn" to="." method="_on_hero_btn_pressed"]

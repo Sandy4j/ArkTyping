@@ -36,6 +36,7 @@ const VFX_CACHE: Dictionary = {
 	"magic_circle_5": "res://asset/Vfx/Effect/magic_circle_5(vigilante).tscn",
 	"magic_circle_6": "res://asset/Vfx/Effect/magic_circle_6(Leciana).tscn",
 	"magic_circle_7": "res://asset/Vfx/Effect/magic_circle_7(Lilitia).tscn",
+	"circle_heal": "res://asset/Vfx/Effect/magic_circle_heal.tscn",
 	"divine_ball": "res://asset/Vfx/Effect/Divine_Ball.tscn",
 	"toxic_veil": "res://asset/Vfx/Effect/Toxicveil.tscn",
 	"shoot": "res://asset/Vfx/Effect/Shoot.tscn",

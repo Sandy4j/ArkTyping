@@ -22,13 +22,13 @@ func _input(event) -> void:
 			AudioManager.play_sfx("typing_random", randf_range(0.95, 1.05))
 		elif event.keycode == KEY_ENTER:
 			submit_text()
-			
+
 func submit_text() -> String:
 	var text = _current_text
 	_current_text = ""
 	text_submitted.emit(text)
 	return text
-	
+
 func clear_text():	
 	_current_text = ""
 	text_typed.emit("")

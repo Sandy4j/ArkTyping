@@ -14,6 +14,7 @@ var projectile_speed: float = 0.0
 var projectile: PackedScene = null
 var skill_type: String = ""
 var enemies_in_range: Array[CharacterBody3D] = []
+var tower_in_range: Array[Node3D] = []
 var overload_burst_active:bool
 var scarlet_harvester_active:bool
 var bullet_requiem_active:bool
@@ -25,11 +26,13 @@ var vfx_shoot
 var vfx_aura
 var orbit
 var orbit2
+var is_healer:bool
 var is_lilitia:bool
 var is_kaelio:bool
 var is_rosemary:bool
 var fire_timer: float = 0.0
 var current_target: CharacterBody3D = null
+var healing_target: Node3D = null
 var skill_active: bool = false
 var skill_cooldown: float = 0.0
 var current_skill_cooldown: float = 0.0
@@ -49,11 +52,13 @@ var mesh_aoe:CylinderMesh
 
 func _ready() -> void:
 	var temp_stylebox = SBar.get_theme_stylebox("fill")
-	stylefill = temp_stylebox.duplicate()  # 🎯 INI YANG PENTING!
+	stylefill = temp_stylebox.duplicate()
 	SBar.add_theme_stylebox_override("fill", stylefill)
 	var temp_mesh = aoe.mesh
-	mesh_aoe = temp_mesh.duplicate()  # 🎯 INI JUGA!
+	mesh_aoe = temp_mesh.duplicate()  
 	aoe.mesh = mesh_aoe
+	var range_shape:CollisionShape3D = range_area.get_node("CollisionShape3D")
+	var collision_shape:SphereShape3D = range_shape.shape.duplicate()
 	sfx.stream = tower_data.atk_sfx
 	shot_fired.connect(after_shoot)
 	damage = tower_data.damage
@@ -104,12 +109,26 @@ func _ready() -> void:
 					var light:OmniLight3D = vfx_node.get_child(3)
 					light.light_energy = 0
 					vfx_shoot = vfx_node.get_child(4)
+			"healer":
+				is_healer = true
+				#var temp_area:Area3D = range_area.duplicate()
+				#range_area.collision_layer = 1
+				#range_area.collision_mask = 1
 	
-	if range_area and tower_data.chara != "lilitia" :
-		var collision_shape = range_area.get_node("CollisionShape3D")
-		if collision_shape and collision_shape.shape is SphereShape3D:
-			collision_shape.shape.radius = detection_range
-			mesh_aoe.top_radius = detection_range
+	if range_area and is_healer:
+		print("healer masuk")
+		collision_shape.radius = detection_range
+		mesh_aoe.top_radius = detection_range
+		#range_shape.shape.radius = 0.1
+		range_shape.shape = collision_shape
+	elif range_area and tower_data.chara != "lilitia" :
+		collision_shape.radius = detection_range
+		mesh_aoe.top_radius = detection_range
+		range_shape.shape = collision_shape
+	else :
+		collision_shape.radius = 0.1
+		mesh_aoe.top_radius = 0.1
+		range_shape.shape = collision_shape
 	current_skill_cooldown = skill_cooldown
 	sprite.play("default")
 	hide_skill()
@@ -120,11 +139,18 @@ func _process(delta: float) -> void:
 	
 	fire_timer += delta
 	
-	if current_skill_cooldown > 0 or skill_active:
+	if current_skill_cooldown > 0 or skill_active and !bullet_requiem_active :
 		execute_skill(delta)
 	
 	update_animation()
 	if is_lilitia:
+		return
+	if is_healer:
+		update_healing_target()
+		update_sprite_direction()
+		if healing_target and is_instance_valid(healing_target) and fire_timer >= 1.0 / fire_rate:
+			healing()
+			fire_timer = 0.0
 		return
 	
 	update_target()
@@ -166,11 +192,9 @@ func update_animation():
 	if is_shooting:
 		if sprite.animation != "attack":
 			sprite.play("attack")
-			print("iki attack")
 	else:
 		if sprite.animation != "default":
 			sprite.play("default")
-			print("default")
 
 func after_shoot():
 	#is_shooting = false
@@ -199,7 +223,6 @@ func shoot(target: Node3D) -> void:
 	
 	if not projectile:
 		projectile = projectile.instantiate()
-		print("shoot dengan custom")
 	else:
 		projectile.pool_name = pool_key
 	get_tree().current_scene.add_child(projectile)
@@ -208,10 +231,9 @@ func shoot(target: Node3D) -> void:
 		projectile.global_position = shoot_point.global_position
 	else:
 		projectile.global_position = global_position + Vector3.UP
-	print("Bulet ", projectile.name)
 	projectile.initialize(target, damage, projectile_speed)
 	shot_fired.emit()
-	print("shot")
+	#print("shot")
 
 func double_shoot(target: CharacterBody3D) -> void:
 	if is_animation_playing:
@@ -231,7 +253,6 @@ func double_shoot(target: CharacterBody3D) -> void:
 	for i in 2:
 		if is_instance_valid(target):
 			var projectile = ObjectPool.get_pooled_object(pool_key)
-			print("tembakan ", str(i + 1))
 			if not projectile:
 				projectile = projectile.instantiate()
 			else:
@@ -357,6 +378,21 @@ func scarlet_harvester() -> void:
 	
 	shot_fired.emit()
 
+func healing()-> void:
+	is_shooting = true
+	is_animation_playing = true
+	
+	# 🎯 STOP ANIMASI IDLE DULU
+	sprite.stop()
+	
+	# 🎯 PLAY ANIMASI ATTACK
+	sprite.play("attack")
+	if healing_target.current_hp == healing_target.max_hp:
+		return
+	else :
+		healing_target.healed(damage)
+		print(tower_data.chara, " melakukan heal pada ", healing_target.tower_data.chara)
+
 func show_skill():
 	skill_sprite.visible = true
 
@@ -384,11 +420,11 @@ func _on_enemy_entered_range(body: Node3D) -> void:
 		
 		if not enemy in enemies_in_range:
 			enemies_in_range.append(enemy)
-			print("Enemy entered range. Total enemies: ", enemies_in_range.size())
+			#print(tower_data.chara, "Enemy entered range. Total enemies: ", enemies_in_range.size())
 			
 			if not current_target:
 				current_target = enemy
-				print("New target set: ", enemy.name)
+				#print(tower_data.chara, " New target set: ", enemy.name)
 
 func _on_enemy_exited_range(body: Node3D) -> void:
 	# Cek jika body adalah musuh
@@ -398,26 +434,25 @@ func _on_enemy_exited_range(body: Node3D) -> void:
 		# Hapus musuh dari array
 		if enemy in enemies_in_range:
 			enemies_in_range.erase(enemy)
-			print("Enemy exited range. Total enemies: ", enemies_in_range.size())
+			#print(tower_data.chara, " Enemy exited range. Total enemies: ", enemies_in_range.size())
 		
 		if enemy == current_target:
 			current_target = null
 			update_target()
 
 func update_target() -> void:
-	# Bersihkan array dari musuh yang sudah tidak valid
 	cleanup_enemies_array()
 	
 	if not current_target and enemies_in_range.size() > 0:
 		# Pilih musuh pertama dalam array (yang pertama masuk)
 		current_target = enemies_in_range[0]
-		print("Target updated to first enemy in range: ", current_target.name)
+		#print(tower_data.chara, " Target updated to first enemy in range: ", current_target.name)
 	
 	elif current_target and (not is_instance_valid(current_target) or not current_target in enemies_in_range):
 		current_target = null
 		if enemies_in_range.size() > 0:
 			current_target = enemies_in_range[0]
-			print("Target reacquired: ", current_target.name)
+			print(tower_data.chara, " Target reacquired: ", current_target.name)
 
 func cleanup_enemies_array() -> void:
 	# Hapus musuh yang sudah tidak valid atau tidak dalam group "enemies" (pooled)
@@ -436,6 +471,48 @@ func cleanup_enemies_array() -> void:
 			current_target = null
 			update_target()
 
+func update_healing_target():
+	cleanup_tower_array()
+	var near_tower = range_area.get_overlapping_areas()
+	print("Total overlapping areas: ", near_tower.size())  # CEK INI DULU SAYANG!
+	
+	for area in near_tower:
+		print("Area: ", area.name)
+		print("Parent: ", area.get_parent().name)
+		if area.has_method("place_tower"):
+			if area.has_tower:
+				if area.tower_node != self:
+					tower_in_range.append(area.tower_node)
+					print("✅ TOWER FOUND via Area: ", area.tower_node.tower_data.chara)
+		#if area.get_parent().is_in_group("tower"):
+			#tower_in_range.append(area.get_parent())
+			#print("terdeteksi ", area.get_parent().tower_data.chara)
+		#print(area.get_parent().name, " masuk ke range healer")
+	
+	if tower_in_range.size() <= 0:
+		return
+	for tower in tower_in_range:
+		if is_instance_valid(tower):
+			if !healing_target:
+				healing_target = tower
+			if tower.current_hp < healing_target.current_hp:
+				healing_target = tower
+
+func cleanup_tower_array() -> void:
+	var invalid_towers: Array[Node3D] = []
+	
+	for tower in tower_in_range:
+		if not is_instance_valid(tower) or not tower.is_in_group("tower"):
+			invalid_towers.append(tower)
+	
+	for invalid_tower in invalid_towers:
+		tower_in_range.erase(invalid_tower)
+	
+	if invalid_towers.size() > 0:
+		print("Cleaned up ", invalid_towers.size(), " invalid enemies")
+		if healing_target and (not is_instance_valid(healing_target) or not healing_target.is_in_group("tower")):
+			healing_target = null
+			update_healing_target()
 
 func take_damage(dmg: float) -> void:
 	current_hp -= dmg
@@ -453,6 +530,19 @@ func destroy() -> void:
 	AudioManager.play_sfx("tower_dead")
 	tower_destroyed.emit()
 	print("Tower destroyed!")
+
+func healed(heal: float) -> void:
+	print(tower_data.chara, " kena heal ", str(heal))
+	current_hp += heal
+	if current_hp > max_hp:
+		current_hp = max_hp
+	HPBar.value = current_hp
+	var vfx_sc = ResourceLoadManager.get_vfx_resource("circle_heal")
+	if not vfx_sc:
+		vfx_sc = ResourceLoadManager.load_resource_sync("res://asset/Vfx/Effect/magic_circle_heal.tscn")
+	if vfx_sc:
+		var vfx_nd = vfx_sc.instantiate()
+		altar.add_child(vfx_nd)
 
 func get_hp_percentage() -> float:
 	return current_hp / max_hp if max_hp > 0 else 0.0
@@ -478,6 +568,8 @@ func Skill(skill_name: String) -> void:
 			print("bul req")
 		"lunar blessing":
 			activate_lunar_blessing()
+		"unholy bless":
+			active_unholy_bless()
 		_:
 			print("Unknown skill: ", skill_name)
 			return
@@ -489,7 +581,7 @@ func Skill(skill_name: String) -> void:
 	#current_skill_cooldown = skill_cooldown
 
 func execute_skill(delta: float) -> void:
-	if skill_active:
+	if skill_active and !is_rosemary:
 		skill_duration -= delta
 		SBar.value = skill_duration
 		if skill_duration < 0:
@@ -543,7 +635,6 @@ func activate_lunar_blessing() -> void:
 		aura_node.get_child(5).play("Kaileo_FX")
 		var normal_damage = damage
 		var damage = normal_damage * 2
-		var skill_duration = tower_data.skill_duration
 		await skill_done  
 		sfx.stream = tower_data.atk_sfx
 		aura_node.queue_free()
@@ -587,7 +678,6 @@ func activate_holy_divine() -> void:
 		aura_node.get_child(5).play("Kaileo_FX")
 		orbit2.visible = true
 		orbit2.disabled = false
-		var skill_duration = tower_data.skill_duration
 		await skill_done 
 		aura_node.queue_free()
 		orbit2.visible = false
@@ -648,13 +738,11 @@ func activeate_bloody_opus()-> void:
 		aura_node.get_child(5).play("Kaileo_FX")
 		var normal_speed = fire_rate
 		fire_rate = normal_speed * 2
-		var skill_duration = tower_data.skill_duration
-		var timer = get_tree().create_timer(skill_duration)
-		timer.timeout.connect(func(): 
-			aura_node.queue_free()
-			fire_rate = normal_speed
-			print("bloody opus berakhir")
-		)
+		await skill_done 
+		aura_node.queue_free()
+		fire_rate = normal_speed
+		print("bloody opus berakhir")
+		
 
 func activate_scarlet_harvester()-> void:
 	var aura_scene = ResourceLoadManager.get_vfx_resource("magic_circle_6")
@@ -665,21 +753,19 @@ func activate_scarlet_harvester()-> void:
 		altar.add_child(aura_node)
 		aura_node.get_child(5).play("Kaileo_FX")
 		scarlet_harvester_active = true
-		var skill_duration = tower_data.skill_duration
-		var timer = get_tree().create_timer(skill_duration)
-		timer.timeout.connect(func(): 
-			aura_node.queue_free()
-			scarlet_harvester_active = false
-		)
+		await skill_done 
+		aura_node.queue_free()
+		scarlet_harvester_active = false
+		
 
-var requiem_shot: int 
-var shot_count: int 
+var requiem_shot: int  
 func activate_bullet_requiem()-> void:
-	shot_count = 0
+	requiem_shot = 5
 	var aura_scene = ResourceLoadManager.get_vfx_resource("magic_circle_4")
 	if not aura_scene:
 		aura_scene = ResourceLoadManager.load_resource_sync("res://asset/Vfx/Effect/magic_circle_4(Rosemary).tscn")
 	if aura_scene:
+		bullet_requiem_active = true
 		var aura_node = aura_scene.instantiate()
 		sfx.stream = tower_data.skl_sfx
 		vfx_aura = aura_node
@@ -689,35 +775,45 @@ func activate_bullet_requiem()-> void:
 		damage = normal_dmg * 2
 		var normal_speed = fire_rate
 		fire_rate = 1
-		requiem_shot = tower_data.skill_duration
+		SBar.max_value = tower_data.skill_duration
+		SBar.value = tower_data.skill_duration
 		shot_fired.connect(bullet_requiem_counter)
-		var skill_duration = tower_data.skill_duration
-		var timer = get_tree().create_timer(skill_duration)
-		timer.timeout.connect(func(): 
-			if bullet_requiem_active:
-				shot_count = 0
-				sfx.stream = tower_data.atk_sfx
-				shot_fired.disconnect(bullet_requiem_counter)
-				aura_node.queue_free()
-				damage = tower_data.damage
-				fire_rate = tower_data.speed
-				bullet_requiem_active = false
-		)
 
 func bullet_requiem_counter():
-	shot_count += 1
-	if shot_count >= requiem_shot and bullet_requiem_active:
-		shot_count = 0
+	requiem_shot -= 1
+	print("req ", str(requiem_shot))
+	SBar.value = requiem_shot
+	if requiem_shot <= 0 and bullet_requiem_active:
+		skill_active = false
+		SBar.max_value = skill_cooldown
+		current_skill_cooldown = skill_cooldown
+		stylefill.bg_color = Color("DAC41E")
+		skill_sprite.modulate = Color(0.5,0.5,0.5,1.0)
+		skill_done.emit()
 		sfx.stream = tower_data.atk_sfx
 		damage = tower_data.damage
 		fire_rate = tower_data.speed
 		shot_fired.disconnect(bullet_requiem_counter)
 		vfx_aura.queue_free()
 
-
+func active_unholy_bless()-> void:
+	var aura_scene = ResourceLoadManager.get_vfx_resource("magic_circle_2")
+	if not aura_scene:
+		aura_scene = ResourceLoadManager.load_resource_sync("res://asset/Vfx/Effect/magic_circle_2(plague).tscn")
+	if aura_scene:
+		var aura_node = aura_scene.instantiate()
+		altar.add_child(aura_node)
+		print(aura_node.get_child(5).name)
+		aura_node.get_child(5).play("Kaileo_FX")
+		var normal_damage = damage
+		var damage = normal_damage * 2
+		await skill_done  
+		aura_node.queue_free()
+		damage = normal_damage
+		print("lunar blessing berakhir")
 
 func _on_sprite_3d_animation_finished() -> void:
-	print("Animation finished: ", sprite.animation)
+	#print("Animation finished: ", sprite.animation)
 	
 	# 🎯 JIKA ANIMASI ATTACK SELESAI, KEMBALI KE IDLE
 	if sprite.animation == "attack":

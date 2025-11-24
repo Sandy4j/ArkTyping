@@ -1,9 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://b6ot4uwb74jwf"]
+[gd_scene load_steps=24 format=3 uid="uid://b6ot4uwb74jwf"]
 
 [ext_resource type="Script" uid="uid://bbexpquh4b3ip" path="res://scripts/UI/UI.gd" id="1_6rmj2"]
+[ext_resource type="FontFile" uid="uid://ddon0uj5gtdts" path="res://asset/UI_Gameplay/Viga-Regular.ttf" id="2_catpy"]
 [ext_resource type="Texture2D" uid="uid://b12vcxaju3drt" path="res://asset/UI_Gameplay/Heart_BG.png" id="2_vsj0x"]
 [ext_resource type="Texture2D" uid="uid://dgh3o7a60ljhb" path="res://asset/UI_Gameplay/Heart.png" id="3_qsv74"]
-[ext_resource type="FontFile" uid="uid://y7e0cejceotv" path="res://asset/UI_Gameplay/effortless.ttf" id="4_h1mc3"]
 [ext_resource type="Texture2D" uid="uid://bwp1jf5ljg3rb" path="res://asset/UI_Gameplay/Enemy_BG.png" id="5_cof4p"]
 [ext_resource type="Texture2D" uid="uid://ds45sauhw3tjq" path="res://asset/UI_Gameplay/Enemy.png" id="6_f7tlh"]
 [ext_resource type="Texture2D" uid="uid://dcjddmsrg8vdy" path="res://asset/UI_Gameplay/Wave.png" id="7_8k7j3"]
@@ -21,6 +21,7 @@
 [ext_resource type="Resource" uid="uid://duvfgb70bw3fq" path="res://resources/res_tower/leciana.tres" id="19_rlppe"]
 [ext_resource type="Resource" uid="uid://b253lnqawjdve" path="res://resources/res_tower/vigilante.tres" id="20_kupmu"]
 [ext_resource type="PackedScene" uid="uid://b8y7ehgxvep5v" path="res://scenes/UI/pause.tscn" id="20_pause"]
+[ext_resource type="Resource" uid="uid://dovjt4j0250hn" path="res://resources/res_tower/celene.tres" id="21_catpy"]
 [ext_resource type="PackedScene" uid="uid://bj5dtcmvpkfwk" path="res://scenes/UI/WinLose.tscn" id="21_ycmcx"]
 
 [node name="UI" type="CanvasLayer"]
@@ -38,7 +39,7 @@ grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("4_h1mc3")
+theme_override_fonts/font = ExtResource("2_catpy")
 theme_override_font_sizes/font_size = 40
 
 [node name="HP" type="TextureRect" parent="."]
@@ -70,27 +71,27 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -9.5
-offset_top = -35.0
-offset_right = 120.5
-offset_bottom = 8.0
+offset_top = -41.0
+offset_right = 93.5
+offset_bottom = 14.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Cur" type="Label" parent="HP/Health_Con"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("4_h1mc3")
+theme_override_fonts/font = ExtResource("2_catpy")
 theme_override_font_sizes/font_size = 40
 text = "12"
 
 [node name="Ph" type="Label" parent="HP/Health_Con"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("4_h1mc3")
+theme_override_fonts/font = ExtResource("2_catpy")
 theme_override_font_sizes/font_size = 40
 text = "/"
 
 [node name="Max" type="Label" parent="HP/Health_Con"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("4_h1mc3")
+theme_override_fonts/font = ExtResource("2_catpy")
 theme_override_font_sizes/font_size = 40
 text = "10"
 
@@ -135,19 +136,19 @@ grow_vertical = 2
 
 [node name="Cur" type="Label" parent="Enemy/Wave_Con"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("4_h1mc3")
+theme_override_fonts/font = ExtResource("2_catpy")
 theme_override_font_sizes/font_size = 40
 text = "12"
 
 [node name="Ph" type="Label" parent="Enemy/Wave_Con"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("4_h1mc3")
+theme_override_fonts/font = ExtResource("2_catpy")
 theme_override_font_sizes/font_size = 40
 text = "/"
 
 [node name="Max" type="Label" parent="Enemy/Wave_Con"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("4_h1mc3")
+theme_override_fonts/font = ExtResource("2_catpy")
 theme_override_font_sizes/font_size = 40
 text = "120"
 
@@ -192,19 +193,19 @@ grow_vertical = 2
 
 [node name="Cur" type="Label" parent="Wave/Wave_Con"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("4_h1mc3")
+theme_override_fonts/font = ExtResource("2_catpy")
 theme_override_font_sizes/font_size = 40
 text = "12"
 
 [node name="Ph" type="Label" parent="Wave/Wave_Con"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("4_h1mc3")
+theme_override_fonts/font = ExtResource("2_catpy")
 theme_override_font_sizes/font_size = 40
 text = "/"
 
 [node name="Max" type="Label" parent="Wave/Wave_Con"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("4_h1mc3")
+theme_override_fonts/font = ExtResource("2_catpy")
 theme_override_font_sizes/font_size = 40
 text = "120"
 
@@ -233,7 +234,7 @@ offset_right = 20.0
 offset_bottom = 13.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("4_h1mc3")
+theme_override_fonts/font = ExtResource("2_catpy")
 theme_override_font_sizes/font_size = 64
 text = "16"
 horizontal_alignment = 1
@@ -245,9 +246,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -220.0
+offset_left = -287.0
 offset_top = -192.0
-offset_right = -220.0
+offset_right = -287.0
 offset_bottom = -23.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -292,7 +293,7 @@ offset_right = -19.0
 offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("4_h1mc3")
+theme_override_fonts/font = ExtResource("2_catpy")
 theme_override_font_sizes/font_size = 24
 vertical_alignment = 1
 
@@ -307,7 +308,7 @@ offset_right = -19.0
 offset_bottom = -41.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("4_h1mc3")
+theme_override_fonts/font = ExtResource("2_catpy")
 theme_override_font_sizes/font_size = 24
 vertical_alignment = 1
 
@@ -322,7 +323,7 @@ offset_right = -19.0
 offset_bottom = -77.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("4_h1mc3")
+theme_override_fonts/font = ExtResource("2_catpy")
 theme_override_font_sizes/font_size = 24
 vertical_alignment = 1
 
@@ -345,15 +346,14 @@ offset_left = 18.0
 offset_right = -19.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("4_h1mc3")
+theme_override_fonts/font = ExtResource("2_catpy")
 theme_override_font_sizes/font_size = 24
 vertical_alignment = 1
 
 [node name="Input" type="Node" parent="." groups=["towerinput"]]
 script = ExtResource("13_jkdwc")
-tower_list = Array[ExtResource("14_rlppe")]([ExtResource("15_ycmcx"), ExtResource("18_41akx"), ExtResource("17_catpy"), ExtResource("19_rlppe"), ExtResource("16_kupmu"), ExtResource("20_kupmu"), ExtResource("18_jkdwc")])
+tower_list = Array[ExtResource("14_rlppe")]([ExtResource("15_ycmcx"), ExtResource("18_41akx"), ExtResource("17_catpy"), ExtResource("19_rlppe"), ExtResource("16_kupmu"), ExtResource("20_kupmu"), ExtResource("18_jkdwc"), ExtResource("21_catpy")])
 
 [node name="WinLose" parent="." instance=ExtResource("21_ycmcx")]
 
 [node name="Pause" parent="." instance=ExtResource("20_pause")]
-visible = false

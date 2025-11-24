@@ -23,7 +23,7 @@ height = 1.0
 [sub_resource type="CylinderMesh" id="CylinderMesh_02lgm"]
 
 [sub_resource type="SphereShape3D" id="SphereShape_range"]
-radius = 25.0
+radius = 0.1
 
 [sub_resource type="BoxMesh" id="BoxMesh_shoot"]
 size = Vector3(0.2, 0.2, 0.5)
@@ -109,7 +109,7 @@ mesh = SubResource("CylinderMesh_02lgm")
 skeleton = NodePath("../RangeArea")
 
 [node name="RangeArea" type="Area3D" parent="."]
-collision_layer = 0
+collision_mask = 17
 monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RangeArea"]

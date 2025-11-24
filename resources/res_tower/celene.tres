@@ -1,0 +1,83 @@
+[gd_resource type="Resource" script_class="TowerData" load_steps=19 format=3 uid="uid://dovjt4j0250hn"]
+
+[ext_resource type="AudioStream" uid="uid://ckw6pw52cvcwx" path="res://asset/SFX_IGame/Tower/Silvanna/Silvanna Basic Attack.wav" id="1_4m6io"]
+[ext_resource type="PackedScene" uid="uid://cenqhsshm2j7p" path="res://asset/Vfx/Effect/magic_circle_heal.tscn" id="2_wabhf"]
+[ext_resource type="Script" uid="uid://g85gwfmcln8s" path="res://scripts/Tower/Tower_Res.gd" id="3_lilhk"]
+[ext_resource type="Texture2D" uid="uid://4ikellenqqir" path="res://asset/Tower/Skill/Group 34.png" id="4_6hs1h"]
+[ext_resource type="AudioStream" uid="uid://d3wto142s5h7g" path="res://asset/SFX_IGame/Tower/Silvanna/Silvanna Skill.wav" id="5_87730"]
+[ext_resource type="Texture2D" uid="uid://ctd3lphsxlktm" path="res://asset/Tower/Icon/Vigilante-1.png" id="6_igygd"]
+[ext_resource type="Texture2D" uid="uid://bdhttkljgd058" path="res://asset/Tower/Icon/Glow/Vigilante-1.png" id="7_doxk2"]
+[ext_resource type="Texture2D" uid="uid://dojhd6q0i4pkm" path="res://asset/Tower/Silvanna/Skill/Skill 1.png" id="8_ohp11"]
+[ext_resource type="Texture2D" uid="uid://b468ot5ed3c60" path="res://asset/Tower/Silvanna/Skill/Skill 2.png" id="9_6605n"]
+[ext_resource type="Texture2D" uid="uid://dlmyqsjgp4sib" path="res://asset/Tower/Silvanna/Skill/Skill 3.png" id="10_x7olr"]
+[ext_resource type="Texture2D" uid="uid://b5yrrvhlojnrv" path="res://asset/Tower/Silvanna/Skill/Skill 4.png" id="11_7aa3w"]
+[ext_resource type="Texture2D" uid="uid://dtmxv5l16fw24" path="res://asset/Tower/Silvanna/Skill/Skill 5.png" id="12_y6t8h"]
+[ext_resource type="Texture2D" uid="uid://ogbmitx2ypf5" path="res://asset/Tower/Silvanna/Idle/Idle 1.png" id="13_tljya"]
+[ext_resource type="Texture2D" uid="uid://dfu3xdoneuucr" path="res://asset/Tower/Silvanna/Idle/Idle 2.png" id="14_tj3j0"]
+[ext_resource type="Texture2D" uid="uid://cibhr8y3mj0ma" path="res://asset/Tower/Silvanna/Idle/Idle 3.png" id="15_a4638"]
+[ext_resource type="Texture2D" uid="uid://bce6mlxhdndld" path="res://asset/Tower/Silvanna/Idle/Idle 4.png" id="16_kn1u8"]
+[ext_resource type="Texture2D" uid="uid://cdtaujmjxy755" path="res://asset/Tower/Silvanna/Idle/Idle 5.png" id="17_su4rk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ebbtt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_ohp11")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_6605n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_x7olr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_7aa3w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_y6t8h")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_tljya")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_tj3j0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_a4638")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_kn1u8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_su4rk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("3_lilhk")
+chara = "cellene"
+atk_sfx = ExtResource("1_4m6io")
+skl_sfx = ExtResource("5_87730")
+cost = 13
+slot = ExtResource("6_igygd")
+slot_glow = ExtResource("7_doxk2")
+damage = 75
+speed = 1.0
+range = 5.0
+skill = "unholy bless"
+skill_duration = 10
+skill_sprite = ExtResource("4_6hs1h")
+cooldown = 25
+max_hp = 1500.0
+sprite = SubResource("SpriteFrames_ebbtt")
+projectile = ExtResource("2_wabhf")
+projectile_speed = 10
+metadata/_custom_type_script = "uid://g85gwfmcln8s"
