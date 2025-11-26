@@ -30,7 +30,6 @@ func spawn_fireflies_even_distributed():
 		final_position = wrapf(final_position, 0.0, 1.0)
 		
 		create_firefly_at_position(final_position, i)
-		print("📐 Firefly ", i, " at position: ", final_position)
 
 func create_firefly_at_position(position_ratio: float, index: int):
 	var firefly = firefly_scene.instantiate()
@@ -57,7 +56,6 @@ func create_firefly_at_position(position_ratio: float, index: int):
 	firefly_data.append(data)
 	
 	setup_firefly_visual(firefly, data)
-	print("✅ Firefly ", index, " spawned at position: ", position_ratio)
 
 func setup_firefly_visual(firefly: Node2D, data: Dictionary):
 	if firefly.has_node("Light2D"):

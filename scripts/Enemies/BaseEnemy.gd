@@ -17,6 +17,7 @@ var path_to_follow: Path3D = null
 var path_follow: PathFollow3D = null
 var pool_name: String = ""  # tracking asal pool
 var move_speed
+var previous_position: Vector3 = Vector3.ZERO
 
 @onready var sprite: AnimatedSprite3D = $Anim
 
@@ -33,6 +34,7 @@ func _ready() -> void:
 	add_to_group("enemies")
 	
 	_setup_path()
+	previous_position = global_position
 	_on_ready()
 
 func _on_ready() -> void:
@@ -59,6 +61,14 @@ func _process(delta: float) -> void:
 func _move(delta: float) -> void:
 	path_follow.progress += move_speed * delta
 	global_position = path_follow.global_position
+	
+	# Flip sprite based on movement direction (default facing left)
+	var direction = global_position - previous_position
+	if direction.x > 0.01:  # Moving right
+		sprite.flip_h = true
+	elif direction.x < -0.01:  # Moving left
+		sprite.flip_h = false
+	previous_position = global_position
 	
 	bob_timer += delta * bob_speed
 	global_position.y += sin(bob_timer) * bob_height

@@ -22,16 +22,34 @@ func _on_ready() -> void:
 	else:
 		var collision = attack_range_area.get_node_or_null("CollisionShape3D")
 		if collision and collision.shape is SphereShape3D:
-			collision.shape.radius = enemy_data.attack_range
+			var sphere_shape = collision.shape as SphereShape3D
+			sphere_shape.radius = enemy_data.attack_range
 
 func _move(delta: float) -> void:
 	if is_attacking:
+		# Still bob when attacking but don't move forward
 		bob_timer += delta * bob_speed
 		global_position.y += sin(bob_timer) * bob_height
+		
+		# Face the target when attacking
+		if current_target and is_instance_valid(current_target):
+			var direction_to_target = current_target.global_position - global_position
+			if direction_to_target.x > 0.01:  # Target is to the right
+				sprite.flip_h = true
+			elif direction_to_target.x < -0.01:  # Target is to the left
+				sprite.flip_h = false
 		return
 	
 	path_follow.progress += enemy_data.move_speed * delta
 	global_position = path_follow.global_position
+	
+	# Flip sprite based on movement direction (default facing left)
+	var direction = global_position - previous_position
+	if direction.x > 0.01:  # Moving right
+		sprite.flip_h = true
+	elif direction.x < -0.01:  # Moving left
+		sprite.flip_h = false
+	previous_position = global_position
 	
 	bob_timer += delta * bob_speed
 	global_position.y += sin(bob_timer) * bob_height

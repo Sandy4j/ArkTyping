@@ -143,7 +143,7 @@ func _on_level_load_check(level_path: String, timer: Timer) -> void:
 			await _complete_progress()
 			
 			# tunggu sebentar sebelum ganti scene
-			await get_tree().create_timer(0.2).timeout
+			await get_tree().create_timer(0.1).timeout
 			
 			level_loading_completed.emit(level_path)
 			is_loading = false

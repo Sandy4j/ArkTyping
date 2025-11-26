@@ -29,7 +29,15 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="ColorRect" type="ColorRect" parent="Control"]
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BG" type="TextureRect" parent="Control"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -37,9 +45,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.05, 0.05, 0.08, 0.95)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+[node name="ProgressBar" type="ProgressBar" parent="Control"]
+custom_minimum_size = Vector2(400, 32)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -47,33 +55,46 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -200.0
-offset_top = -60.0
+offset_top = -16.0
 offset_right = 200.0
-offset_bottom = 60.0
+offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-theme_override_constants/separation = 25
-
-[node name="LoadingLabel" type="Label" parent="Control/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.9, 0.9, 1, 1)
-theme_override_font_sizes/font_size = 24
-text = "Loading..."
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ProgressBar" type="ProgressBar" parent="Control/VBoxContainer"]
-custom_minimum_size = Vector2(400, 32)
-layout_mode = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_1")
 theme_override_styles/fill = SubResource("StyleBoxFlat_2")
 show_percentage = false
 
-[node name="ProgressLabel" type="Label" parent="Control/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.7, 0.7, 0.8, 1)
-theme_override_font_sizes/font_size = 18
-text = "0%"
+[node name="LoadingLabel" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 900.0
+offset_right = 434.0
+offset_bottom = 1003.0
+theme_override_colors/font_color = Color(0.9, 0.9, 1, 1)
+theme_override_font_sizes/font_size = 75
+text = "Loading..."
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TipsLabel" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -640.0
+offset_top = -150.0
+offset_right = 640.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 0.9)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 32
+text = "Tip: Ketik nama musuh dengan cepat untuk menyerang!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3

@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://resources/EnemySpawnEntry.gd" id="1_l84kk"]
 [ext_resource type="Script" path="res://resources/SpawnPointConfig.gd" id="2_kye4v"]
-[ext_resource type="Resource" uid="uid://bq4231ilgt53l" path="res://resources/Enemy Data/BossDevil.tres" id="2_n0m7m"]
-[ext_resource type="PackedScene" uid="uid://orr3oexwxv50" path="res://scenes/Enemy/BossDevil.tscn" id="3_h6ghs"]
+[ext_resource type="Resource" uid="uid://4vnkysnhwpoy" path="res://resources/Enemy Data/BasicEye.tres" id="2_n0m7m"]
+[ext_resource type="PackedScene" uid="uid://iv56om7n6qae" path="res://scenes/Enemy/BasicEye.tscn" id="3_h6ghs"]
 
 [sub_resource type="Resource" id="Resource_y4j4i"]
 script = ExtResource("1_l84kk")
@@ -14,5 +14,6 @@ enemy_data = ExtResource("2_n0m7m")
 script = ExtResource("2_kye4v")
 spawn_path_node = NodePath("EnemyPath")
 enemy_spawn_entries = Array[ExtResource("1_l84kk")]([SubResource("Resource_y4j4i")])
-enemies_to_spawn = 2
+enemies_to_spawn = 1
 spawn_interval = 2.0
+boss_spawn_timing = 0.1

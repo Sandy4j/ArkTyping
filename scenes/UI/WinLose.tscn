@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bj5dtcmvpkfwk"]
+[gd_scene load_steps=15 format=3 uid="uid://bj5dtcmvpkfwk"]
 
 [ext_resource type="Script" path="res://scripts/UI/WinLose.gd" id="1_ha5wc"]
 [ext_resource type="Texture2D" uid="uid://bvydxrtay4jjx" path="res://asset/UI/retry.png" id="2_11wgb"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b2yc1xuo6hgv1" path="res://asset/UI/retryH.png" id="3_ds3jj"]
 [ext_resource type="Texture2D" uid="uid://bfq4oa1exfecl" path="res://asset/UI/star kosong.png" id="3_prtmj"]
 [ext_resource type="Texture2D" uid="uid://c8bpfik6l48gp" path="res://asset/UI/mmhbtn.png" id="3_qg4dt"]
+[ext_resource type="Script" uid="uid://d1p2pdmy5r4wm" path="res://scripts/UI/button_hover_scale.gd" id="6_v3cyd"]
 [ext_resource type="Texture2D" uid="uid://d4m2okydgg10v" path="res://asset/UI/nextlevel.png" id="7_blvgp"]
 [ext_resource type="Texture2D" uid="uid://dp72l3ammf8il" path="res://asset/UI/star isi.png" id="8_hlqwi"]
 [ext_resource type="FontFile" uid="uid://b5as20pm4j1e0" path="res://asset/Font/effortless.ttf" id="9_hlqwi"]
@@ -85,21 +86,27 @@ texture = ExtResource("3_prtmj")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="RetryBtn" type="TextureButton" parent="GameOverPanel/VBoxContainer"]
+[node name="BtnContainer" type="HBoxContainer" parent="GameOverPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="RetryBtn" type="TextureButton" parent="GameOverPanel/VBoxContainer/BtnContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 texture_normal = ExtResource("2_11wgb")
 texture_pressed = ExtResource("3_ds3jj")
 texture_hover = ExtResource("3_ds3jj")
 texture_focused = ExtResource("3_ds3jj")
+script = ExtResource("6_v3cyd")
 
-[node name="MenuBtn" type="TextureButton" parent="GameOverPanel/VBoxContainer"]
+[node name="MenuBtn" type="TextureButton" parent="GameOverPanel/VBoxContainer/BtnContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 texture_normal = ExtResource("2_l3gyh")
 texture_pressed = ExtResource("3_qg4dt")
 texture_hover = ExtResource("3_qg4dt")
 texture_focused = ExtResource("3_qg4dt")
+script = ExtResource("6_v3cyd")
 
 [node name="VictoryPanel" type="Panel" parent="."]
 visible = false
@@ -185,25 +192,32 @@ horizontal_alignment = 1
 [node name="Spacing3" type="Control" parent="VictoryPanel/VBoxContainer"]
 layout_mode = 2
 
-[node name="Next" type="TextureButton" parent="VictoryPanel/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VictoryPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Next" type="TextureButton" parent="VictoryPanel/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("7_blvgp")
 texture_pressed = ExtResource("11_v3cyd")
 texture_hover = ExtResource("11_v3cyd")
 texture_focused = ExtResource("11_v3cyd")
+script = ExtResource("6_v3cyd")
 
-[node name="ReplayBtn" type="TextureButton" parent="VictoryPanel/VBoxContainer"]
+[node name="ReplayBtn" type="TextureButton" parent="VictoryPanel/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 texture_normal = ExtResource("12_k485g")
 texture_pressed = ExtResource("13_6hp1n")
 texture_hover = ExtResource("13_6hp1n")
 texture_focused = ExtResource("13_6hp1n")
+script = ExtResource("6_v3cyd")
 
-[node name="MenuBtn" type="TextureButton" parent="VictoryPanel/VBoxContainer"]
+[node name="MenuBtn" type="TextureButton" parent="VictoryPanel/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 texture_normal = ExtResource("2_l3gyh")
 texture_pressed = ExtResource("3_qg4dt")
 texture_hover = ExtResource("3_qg4dt")
 texture_focused = ExtResource("3_qg4dt")
+script = ExtResource("6_v3cyd")
