@@ -5,7 +5,18 @@ class_name BossHerald
 
 @export var speed_buff_multiplier: float = 1.5
 @export var required_typing_count: int = 3
-@export var typing_word_pool: Array[String] = ["SPEED", "HASTE", "SWIFT", "RUSH", "BOOST"]
+@export var typing_word_pool: Array[String] = [
+	"Banish",
+	"Purge",
+	"Dispel",
+	"Nullify",
+	"Consecrate",
+	"Suppress",
+	"Repell",
+	"Smite",
+	"Sunder",
+	"Enlighten"
+]
 
 var buffed_enemies: Array[Node] = []
 var buffed_enemies_vfx: Dictionary = {}

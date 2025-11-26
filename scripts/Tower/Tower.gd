@@ -141,10 +141,14 @@ func _process(delta: float) -> void:
 	if not is_inside_tree():
 		return
 	
+	# Check bind (includes time stop bind)
+	if got_binded:
+		print("[Tower ", name, "] BLOCKED - got_binded=", got_binded)
+		return
+	
 	if current_skill_cooldown > 0 or skill_active and !bullet_requiem_active :
 		execute_skill(delta)
-	if got_binded:
-		return
+	
 	fire_timer += delta
 	
 	update_animation()
@@ -166,6 +170,10 @@ func _process(delta: float) -> void:
 	update_sprite_direction()
 	# Shoot at target
 	if current_target and is_instance_valid(current_target) and current_target.is_in_group("enemies") and fire_timer >= 1.0 / fire_rate:
+		# Don't shoot if time stop is active (check global flag)
+		if get_tree().root.has_meta("time_stop_active") and get_tree().root.get_meta("time_stop_active"):
+			return
+		
 		is_shooting = true
 		sfx.play()
 		if is_kaelio and overload_burst_active or is_rosemary:

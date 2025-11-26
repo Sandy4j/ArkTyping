@@ -12,6 +12,9 @@ var active_words: Dictionary = {}  # {word: target_node}
 var boss_typing_targets: Dictionary = {}  # {boss_node: word}
 
 func _input(event) -> void:
+	if get_tree().root.has_meta("time_stop_active") and get_tree().root.get_meta("time_stop_active"):
+		return
+	
 	if event is InputEventKey and event.pressed and not event.echo:
 		if event.keycode >= KEY_A and event.keycode <= KEY_Z:
 			var character = char(event.unicode).to_lower()
@@ -42,12 +45,10 @@ func clear_text():
 ## Register boss untuk typing system (Boss Herald)
 func register_boss_typing(boss: Node, word: String):
 	boss_typing_targets[boss] = word.to_upper()
-	print("[TypingSystem] Registered boss typing: ", boss.name, " with word: ", word)
 
 func unregister_boss_typing(boss: Node):
 	if boss in boss_typing_targets:
 		boss_typing_targets.erase(boss)
-		print("[TypingSystem] Unregistered boss typing: ", boss.name)
 
 func check_boss_typing(typed_word: String) -> bool:
 	typed_word = typed_word.to_upper()
@@ -59,11 +60,9 @@ func check_boss_typing(typed_word: String) -> bool:
 	return false
 
 func is_boss_typing_active() -> bool:
-	"""Check apakah ada boss yang sedang aktif typing"""
 	return not boss_typing_targets.is_empty()
 
 func notify_boss_typing_failed():
-	"""Notify semua boss yang active bahwa player typing failed"""
 	for boss in boss_typing_targets.keys():
 		if is_instance_valid(boss) and boss.has_method("on_typing_failed"):
 			boss.on_typing_failed()

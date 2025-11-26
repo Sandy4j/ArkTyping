@@ -1,4 +1,4 @@
-﻿[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3 uid="uid://cl7vbw18komq5"]
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3 uid="uid://cl7vbw18komq5"]
 
 [ext_resource type="Script" path="res://resources/EnemyData.gd" id="1_fy2ew"]
 
@@ -6,7 +6,7 @@
 script = ExtResource("1_fy2ew")
 enemy_name = "Boss"
 max_hp = 7500.0
-move_speed = 1.0
+move_speed = 0.1
 reward = 100
 base_damage = 10
 can_attack = true

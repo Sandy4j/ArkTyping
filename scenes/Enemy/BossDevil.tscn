@@ -67,7 +67,7 @@ shape = SubResource("SphereShape3D_inemf")
 transform = Transform3D(0.3, 0, 0, 0, 0.2819078, 0.10260604, 0, -0.10260604, 0.2819078, 0, 1, 0)
 billboard = 1
 sprite_frames = SubResource("SpriteFrames_rkjbc")
-frame_progress = 0.7356877
+frame_progress = 0.7356877000000001
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.100949466, 0)

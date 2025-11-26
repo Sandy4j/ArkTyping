@@ -161,6 +161,10 @@ func set_selected_spot(index: int) -> void:
 	selected_spot_index = index
 
 func request_tower_debuff_clear(v:String) -> void:
+	# Block debuff clear saat time stop
+	if get_tree().root.has_meta("time_stop_active") and get_tree().root.get_meta("time_stop_active"):
+		return
+	
 	var tower_controller = get_tree().get_first_node_in_group("towercon")
 	if tower_controller and tower_controller.has_method("debuff_clear"):
 		tower_controller.debuff_clear(v)
@@ -168,6 +172,10 @@ func request_tower_debuff_clear(v:String) -> void:
 		print("TowerController not found!")
 
 func request_tower_placement(v:String) -> void:
+	# Block tower placement saat time stop
+	if get_tree().root.has_meta("time_stop_active") and get_tree().root.get_meta("time_stop_active"):
+		return
+	
 	var data:TowerData
 	for datas in tower_list:
 		if datas.chara == v:
@@ -180,6 +188,10 @@ func request_tower_placement(v:String) -> void:
 		print("TowerController not found!")
 
 func request_tower_skill(v:String) -> void:
+	# Block skill saat time stop
+	if get_tree().root.has_meta("time_stop_active") and get_tree().root.get_meta("time_stop_active"):
+		return
+	
 	var tower_controller = get_tree().get_first_node_in_group("towercon")
 	if tower_controller and tower_controller.has_method("active_tower_at_selected"):
 		tower_controller.active_tower_at_selected(v)
@@ -187,6 +199,9 @@ func request_tower_skill(v:String) -> void:
 		print("TowerController not found!")
 
 func request_delete_tower() ->void:
+	# Block retreat saat time stop
+	if get_tree().root.has_meta("time_stop_active") and get_tree().root.get_meta("time_stop_active"):
+		return
 	
 	var tower_controller = get_tree().get_first_node_in_group("towercon")
 	if tower_controller and tower_controller.has_method("delete_tower_at_selected"):

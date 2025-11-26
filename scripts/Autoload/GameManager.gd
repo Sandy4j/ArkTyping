@@ -24,7 +24,7 @@ func _process(delta: float) -> void:
 		return
 	
 	regen_timer += delta
-	if regen_timer >= currency_regen_interval and not cap_currency:
+	if regen_timer >= currency_regen_interval and currency < cap_currency:
 		add_currency(currency_regen_amount)
 		regen_timer = 0.0
 

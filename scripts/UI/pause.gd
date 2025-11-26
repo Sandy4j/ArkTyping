@@ -12,6 +12,9 @@ func _ready() -> void:
 	restarbtn.pressed.connect(_on_retry_pressed)
 
 func show_pause_menu() -> void:
+	if get_tree().root.has_meta("time_stop_active") and get_tree().root.get_meta("time_stop_active"):
+		return
+	
 	show()
 	get_tree().paused = true
 

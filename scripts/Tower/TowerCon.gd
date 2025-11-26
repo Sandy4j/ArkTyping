@@ -22,6 +22,10 @@ func _ready() -> void:
 	tower_input = get_tree().get_first_node_in_group("towerinput")
 
 func _input(event: InputEvent) -> void:
+	# Block input saat time stop
+	if get_tree().root.has_meta("time_stop_active") and get_tree().root.get_meta("time_stop_active"):
+		return
+	
 	if event is InputEventKey and event.pressed and not event.echo:
 		var key_code = event.keycode
 		var index = -1

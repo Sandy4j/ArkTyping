@@ -54,7 +54,6 @@ radius = 5.0
 
 [node name="BossHerald" type="CharacterBody3D"]
 script = ExtResource("1_q6cwt")
-enemy_data = ExtResource("2_q6cwt")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_inemf")
