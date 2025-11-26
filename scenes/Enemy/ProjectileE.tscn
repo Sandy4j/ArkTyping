@@ -1,16 +1,94 @@
-[gd_scene load_steps=3 format=3 uid="uid://cb7cra4pxusu4"]
+[gd_scene load_steps=13 format=3 uid="uid://cb7cra4pxusu4"]
 
 [ext_resource type="Script" uid="uid://qktu3cvks1c" path="res://scripts/Enemies/ProjectileE.gd" id="1_xj8kp"]
+[ext_resource type="Texture2D" uid="uid://dq4mf2e1wycqk" path="res://asset/Vfx/Texture/T_Noise22.png" id="2_yswfo"]
+[ext_resource type="ArrayMesh" uid="uid://cyfep3uq6h2so" path="res://asset/Vfx/Obj/Spike.obj" id="3_0piss"]
+[ext_resource type="Texture2D" uid="uid://b1yxx2pou6fsl" path="res://asset/Vfx/Texture/T_Oval2.png" id="4_07xve"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_6kwkb"]
-radius = 0.2
-height = 0.4
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pnf8t"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_color = Color(0.3365263, 0.46358907, 0.32076252, 1)
+albedo_texture = ExtResource("2_yswfo")
+albedo_texture_force_srgb = true
+albedo_texture_msdf = true
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pyybx"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_color = Color(0.33183005, 0.40443814, 0.28707156, 0.105000004)
+albedo_texture = ExtResource("4_07xve")
+albedo_texture_force_srgb = true
+albedo_texture_msdf = true
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_wnpih"]
+_data = [Vector2(0.0025445297, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.5683306, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_vw73x"]
+curve = SubResource("Curve_wnpih")
+
+[sub_resource type="Curve" id="Curve_y07pa"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_gmnwj"]
+curve = SubResource("Curve_y07pa")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3b7fe"]
+emission_shape = 1
+emission_sphere_radius = 0.25
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+gravity = Vector3(-5, 0, 0)
+scale_min = 0.5
+scale_max = 0.5
+alpha_curve = SubResource("CurveTexture_vw73x")
+emission_curve = SubResource("CurveTexture_gmnwj")
+
+[sub_resource type="QuadMesh" id="QuadMesh_yt54d"]
 
 [node name="ProjectileE" type="Node3D"]
 script = ExtResource("1_xj8kp")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("SphereMesh_6kwkb")
+[node name="Enm_bullet" type="Node3D" parent="."]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
+
+[node name="MeshInstance3D" type="OmniLight3D" parent="Enm_bullet"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.074142694, 0, 0)
+light_color = Color(0.27688417, 0.41928327, 0.29067814, 1)
+omni_range = 1.0
+
+[node name="Bijih" type="MeshInstance3D" parent="Enm_bullet"]
+transform = Transform3D(-0.5, 0, -4.371139e-08, 0, 0.5, 0, 4.371139e-08, 0, -0.5, -0.42503625, 0, 0)
+layers = 513
+material_override = SubResource("StandardMaterial3D_pnf8t")
+mesh = ExtResource("3_0piss")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Enm_bullet"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20792985, 0, 0)
+material_override = SubResource("StandardMaterial3D_pyybx")
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_3b7fe")
+draw_pass_1 = SubResource("QuadMesh_yt54d")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 light_color = Color(1, 0.3, 0.3, 1)

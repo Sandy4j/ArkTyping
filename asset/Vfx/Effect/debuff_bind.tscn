@@ -888,6 +888,7 @@ draw_pass_1 = SubResource("SphereMesh_mapvy")
 
 [node name="5" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4001212, 0)
+local_coords = true
 material_override = SubResource("ShaderMaterial_hoojq")
 emitting = false
 amount = 1

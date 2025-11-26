@@ -19,6 +19,12 @@ var tower_retreat: AudioStream
 var tower_skill : AudioStream
 var tower_dead: AudioStream
 var spot_select: AudioStream
+var boss_silence: AudioStream
+var boss_speed: AudioStream
+var zawarudo_start: AudioStream
+var zawarudo_tick: AudioStream
+var zawarudo_end: AudioStream
+
 
 var bgm_player: AudioStreamPlayer
 var sfx_players: Array[AudioStreamPlayer] = []
@@ -49,6 +55,11 @@ func _ready() -> void:
 	tower_retreat = load("res://asset/Audio/Tower/Tarik Tower.wav")
 	tower_skill = load("res://asset/Audio/Tower/Activate Skill.wav")
 	tower_dead = load("res://asset/Audio/Tower/Drop dead.wav")
+	boss_silence = load("res://asset/Audio/Boss/Boss Debuff.wav")
+	boss_speed = load("res://asset/Audio/Boss/Rage Boss.wav")
+	zawarudo_start = load("res://asset/Audio/Boss/Time Skill used.wav")
+	zawarudo_tick = load("res://asset/Audio/Boss/Time Tick.wav")
+	zawarudo_end = load("res://asset/Audio/Boss/Time Skill end Reverse.wav")
 	
 	bgm_player = AudioStreamPlayer.new()
 	bgm_player.bus = "Master"
@@ -127,6 +138,16 @@ func play_sfx(sfx_name: String, pitch_scale: float = 1.0) -> void:
 			stream = typing_2
 		"button_click":
 			stream = button_click
+		"boss_silence":
+			stream = boss_silence
+		"boss_speed":
+			stream = boss_speed
+		"zawarudo_start":
+			stream = zawarudo_start
+		"zawarudo_tick":
+			stream = zawarudo_tick
+		"zawarudo_end":
+			stream = zawarudo_end
 		"typing_random":
 			stream = typing_1 if randf() > 0.5 else typing_2
 		_:

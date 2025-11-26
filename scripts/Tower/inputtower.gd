@@ -36,12 +36,28 @@ func _on_text_typed(current_text: String) -> void:
 		if current_text.to_lower() == word:
 			inputLbl.add_theme_color_override("font_color", Color.YELLOW)
 			return
+	
+	# Check static debuff words
 	for word in TypingSystem.debuff_text:
 		if current_text.to_lower() == word:
 			inputLbl.add_theme_color_override("font_color", Color.GREEN)
 			emit_signal("Pop",current_text)
 			popped = true
 			return
+	
+	# Check dynamic bind word from selected tower (for BossDevil)
+	if selected_spot_index >= 0:
+		var tower_controller = get_tree().get_first_node_in_group("towercon")
+		if tower_controller and tower_controller.tower_spots.size() > selected_spot_index:
+			var spot = tower_controller.tower_spots[selected_spot_index]
+			if spot.has_tower and spot.tower_node.got_binded:
+				var tower_debuff_word = spot.tower_node.debuff_text.text.to_lower()
+				if current_text.to_lower() == tower_debuff_word:
+					inputLbl.add_theme_color_override("font_color", Color.GREEN)
+					emit_signal("Pop",current_text)
+					popped = true
+					return
+	
 	if current_text == "Retreat" or current_text == "retreat":
 		inputLbl.add_theme_color_override("font_color", Color.RED)
 		return
@@ -108,11 +124,37 @@ func _on_text_submitted(full_text: String) -> void:
 			show_message("Pilih spot dulu! Tekan 1-9")
 			AudioManager.play_sfx("type_wrong")
 			return
+	
+	# Check dynamic bind word from selected tower (for BossDevil)
+	if selected_spot_index >= 0:
+		var tower_controller = get_tree().get_first_node_in_group("towercon")
+		if tower_controller and tower_controller.tower_spots.size() > selected_spot_index:
+			var spot = tower_controller.tower_spots[selected_spot_index]
+			if spot.has_tower and spot.tower_node.got_binded:
+				var tower_debuff_word = spot.tower_node.debuff_text.text.to_lower()
+				if typed_text == tower_debuff_word:
+					request_tower_debuff_clear(typed_text)
+					HIstory_add(typed_text, Color.GREEN)
+					AudioManager.play_sfx("type_correct")
+					inputLbl.text = ""
+					return
+	
+	if TypingSystem.check_boss_typing(typed_text):
+		HIstory_add(typed_text, Color.CYAN)
+		AudioManager.play_sfx("type_correct")
+		inputLbl.text = ""
+		return
+	
+	if TypingSystem.is_boss_typing_active():
+		TypingSystem.notify_boss_typing_failed()
+		HIstory_add(typed_text, Color.ORANGE)
+		AudioManager.play_sfx("type_wrong")
+		inputLbl.text = ""
+		return
 			
 	else:
 		HIstory_add(typed_text,Color.RED)
 		AudioManager.play_sfx("type_wrong")
-		print("Input Salah Woi.")
 	inputLbl.text = ""
 
 func set_selected_spot(index: int) -> void:
