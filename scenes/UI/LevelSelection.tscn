@@ -70,8 +70,13 @@ theme_override_font_sizes/font_size = 72
 text = "Level Select"
 horizontal_alignment = 1
 
-[node name="LevelContainer" type="HBoxContainer" parent="CanvasLayer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(150, 150)
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+clip_contents = false
+custom_minimum_size = Vector2(0, 537)
+layout_mode = 2
+
+[node name="LevelContainer" type="HBoxContainer" parent="CanvasLayer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer"]
+custom_minimum_size = Vector2(537, 537)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 30

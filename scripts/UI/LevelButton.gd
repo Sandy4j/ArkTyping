@@ -1,4 +1,4 @@
-extends PanelContainer
+extends TextureRect
 
 ## LevelButton - Individual button untuk level selection
 
@@ -10,6 +10,8 @@ signal level_selected(level_path: String)
 @onready var lock_icon = $LockedOverlay/CenterContainer/LockIcon
 @onready var button = $Button
 
+const Default ="res://asset/UI/main menu/Level.png"
+const Hover = "res://asset/UI/main menu/level_hover.png"
 const STAR_FILLED_TEXTURE = "res://asset/UI/star isi.png"
 const STAR_EMPTY_TEXTURE = "res://asset/UI/star kosong.png"
 const LOCK_TEXTURE = "res://asset/UI/lock.png"
@@ -63,3 +65,16 @@ func _update_ui() -> void:
 func _on_button_pressed() -> void:
 	if is_unlocked:
 		level_selected.emit(level_path)
+
+
+func _on_mouse_entered() -> void:
+	if is_unlocked:
+		if ResourceLoader.exists(Hover):
+			self.texture = load(Hover)
+			print("ganti texture")
+		print("mouse masuk")
+
+func _on_mouse_exited() -> void:
+	if is_unlocked:
+		if ResourceLoader.exists(Default):
+			self.texture = load(Default)

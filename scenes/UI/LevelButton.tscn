@@ -1,28 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://cm5n8p7rar3s4"]
+[gd_scene load_steps=4 format=3 uid="uid://cm5n8p7rar3s4"]
 
+[ext_resource type="Texture2D" uid="uid://ytp1tss38jj3" path="res://asset/UI/main menu/Level.png" id="1_1f016"]
 [ext_resource type="Script" uid="uid://dxsqramg7ojv1" path="res://scripts/UI/LevelButton.gd" id="1_level_button"]
+[ext_resource type="FontFile" uid="uid://bidkq3k8s4itr" path="res://asset/Font/Lovato-Bold.ttf" id="2_mic1q"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button"]
-bg_color = Color(0.1, 0.1, 0.1, 0.95)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.8, 0.65, 0.3, 1)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
-
-[node name="LevelButton" type="PanelContainer"]
-custom_minimum_size = Vector2(150, 150)
-offset_right = 220.0
-offset_bottom = 186.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_button")
+[node name="LevelButton" type="TextureRect"]
+custom_minimum_size = Vector2(452, 452)
+offset_right = 452.0
+offset_bottom = 452.0
+mouse_filter = 0
+mouse_default_cursor_shape = 4
+texture = ExtResource("1_1f016")
+stretch_mode = 3
 script = ExtResource("1_level_button")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 2
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 449.0
+offset_bottom = 449.0
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
@@ -36,6 +33,7 @@ alignment = 1
 [node name="LevelNumberLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_mic1q")
 theme_override_font_sizes/font_size = 48
 text = "Level 1"
 horizontal_alignment = 1
@@ -64,13 +62,22 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="Button" type="Button" parent="."]
-layout_mode = 2
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 449.0
+offset_bottom = 449.0
 theme_override_colors/font_color = Color(0, 0, 0, 0)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 0)
 flat = true
 
 [node name="LockedOverlay" type="ColorRect" parent="."]
-layout_mode = 2
+visible = false
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 449.0
+offset_bottom = 449.0
 mouse_filter = 2
 color = Color(0, 0, 0, 0.8)
 
@@ -88,4 +95,8 @@ layout_mode = 2
 expand_mode = 1
 stretch_mode = 5
 
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Button" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_mouse_exited"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
