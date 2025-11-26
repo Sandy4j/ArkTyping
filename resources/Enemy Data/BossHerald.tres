@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3 uid="uid://r5o8a1rqluqq"]
+
+[ext_resource type="Script" path="res://resources/EnemyData.gd" id="1_dav3x"]
+
+[resource]
+script = ExtResource("1_dav3x")
+enemy_name = "Boss"
+max_hp = 7500.0
+move_speed = 0.1
+reward = 100
+base_damage = 10
+can_attack = true
+attack_range = 2.0
+attack_damage = 200.0
+attack_cooldown = 3.5
+projectile_speed = 5.0
+is_boss = true
+boss_scale_multiplier = 1.0

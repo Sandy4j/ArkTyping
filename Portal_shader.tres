@@ -1,6 +1,6 @@
 [gd_resource type="VisualShader" load_steps=14 format=3 uid="uid://j4v51r2gva8m"]
 
-[ext_resource type="Texture2D" uid="uid://bodgameib6b3" path="res://asset/Vfx/Texture/T_Noise21.png" id="1_kphov"]
+[ext_resource type="Texture2D" uid="uid://d080bdm4mcs5k" path="res://asset/Vfx/Texture/T_Noise21.png" id="1_kphov"]
 [ext_resource type="Texture2D" uid="uid://c0hwrlhl8o1gb" path="res://asset/Vfx/Texture/T_VFX_Spiral07.jpg" id="2_kphov"]
 
 [sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_gq8g0"]

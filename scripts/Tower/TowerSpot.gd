@@ -9,6 +9,7 @@ var tower_node
 var has_tower: bool = false
 var hover_material: StandardMaterial3D
 var default_material: StandardMaterial3D
+var bind_vfx_node: Node3D = null
 
 @onready var mesh_instance: MeshInstance3D = $Altar
 
@@ -49,3 +50,32 @@ func remove_tower():
 	tower_data = null
 	has_tower = false
 	print("tower di hapus")
+
+## Apply bind VFX to this spot
+func apply_bind_vfx():
+	# Remove existing VFX if any
+	if bind_vfx_node and is_instance_valid(bind_vfx_node):
+		bind_vfx_node.queue_free()
+	
+	var aura_scene
+	if ResourceLoadManager:
+		aura_scene = ResourceLoadManager.load_resource_sync("res://asset/Vfx/Effect/debuff_bind.tscn")
+	
+	if aura_scene:
+		bind_vfx_node = aura_scene.instantiate()
+		add_child(bind_vfx_node)
+		bind_vfx_node.position = Vector3.ZERO
+		bind_vfx_node.rotation = Vector3.ZERO
+		bind_vfx_node.scale = Vector3.ONE
+		
+		
+		# Play animation
+		var anim = bind_vfx_node.get_node_or_null("AnimationPlayer")
+		if anim:
+			anim.play("bind")
+
+## Remove bind VFX from this spot
+func remove_bind_vfx():
+	if bind_vfx_node and is_instance_valid(bind_vfx_node):
+		bind_vfx_node.queue_free()
+		bind_vfx_node = null

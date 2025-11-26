@@ -18,12 +18,17 @@ var path_follow: PathFollow3D = null
 var pool_name: String = ""  # tracking asal pool
 var move_speed
 var previous_position: Vector3 = Vector3.ZERO
+var speed_buffs: Dictionary = {}
+var original_move_speed: float = 0.0
+var is_alive: bool = true
 
 @onready var sprite: AnimatedSprite3D = $Anim
 
 
 func _ready() -> void:
 	move_speed = enemy_data.move_speed
+	original_move_speed = enemy_data.move_speed
+	is_alive = true
 	sprite.play("default")
 	if not enemy_data:
 		push_error("Enemy has no data assigned!")
@@ -62,7 +67,6 @@ func _move(delta: float) -> void:
 	path_follow.progress += move_speed * delta
 	global_position = path_follow.global_position
 	
-	# Flip sprite based on movement direction (default facing left)
 	var direction = global_position - previous_position
 	if direction.x > 0.01:  # Moving right
 		sprite.flip_h = true
@@ -95,11 +99,10 @@ func take_damage(damage: float) -> void:
 
 
 func done_hit(vfx_node: GPUParticles2D):
-	print("🎇 VFX finished: ")
 	vfx_node.get_parent().queue_free()
 
-
 func die() -> void:
+	is_alive = false
 	died.emit(enemy_data.reward)
 	AudioManager.play_sfx("enemy_die")
 	_on_death()
@@ -115,6 +118,9 @@ func reach_end() -> void:
 func return_to_pool() -> void:
 	remove_from_group("enemies")
 	bob_timer = 0.0
+	is_alive = false
+	speed_buffs.clear()
+	move_speed = original_move_speed
 	
 	# Disconnect all signals before returning to pool
 	for connection in died.get_connections():
@@ -137,6 +143,27 @@ func return_to_pool() -> void:
 		ObjectPool.return_pooled_object(pool_name, self)
 	else:
 		queue_free()
+
+## Speed buff system untuk boss Herald
+func apply_speed_buff(multiplier: float, source: Node):
+	speed_buffs[source] = multiplier
+	_recalculate_move_speed()
+	print("[Enemy] Speed buff applied: ", multiplier, "x from ", source.name)
+
+func remove_speed_buff(source: Node):
+	if source in speed_buffs:
+		speed_buffs.erase(source)
+		_recalculate_move_speed()
+		print("[Enemy] Speed buff removed from ", source.name)
+
+func _recalculate_move_speed():
+	if speed_buffs.is_empty():
+		move_speed = original_move_speed
+	else:
+		var max_multiplier = 1.0
+		for multiplier in speed_buffs.values():
+			max_multiplier = max(max_multiplier, multiplier)
+		move_speed = original_move_speed * max_multiplier
 
 func get_hp_percentage() -> float:
 	if enemy_data and enemy_data.max_hp > 0:

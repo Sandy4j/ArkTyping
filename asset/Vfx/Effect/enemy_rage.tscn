@@ -1,7 +1,8 @@
-[gd_scene load_steps=40 format=3 uid="uid://qgiiv0owlrvh"]
+[gd_scene load_steps=41 format=3 uid="uid://qgiiv0owlrvh"]
 
-[ext_resource type="Texture2D" uid="uid://d2k8tddol0qmn" path="res://asset/Vfx/Texture/T_Noise08.png" id="1_xljwl"]
-[ext_resource type="Texture2D" uid="uid://cyt4mry8us4op" path="res://asset/Vfx/Texture/T_LiquidVertical_Wave.png" id="2_gnode"]
+[ext_resource type="Script" uid="uid://dyvd4ikht0aob" path="res://scripts/Enemies/rage_boss.gd" id="1_gnode"]
+[ext_resource type="Texture2D" uid="uid://d3wrnkesk1awn" path="res://asset/Vfx/Texture/T_Noise08.png" id="1_xljwl"]
+[ext_resource type="Texture2D" uid="uid://d2ob3jx4nqgwm" path="res://asset/Vfx/Texture/T_LiquidVertical_Wave.png" id="2_gnode"]
 
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_ul2y0"]
 input_name = "time"
@@ -154,6 +155,11 @@ curve_y = SubResource("Curve_okimn")
 curve_z = SubResource("Curve_bcr1l")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xwpcn"]
+lifetime_randomness = 1.0
+particle_flag_align_y = true
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 1.0
 gravity = Vector3(0, 0, 0)
 scale_curve = SubResource("CurveXYZTexture_rv2kb")
 color = Color(1.0569379, 0, 0.20136261, 1)
@@ -291,63 +297,12 @@ shader_parameter/Texture2DParameter = ExtResource("2_gnode")
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_u128f"]
 
-[sub_resource type="Animation" id="Animation_aj3lg"]
-resource_name = "aura"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Aura:emitting")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.1),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Aura2:emitting")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.1),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Aura:lifetime")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.1, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [1.0, 999.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Aura2:lifetime")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.1, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [1.0, 999.0]
-}
-
 [sub_resource type="Animation" id="Animation_4te1d"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Aura:emitting")
+tracks/0/path = NodePath("aura:emitting")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -359,7 +314,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Aura2:emitting")
+tracks/1/path = NodePath("aura2:emitting")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -371,7 +326,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Aura:lifetime")
+tracks/2/path = NodePath("aura:lifetime")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -383,7 +338,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Aura2:lifetime")
+tracks/3/path = NodePath("aura2:lifetime")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -391,6 +346,57 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_aj3lg"]
+resource_name = "aura"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("aura:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("aura2:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("aura:lifetime")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 999.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("aura2:lifetime")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 999.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8c8qj"]
@@ -400,22 +406,22 @@ _data = {
 }
 
 [node name="Enemy_Rage" type="Node3D"]
+script = ExtResource("1_gnode")
 
-[node name="Aura" type="GPUParticles3D" parent="."]
+[node name="aura" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5626721, 0)
 material_override = SubResource("ShaderMaterial_yj51x")
 emitting = false
 amount = 1
-one_shot = true
 process_material = SubResource("ParticleProcessMaterial_xwpcn")
 draw_pass_1 = SubResource("CapsuleMesh_ubkou")
 
-[node name="Aura2" type="GPUParticles3D" parent="."]
+[node name="aura2" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5626721, 0)
+local_coords = true
 material_override = SubResource("ShaderMaterial_sjpxk")
 emitting = false
 amount = 1
-one_shot = true
 process_material = SubResource("ParticleProcessMaterial_xwpcn")
 draw_pass_1 = SubResource("CapsuleMesh_u128f")
 

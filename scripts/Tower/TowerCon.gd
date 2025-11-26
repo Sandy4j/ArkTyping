@@ -22,6 +22,10 @@ func _ready() -> void:
 	tower_input = get_tree().get_first_node_in_group("towerinput")
 
 func _input(event: InputEvent) -> void:
+	# Block input saat time stop
+	if get_tree().root.has_meta("time_stop_active") and get_tree().root.get_meta("time_stop_active"):
+		return
+	
 	if event is InputEventKey and event.pressed and not event.echo:
 		var key_code = event.keycode
 		var index = -1
@@ -165,12 +169,28 @@ func debuff_clear(v:String) -> void:
 			ui.show_message(msg)
 			return
 		if !spot.tower_node.got_binded:
-			var msg =str(spot.tower_node.tower_data.chara," doesnt' have a debuff")
+			var msg =str(spot.tower_node.tower_data.chara," doesn't have a debuff")
 			ui.show_message(msg)
 		elif spot.tower_node.got_binded:
-			spot.tower_node.clear_bind()
-			var msg =str(spot.tower_node.tower_data.chara, " debuff is gone")
-			ui.show_message(msg)
+			# Check if typed word matches the debuff word
+			var debuff_word = spot.tower_node.debuff_text.text.to_lower()
+			if v.to_lower() == debuff_word:
+				# Check if this is from BossDevil (custom bind) or regular debuff
+				if spot.tower_node.has_method("remove_bind_debuff"):
+					spot.tower_node.remove_bind_debuff()
+					
+					# Notify BossDevil that tower is cleansed
+					var boss_devil = get_tree().get_first_node_in_group("boss_devil")
+					if boss_devil and boss_devil.has_method("_on_tower_cleansed"):
+						boss_devil._on_tower_cleansed(spot.tower_node)
+				else:
+					spot.tower_node.clear_bind()
+				
+				var msg =str(spot.tower_node.tower_data.chara, " debuff is gone")
+				ui.show_message(msg)
+			else:
+				var msg = str("Wrong word! Type '", debuff_word.to_upper(), "'")
+				ui.show_message(msg)
 		#selected_spot_index = -1
 		TypingSystem.clear_text()
 	else:

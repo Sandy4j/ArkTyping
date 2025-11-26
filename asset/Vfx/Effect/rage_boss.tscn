@@ -1,6 +1,7 @@
-[gd_scene load_steps=41 format=3 uid="uid://cpjcceglq1t5"]
+[gd_scene load_steps=42 format=3 uid="uid://cpjcceglq1t5"]
 
-[ext_resource type="Texture2D" uid="uid://d2k8tddol0qmn" path="res://asset/Vfx/Texture/T_Noise08.png" id="1_puas6"]
+[ext_resource type="Script" uid="uid://dyvd4ikht0aob" path="res://scripts/Enemies/rage_boss.gd" id="1_axee4"]
+[ext_resource type="Texture2D" uid="uid://d3wrnkesk1awn" path="res://asset/Vfx/Texture/T_Noise08.png" id="1_puas6"]
 [ext_resource type="Texture2D" uid="uid://ikeb45mrrmk7" path="res://asset/Vfx/Texture/Stroke.png" id="2_axee4"]
 
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_anjp4"]
@@ -144,6 +145,11 @@ point_count = 2
 curve = SubResource("Curve_0vg16")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1sme7"]
+lifetime_randomness = 1.0
+particle_flag_align_y = true
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 1.0
 gravity = Vector3(0, 0, 0)
 color = Color(1.698, 0, 0.346, 1)
 emission_curve = SubResource("CurveTexture_gxfk6")
@@ -287,62 +293,16 @@ point_count = 2
 curve = SubResource("Curve_dbegk")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_okmt6"]
+lifetime_randomness = 1.0
+particle_flag_align_y = true
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 1.0
 gravity = Vector3(0, 0, 0)
 color = Color(1.1374342, 0, 0.21992142, 1)
 emission_curve = SubResource("CurveTexture_ro42k")
 
 [sub_resource type="SphereMesh" id="SphereMesh_l7pf2"]
-
-[sub_resource type="Animation" id="Animation_58ni3"]
-resource_name = "aura"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("aura:emitting")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.1),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("aura:lifetime")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.1, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [1.0, 999.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("aura2:emitting")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.1),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("aura2:lifetime")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.1, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [1.0, 999.0]
-}
 
 [sub_resource type="Animation" id="Animation_rvpmj"]
 length = 0.001
@@ -395,6 +355,57 @@ tracks/3/keys = {
 "values": [1.0]
 }
 
+[sub_resource type="Animation" id="Animation_58ni3"]
+resource_name = "aura"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("aura:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("aura:lifetime")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 999.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("aura2:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("aura2:lifetime")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 999.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_34eqg"]
 _data = {
 &"RESET": SubResource("Animation_rvpmj"),
@@ -402,22 +413,23 @@ _data = {
 }
 
 [node name="Rage_Boss" type="Node3D"]
+script = ExtResource("1_axee4")
 
 [node name="aura" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44134736, 0)
+local_coords = true
 material_override = SubResource("ShaderMaterial_274xb")
 emitting = false
 amount = 1
-one_shot = true
 process_material = SubResource("ParticleProcessMaterial_1sme7")
 draw_pass_1 = SubResource("SphereMesh_2rsn5")
 
 [node name="aura2" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44134736, 0)
+local_coords = true
 material_override = SubResource("ShaderMaterial_go2ey")
 emitting = false
 amount = 1
-one_shot = true
 process_material = SubResource("ParticleProcessMaterial_okmt6")
 draw_pass_1 = SubResource("SphereMesh_l7pf2")
 

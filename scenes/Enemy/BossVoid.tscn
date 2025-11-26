@@ -1,0 +1,65 @@
+[gd_scene load_steps=13 format=3 uid="uid://cy32m6d3q4iry"]
+
+[ext_resource type="Script" uid="uid://bbco23cbf7yvu" path="res://scripts/Enemies/BossVoid.gd" id="1_ldimu"]
+[ext_resource type="Resource" uid="uid://cl7vbw18komq5" path="res://resources/Enemy Data/BossVoid.tres" id="2_8v3as"]
+[ext_resource type="Texture2D" uid="uid://bwvi5wt1pmskk" path="res://asset/Enemy/Boss 3/1.png" id="3_paqhn"]
+[ext_resource type="Texture2D" uid="uid://by3ba4fg5tosf" path="res://asset/Enemy/Boss 3/2.png" id="4_ldimu"]
+[ext_resource type="Texture2D" uid="uid://bgadp78j25odw" path="res://asset/Enemy/Boss 3/3.png" id="5_8v3as"]
+[ext_resource type="Texture2D" uid="uid://b0dofaap51w0a" path="res://asset/Enemy/Boss 3/4.png" id="6_sdv7m"]
+[ext_resource type="Texture2D" uid="uid://ciy6py6b0bebv" path="res://asset/Enemy/Boss 3/5.png" id="7_hbiqh"]
+[ext_resource type="Texture2D" uid="uid://rlgkcreakw5s" path="res://asset/Enemy/Boss 3/6.png" id="8_0722n"]
+[ext_resource type="Texture2D" uid="uid://bt8lgggg5vcx3" path="res://asset/Enemy/Boss 3/7.png" id="9_u4wu4"]
+[ext_resource type="Texture2D" uid="uid://bdidm4ql4de7v" path="res://asset/Enemy/Boss 3/8.png" id="10_mnhrb"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_inemf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rkjbc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_paqhn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ldimu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_8v3as")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_sdv7m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_hbiqh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_0722n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_u4wu4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_mnhrb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="BossVoid" type="CharacterBody3D"]
+script = ExtResource("1_ldimu")
+enemy_data = ExtResource("2_8v3as")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_inemf")
+
+[node name="Anim" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.2819078, 0.10260604, 0, -0.10260604, 0.2819078, 0, 1, 0)
+billboard = 1
+sprite_frames = SubResource("SpriteFrames_rkjbc")
+frame_progress = 0.74961007
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.100949466, 0)
+light_color = Color(1, 0.24313726, 0, 1)
+light_energy = 2.0
+omni_range = 3.0

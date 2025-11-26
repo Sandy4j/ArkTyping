@@ -141,10 +141,14 @@ func _process(delta: float) -> void:
 	if not is_inside_tree():
 		return
 	
+	# Check bind (includes time stop bind)
+	if got_binded:
+		print("[Tower ", name, "] BLOCKED - got_binded=", got_binded)
+		return
+	
 	if current_skill_cooldown > 0 or skill_active and !bullet_requiem_active :
 		execute_skill(delta)
-	if got_binded:
-		return
+	
 	fire_timer += delta
 	
 	update_animation()
@@ -166,6 +170,10 @@ func _process(delta: float) -> void:
 	update_sprite_direction()
 	# Shoot at target
 	if current_target and is_instance_valid(current_target) and current_target.is_in_group("enemies") and fire_timer >= 1.0 / fire_rate:
+		# Don't shoot if time stop is active (check global flag)
+		if get_tree().root.has_meta("time_stop_active") and get_tree().root.get_meta("time_stop_active"):
+			return
+		
 		is_shooting = true
 		sfx.play()
 		if is_kaelio and overload_burst_active or is_rosemary:
@@ -226,6 +234,42 @@ func clear_bind():
 	debuff_aura.queue_free()
 	debuff_text.visible = false
 
+## Method untuk Boss Devil - bind debuff dengan custom word
+func apply_bind_debuff(bind_word: String):
+	if got_binded:
+		return
+	
+	sprite.stop()
+	got_binded = true
+	
+	# Get parent TowerSpot
+	var tower_spot = get_parent()
+	if not tower_spot or not tower_spot.has_method("apply_bind_vfx"):
+		print("[Tower] ERROR: Parent is not a TowerSpot!")
+		return
+	
+	# Tell TowerSpot to apply VFX
+	tower_spot.apply_bind_vfx()
+	debuff_aura = tower_spot  # Store reference to spot for cleanup
+	
+	debuff_text.text = bind_word
+	debuff_text.visible = true
+	print("[Tower] Bind debuff applied with word: ", bind_word)
+
+func remove_bind_debuff():
+	if not got_binded:
+		return
+	
+	got_binded = false
+	
+	# Tell TowerSpot to remove VFX
+	if is_instance_valid(debuff_aura) and debuff_aura.has_method("remove_bind_vfx"):
+		debuff_aura.remove_bind_vfx()
+	
+	debuff_aura = null
+	debuff_text.visible = false
+	sprite.play("default")
+	print("[Tower] Bind debuff removed")
 func after_shoot():
 	#is_shooting = false
 	pass

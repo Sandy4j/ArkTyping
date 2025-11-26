@@ -1,4 +1,4 @@
-﻿extends Resource
+extends Resource
 class_name EnemyData
 
 ## Konfigurasi statistik dan atribut Enemy
@@ -19,4 +19,4 @@ class_name EnemyData
 
 @export_group("Special")
 @export var is_boss: bool = false
-@export var boss_scale_multiplier: float = 2.0
+@export var boss_scale_multiplier: float = 1.0

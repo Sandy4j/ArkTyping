@@ -1,6 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://orr3oexwxv50"]
+[gd_scene load_steps=16 format=3 uid="uid://orr3oexwxv50"]
 
-[ext_resource type="Script" path="res://scripts/Enemies/BasicEnemy.gd" id="1_ppl04"]
+[ext_resource type="Script" uid="uid://wp4smw2mp3vo" path="res://scripts/Enemies/BossDevil.gd" id="1_ppl04"]
 [ext_resource type="Resource" uid="uid://bq4231ilgt53l" path="res://resources/Enemy Data/BossDevil.tres" id="2_fl4p0"]
 [ext_resource type="Texture2D" uid="uid://r8ooodcwv8th" path="res://asset/Enemy/Enemy 1/1.png" id="3_yhny7"]
 [ext_resource type="Texture2D" uid="uid://b1payntwal253" path="res://asset/Enemy/Enemy 1/2.png" id="4_sl4vt"]
@@ -53,7 +53,10 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="BasicDevil" type="CharacterBody3D"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_yhny7"]
+radius = 5.0
+
+[node name="BossDevil" type="CharacterBody3D"]
 script = ExtResource("1_ppl04")
 enemy_data = ExtResource("2_fl4p0")
 
@@ -64,10 +67,15 @@ shape = SubResource("SphereShape3D_inemf")
 transform = Transform3D(0.3, 0, 0, 0, 0.2819078, 0.10260604, 0, -0.10260604, 0.2819078, 0, 1, 0)
 billboard = 1
 sprite_frames = SubResource("SpriteFrames_rkjbc")
-frame_progress = 0.7356877
+frame_progress = 0.7356877000000001
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.100949466, 0)
 light_color = Color(1, 0.24313726, 0, 1)
 light_energy = 2.0
 omni_range = 3.0
+
+[node name="RadiusArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RadiusArea"]
+shape = SubResource("SphereShape3D_yhny7")
