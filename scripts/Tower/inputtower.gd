@@ -11,6 +11,7 @@ var HistoryLbl:Array[Node]
 var count:int = 0
 var TOWER_KEYWORD:Array[String]
 var SKILL_KEYWORD:Array[String]
+var DEBUFF_WORD:Array[String]
 var selected_spot_index: int = -1
 
 func _ready() -> void:
@@ -18,6 +19,8 @@ func _ready() -> void:
 	for data in tower_list:
 		TOWER_KEYWORD.append(data.chara)
 		SKILL_KEYWORD.append(data.skill)
+	for word in TypingSystem.debuff_text:
+		DEBUFF_WORD.append(word)
 	TypingSystem.text_typed.connect(_on_text_typed)
 	TypingSystem.text_submitted.connect(_on_text_submitted)
 
@@ -32,6 +35,12 @@ func _on_text_typed(current_text: String) -> void:
 	for word in SKILL_KEYWORD:
 		if current_text.to_lower() == word:
 			inputLbl.add_theme_color_override("font_color", Color.YELLOW)
+			return
+	for word in TypingSystem.debuff_text:
+		if current_text.to_lower() == word:
+			inputLbl.add_theme_color_override("font_color", Color.GREEN)
+			emit_signal("Pop",current_text)
+			popped = true
 			return
 	if current_text == "Retreat" or current_text == "retreat":
 		inputLbl.add_theme_color_override("font_color", Color.RED)
@@ -59,7 +68,19 @@ func _on_text_submitted(full_text: String) -> void:
 				show_message("Pilih spot dulu! Tekan 1-9")
 				AudioManager.play_sfx("type_wrong")
 				return
-				
+	for word in DEBUFF_WORD:
+		if typed_text == word:
+			if selected_spot_index >= 0:
+				request_tower_debuff_clear(typed_text)
+				HIstory_add(typed_text,Color.GREEN)
+				AudioManager.play_sfx("type_correct")
+				inputLbl.text = ""
+				return
+			else:
+				print("Spot belum dipilih bro.")
+				show_message("Pilih spot dulu! Tekan 1-9")
+				AudioManager.play_sfx("type_wrong")
+				return
 	for word in SKILL_KEYWORD:
 		if typed_text == word:
 			if selected_spot_index >= 0:
@@ -87,6 +108,7 @@ func _on_text_submitted(full_text: String) -> void:
 			show_message("Pilih spot dulu! Tekan 1-9")
 			AudioManager.play_sfx("type_wrong")
 			return
+			
 	else:
 		HIstory_add(typed_text,Color.RED)
 		AudioManager.play_sfx("type_wrong")
@@ -95,6 +117,13 @@ func _on_text_submitted(full_text: String) -> void:
 
 func set_selected_spot(index: int) -> void:
 	selected_spot_index = index
+
+func request_tower_debuff_clear(v:String) -> void:
+	var tower_controller = get_tree().get_first_node_in_group("towercon")
+	if tower_controller and tower_controller.has_method("debuff_clear"):
+		tower_controller.debuff_clear(v)
+	else:
+		print("TowerController not found!")
 
 func request_tower_placement(v:String) -> void:
 	var data:TowerData

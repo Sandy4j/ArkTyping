@@ -36,12 +36,15 @@ const VFX_CACHE: Dictionary = {
 	"magic_circle_5": "res://asset/Vfx/Effect/magic_circle_5(vigilante).tscn",
 	"magic_circle_6": "res://asset/Vfx/Effect/magic_circle_6(Leciana).tscn",
 	"magic_circle_7": "res://asset/Vfx/Effect/magic_circle_7(Lilitia).tscn",
-	"circle_heal": "res://asset/Vfx/Effect/magic_circle_heal.tscn",
+	"magic_circle_8": "res://asset/Vfx/Effect/magic_circle_8.tscn",
+	"magic_circle_9": "res://asset/Vfx/Effect/magic_circle_9.tscn",
 	"divine_ball": "res://asset/Vfx/Effect/Divine_Ball.tscn",
 	"toxic_veil": "res://asset/Vfx/Effect/Toxicveil.tscn",
 	"shoot": "res://asset/Vfx/Effect/Shoot.tscn",
 	"gun_rosemary": "res://asset/Vfx/Effect/gun_Rosemary.tscn",
-	"hit_tower": "res://asset/Vfx/Effect/hit_Tower.tscn"
+	"hit_tower": "res://asset/Vfx/Effect/hit_Tower.tscn",
+	"heal_celen": "res://asset/Vfx/Effect/heal_aura_2.tscn",
+	"heal_priest": "res://asset/Vfx/Effect/heal_aura.tscn"
 }
 
 ## Resource types yang benefit dari threading

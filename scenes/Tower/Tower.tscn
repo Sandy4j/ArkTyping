@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://cqhh8jen48v85" path="res://scripts/Tower/Tower.gd" id="1_tower"]
 [ext_resource type="Texture2D" uid="uid://dunhge3h6b4tl" path="res://asset/Tower/Capture.PNG" id="3_02lgm"]
-[ext_resource type="Texture2D" uid="uid://4yws4q3bmt5x" path="res://asset/Tower/Kaelio/Attack/Skill 6.png" id="3_3tc4n"]
-[ext_resource type="Texture2D" uid="uid://ddu0jwc17rj0o" path="res://asset/UI_Gameplay/Group_1.png" id="4_oopld"]
-[ext_resource type="PackedScene" uid="uid://csgdym37gysnc" path="res://asset/Vfx/Effect/Bullet_Kaelio.tscn" id="7_f3260"]
+[ext_resource type="Texture2D" uid="uid://bxxabu11ine8w" path="res://asset/Tower/Kaelio/Attack/6.png" id="3_3tc4n"]
+[ext_resource type="Texture2D" uid="uid://b5gwwrx5ergdw" path="res://asset/Tower/Skill/Group 108.png" id="4_3tc4n"]
+[ext_resource type="FontFile" uid="uid://ddon0uj5gtdts" path="res://asset/UI_Gameplay/Viga-Regular.ttf" id="5_oopld"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oopld"]
 animations = [{
@@ -89,6 +89,7 @@ script = ExtResource("1_tower")
 
 [node name="Sprite3D" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(0.08, 0, 0, 0, 0.06128356, 0.051423006, 0, -0.051423006, 0.06128356, 0.12514055, -0.47096694, -0.3443368)
+billboard = 1
 no_depth_test = true
 sprite_frames = SubResource("SpriteFrames_oopld")
 
@@ -123,9 +124,9 @@ visible = false
 mesh = SubResource("BoxMesh_shoot")
 
 [node name="SkillSprite" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.7660445, 0.6427876, 0, -0.6427876, 0.7660445, -0.07225931, -0.88855666, 1.0636818)
+transform = Transform3D(1, 0, 0, 0, 0.7660445, 0.6427876, 0, -0.6427876, 0.7660445, 0.20533061, -0.88855666, 1.0636818)
 no_depth_test = true
-texture = ExtResource("4_oopld")
+texture = ExtResource("4_3tc4n")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
@@ -171,12 +172,15 @@ transparent = false
 no_depth_test = true
 texture = SubResource("ViewportTexture_oopld")
 
-[node name="Bullet_Kaelio" parent="." instance=ExtResource("7_f3260")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.130438, -1.1706529, -1.097178)
-
 [node name="Aoe" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.071, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00028324127, -1.0665215, -0.0046286583)
 mesh = SubResource("CylinderMesh_yc5to")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1190995, -1.1459916)
+billboard = 1
+font = ExtResource("5_oopld")
+font_size = 50
 
 [connection signal="animation_finished" from="Sprite3D" to="." method="_on_sprite_3d_animation_finished"]
 [connection signal="body_entered" from="RangeArea" to="." method="_on_enemy_entered_range"]

@@ -3,6 +3,8 @@ extends Node
 signal text_submitted(full_text: String)
 signal text_typed(character: String)
 
+var debuff_text:Array[String] = ["cleansing", "cleanse", "purify",
+"absolve", "refresh", "bless", "cure", "revive", "release", "rarefy"]
 var _current_text: String = ""
 
 func _input(event) -> void:

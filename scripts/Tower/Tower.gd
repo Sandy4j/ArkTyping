@@ -18,6 +18,7 @@ var tower_in_range: Array[Node3D] = []
 var overload_burst_active:bool
 var scarlet_harvester_active:bool
 var bullet_requiem_active:bool
+var purify_wave_active:bool
 var max_hp: float = 100.0
 var current_hp: float = 100.0
 var skill_duration:float
@@ -26,6 +27,7 @@ var vfx_shoot
 var vfx_aura
 var orbit
 var orbit2
+var got_binded:bool
 var is_healer:bool
 var is_lilitia:bool
 var is_kaelio:bool
@@ -46,11 +48,14 @@ var is_animation_playing: bool = false
 @onready var HPBar: ProgressBar = $SubViewport/TextureProgressBar
 @onready var SBar: ProgressBar = $SubViewport2/TextureProgressBar
 @onready var aoe: MeshInstance3D = $Aoe
+@onready var debuff_text: Label3D = $Label3D
+var debuff_aura
 var altar
 var stylefill:StyleBoxFlat
 var mesh_aoe:CylinderMesh
 
 func _ready() -> void:
+	debuff_text.visible = false
 	var temp_stylebox = SBar.get_theme_stylebox("fill")
 	stylefill = temp_stylebox.duplicate()
 	SBar.add_theme_stylebox_override("fill", stylefill)
@@ -109,11 +114,10 @@ func _ready() -> void:
 					var light:OmniLight3D = vfx_node.get_child(3)
 					light.light_energy = 0
 					vfx_shoot = vfx_node.get_child(4)
-			"healer":
+			"cellene":
 				is_healer = true
-				#var temp_area:Area3D = range_area.duplicate()
-				#range_area.collision_layer = 1
-				#range_area.collision_mask = 1
+			"priestess":
+				is_healer = true
 	
 	if range_area and is_healer:
 		print("healer masuk")
@@ -137,10 +141,11 @@ func _process(delta: float) -> void:
 	if not is_inside_tree():
 		return
 	
-	fire_timer += delta
-	
 	if current_skill_cooldown > 0 or skill_active and !bullet_requiem_active :
 		execute_skill(delta)
+	if got_binded:
+		return
+	fire_timer += delta
 	
 	update_animation()
 	if is_lilitia:
@@ -149,6 +154,10 @@ func _process(delta: float) -> void:
 		update_healing_target()
 		update_sprite_direction()
 		if healing_target and is_instance_valid(healing_target) and fire_timer >= 1.0 / fire_rate:
+			if purify_wave_active:
+				purify_wave()
+				fire_timer = 0.0
+				return
 			healing()
 			fire_timer = 0.0
 		return
@@ -196,9 +205,29 @@ func update_animation():
 		if sprite.animation != "default":
 			sprite.play("default")
 
+func binded():
+	sprite.stop()
+	got_binded = true
+	var aura_scene = ResourceLoadManager.get_vfx_resource("magic_circle_7")
+	if not aura_scene:
+		aura_scene = ResourceLoadManager.load_resource_sync("res://asset/Vfx/Effect/magic_circle_7(Lilitia).tscn")
+	var aura_node = aura_scene.instantiate()
+	altar.add_child(aura_node)
+	debuff_aura = aura_node
+	var anim = aura_node.get_child(5)
+	anim.play("Kaileo_FX")
+	debuff_text.text = TypingSystem.debuff_text.pick_random()
+	debuff_text.visible = true
+
+func clear_bind():
+	got_binded = false
+	debuff_aura.queue_free()
+	debuff_text.visible = false
+
 func after_shoot():
 	#is_shooting = false
 	pass
+
 
 func shoot(target: Node3D) -> void:
 	if is_animation_playing:
@@ -384,14 +413,36 @@ func healing()-> void:
 	
 	# 🎯 STOP ANIMASI IDLE DULU
 	sprite.stop()
-	
+	sfx.play()
 	# 🎯 PLAY ANIMASI ATTACK
 	sprite.play("attack")
 	if healing_target.current_hp == healing_target.max_hp:
 		return
 	else :
-		healing_target.healed(damage)
+		var aura = projectile.instantiate()
+		healing_target.healed(damage, aura)
 		print(tower_data.chara, " melakukan heal pada ", healing_target.tower_data.chara)
+
+
+func purify_wave()-> void:
+	is_shooting = true
+	is_animation_playing = true
+	
+	# 🎯 STOP ANIMASI IDLE DULU
+	sprite.stop()
+	
+	# 🎯 PLAY ANIMASI ATTACK
+	sprite.play("attack")
+	sfx.play()
+	for tower in tower_in_range:
+		healing_target = tower
+		if healing_target.current_hp == healing_target.max_hp:
+			return
+		else :
+			var aura = ResourceLoadManager.get_vfx_resource("heal_priest")
+			healing_target.healed(damage, aura)
+			print(tower_data.chara, " melakukan heal pada ", healing_target.tower_data.chara)
+	shot_fired.emit()
 
 func show_skill():
 	skill_sprite.visible = true
@@ -474,16 +525,12 @@ func cleanup_enemies_array() -> void:
 func update_healing_target():
 	cleanup_tower_array()
 	var near_tower = range_area.get_overlapping_areas()
-	print("Total overlapping areas: ", near_tower.size())  # CEK INI DULU SAYANG!
 	
 	for area in near_tower:
-		print("Area: ", area.name)
-		print("Parent: ", area.get_parent().name)
 		if area.has_method("place_tower"):
 			if area.has_tower:
 				if area.tower_node != self:
 					tower_in_range.append(area.tower_node)
-					print("✅ TOWER FOUND via Area: ", area.tower_node.tower_data.chara)
 		#if area.get_parent().is_in_group("tower"):
 			#tower_in_range.append(area.get_parent())
 			#print("terdeteksi ", area.get_parent().tower_data.chara)
@@ -491,12 +538,15 @@ func update_healing_target():
 	
 	if tower_in_range.size() <= 0:
 		return
+	var lowest_hp = INF
+	
 	for tower in tower_in_range:
-		if is_instance_valid(tower):
-			if !healing_target:
-				healing_target = tower
-			if tower.current_hp < healing_target.current_hp:
-				healing_target = tower
+		if not is_instance_valid(tower) or tower.current_hp == tower.max_hp:
+			continue
+			
+		if tower.current_hp < lowest_hp:
+			lowest_hp = tower.current_hp
+			healing_target = tower
 
 func cleanup_tower_array() -> void:
 	var invalid_towers: Array[Node3D] = []
@@ -515,6 +565,8 @@ func cleanup_tower_array() -> void:
 			update_healing_target()
 
 func take_damage(dmg: float) -> void:
+	if !self.got_binded:
+		binded()
 	current_hp -= dmg
 	HPBar.value = current_hp
 	var vfx_sc = ResourceLoadManager.get_vfx_resource("hit_tower")
@@ -531,18 +583,17 @@ func destroy() -> void:
 	tower_destroyed.emit()
 	print("Tower destroyed!")
 
-func healed(heal: float) -> void:
+func healed(heal: float, aura:Node3D) -> void:
 	print(tower_data.chara, " kena heal ", str(heal))
 	current_hp += heal
 	if current_hp > max_hp:
 		current_hp = max_hp
 	HPBar.value = current_hp
-	var vfx_sc = ResourceLoadManager.get_vfx_resource("circle_heal")
-	if not vfx_sc:
-		vfx_sc = ResourceLoadManager.load_resource_sync("res://asset/Vfx/Effect/magic_circle_heal.tscn")
-	if vfx_sc:
-		var vfx_nd = vfx_sc.instantiate()
-		altar.add_child(vfx_nd)
+	altar.add_child(aura)
+	var anim = aura.get_node("AnimationPlayer")
+	anim.play("healaura")
+	await anim.animation_finished
+	aura.queue_free()
 
 func get_hp_percentage() -> float:
 	return current_hp / max_hp if max_hp > 0 else 0.0
@@ -570,9 +621,13 @@ func Skill(skill_name: String) -> void:
 			activate_lunar_blessing()
 		"unholy bless":
 			active_unholy_bless()
+		"purify wave":
+			activate_purify_wave()
 		_:
 			print("Unknown skill: ", skill_name)
 			return
+	if tower_data.skl_sfx:
+		sfx.stream = tower_data.skl_sfx
 	SBar.max_value = tower_data.skill_duration
 	skill_duration = tower_data.skill_duration
 	SBar.value = skill_duration
@@ -603,7 +658,6 @@ func execute_skill(delta: float) -> void:
 
 func activate_overload_burst() -> void:
 	print("Overload burst aktif!")
-	sfx.stream = tower_data.skl_sfx
 	var aura_scene = ResourceLoadManager.get_vfx_resource("magic_circle_1")
 	if not aura_scene:
 		aura_scene = ResourceLoadManager.load_resource_sync("res://asset/Vfx/Effect/magic_circle_1.tscn")
@@ -624,7 +678,6 @@ func activate_overload_burst() -> void:
 
 func activate_lunar_blessing() -> void:
 	print("lunar blessing aktif")
-	sfx.stream = tower_data.skl_sfx
 	var aura_scene = ResourceLoadManager.get_vfx_resource("magic_circle_3")
 	if not aura_scene:
 		aura_scene = ResourceLoadManager.load_resource_sync("res://asset/Vfx/Effect/magic_circle_3(Silvanna).tscn")
@@ -634,7 +687,7 @@ func activate_lunar_blessing() -> void:
 		print(aura_node.get_child(5).name)
 		aura_node.get_child(5).play("Kaileo_FX")
 		var normal_damage = damage
-		var damage = normal_damage * 2
+		damage = normal_damage * 2
 		await skill_done  
 		sfx.stream = tower_data.atk_sfx
 		aura_node.queue_free()
@@ -687,7 +740,6 @@ func activate_holy_divine() -> void:
 
 func activate_toxic_veil() -> void:
 	print("toxic veil aktif!")
-	sfx.stream = tower_data.skl_sfx
 	var aura_scene = ResourceLoadManager.get_vfx_resource("magic_circle_2")
 	if not aura_scene:
 		aura_scene = ResourceLoadManager.load_resource_sync("res://asset/Vfx/Effect/magic_circle_2(plague).tscn")
@@ -754,20 +806,20 @@ func activate_scarlet_harvester()-> void:
 		aura_node.get_child(5).play("Kaileo_FX")
 		scarlet_harvester_active = true
 		await skill_done 
+		sfx.stream = tower_data.atk_sfx
 		aura_node.queue_free()
 		scarlet_harvester_active = false
 		
 
 var requiem_shot: int  
 func activate_bullet_requiem()-> void:
-	requiem_shot = 5
+	requiem_shot = tower_data.skill_duration
 	var aura_scene = ResourceLoadManager.get_vfx_resource("magic_circle_4")
 	if not aura_scene:
 		aura_scene = ResourceLoadManager.load_resource_sync("res://asset/Vfx/Effect/magic_circle_4(Rosemary).tscn")
 	if aura_scene:
 		bullet_requiem_active = true
 		var aura_node = aura_scene.instantiate()
-		sfx.stream = tower_data.skl_sfx
 		vfx_aura = aura_node
 		altar.add_child(aura_node)
 		aura_node.get_child(5).play("Kaileo_FX")
@@ -797,20 +849,58 @@ func bullet_requiem_counter():
 		vfx_aura.queue_free()
 
 func active_unholy_bless()-> void:
-	var aura_scene = ResourceLoadManager.get_vfx_resource("magic_circle_2")
+	var aura_scene = ResourceLoadManager.get_vfx_resource("magic_circle_9")
 	if not aura_scene:
-		aura_scene = ResourceLoadManager.load_resource_sync("res://asset/Vfx/Effect/magic_circle_2(plague).tscn")
+		aura_scene = ResourceLoadManager.load_resource_sync("res://asset/Vfx/Effect/magic_circle_9.tscn")
 	if aura_scene:
 		var aura_node = aura_scene.instantiate()
 		altar.add_child(aura_node)
 		print(aura_node.get_child(5).name)
 		aura_node.get_child(5).play("Kaileo_FX")
 		var normal_damage = damage
-		var damage = normal_damage * 2
+		damage = normal_damage * 2
 		await skill_done  
+		sfx.stream = tower_data.atk_sfx
 		aura_node.queue_free()
 		damage = normal_damage
 		print("lunar blessing berakhir")
+
+var purify: int  
+func activate_purify_wave()-> void:
+	purify = tower_data.skill_duration
+	var aura_scene = ResourceLoadManager.get_vfx_resource("magic_circle_8")
+	if not aura_scene:
+		aura_scene = ResourceLoadManager.load_resource_sync("res://asset/Vfx/Effect/magic_circle_8.tscn")
+	if aura_scene:
+		purify_wave_active = true
+		var aura_node = aura_scene.instantiate()
+		vfx_aura = aura_node
+		altar.add_child(aura_node)
+		aura_node.get_child(5).play("Kaileo_FX")
+		var normal_dmg = damage
+		damage = normal_dmg * 2
+		var normal_speed = fire_rate
+		fire_rate = 1
+		SBar.max_value = tower_data.skill_duration
+		SBar.value = tower_data.skill_duration
+		shot_fired.connect(purify_wave_counter)
+
+func purify_wave_counter():
+	purify -= 1
+	print("req ", str(purify))
+	SBar.value = purify
+	if purify <= 0 and purify_wave_active:
+		skill_active = false
+		SBar.max_value = skill_cooldown
+		current_skill_cooldown = skill_cooldown
+		stylefill.bg_color = Color("DAC41E")
+		skill_sprite.modulate = Color(0.5,0.5,0.5,1.0)
+		skill_done.emit()
+		sfx.stream = tower_data.atk_sfx
+		damage = tower_data.damage
+		fire_rate = tower_data.speed
+		shot_fired.disconnect(purify_wave_counter)
+		vfx_aura.queue_free()
 
 func _on_sprite_3d_animation_finished() -> void:
 	#print("Animation finished: ", sprite.animation)

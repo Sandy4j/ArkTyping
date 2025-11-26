@@ -76,11 +76,11 @@ func select_spot(index: int) -> void:
 	var new_spot = tower_spots[index]
 	var old_spot = null
 	
-	# 🎯 1. SIMPAN SPOT LAMA JIKA ADA
+	# 🎯 1. SAVE OLD SPOT IF EXISTS
 	if selected_spot_index >= 0 and selected_spot_index < tower_spots.size():
 		old_spot = tower_spots[selected_spot_index]
 	
-	# 🎯 2. HIDE/REMOVE DARI SPOT LAMA
+	# 🎯 2. HIDE/REMOVE FROM OLD SPOT
 	if old_spot:
 		if not old_spot.has_tower:
 			remove_outline_from_spot(old_spot)
@@ -90,7 +90,7 @@ func select_spot(index: int) -> void:
 	# 🎯 3. UPDATE SELECTED INDEX
 	selected_spot_index = index
 	
-	# 🎯 4. SHOW/ADD KE SPOT BARU
+	# 🎯 4. SHOW/ADD TO NEW SPOT
 	AudioManager.play_sfx("spot_select")
 	
 	if not new_spot.has_tower:
@@ -125,29 +125,29 @@ func place_tower_at_selected(data:TowerData) -> void:
 	if selected_spot_index >= 0 and selected_spot_index < tower_spots.size():
 		var spot = tower_spots[selected_spot_index]
 		if !data.available:
-			var msg:String = str(data.chara, " sedang dalam cooldown!")
+			var msg:String = str(data.chara, " is currently on cooldown!")
 			ui.show_message(msg)
 			return
 		for name in placed_tower:
 			if name == data.chara:
-				var msg:String = str("Sudah ada ",data.chara, " yang di panggil!")
+				var msg:String = str(data.chara, " is already deployed!")
 				ui.show_message(msg)
 				return
 		if spot.has_tower:
-			var msg:String = str("Spot ", selected_spot_index + 1, " sudah ada tower!")
+			var msg:String = str("Spot ", selected_spot_index + 1, " already has a tower!")
 			ui.show_message(msg)
 			return
 		
 		var success = spot.place_tower(data)
 		if !success:
-			var msg:String = str("Gagal memasang tower! Cost tidak cukup atau error lain.")
+			var msg:String = str("Failed to place tower! Not enough cost or other error.")
 			ui.show_message(msg)
 			return
 		
 		# Tower placed successfully, update game state
 		AudioManager.play_sfx("tower_deploy")
 		placed_tower.append(data.chara)
-		var msg =str("memasang tower ", data.chara)
+		var msg =str("Placed ", data.chara, " tower")
 		ui.show_message(msg)
 		ui._on_tower_placed(data.chara)
 		update_spot_labels()
@@ -157,26 +157,48 @@ func place_tower_at_selected(data:TowerData) -> void:
 	else:
 		ui.show_message("No spot selected!")
 
-func active_tower_at_selected(v:String) -> void:
-	print("mengaktifkan skill dengan ", v)
+func debuff_clear(v:String) -> void:
 	if selected_spot_index >= 0 and selected_spot_index < tower_spots.size():
 		var spot = tower_spots[selected_spot_index]
 		if !spot.has_tower:
-			var msg = str("Spot ", selected_spot_index + 1, " belum ada tower!")
+			var msg = str("Spot ", selected_spot_index + 1, " has no tower!")
+			ui.show_message(msg)
+			return
+		if !spot.tower_node.got_binded:
+			var msg =str(spot.tower_node.tower_data.chara," doesnt' have a debuff")
+			ui.show_message(msg)
+		elif spot.tower_node.got_binded:
+			spot.tower_node.clear_bind()
+			var msg =str(spot.tower_node.tower_data.chara, " debuff is gone")
+			ui.show_message(msg)
+		#selected_spot_index = -1
+		TypingSystem.clear_text()
+	else:
+		ui.show_message("No spot selected!")
+
+func active_tower_at_selected(v:String) -> void:
+	print("Activating skill: ", v)
+	if selected_spot_index >= 0 and selected_spot_index < tower_spots.size():
+		var spot = tower_spots[selected_spot_index]
+		if !spot.has_tower:
+			var msg = str("Spot ", selected_spot_index + 1, " has no tower!")
 			ui.show_message(msg)
 			return
 		if spot.tower_node.current_skill_cooldown > 0 and spot.tower_data.skill == v:
-			var msg =str("skill ", v," sedang cooldown")
+			var msg =str("Skill ", v," is on cooldown")
 			ui.show_message(msg)
 		elif spot.tower_node.skill_active:
-			var msg =str("skill tower sedang aktif")
+			var msg =str("Tower skill is already active")
+			ui.show_message(msg)
+		elif spot.tower_node.is_binded:
+			var msg =str(spot.tower_node.tower_data.chara, " cant activate the skill because of debuff")
 			ui.show_message(msg)
 		elif spot.tower_data.skill == v:
 			spot.tower_node.Skill(v)
-			var msg =str("mengaktifkan skill ", v)
+			var msg =str("Activated ", v, " skill")
 			ui.show_message(msg)
 		else:
-			ui.show_message("salah skill woi")
+			ui.show_message("Wrong skill for this tower!")
 		#selected_spot_index = -1
 		TypingSystem.clear_text()
 	else:
@@ -186,9 +208,9 @@ func delete_tower_at_selected() -> void:
 	if selected_spot_index >= 0 and selected_spot_index < tower_spots.size():
 		var spot = tower_spots[selected_spot_index]
 		if !spot.has_tower:
-			ui.show_message("Spot ini belum ada tower")
+			ui.show_message("This spot has no tower")
 			return
-		var msg =str("menghapus tower ", spot.tower_data.chara)
+		var msg =str("Removed ", spot.tower_data.chara, " tower")
 		GameManager.set_tower_state(spot.tower_data,false)
 		spot.remove_tower()
 		AudioManager.play_sfx("tower_retreat")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=82 format=3 uid="uid://q6rej2jifb00"]
 
 [ext_resource type="Texture2D" uid="uid://b7ykjo211uxxq" path="res://asset/Vfx/Texture/Wave.png" id="1_fyixy"]
-[ext_resource type="ArrayMesh" uid="uid://cmulr6d1utn67" path="res://asset/Vfx/Obj/silinder_long.obj" id="2_7qpfn"]
+[ext_resource type="ArrayMesh" uid="uid://f6i7lrngtc4a" path="res://asset/Vfx/Obj/silinder_long.obj" id="2_7qpfn"]
 [ext_resource type="Texture2D" uid="uid://h1ca1eufkra4" path="res://asset/Vfx/Texture/T_PerlinNoise_Tiled11_inv.png" id="3_0bew5"]
 [ext_resource type="Texture2D" uid="uid://5v7luk5pj5ab" path="res://asset/Vfx/Texture/T_Noise17.png" id="4_5kkih"]
 [ext_resource type="Texture2D" uid="uid://ck3adpvdijf8h" path="res://asset/Vfx/Texture/Lantern.png" id="5_0dchi"]
@@ -546,57 +546,6 @@ scale_curve = SubResource("CurveTexture_3lcxx")
 
 [sub_resource type="QuadMesh" id="QuadMesh_hnkux"]
 
-[sub_resource type="Animation" id="Animation_gk5rr"]
-resource_name = "healaura2"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("1:emitting")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.1),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("2:emitting")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.1),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("3:emitting")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.1),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Particle:emitting")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.1),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
 [sub_resource type="Animation" id="Animation_l8ue6"]
 length = 0.001
 tracks/0/type = "value"
@@ -648,10 +597,61 @@ tracks/3/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_gk5rr"]
+resource_name = "healaura2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("1:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("2:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("3:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Particle:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ubqjw"]
 _data = {
 &"RESET": SubResource("Animation_l8ue6"),
-&"healaura2": SubResource("Animation_gk5rr")
+&"healaura": SubResource("Animation_gk5rr")
 }
 
 [node name="heal_aura2" type="Node3D"]

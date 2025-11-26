@@ -2,40 +2,37 @@
 
 [ext_resource type="AudioStream" uid="uid://djp1tehmnypx8" path="res://asset/SFX_IGame/Tower/Lilitia/Lilitia Basic Attack.wav" id="1_lnjyb"]
 [ext_resource type="Script" uid="uid://g85gwfmcln8s" path="res://scripts/Tower/Tower_Res.gd" id="1_r3aw5"]
-[ext_resource type="Texture2D" uid="uid://qfy86g5xfv58" path="res://asset/Tower/Lilitia/Idle/Idle 1.png" id="2_lan6i"]
-[ext_resource type="Texture2D" uid="uid://c3hswq0smf2rd" path="res://asset/Tower/Skill/Group-2.png" id="3_kg1ol"]
-[ext_resource type="Texture2D" uid="uid://i7wiwte2aqke" path="res://asset/Tower/Lilitia/Idle/Idle 2.png" id="3_yey8d"]
-[ext_resource type="Texture2D" uid="uid://dgp4n6o1ik0sa" path="res://asset/Tower/Lilitia/Idle/Idle 3.png" id="4_74gwk"]
-[ext_resource type="Texture2D" uid="uid://8fnum5ac488p" path="res://asset/Tower/Icon/Vigilante-4.png" id="4_j14hj"]
-[ext_resource type="Texture2D" uid="uid://bta1ha8c3kx02" path="res://asset/Tower/Icon/Glow/Vigilante-4.png" id="5_kg1ol"]
-[ext_resource type="Texture2D" uid="uid://dk6h141lex5fo" path="res://asset/Tower/Lilitia/Idle/Idle 4.png" id="5_lnjyb"]
-[ext_resource type="Texture2D" uid="uid://dmumdmc8hrhkt" path="res://asset/Tower/Lilitia/Idle/Idle 5.png" id="6_kg1ol"]
-[ext_resource type="Texture2D" uid="uid://6gl71psq8q0k" path="res://asset/Tower/Lilitia/Idle/Idle 6.png" id="7_j14hj"]
-[ext_resource type="Texture2D" uid="uid://vk11lts7xqc8" path="res://asset/Tower/Lilitia/Idle/Idle 7.png" id="8_x103h"]
+[ext_resource type="Texture2D" uid="uid://77ug46cq5dmt" path="res://asset/Tower/Skill/Group 112.png" id="3_lnjyb"]
+[ext_resource type="AudioStream" uid="uid://44ofpgt4biv0" path="res://asset/SFX_IGame/Tower/Lilitia/Lilitia Skill.wav" id="4_j14hj"]
+[ext_resource type="Texture2D" uid="uid://yjf77pg4kqae" path="res://asset/Tower/Icon/Vigilante-6.png" id="4_kg1ol"]
+[ext_resource type="Texture2D" uid="uid://beemutt51b77n" path="res://asset/Tower/Icon/Glow/V62.png" id="5_j14hj"]
+[ext_resource type="Texture2D" uid="uid://qbey87nrmef5" path="res://asset/Tower/Lilitia/Idle/1.png" id="6_lnjyb"]
+[ext_resource type="Texture2D" uid="uid://bwicler6d2uns" path="res://asset/Tower/Lilitia/Idle/2.png" id="7_kg1ol"]
+[ext_resource type="Texture2D" uid="uid://fabvad7pofxl" path="res://asset/Tower/Lilitia/Idle/3.png" id="8_j14hj"]
+[ext_resource type="Texture2D" uid="uid://bckssln5r78wo" path="res://asset/Tower/Lilitia/Idle/4.png" id="9_x103h"]
+[ext_resource type="Texture2D" uid="uid://c8urjxyfw8djl" path="res://asset/Tower/Lilitia/Idle/5.png" id="10_sdxv4"]
+[ext_resource type="Texture2D" uid="uid://dkt4vvlm2ulne" path="res://asset/Tower/Lilitia/Idle/6.png" id="11_wpv7r"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sdxv4"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_lan6i")
+"texture": ExtResource("6_lnjyb")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_yey8d")
+"texture": ExtResource("7_kg1ol")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_74gwk")
+"texture": ExtResource("8_j14hj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_lnjyb")
+"texture": ExtResource("9_x103h")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_kg1ol")
+"texture": ExtResource("10_sdxv4")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_j14hj")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_x103h")
+"texture": ExtResource("11_wpv7r")
 }],
 "loop": true,
 "name": &"default",
@@ -46,15 +43,16 @@ animations = [{
 script = ExtResource("1_r3aw5")
 chara = "lilitia"
 atk_sfx = ExtResource("1_lnjyb")
-cost = 15
-slot = ExtResource("4_j14hj")
-slot_glow = ExtResource("5_kg1ol")
+skl_sfx = ExtResource("4_j14hj")
+cost = 1
+slot = ExtResource("4_kg1ol")
+slot_glow = ExtResource("5_j14hj")
 damage = 75
 speed = 0.8
 range = 20.0
 skill = "holy divine"
 skill_duration = 5
-skill_sprite = ExtResource("3_kg1ol")
+skill_sprite = ExtResource("3_lnjyb")
 cooldown = 10
 max_hp = 1200.0
 sprite = SubResource("SpriteFrames_sdxv4")

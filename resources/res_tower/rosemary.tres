@@ -3,44 +3,44 @@
 [ext_resource type="AudioStream" uid="uid://b6awkw6mxe26y" path="res://asset/SFX_IGame/Tower/Rosemary/Rosemary Basic Attack Supposedly.wav" id="1_2otcp"]
 [ext_resource type="Script" uid="uid://g85gwfmcln8s" path="res://scripts/Tower/Tower_Res.gd" id="1_5wdxo"]
 [ext_resource type="PackedScene" uid="uid://cb5pwexkrc36k" path="res://asset/Vfx/Effect/Bullet_Rosemary.tscn" id="1_hhrno"]
-[ext_resource type="Texture2D" uid="uid://bkwfs84h7pjhl" path="res://asset/Tower/Rosemary/attack/Skill 1.png" id="2_hhrno"]
-[ext_resource type="Texture2D" uid="uid://l4kd7ht8vixs" path="res://asset/Tower/Rosemary/attack/Skill 2.png" id="3_06iej"]
-[ext_resource type="Texture2D" uid="uid://cqc7qiicqm8w4" path="res://asset/Tower/Skill/Group_1.png" id="4_2otcp"]
-[ext_resource type="Texture2D" uid="uid://b0tggl0mo2vox" path="res://asset/Tower/Rosemary/attack/Skill 3.png" id="4_y73jg"]
+[ext_resource type="Texture2D" uid="uid://cf05f0mvspxdg" path="res://asset/Tower/Skill/Group 114.png" id="4_2otcp"]
 [ext_resource type="AudioStream" uid="uid://c4i7mj8g3dw3i" path="res://asset/SFX_IGame/Tower/Rosemary/Rosemary Skill.wav" id="5_1kkq2"]
-[ext_resource type="Texture2D" uid="uid://b4g1ducthrg04" path="res://asset/Tower/Rosemary/attack/Skill 4.png" id="5_vygpc"]
-[ext_resource type="Texture2D" uid="uid://yjf77pg4kqae" path="res://asset/Tower/Icon/Vigilante-6.png" id="6_1kkq2"]
-[ext_resource type="Texture2D" uid="uid://dr1fyylbpnirp" path="res://asset/Tower/Rosemary/attack/Skill 5.png" id="6_2otcp"]
-[ext_resource type="Texture2D" uid="uid://bhwpvgjk78ar0" path="res://asset/Tower/Rosemary/attack/Skill 6.png" id="7_1kkq2"]
-[ext_resource type="Texture2D" uid="uid://8bx18u6xxdvt" path="res://asset/Tower/Icon/Glow/Vigilante-6.png" id="7_2otcp"]
-[ext_resource type="Texture2D" uid="uid://b5a0odtl5xgcf" path="res://asset/Tower/Rosemary/Idle/Idle 1.png" id="9_6lxli"]
-[ext_resource type="Texture2D" uid="uid://dd80jgdb5ctx2" path="res://asset/Tower/Rosemary/Idle/Idle 2.png" id="10_nghwd"]
-[ext_resource type="Texture2D" uid="uid://fxm5v8ru2cu8" path="res://asset/Tower/Rosemary/Idle/Idle 3.png" id="11_xdg6b"]
-[ext_resource type="Texture2D" uid="uid://bcu0m5al1cjit" path="res://asset/Tower/Rosemary/Idle/Idle 4.png" id="12_ysa34"]
-[ext_resource type="Texture2D" uid="uid://ddyxqhvufkxd5" path="res://asset/Tower/Rosemary/Idle/Idle 5.png" id="13_gqs4k"]
-[ext_resource type="Texture2D" uid="uid://brvv8k7efrpic" path="res://asset/Tower/Rosemary/Idle/Idle 6.png" id="14_7q6o5"]
-[ext_resource type="Texture2D" uid="uid://nry8ic7td6ip" path="res://asset/Tower/Rosemary/Idle/Idle 7.png" id="15_tk873"]
+[ext_resource type="Texture2D" uid="uid://jare2cytqhve" path="res://asset/Tower/Icon/Vigilante-9.png" id="6_2otcp"]
+[ext_resource type="Texture2D" uid="uid://dvmengmcefoog" path="res://asset/Tower/Icon/Glow/V92.png" id="7_1kkq2"]
+[ext_resource type="Texture2D" uid="uid://dfrica54jcu2e" path="res://asset/Tower/Rosemary/Attack/1.png" id="8_2otcp"]
+[ext_resource type="Texture2D" uid="uid://dsfwjrlh0xbeu" path="res://asset/Tower/Rosemary/Attack/2.png" id="9_1kkq2"]
+[ext_resource type="Texture2D" uid="uid://c7mjlh2pmwmkg" path="res://asset/Tower/Rosemary/Attack/3.png" id="10_ciw6g"]
+[ext_resource type="Texture2D" uid="uid://cjsncppccvc37" path="res://asset/Tower/Rosemary/Attack/4.png" id="11_6lxli"]
+[ext_resource type="Texture2D" uid="uid://dwij6553bqlxk" path="res://asset/Tower/Rosemary/Attack/5.png" id="12_nghwd"]
+[ext_resource type="Texture2D" uid="uid://c2mgd37imyf3n" path="res://asset/Tower/Rosemary/Attack/6.png" id="13_xdg6b"]
+[ext_resource type="Texture2D" uid="uid://b1selxcte4ih6" path="res://asset/Tower/Rosemary/Idle/1.png" id="14_ysa34"]
+[ext_resource type="Texture2D" uid="uid://c0uyb5sjymem6" path="res://asset/Tower/Rosemary/Idle/2.png" id="15_gqs4k"]
+[ext_resource type="Texture2D" uid="uid://c66e568roqvmp" path="res://asset/Tower/Rosemary/Idle/3.png" id="16_7q6o5"]
+[ext_resource type="Texture2D" uid="uid://n7ch2vtvmb8r" path="res://asset/Tower/Rosemary/Idle/4.png" id="17_tk873"]
+[ext_resource type="Texture2D" uid="uid://bph6g3qq72742" path="res://asset/Tower/Rosemary/Idle/5.png" id="18_a68iv"]
+[ext_resource type="Texture2D" uid="uid://lrqf6rqsdj71" path="res://asset/Tower/Rosemary/Idle/6.png" id="19_l5e84"]
+[ext_resource type="Texture2D" uid="uid://bplwb5vvq2fps" path="res://asset/Tower/Rosemary/Idle/7.png" id="20_tr74f"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7nq2s"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_hhrno")
+"texture": ExtResource("8_2otcp")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_06iej")
+"texture": ExtResource("9_1kkq2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_y73jg")
+"texture": ExtResource("10_ciw6g")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_vygpc")
+"texture": ExtResource("11_6lxli")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_2otcp")
+"texture": ExtResource("12_nghwd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_1kkq2")
+"texture": ExtResource("13_xdg6b")
 }],
 "loop": false,
 "name": &"attack",
@@ -48,25 +48,25 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("9_6lxli")
+"texture": ExtResource("14_ysa34")
 }, {
 "duration": 1.0,
-"texture": ExtResource("10_nghwd")
+"texture": ExtResource("15_gqs4k")
 }, {
 "duration": 1.0,
-"texture": ExtResource("11_xdg6b")
+"texture": ExtResource("16_7q6o5")
 }, {
 "duration": 1.0,
-"texture": ExtResource("12_ysa34")
+"texture": ExtResource("17_tk873")
 }, {
 "duration": 1.0,
-"texture": ExtResource("13_gqs4k")
+"texture": ExtResource("18_a68iv")
 }, {
 "duration": 1.0,
-"texture": ExtResource("14_7q6o5")
+"texture": ExtResource("19_l5e84")
 }, {
 "duration": 1.0,
-"texture": ExtResource("15_tk873")
+"texture": ExtResource("20_tr74f")
 }],
 "loop": true,
 "name": &"default",
@@ -79,8 +79,8 @@ chara = "rosemary"
 atk_sfx = ExtResource("1_2otcp")
 skl_sfx = ExtResource("5_1kkq2")
 cost = 22
-slot = ExtResource("6_1kkq2")
-slot_glow = ExtResource("7_2otcp")
+slot = ExtResource("6_2otcp")
+slot_glow = ExtResource("7_1kkq2")
 damage = 600
 speed = 0.5
 range = 350.0

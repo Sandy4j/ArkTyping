@@ -3,47 +3,24 @@
 [ext_resource type="PackedScene" uid="uid://digrhep77tlo1" path="res://asset/Vfx/Effect/Moonball.tscn" id="1_3waq0"]
 [ext_resource type="Script" uid="uid://g85gwfmcln8s" path="res://scripts/Tower/Tower_Res.gd" id="1_h3o12"]
 [ext_resource type="AudioStream" uid="uid://ckw6pw52cvcwx" path="res://asset/SFX_IGame/Tower/Silvanna/Silvanna Basic Attack.wav" id="1_lniv3"]
-[ext_resource type="Texture2D" uid="uid://dhgc48tuua78h" path="res://asset/Tower/Silvanna/Skill/Skill 1.png" id="2_ky5px"]
-[ext_resource type="Texture2D" uid="uid://stkryf4fpydt" path="res://asset/Tower/Silvanna/Skill/Skill 2.png" id="3_3waq0"]
-[ext_resource type="Texture2D" uid="uid://4ikellenqqir" path="res://asset/Tower/Skill/Group 34.png" id="4_5piew"]
-[ext_resource type="Texture2D" uid="uid://cs61atxq8rw38" path="res://asset/Tower/Silvanna/Skill/Skill 3.png" id="4_8e85y"]
+[ext_resource type="Texture2D" uid="uid://ehs8spu8axd0" path="res://asset/Tower/Skill/Group 109.png" id="4_5piew"]
 [ext_resource type="AudioStream" uid="uid://d3wto142s5h7g" path="res://asset/SFX_IGame/Tower/Silvanna/Silvanna Skill.wav" id="5_5piew"]
-[ext_resource type="Texture2D" uid="uid://catwx8ir50oh6" path="res://asset/Tower/Silvanna/Skill/Skill 4.png" id="5_7y1np"]
-[ext_resource type="Texture2D" uid="uid://c7b8qcffjet" path="res://asset/Tower/Icon/Vigilante-1.png" id="6_1mo65"]
-[ext_resource type="Texture2D" uid="uid://cogyq53e4p6vi" path="res://asset/Tower/Silvanna/Skill/Skill 5.png" id="6_exrmv"]
-[ext_resource type="Texture2D" uid="uid://bdhttkljgd058" path="res://asset/Tower/Icon/Glow/Vigilante-1.png" id="7_5piew"]
-[ext_resource type="Texture2D" uid="uid://nbuy7tjut3sn" path="res://asset/Tower/Silvanna/Idle/Idle 1.png" id="7_lniv3"]
-[ext_resource type="Texture2D" uid="uid://ct8gq6chywk26" path="res://asset/Tower/Silvanna/Idle/Idle 2.png" id="8_5piew"]
-[ext_resource type="Texture2D" uid="uid://da76e8moajij7" path="res://asset/Tower/Silvanna/Idle/Idle 3.png" id="9_1mo65"]
-[ext_resource type="Texture2D" uid="uid://coilbmc8dc7nw" path="res://asset/Tower/Silvanna/Idle/Idle 4.png" id="10_ounyl"]
-[ext_resource type="Texture2D" uid="uid://ba5s7o6njr5sk" path="res://asset/Tower/Silvanna/Idle/Idle 5.png" id="11_rwjyi"]
+[ext_resource type="Texture2D" uid="uid://dnoco1iqfe8b6" path="res://asset/Tower/Icon/Vigilante-2.png" id="6_5piew"]
+[ext_resource type="Texture2D" uid="uid://cpsqyteqckyyt" path="res://asset/Tower/Icon/Glow/V22.png" id="7_1mo65"]
+[ext_resource type="Texture2D" uid="uid://xwccqxn7bxbf" path="res://asset/Tower/Silvanna/Attack/1.png" id="8_5piew"]
+[ext_resource type="Texture2D" uid="uid://bftp8rrl55qv8" path="res://asset/Tower/Silvanna/Attack/2.png" id="9_1mo65"]
+[ext_resource type="Texture2D" uid="uid://m2tgeeot5bh1" path="res://asset/Tower/Silvanna/Attack/3.png" id="10_ounyl"]
+[ext_resource type="Texture2D" uid="uid://bmhmoh3cfd2hq" path="res://asset/Tower/Silvanna/Attack/4.png" id="11_rwjyi"]
+[ext_resource type="Texture2D" uid="uid://dhm0j5i5wykhw" path="res://asset/Tower/Silvanna/Attack/5.png" id="12_mttmh"]
+[ext_resource type="Texture2D" uid="uid://pjpswlbr1tqx" path="res://asset/Tower/Silvanna/Idle/1.png" id="13_fp7jp"]
+[ext_resource type="Texture2D" uid="uid://cbt7uemawajym" path="res://asset/Tower/Silvanna/Idle/2.png" id="14_yh46c"]
+[ext_resource type="Texture2D" uid="uid://c74oddcul6kqn" path="res://asset/Tower/Silvanna/Idle/3.png" id="15_loq86"]
+[ext_resource type="Texture2D" uid="uid://cgxp7nwmr1c6g" path="res://asset/Tower/Silvanna/Idle/4.png" id="16_pjsp2"]
+[ext_resource type="Texture2D" uid="uid://bfqpkp6npvw21" path="res://asset/Tower/Silvanna/Idle/5.png" id="17_f38nn"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ebbtt"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_ky5px")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_3waq0")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_8e85y")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_7y1np")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_exrmv")
-}],
-"loop": false,
-"name": &"attack",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("7_lniv3")
-}, {
 "duration": 1.0,
 "texture": ExtResource("8_5piew")
 }, {
@@ -55,6 +32,29 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("11_rwjyi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_mttmh")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_fp7jp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_yh46c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_loq86")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_pjsp2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_f38nn")
 }],
 "loop": true,
 "name": &"default",
@@ -67,8 +67,8 @@ chara = "silvanna"
 atk_sfx = ExtResource("1_lniv3")
 skl_sfx = ExtResource("5_5piew")
 cost = 8
-slot = ExtResource("6_1mo65")
-slot_glow = ExtResource("7_5piew")
+slot = ExtResource("6_5piew")
+slot_glow = ExtResource("7_1mo65")
 damage = 225
 speed = 1.0
 range = 3.0

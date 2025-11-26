@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b6ot4uwb74jwf"]
+[gd_scene load_steps=25 format=3 uid="uid://b6ot4uwb74jwf"]
 
 [ext_resource type="Script" uid="uid://bbexpquh4b3ip" path="res://scripts/UI/UI.gd" id="1_6rmj2"]
 [ext_resource type="FontFile" uid="uid://ddon0uj5gtdts" path="res://asset/UI_Gameplay/Viga-Regular.ttf" id="2_catpy"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://b8y7ehgxvep5v" path="res://scenes/UI/pause.tscn" id="20_pause"]
 [ext_resource type="Resource" uid="uid://dovjt4j0250hn" path="res://resources/res_tower/celene.tres" id="21_catpy"]
 [ext_resource type="PackedScene" uid="uid://bj5dtcmvpkfwk" path="res://scenes/UI/WinLose.tscn" id="21_ycmcx"]
+[ext_resource type="Resource" uid="uid://k5xab2kd6y7y" path="res://resources/res_tower/priestess.tres" id="22_41akx"]
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_6rmj2")
@@ -246,9 +247,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -287.0
+offset_left = -568.0
 offset_top = -192.0
-offset_right = -287.0
+offset_right = -568.0
 offset_bottom = -23.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -352,7 +353,7 @@ vertical_alignment = 1
 
 [node name="Input" type="Node" parent="." groups=["towerinput"]]
 script = ExtResource("13_jkdwc")
-tower_list = Array[ExtResource("14_rlppe")]([ExtResource("15_ycmcx"), ExtResource("18_41akx"), ExtResource("17_catpy"), ExtResource("19_rlppe"), ExtResource("16_kupmu"), ExtResource("20_kupmu"), ExtResource("18_jkdwc"), ExtResource("21_catpy")])
+tower_list = Array[ExtResource("14_rlppe")]([ExtResource("15_ycmcx"), ExtResource("18_41akx"), ExtResource("17_catpy"), ExtResource("19_rlppe"), ExtResource("16_kupmu"), ExtResource("20_kupmu"), ExtResource("18_jkdwc"), ExtResource("21_catpy"), ExtResource("22_41akx")])
 
 [node name="WinLose" parent="." instance=ExtResource("21_ycmcx")]
 

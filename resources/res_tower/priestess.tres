@@ -1,0 +1,95 @@
+[gd_resource type="Resource" script_class="TowerData" load_steps=22 format=3 uid="uid://k5xab2kd6y7y"]
+
+[ext_resource type="AudioStream" uid="uid://gmovria4sm7w" path="res://asset/SFX_IGame/Tower/Priestess/Priestess Basic Attack.wav" id="1_74cdu"]
+[ext_resource type="PackedScene" uid="uid://dukk822on7upq" path="res://asset/Vfx/Effect/heal_aura.tscn" id="2_74cdu"]
+[ext_resource type="Script" uid="uid://g85gwfmcln8s" path="res://scripts/Tower/Tower_Res.gd" id="3_st5ew"]
+[ext_resource type="Texture2D" uid="uid://dlt2ns6f05f2o" path="res://asset/Tower/Skill/Group 116.png" id="4_0owjh"]
+[ext_resource type="AudioStream" uid="uid://cvxvyhdgm3s2t" path="res://asset/SFX_IGame/Tower/Priestess/Priestess Skill.wav" id="5_vei1f"]
+[ext_resource type="Texture2D" uid="uid://bndh7tptx7m5o" path="res://asset/Tower/Icon/Vigilante-7.png" id="6_i1jr2"]
+[ext_resource type="Texture2D" uid="uid://ou0q8v3rsctf" path="res://asset/Tower/Icon/Glow/V72.png" id="7_xenct"]
+[ext_resource type="Texture2D" uid="uid://b1jdwad403tnj" path="res://asset/Tower/Priestess/Skill/1.png" id="8_rrq68"]
+[ext_resource type="Texture2D" uid="uid://dpcd13qlbgrfl" path="res://asset/Tower/Priestess/Skill/2.png" id="9_xl2wj"]
+[ext_resource type="Texture2D" uid="uid://bv21k7rf7t0ra" path="res://asset/Tower/Priestess/Skill/3.png" id="10_swoby"]
+[ext_resource type="Texture2D" uid="uid://dpf1redjsm7nh" path="res://asset/Tower/Priestess/Skill/4.png" id="11_1uoke"]
+[ext_resource type="Texture2D" uid="uid://dpapnxusmmnfi" path="res://asset/Tower/Priestess/Skill/5.png" id="12_l6mrs"]
+[ext_resource type="Texture2D" uid="uid://b7vmm32cot64n" path="res://asset/Tower/Priestess/Skill/6.png" id="13_2x2ie"]
+[ext_resource type="Texture2D" uid="uid://d30rcqsclhup2" path="res://asset/Tower/Priestess/Idle/1.png" id="14_yx6mn"]
+[ext_resource type="Texture2D" uid="uid://swsynywffrv1" path="res://asset/Tower/Priestess/Idle/2.png" id="15_ei57y"]
+[ext_resource type="Texture2D" uid="uid://c7od1ugsk6acg" path="res://asset/Tower/Priestess/Idle/3.png" id="16_nhy2e"]
+[ext_resource type="Texture2D" uid="uid://djmxj672pm7f1" path="res://asset/Tower/Priestess/Idle/4.png" id="17_ydjgv"]
+[ext_resource type="Texture2D" uid="uid://dcyyhvxx7lork" path="res://asset/Tower/Priestess/Idle/5.png" id="18_r75he"]
+[ext_resource type="Texture2D" uid="uid://ff6y4ivr2jwm" path="res://asset/Tower/Priestess/Idle/6.png" id="19_ixf33"]
+[ext_resource type="Texture2D" uid="uid://67sbmw8fvchv" path="res://asset/Tower/Priestess/Idle/7.png" id="20_7lpxu"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4yk3w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_rrq68")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_xl2wj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_swoby")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_1uoke")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_l6mrs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_2x2ie")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_yx6mn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_ei57y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_nhy2e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_ydjgv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_r75he")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_ixf33")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_7lpxu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("3_st5ew")
+chara = "priestess"
+atk_sfx = ExtResource("1_74cdu")
+skl_sfx = ExtResource("5_vei1f")
+cost = 1
+slot = ExtResource("6_i1jr2")
+slot_glow = ExtResource("7_xenct")
+damage = 125
+speed = 1.0
+range = 5.0
+skill = "purify wave"
+skill_duration = 3
+skill_sprite = ExtResource("4_0owjh")
+cooldown = 2
+max_hp = 1200.0
+sprite = SubResource("SpriteFrames_4yk3w")
+projectile = ExtResource("2_74cdu")
+projectile_speed = 10
+metadata/_custom_type_script = "uid://g85gwfmcln8s"

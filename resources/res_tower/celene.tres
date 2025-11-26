@@ -1,60 +1,76 @@
-[gd_resource type="Resource" script_class="TowerData" load_steps=19 format=3 uid="uid://dovjt4j0250hn"]
+[gd_resource type="Resource" script_class="TowerData" load_steps=23 format=3 uid="uid://dovjt4j0250hn"]
 
-[ext_resource type="AudioStream" uid="uid://ckw6pw52cvcwx" path="res://asset/SFX_IGame/Tower/Silvanna/Silvanna Basic Attack.wav" id="1_4m6io"]
-[ext_resource type="PackedScene" uid="uid://cenqhsshm2j7p" path="res://asset/Vfx/Effect/magic_circle_heal.tscn" id="2_wabhf"]
+[ext_resource type="AudioStream" uid="uid://b3v55huqle7pi" path="res://asset/SFX_IGame/Tower/Cellene/Cellene Basic Attack.wav" id="1_87730"]
+[ext_resource type="PackedScene" uid="uid://q6rej2jifb00" path="res://asset/Vfx/Effect/heal_aura_2.tscn" id="2_87730"]
 [ext_resource type="Script" uid="uid://g85gwfmcln8s" path="res://scripts/Tower/Tower_Res.gd" id="3_lilhk"]
-[ext_resource type="Texture2D" uid="uid://4ikellenqqir" path="res://asset/Tower/Skill/Group 34.png" id="4_6hs1h"]
-[ext_resource type="AudioStream" uid="uid://d3wto142s5h7g" path="res://asset/SFX_IGame/Tower/Silvanna/Silvanna Skill.wav" id="5_87730"]
-[ext_resource type="Texture2D" uid="uid://c7b8qcffjet" path="res://asset/Tower/Icon/Vigilante-1.png" id="6_igygd"]
-[ext_resource type="Texture2D" uid="uid://bdhttkljgd058" path="res://asset/Tower/Icon/Glow/Vigilante-1.png" id="7_doxk2"]
-[ext_resource type="Texture2D" uid="uid://dhgc48tuua78h" path="res://asset/Tower/Silvanna/Skill/Skill 1.png" id="8_ohp11"]
-[ext_resource type="Texture2D" uid="uid://stkryf4fpydt" path="res://asset/Tower/Silvanna/Skill/Skill 2.png" id="9_6605n"]
-[ext_resource type="Texture2D" uid="uid://cs61atxq8rw38" path="res://asset/Tower/Silvanna/Skill/Skill 3.png" id="10_x7olr"]
-[ext_resource type="Texture2D" uid="uid://catwx8ir50oh6" path="res://asset/Tower/Silvanna/Skill/Skill 4.png" id="11_7aa3w"]
-[ext_resource type="Texture2D" uid="uid://cogyq53e4p6vi" path="res://asset/Tower/Silvanna/Skill/Skill 5.png" id="12_y6t8h"]
-[ext_resource type="Texture2D" uid="uid://nbuy7tjut3sn" path="res://asset/Tower/Silvanna/Idle/Idle 1.png" id="13_tljya"]
-[ext_resource type="Texture2D" uid="uid://ct8gq6chywk26" path="res://asset/Tower/Silvanna/Idle/Idle 2.png" id="14_tj3j0"]
-[ext_resource type="Texture2D" uid="uid://da76e8moajij7" path="res://asset/Tower/Silvanna/Idle/Idle 3.png" id="15_a4638"]
-[ext_resource type="Texture2D" uid="uid://coilbmc8dc7nw" path="res://asset/Tower/Silvanna/Idle/Idle 4.png" id="16_kn1u8"]
-[ext_resource type="Texture2D" uid="uid://ba5s7o6njr5sk" path="res://asset/Tower/Silvanna/Idle/Idle 5.png" id="17_su4rk"]
+[ext_resource type="Texture2D" uid="uid://11idcqmce1gr" path="res://asset/Tower/Skill/Group 111.png" id="4_87730"]
+[ext_resource type="AudioStream" uid="uid://buic24cnjm4q2" path="res://asset/SFX_IGame/Tower/Cellene/Cellene Skill.wav" id="5_igygd"]
+[ext_resource type="Texture2D" uid="uid://8fnum5ac488p" path="res://asset/Tower/Icon/Vigilante-4.png" id="6_igygd"]
+[ext_resource type="Texture2D" uid="uid://w6jdemg3v0r6" path="res://asset/Tower/Icon/Glow/V42.png" id="7_doxk2"]
+[ext_resource type="Texture2D" uid="uid://cw6ei5thays23" path="res://asset/Tower/Cellene/Skill/2.png" id="8_87730"]
+[ext_resource type="Texture2D" uid="uid://dcpoljk0mqlt4" path="res://asset/Tower/Cellene/Skill/4.png" id="9_igygd"]
+[ext_resource type="Texture2D" uid="uid://uql5jaisv2yb" path="res://asset/Tower/Cellene/Skill/5.png" id="10_doxk2"]
+[ext_resource type="Texture2D" uid="uid://caortv2ie3yb8" path="res://asset/Tower/Cellene/Skill/6.png" id="11_ohp11"]
+[ext_resource type="Texture2D" uid="uid://3d1frkjvmp7y" path="res://asset/Tower/Cellene/Skill/7.png" id="12_6605n"]
+[ext_resource type="Texture2D" uid="uid://bhqi2tf3n6muv" path="res://asset/Tower/Cellene/Skill/8.png" id="13_x7olr"]
+[ext_resource type="Texture2D" uid="uid://c4mgj31ebxwve" path="res://asset/Tower/Cellene/Skill/9.png" id="14_7aa3w"]
+[ext_resource type="Texture2D" uid="uid://btleysx0io1ei" path="res://asset/Tower/Cellene/Idle/1.png" id="15_y6t8h"]
+[ext_resource type="Texture2D" uid="uid://cw6haxcjobjmu" path="res://asset/Tower/Cellene/Idle/2.png" id="16_tljya"]
+[ext_resource type="Texture2D" uid="uid://djavftplry3ie" path="res://asset/Tower/Cellene/Idle/3.png" id="17_tj3j0"]
+[ext_resource type="Texture2D" uid="uid://b728ay5j621rc" path="res://asset/Tower/Cellene/Idle/4.png" id="18_a4638"]
+[ext_resource type="Texture2D" uid="uid://cb5rh8otj4vdw" path="res://asset/Tower/Cellene/Idle/5.png" id="19_kn1u8"]
+[ext_resource type="Texture2D" uid="uid://dwq65w32f8yh7" path="res://asset/Tower/Cellene/Idle/6.png" id="20_su4rk"]
+[ext_resource type="Texture2D" uid="uid://dk27k3arwj4ia" path="res://asset/Tower/Cellene/Idle/7.png" id="21_keiga"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ebbtt"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("8_ohp11")
+"texture": ExtResource("14_7aa3w")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_6605n")
+"texture": ExtResource("8_87730")
 }, {
 "duration": 1.0,
-"texture": ExtResource("10_x7olr")
+"texture": ExtResource("9_igygd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("11_7aa3w")
+"texture": ExtResource("10_doxk2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("12_y6t8h")
+"texture": ExtResource("11_ohp11")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_6605n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_x7olr")
 }],
 "loop": false,
 "name": &"attack",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("13_tljya")
+"texture": ExtResource("15_y6t8h")
 }, {
 "duration": 1.0,
-"texture": ExtResource("14_tj3j0")
+"texture": ExtResource("16_tljya")
 }, {
 "duration": 1.0,
-"texture": ExtResource("15_a4638")
+"texture": ExtResource("17_tj3j0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("16_kn1u8")
+"texture": ExtResource("18_a4638")
 }, {
 "duration": 1.0,
-"texture": ExtResource("17_su4rk")
+"texture": ExtResource("19_kn1u8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_su4rk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_keiga")
 }],
 "loop": true,
 "name": &"default",
@@ -64,9 +80,9 @@ animations = [{
 [resource]
 script = ExtResource("3_lilhk")
 chara = "cellene"
-atk_sfx = ExtResource("1_4m6io")
-skl_sfx = ExtResource("5_87730")
-cost = 13
+atk_sfx = ExtResource("1_87730")
+skl_sfx = ExtResource("5_igygd")
+cost = 1
 slot = ExtResource("6_igygd")
 slot_glow = ExtResource("7_doxk2")
 damage = 75
@@ -74,10 +90,10 @@ speed = 1.0
 range = 5.0
 skill = "unholy bless"
 skill_duration = 10
-skill_sprite = ExtResource("4_6hs1h")
-cooldown = 25
+skill_sprite = ExtResource("4_87730")
+cooldown = 5
 max_hp = 1500.0
 sprite = SubResource("SpriteFrames_ebbtt")
-projectile = ExtResource("2_wabhf")
+projectile = ExtResource("2_87730")
 projectile_speed = 10
 metadata/_custom_type_script = "uid://g85gwfmcln8s"

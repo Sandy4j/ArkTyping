@@ -3,54 +3,31 @@
 [ext_resource type="PackedScene" uid="uid://cguadgldcdeki" path="res://asset/Vfx/Effect/Toxicball.tscn" id="1_4fch3"]
 [ext_resource type="AudioStream" uid="uid://dsave8wjm3181" path="res://asset/SFX_IGame/Tower/Morriden/Morriden Basic Attack.wav" id="1_d122q"]
 [ext_resource type="Script" uid="uid://g85gwfmcln8s" path="res://scripts/Tower/Tower_Res.gd" id="1_ij4bj"]
-[ext_resource type="Texture2D" uid="uid://cu4m6wj10qo28" path="res://asset/Tower/Morriden/attack/Skill 1.png" id="2_psi17"]
-[ext_resource type="Texture2D" uid="uid://dt8oc50qduvad" path="res://asset/Tower/Morriden/attack/Skill 2.png" id="3_4fch3"]
-[ext_resource type="Texture2D" uid="uid://2vcye74anw2t" path="res://asset/Tower/Skill/Group-1.png" id="4_asmgg"]
-[ext_resource type="Texture2D" uid="uid://0qfyeu2s8ooq" path="res://asset/Tower/Morriden/attack/Skill 3.png" id="4_m2pgc"]
-[ext_resource type="Texture2D" uid="uid://bbyv3tbmwg5s7" path="res://asset/Tower/Morriden/attack/Skill 4.png" id="5_8ujri"]
+[ext_resource type="Texture2D" uid="uid://dbvd4pwrmtt4p" path="res://asset/Tower/Skill/Group 110.png" id="4_asmgg"]
 [ext_resource type="AudioStream" uid="uid://tcm2jj8px5ha" path="res://asset/SFX_IGame/Tower/Morriden/Morriden Skill.wav" id="5_asmgg"]
-[ext_resource type="Texture2D" uid="uid://dnoco1iqfe8b6" path="res://asset/Tower/Icon/Vigilante-2.png" id="6_mmkrx"]
-[ext_resource type="Texture2D" uid="uid://t34nqq4lpu4" path="res://asset/Tower/Morriden/attack/Skill 5.png" id="6_s2ut6"]
-[ext_resource type="Texture2D" uid="uid://vurx10iim380" path="res://asset/Tower/Icon/Glow/Vigilante-2.png" id="7_asmgg"]
-[ext_resource type="Texture2D" uid="uid://c5qo50av3hf2r" path="res://asset/Tower/Morriden/attack/Skill 6.png" id="7_d122q"]
-[ext_resource type="Texture2D" uid="uid://vepwyqge6oqg" path="res://asset/Tower/Morriden/attack/Skill 7.png" id="8_asmgg"]
-[ext_resource type="Texture2D" uid="uid://8qy0xrc28fkl" path="res://asset/Tower/Morriden/Idle/Idle 1.png" id="9_mmkrx"]
-[ext_resource type="Texture2D" uid="uid://o5omh0exfotw" path="res://asset/Tower/Morriden/Idle/Idle 2.png" id="10_7pqte"]
-[ext_resource type="Texture2D" uid="uid://ckxtoam8nvg2r" path="res://asset/Tower/Morriden/Idle/Idle 3.png" id="11_nkv2t"]
-[ext_resource type="Texture2D" uid="uid://dxerwro1bj4ve" path="res://asset/Tower/Morriden/Idle/Idle 4.png" id="12_12wff"]
-[ext_resource type="Texture2D" uid="uid://bjxhy2fg72w0o" path="res://asset/Tower/Morriden/Idle/Idle 5.png" id="13_qwgjv"]
-[ext_resource type="Texture2D" uid="uid://box3h88jr0xi5" path="res://asset/Tower/Morriden/Idle/Idle 7.png" id="14_cx34j"]
-[ext_resource type="Texture2D" uid="uid://sgu6ld1wu5yx" path="res://asset/Tower/Morriden/Idle/IMG_1855.png" id="15_sp0f4"]
+[ext_resource type="Texture2D" uid="uid://5pc863u8g2q7" path="res://asset/Tower/Icon/Vigilante-3.png" id="6_asmgg"]
+[ext_resource type="Texture2D" uid="uid://dew8q7mc4qev5" path="res://asset/Tower/Icon/Glow/V32.png" id="7_mmkrx"]
+[ext_resource type="Texture2D" uid="uid://bk3vjes6evysn" path="res://asset/Tower/Morriden/attack/1.png" id="8_asmgg"]
+[ext_resource type="Texture2D" uid="uid://bkgw5fu6po6og" path="res://asset/Tower/Morriden/attack/2.png" id="9_mmkrx"]
+[ext_resource type="Texture2D" uid="uid://diycgjy3c0gdm" path="res://asset/Tower/Morriden/attack/3.png" id="10_7pqte"]
+[ext_resource type="Texture2D" uid="uid://da222eg76df2n" path="res://asset/Tower/Morriden/attack/4.png" id="11_nkv2t"]
+[ext_resource type="Texture2D" uid="uid://dtj2emup1glq6" path="res://asset/Tower/Morriden/attack/5.png" id="12_12wff"]
+[ext_resource type="Texture2D" uid="uid://bl5rmqtesxkdl" path="res://asset/Tower/Morriden/attack/6.png" id="13_qwgjv"]
+[ext_resource type="Texture2D" uid="uid://bdj8jkilyley0" path="res://asset/Tower/Morriden/attack/7.png" id="14_cx34j"]
+[ext_resource type="Texture2D" uid="uid://dfxqyq7b23p06" path="res://asset/Tower/Morriden/Idle/1.png" id="15_sp0f4"]
+[ext_resource type="Texture2D" uid="uid://cpi4tvaldb1f4" path="res://asset/Tower/Morriden/Idle/2.png" id="16_v072w"]
+[ext_resource type="Texture2D" uid="uid://dw8fjl2wa00vh" path="res://asset/Tower/Morriden/Idle/3.png" id="17_oum33"]
+[ext_resource type="Texture2D" uid="uid://mnpox6lqamsm" path="res://asset/Tower/Morriden/Idle/4.png" id="18_tjrxs"]
+[ext_resource type="Texture2D" uid="uid://birtun81fkd4d" path="res://asset/Tower/Morriden/Idle/5.png" id="19_csrq0"]
+[ext_resource type="Texture2D" uid="uid://biodyg0n4iucd" path="res://asset/Tower/Morriden/Idle/6.png" id="20_u224k"]
+[ext_resource type="Texture2D" uid="uid://bot7k65idapxh" path="res://asset/Tower/Morriden/Idle/7.png" id="21_rk2fs"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_v072w"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_psi17")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_4fch3")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_m2pgc")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_8ujri")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_s2ut6")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_d122q")
-}, {
-"duration": 1.0,
 "texture": ExtResource("8_asmgg")
-}],
-"loop": false,
-"name": &"attack",
-"speed": 5.0
 }, {
-"frames": [{
 "duration": 1.0,
 "texture": ExtResource("9_mmkrx")
 }, {
@@ -68,9 +45,32 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("14_cx34j")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
 }, {
+"frames": [{
 "duration": 1.0,
 "texture": ExtResource("15_sp0f4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_v072w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_oum33")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_tjrxs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_csrq0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_u224k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_rk2fs")
 }],
 "loop": true,
 "name": &"default",
@@ -83,8 +83,8 @@ chara = "morriden"
 atk_sfx = ExtResource("1_d122q")
 skl_sfx = ExtResource("5_asmgg")
 cost = 10
-slot = ExtResource("6_mmkrx")
-slot_glow = ExtResource("7_asmgg")
+slot = ExtResource("6_asmgg")
+slot_glow = ExtResource("7_mmkrx")
 damage = 250
 speed = 0.7
 range = 200.0

@@ -1,45 +1,31 @@
-[gd_resource type="Resource" script_class="TowerData" load_steps=23 format=3 uid="uid://duvfgb70bw3fq"]
+[gd_resource type="Resource" script_class="TowerData" load_steps=24 format=3 uid="uid://duvfgb70bw3fq"]
 
 [ext_resource type="Script" uid="uid://g85gwfmcln8s" path="res://scripts/Tower/Tower_Res.gd" id="1_buyxb"]
 [ext_resource type="AudioStream" uid="uid://tkpgvcboyu3u" path="res://asset/SFX_IGame/Tower/Leciana/Leciana Basic Attack.wav" id="1_c2k8j"]
 [ext_resource type="PackedScene" uid="uid://cj1oprebspu6a" path="res://asset/Vfx/Effect/BloodBall.tscn" id="1_jf8tk"]
-[ext_resource type="Texture2D" uid="uid://b0kslyuy2g6u" path="res://asset/Tower/Leciana/Attack/Skill 1.png" id="2_pw78m"]
-[ext_resource type="Texture2D" uid="uid://bb3wv4oedljua" path="res://asset/Tower/Leciana/Attack/Skill 2.png" id="3_jf8tk"]
-[ext_resource type="Texture2D" uid="uid://5pc863u8g2q7" path="res://asset/Tower/Icon/Vigilante-3.png" id="4_c2k8j"]
-[ext_resource type="Texture2D" uid="uid://dx0da4swm5vxi" path="res://asset/Tower/Skill/Group.png" id="4_nvyl0"]
-[ext_resource type="Texture2D" uid="uid://bmo1tvuleg23r" path="res://asset/Tower/Leciana/Attack/Skill 3.png" id="4_wtv25"]
-[ext_resource type="Texture2D" uid="uid://ix8g8t8em2ic" path="res://asset/Tower/Leciana/Attack/Skill 4.png" id="5_p6mwc"]
-[ext_resource type="Texture2D" uid="uid://cuh6qlkrdb2bm" path="res://asset/Tower/Leciana/Attack/Skill 5.png" id="6_c2k8j"]
-[ext_resource type="Texture2D" uid="uid://snxc5gcosn3h" path="res://asset/Tower/Icon/Glow/Vigilante-3.png" id="6_nvyl0"]
-[ext_resource type="Texture2D" uid="uid://drbthbeti6blh" path="res://asset/Tower/Leciana/Attack/Skill 6.png" id="7_nvyl0"]
-[ext_resource type="Texture2D" uid="uid://dgp08dy7gmtiw" path="res://asset/Tower/Leciana/Attack/Skill 7.png" id="8_mvied"]
-[ext_resource type="Texture2D" uid="uid://numdc822m4wa" path="res://asset/Tower/Leciana/Attack/Skill 8.png" id="9_r8k7y"]
-[ext_resource type="Texture2D" uid="uid://2c61cpndhpku" path="res://asset/Tower/Leciana/Idle/Idle 1.png" id="10_68q2q"]
-[ext_resource type="Texture2D" uid="uid://bjllp1njo5q8c" path="res://asset/Tower/Leciana/Idle/Idle 2.png" id="11_jrbok"]
-[ext_resource type="Texture2D" uid="uid://b28exqtil60d4" path="res://asset/Tower/Leciana/Idle/Idle 3.png" id="12_ew85v"]
-[ext_resource type="Texture2D" uid="uid://be83j6m6wk6jy" path="res://asset/Tower/Leciana/Idle/Idle 4.png" id="13_njcsc"]
-[ext_resource type="Texture2D" uid="uid://c4e2gr6a36aef" path="res://asset/Tower/Leciana/Idle/Idle 5.png" id="14_414e1"]
-[ext_resource type="Texture2D" uid="uid://rm4ylfqb0wc0" path="res://asset/Tower/Leciana/Idle/Idle 6.png" id="15_665od"]
-[ext_resource type="Texture2D" uid="uid://bdhxnrlalcf66" path="res://asset/Tower/Leciana/Idle/Idle 7.png" id="16_af6c7"]
+[ext_resource type="Texture2D" uid="uid://bgkfuke1i0ul5" path="res://asset/Tower/Skill/Group 117.png" id="4_nvyl0"]
+[ext_resource type="AudioStream" uid="uid://ckrvnls7feosm" path="res://asset/SFX_IGame/Tower/Leciana/Leciana Skill.wav" id="5_mvied"]
+[ext_resource type="Texture2D" uid="uid://b6bfsws0sf7sp" path="res://asset/Tower/Icon/Vigilante-5.png" id="5_nvyl0"]
+[ext_resource type="Texture2D" uid="uid://covcavjtcu5yw" path="res://asset/Tower/Icon/Glow/V52.png" id="6_mvied"]
+[ext_resource type="Texture2D" uid="uid://do4rdvuvdd2yp" path="res://asset/Tower/Leciana/Attack/1.png" id="7_nvyl0"]
+[ext_resource type="Texture2D" uid="uid://g7geij80dj2t" path="res://asset/Tower/Leciana/Attack/2.png" id="8_mvied"]
+[ext_resource type="Texture2D" uid="uid://m44gvc7y256r" path="res://asset/Tower/Leciana/Attack/3.png" id="9_r8k7y"]
+[ext_resource type="Texture2D" uid="uid://cjl1ghmkoqbxb" path="res://asset/Tower/Leciana/Attack/4.png" id="10_68q2q"]
+[ext_resource type="Texture2D" uid="uid://bg4j0m5mdkf7l" path="res://asset/Tower/Leciana/Attack/5.png" id="11_jrbok"]
+[ext_resource type="Texture2D" uid="uid://4kdgdlc8h2ig" path="res://asset/Tower/Leciana/Attack/6.png" id="12_ew85v"]
+[ext_resource type="Texture2D" uid="uid://bn6bigrwdb3xs" path="res://asset/Tower/Leciana/Attack/7.png" id="13_njcsc"]
+[ext_resource type="Texture2D" uid="uid://tsv35w1klxfg" path="res://asset/Tower/Leciana/Attack/8.png" id="14_414e1"]
+[ext_resource type="Texture2D" uid="uid://c0ylf7dkywar6" path="res://asset/Tower/Leciana/Idle/1.png" id="15_665od"]
+[ext_resource type="Texture2D" uid="uid://c8ubjis6o1w7n" path="res://asset/Tower/Leciana/Idle/2.png" id="16_af6c7"]
+[ext_resource type="Texture2D" uid="uid://ds366qgtnb5qy" path="res://asset/Tower/Leciana/Idle/3.png" id="17_axqqp"]
+[ext_resource type="Texture2D" uid="uid://bewcgcm2t0dsh" path="res://asset/Tower/Leciana/Idle/4.png" id="18_ttd4q"]
+[ext_resource type="Texture2D" uid="uid://dtkxunphidvka" path="res://asset/Tower/Leciana/Idle/5.png" id="19_0b0u8"]
+[ext_resource type="Texture2D" uid="uid://5h78n7xb1dp" path="res://asset/Tower/Leciana/Idle/6.png" id="20_5wcs7"]
+[ext_resource type="Texture2D" uid="uid://c1at8jwharigo" path="res://asset/Tower/Leciana/Idle/7.png" id="21_tq2ab"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6044w"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_pw78m")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_jf8tk")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_wtv25")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_p6mwc")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_c2k8j")
-}, {
 "duration": 1.0,
 "texture": ExtResource("7_nvyl0")
 }, {
@@ -48,12 +34,7 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("9_r8k7y")
-}],
-"loop": false,
-"name": &"attack",
-"speed": 5.0
 }, {
-"frames": [{
 "duration": 1.0,
 "texture": ExtResource("10_68q2q")
 }, {
@@ -68,12 +49,32 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("14_414e1")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
 }, {
+"frames": [{
 "duration": 1.0,
 "texture": ExtResource("15_665od")
 }, {
 "duration": 1.0,
 "texture": ExtResource("16_af6c7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_axqqp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_ttd4q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_0b0u8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_5wcs7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_tq2ab")
 }],
 "loop": true,
 "name": &"default",
@@ -84,9 +85,10 @@ animations = [{
 script = ExtResource("1_buyxb")
 chara = "leciana"
 atk_sfx = ExtResource("1_c2k8j")
+skl_sfx = ExtResource("5_mvied")
 cost = 12
-slot = ExtResource("4_c2k8j")
-slot_glow = ExtResource("6_nvyl0")
+slot = ExtResource("5_nvyl0")
+slot_glow = ExtResource("6_mvied")
 damage = 200
 speed = 1.0
 range = 200.0
