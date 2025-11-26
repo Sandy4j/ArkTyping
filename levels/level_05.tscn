@@ -1,24 +1,24 @@
-[gd_scene load_steps=22 format=3 uid="uid://dbjgfw6ycb20"]
+[gd_scene load_steps=22 format=3 uid="uid://h6pnp72mcxyi"]
 
-[ext_resource type="Script" path="res://scripts/LevelInit.gd" id="1_htwx1"]
-[ext_resource type="Material" uid="uid://ctd55tbm5xssh" path="res://asset/Shader/Sky/night.tres" id="2_0vajx"]
-[ext_resource type="PackedScene" uid="uid://csob2dk5jrcb5" path="res://asset/Envi/fireflies.tscn" id="3_j10hr"]
-[ext_resource type="Script" uid="uid://dgxccv80klhc7" path="res://scripts/Tower/TowerCon.gd" id="7_ck07j"]
-[ext_resource type="PackedScene" uid="uid://dfql5k5psmgxn" path="res://scenes/Tower/TowerSpot.tscn" id="8_4ukmx"]
-[ext_resource type="PackedScene" uid="uid://cjhp6v8qnx4qm" path="res://scenes/Tower/Tower.tscn" id="9_c4ago"]
-[ext_resource type="PackedScene" uid="uid://drlwka2ahedj4" path="res://scenes/Base.tscn" id="10_a45jb"]
-[ext_resource type="Script" uid="uid://4ipxb665lopb" path="res://scripts/WaveManager.gd" id="11_ukmku"]
-[ext_resource type="Script" path="res://resources/WaveConfig.gd" id="12_hsx28"]
-[ext_resource type="Resource" uid="uid://d4nr4jpcakmc0" path="res://resources/WaveData/Level 3/Wave1_lvl3.tres" id="13_6tpke"]
-[ext_resource type="Resource" uid="uid://bbmnux0b6xmd4" path="res://resources/WaveData/Level 3/Wave2_lvl3.tres" id="14_6jcg3"]
-[ext_resource type="PackedScene" uid="uid://cat4b08j8wo1g" path="res://asset/Envi/ENV lvl 5 ground.fbx" id="15_oku8f"]
-[ext_resource type="Resource" uid="uid://dhifykxglre0u" path="res://resources/WaveData/Level 3/Wave3_lvl3.tres" id="15_tkq1q"]
-[ext_resource type="PackedScene" uid="uid://b02l6og2hhico" path="res://asset/Envi/Props lvl 5.fbx" id="16_htwx1"]
-[ext_resource type="PackedScene" uid="uid://b6ot4uwb74jwf" path="res://scenes/ui.tscn" id="16_ny085"]
-[ext_resource type="PackedScene" uid="uid://dqmlunqfclena" path="res://asset/Vfx/Effect/Portalem.tscn" id="17_mskhr"]
+[ext_resource type="Script" path="res://scripts/LevelInit.gd" id="1_jepln"]
+[ext_resource type="Material" uid="uid://ctd55tbm5xssh" path="res://asset/Shader/Sky/night.tres" id="2_fk51f"]
+[ext_resource type="PackedScene" uid="uid://csob2dk5jrcb5" path="res://asset/Envi/fireflies.tscn" id="3_d0fql"]
+[ext_resource type="Script" uid="uid://dgxccv80klhc7" path="res://scripts/Tower/TowerCon.gd" id="4_dbgp1"]
+[ext_resource type="PackedScene" uid="uid://dfql5k5psmgxn" path="res://scenes/Tower/TowerSpot.tscn" id="5_ocw3c"]
+[ext_resource type="PackedScene" uid="uid://cjhp6v8qnx4qm" path="res://scenes/Tower/Tower.tscn" id="6_1q5uq"]
+[ext_resource type="PackedScene" uid="uid://drlwka2ahedj4" path="res://scenes/Base.tscn" id="7_6vgds"]
+[ext_resource type="Script" uid="uid://4ipxb665lopb" path="res://scripts/WaveManager.gd" id="8_fuywf"]
+[ext_resource type="Script" path="res://resources/WaveConfig.gd" id="9_16tge"]
+[ext_resource type="Resource" uid="uid://d4nr4jpcakmc0" path="res://resources/WaveData/Level 3/Wave1_lvl3.tres" id="10_1nphh"]
+[ext_resource type="Resource" uid="uid://bbmnux0b6xmd4" path="res://resources/WaveData/Level 3/Wave2_lvl3.tres" id="11_ciyj4"]
+[ext_resource type="Resource" uid="uid://dhifykxglre0u" path="res://resources/WaveData/Level 3/Wave3_lvl3.tres" id="12_88ktw"]
+[ext_resource type="PackedScene" uid="uid://b6ot4uwb74jwf" path="res://scenes/ui.tscn" id="13_thh07"]
+[ext_resource type="PackedScene" uid="uid://dqmlunqfclena" path="res://asset/Vfx/Effect/Portalem.tscn" id="14_ivanv"]
+[ext_resource type="PackedScene" uid="uid://daee5xj5vgu0d" path="res://asset/Envi/ENV lvl 6 ground.fbx" id="15_jepln"]
+[ext_resource type="PackedScene" uid="uid://rlie2mwntn7y" path="res://asset/Envi/Props lvl 6.fbx" id="16_fk51f"]
 
 [sub_resource type="Sky" id="Sky_2qse1"]
-sky_material = ExtResource("2_0vajx")
+sky_material = ExtResource("2_fk51f")
 
 [sub_resource type="Environment" id="Environment_xxuo2"]
 background_energy_multiplier = 0.25
@@ -57,55 +57,52 @@ _data = {
 point_count = 2
 
 [node name="Level03" type="Node3D"]
-script = ExtResource("1_htwx1")
+script = ExtResource("1_jepln")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_xxuo2")
 
-[node name="fireflies" parent="WorldEnvironment" instance=ExtResource("3_j10hr")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 4.950532, 2.130024, -3.7374263)
+[node name="fireflies" parent="WorldEnvironment" instance=ExtResource("3_d0fql")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.050531864, 2.130024, -2.9374263)
 
-[node name="fireflies2" parent="WorldEnvironment" instance=ExtResource("3_j10hr")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 9.750532, 2.130024, -3.7374263)
+[node name="fireflies2" parent="WorldEnvironment" instance=ExtResource("3_d0fql")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 3.0505319, 2.130024, -3.0374262)
 
-[node name="fireflies3" parent="WorldEnvironment" instance=ExtResource("3_j10hr")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.95053196, 2.130024, -1.2374262)
+[node name="fireflies3" parent="WorldEnvironment" instance=ExtResource("3_d0fql")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6.1505322, 2.130024, -2.7374263)
 
-[node name="fireflies4" parent="WorldEnvironment" instance=ExtResource("3_j10hr")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.95053196, 2.130024, 1.6625739)
+[node name="fireflies4" parent="WorldEnvironment" instance=ExtResource("3_d0fql")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 2.2505322, 2.130024, 1.262574)
 
-[node name="fireflies5" parent="WorldEnvironment" instance=ExtResource("3_j10hr")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6.050532, 2.130024, 0.26257396)
+[node name="fireflies5" parent="WorldEnvironment" instance=ExtResource("3_d0fql")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6.050532, 2.130024, 0.96257395)
 
-[node name="fireflies6" parent="WorldEnvironment" instance=ExtResource("3_j10hr")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 8.950532, 2.130024, 0.26257396)
+[node name="fireflies6" parent="WorldEnvironment" instance=ExtResource("3_d0fql")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 10.350532, 2.130024, -3.6374261)
 
-[node name="fireflies7" parent="WorldEnvironment" instance=ExtResource("3_j10hr")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 5.050532, 2.130024, 3.962574)
+[node name="fireflies7" parent="WorldEnvironment" instance=ExtResource("3_d0fql")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 10.250531, 2.130024, -1.4374261)
 
-[node name="fireflies8" parent="WorldEnvironment" instance=ExtResource("3_j10hr")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 9.850533, 2.130024, 3.962574)
+[node name="fireflies8" parent="WorldEnvironment" instance=ExtResource("3_d0fql")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 10.350533, 2.130024, 0.86257404)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="WorldEnvironment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.80619, 2.3672886, -2.8323064)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 2.367, -5)
 light_color = Color(1, 0.45999998, 0.45999998, 1)
 omni_range = 9.54
 omni_attenuation = 1.194
 metadata/_edit_lock_ = true
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="WorldEnvironment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5336218, 2.3672886, -3.5502186)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.367, 3)
 light_color = Color(1, 0.45999998, 0.45999998, 1)
 omni_range = 9.54
 omni_attenuation = 1.194
 metadata/_edit_lock_ = true
 
-[node name="OmniLight3D3" type="OmniLight3D" parent="WorldEnvironment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5336218, 2.3672886, 3.934719)
-light_color = Color(1, 0.45999998, 0.45999998, 1)
-omni_range = 9.54
-omni_attenuation = 1.194
-metadata/_edit_lock_ = true
+[node name="ENV lvl 6 ground" parent="WorldEnvironment" instance=ExtResource("15_jepln")]
+
+[node name="Props lvl 6" parent="WorldEnvironment" instance=ExtResource("16_fk51f")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.37870607, -0.74707997, -0.5463085, -0.49369705, -0.6623454, 0.5635261, -0.7828441, 0.056300182, -0.6196655, 0, 10, 2.6227646)
@@ -126,46 +123,46 @@ current = true
 fov = 22.5
 
 [node name="TowerCon" type="Node" parent="." groups=["towercon"]]
-script = ExtResource("7_ck07j")
+script = ExtResource("4_dbgp1")
 
-[node name="TowerSpot1" parent="TowerCon" instance=ExtResource("8_4ukmx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, -4)
-tower_scene = ExtResource("9_c4ago")
+[node name="TowerSpot1" parent="TowerCon" instance=ExtResource("5_ocw3c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -3)
+tower_scene = ExtResource("6_1q5uq")
 
-[node name="TowerSpot2" parent="TowerCon" instance=ExtResource("8_4ukmx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, -4)
-tower_scene = ExtResource("9_c4ago")
+[node name="TowerSpot2" parent="TowerCon" instance=ExtResource("5_ocw3c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, -3)
+tower_scene = ExtResource("6_1q5uq")
 
-[node name="TowerSpot3" parent="TowerCon" instance=ExtResource("8_4ukmx")]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 1, 1, -1)
-tower_scene = ExtResource("9_c4ago")
+[node name="TowerSpot3" parent="TowerCon" instance=ExtResource("5_ocw3c")]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 6, 1, -3)
+tower_scene = ExtResource("6_1q5uq")
 
-[node name="TowerSpot4" parent="TowerCon" instance=ExtResource("8_4ukmx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, 0)
-tower_scene = ExtResource("9_c4ago")
+[node name="TowerSpot4" parent="TowerCon" instance=ExtResource("5_ocw3c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 1)
+tower_scene = ExtResource("6_1q5uq")
 
-[node name="TowerSpot5" parent="TowerCon" instance=ExtResource("8_4ukmx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1, 0)
-tower_scene = ExtResource("9_c4ago")
+[node name="TowerSpot5" parent="TowerCon" instance=ExtResource("5_ocw3c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, 1)
+tower_scene = ExtResource("6_1q5uq")
 
-[node name="TowerSpot6" parent="TowerCon" instance=ExtResource("8_4ukmx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 2)
-tower_scene = ExtResource("9_c4ago")
+[node name="TowerSpot6" parent="TowerCon" instance=ExtResource("5_ocw3c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 1, -4)
+tower_scene = ExtResource("6_1q5uq")
 
-[node name="TowerSpot7" parent="TowerCon" instance=ExtResource("8_4ukmx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 4)
-tower_scene = ExtResource("9_c4ago")
+[node name="TowerSpot7" parent="TowerCon" instance=ExtResource("5_ocw3c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 1, -1.5)
+tower_scene = ExtResource("6_1q5uq")
 
-[node name="TowerSpot8" parent="TowerCon" instance=ExtResource("8_4ukmx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, 4)
-tower_scene = ExtResource("9_c4ago")
+[node name="TowerSpot8" parent="TowerCon" instance=ExtResource("5_ocw3c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 1, 1)
+tower_scene = ExtResource("6_1q5uq")
 
-[node name="Base" parent="." instance=ExtResource("10_a45jb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 2)
+[node name="Base" parent="." instance=ExtResource("7_6vgds")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -6)
 
 [node name="WaveManager" type="Node" parent="."]
-script = ExtResource("11_ukmku")
-wave_configs = Array[ExtResource("12_hsx28")]([ExtResource("13_6tpke"), ExtResource("14_6jcg3"), ExtResource("15_tkq1q")])
+script = ExtResource("8_fuywf")
+wave_configs = Array[ExtResource("9_16tge")]([ExtResource("10_1nphh"), ExtResource("11_ciyj4"), ExtResource("12_88ktw")])
 metadata/_custom_type_script = "uid://4ipxb665lopb"
 
 [node name="PathUp" type="Path3D" parent="WaveManager"]
@@ -180,14 +177,10 @@ curve = SubResource("Curve3D_wrb7r")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4492683, 0, 3.4048185)
 curve = SubResource("Curve3D_gj5ie")
 
-[node name="UI" parent="." instance=ExtResource("16_ny085")]
+[node name="UI" parent="." instance=ExtResource("13_thh07")]
 
-[node name="Port_al" parent="." instance=ExtResource("17_mskhr")]
-transform = Transform3D(0.68796384, 0, 3.1252592, 0, 2.9454327, 0, -1.4444219, 0, 1.48853, -2.056, 1.334, 3.5)
+[node name="Port_al" parent="." instance=ExtResource("14_ivanv")]
+transform = Transform3D(0.68796384, 0, 3.1252592, 0, 2.9454327, 0, -1.4444219, 0, 1.48853, -2, 1.334, 3.5)
 
-[node name="Port_al2" parent="." instance=ExtResource("17_mskhr")]
-transform = Transform3D(0.68796384, 0, 3.1252592, 0, 2.9454327, 0, -1.4444219, 0, 1.48853, -3.339, 1.334, -3.5)
-
-[node name="ENV lvl 5 ground" parent="." instance=ExtResource("15_oku8f")]
-
-[node name="Props lvl 5" parent="." instance=ExtResource("16_htwx1")]
+[node name="Port_al2" parent="." instance=ExtResource("14_ivanv")]
+transform = Transform3D(1.3855456, 0, 1.7308211, 0, 2.9454327, 0, -0.7999451, 0, 2.99787, 13, 1, -5.5)

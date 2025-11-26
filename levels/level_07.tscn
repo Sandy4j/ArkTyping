@@ -1,0 +1,186 @@
+[gd_scene load_steps=22 format=3 uid="uid://b3yoqm5od8v3d"]
+
+[ext_resource type="Script" path="res://scripts/LevelInit.gd" id="1_blie1"]
+[ext_resource type="Material" uid="uid://ctd55tbm5xssh" path="res://asset/Shader/Sky/night.tres" id="2_yp53p"]
+[ext_resource type="PackedScene" uid="uid://csob2dk5jrcb5" path="res://asset/Envi/fireflies.tscn" id="3_xcgam"]
+[ext_resource type="PackedScene" uid="uid://boue0rxgebrqk" path="res://asset/Envi/ENV lvl 7 ground.fbx" id="4_blie1"]
+[ext_resource type="Script" uid="uid://dgxccv80klhc7" path="res://scripts/Tower/TowerCon.gd" id="4_pehbd"]
+[ext_resource type="PackedScene" uid="uid://dfql5k5psmgxn" path="res://scenes/Tower/TowerSpot.tscn" id="5_4yosn"]
+[ext_resource type="PackedScene" uid="uid://bllx6u6hi6u7a" path="res://asset/Envi/Props lvl 7.fbx" id="5_yp53p"]
+[ext_resource type="PackedScene" uid="uid://cjhp6v8qnx4qm" path="res://scenes/Tower/Tower.tscn" id="6_sv7es"]
+[ext_resource type="PackedScene" uid="uid://drlwka2ahedj4" path="res://scenes/Base.tscn" id="7_5r10y"]
+[ext_resource type="Script" uid="uid://4ipxb665lopb" path="res://scripts/WaveManager.gd" id="8_hjpc8"]
+[ext_resource type="Script" path="res://resources/WaveConfig.gd" id="9_f1cbd"]
+[ext_resource type="Resource" uid="uid://d4nr4jpcakmc0" path="res://resources/WaveData/Level 3/Wave1_lvl3.tres" id="10_joyp0"]
+[ext_resource type="Resource" uid="uid://bbmnux0b6xmd4" path="res://resources/WaveData/Level 3/Wave2_lvl3.tres" id="11_dqmxr"]
+[ext_resource type="Resource" uid="uid://dhifykxglre0u" path="res://resources/WaveData/Level 3/Wave3_lvl3.tres" id="12_symhl"]
+[ext_resource type="PackedScene" uid="uid://b6ot4uwb74jwf" path="res://scenes/ui.tscn" id="13_4keop"]
+[ext_resource type="PackedScene" uid="uid://dqmlunqfclena" path="res://asset/Vfx/Effect/Portalem.tscn" id="14_3yrdd"]
+
+[sub_resource type="Sky" id="Sky_2qse1"]
+sky_material = ExtResource("2_yp53p")
+
+[sub_resource type="Environment" id="Environment_xxuo2"]
+background_energy_multiplier = 0.25
+sky = SubResource("Sky_2qse1")
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.0
+tonemap_mode = 2
+glow_enabled = true
+glow_normalized = true
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.3979408, 0.5685658, 0.7184154, 1)
+fog_light_energy = 0.15
+fog_density = 1.0
+volumetric_fog_density = 0.0
+
+[sub_resource type="Curve3D" id="Curve3D_5pqto"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.019699574, -0.012340546, 0.015871286, 0, 0, 0, 0, 0, 0, 19.347816, 0.5902839, -0.03160405, 0, 0, 0, 0, 0, 0, 19.443438, 0.56552124, 3.7517772, 0, 0, 0, 0, 0, 0, 5.451264, 0.5641298, 3.989827, 0, 0, 0, 0, 0, 0, 5.284218, 0.56442046, 7.751011, 0, 0, 0, 0, 0, 0, 21.414196, 0.57609177, 7.9719243),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 6
+
+[sub_resource type="Curve3D" id="Curve3D_wrb7r"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.045303345, -0.02466631, 0.06237352, 0, 0, 0, 0, 0, 0, -19.817373, 0.40763545, 0.29576063, 0, 0, 0, 0, 0, 0, -19.985926, 0.40253782, 4.106901, 0, 0, 0, 0, 0, 0, -3.5088444, 0.5216906, 4.2805095),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="Curve3D" id="Curve3D_gj5ie"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.012520313, -0.0011577606, 0.0150773525, 0, 0, 0, 0, 0, 0, 21.466011, 1.1500859, 0.50174165),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="Level03" type="Node3D"]
+script = ExtResource("1_blie1")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_xxuo2")
+
+[node name="fireflies" parent="WorldEnvironment" instance=ExtResource("3_xcgam")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1, 2.13, -3.547)
+
+[node name="fireflies2" parent="WorldEnvironment" instance=ExtResource("3_xcgam")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 3.881, 2.13, -3.462)
+
+[node name="fireflies3" parent="WorldEnvironment" instance=ExtResource("3_xcgam")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6.781, 2.13, -3.447)
+
+[node name="fireflies4" parent="WorldEnvironment" instance=ExtResource("3_xcgam")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.881, 2.13, 0.868)
+
+[node name="fireflies5" parent="WorldEnvironment" instance=ExtResource("3_xcgam")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 3.036, 2.13, 0.788)
+
+[node name="fireflies6" parent="WorldEnvironment" instance=ExtResource("3_xcgam")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 10.881, 2.13, -2.627)
+
+[node name="fireflies7" parent="WorldEnvironment" instance=ExtResource("3_xcgam")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6.926, 2.13, 0.793)
+
+[node name="fireflies8" parent="WorldEnvironment" instance=ExtResource("3_xcgam")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 10.856, 2.13, 0.863)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 2.367, -5)
+light_color = Color(1, 0.45999998, 0.45999998, 1)
+omni_range = 9.54
+omni_attenuation = 1.194
+metadata/_edit_lock_ = true
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.94, 2.367, -5.145)
+light_color = Color(1, 0.45999998, 0.45999998, 1)
+omni_range = 9.54
+omni_attenuation = 1.194
+metadata/_edit_lock_ = true
+
+[node name="ENV lvl 7 ground" parent="WorldEnvironment" instance=ExtResource("4_blie1")]
+
+[node name="Props lvl 7" parent="WorldEnvironment" instance=ExtResource("5_yp53p")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.37870607, -0.74707997, -0.5463085, -0.49369705, -0.6623454, 0.5635261, -0.7828441, 0.056300182, -0.6196655, 0, 10, 2.6227646)
+visible = false
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+shadow_enabled = true
+shadow_bias = 0.0
+shadow_normal_bias = 1.794
+shadow_reverse_cull_face = true
+shadow_transmittance_bias = 16.0
+shadow_blur = 0.0
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.5855096, 0.8106655, 0, -0.8106655, 0.5855096, 6.7185163, 22.923592, 16.366596)
+current = true
+fov = 22.5
+
+[node name="TowerCon" type="Node" parent="." groups=["towercon"]]
+script = ExtResource("4_pehbd")
+
+[node name="TowerSpot1" parent="TowerCon" instance=ExtResource("5_4yosn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -4)
+tower_scene = ExtResource("6_sv7es")
+
+[node name="TowerSpot2" parent="TowerCon" instance=ExtResource("5_4yosn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, -4)
+tower_scene = ExtResource("6_sv7es")
+
+[node name="TowerSpot3" parent="TowerCon" instance=ExtResource("5_4yosn")]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 7, 1, -4)
+tower_scene = ExtResource("6_sv7es")
+
+[node name="TowerSpot4" parent="TowerCon" instance=ExtResource("5_4yosn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 1, -3)
+tower_scene = ExtResource("6_sv7es")
+
+[node name="TowerSpot5" parent="TowerCon" instance=ExtResource("5_4yosn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, 0.5)
+tower_scene = ExtResource("6_sv7es")
+
+[node name="TowerSpot6" parent="TowerCon" instance=ExtResource("5_4yosn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 0.5)
+tower_scene = ExtResource("6_sv7es")
+
+[node name="TowerSpot7" parent="TowerCon" instance=ExtResource("5_4yosn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1, 1)
+tower_scene = ExtResource("6_sv7es")
+
+[node name="TowerSpot8" parent="TowerCon" instance=ExtResource("5_4yosn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 1, 1)
+tower_scene = ExtResource("6_sv7es")
+
+[node name="Base" parent="." instance=ExtResource("7_5r10y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 3)
+
+[node name="WaveManager" type="Node" parent="."]
+script = ExtResource("8_hjpc8")
+wave_configs = Array[ExtResource("9_f1cbd")]([ExtResource("10_joyp0"), ExtResource("11_dqmxr"), ExtResource("12_symhl")])
+metadata/_custom_type_script = "uid://4ipxb665lopb"
+
+[node name="PathUp" type="Path3D" parent="WaveManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4492683, 0, -3.9879968)
+curve = SubResource("Curve3D_5pqto")
+
+[node name="PathMid" type="Path3D" parent="WaveManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.74035, 0, -0.31590223)
+curve = SubResource("Curve3D_wrb7r")
+
+[node name="PathBot" type="Path3D" parent="WaveManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4492683, 0, 3.4048185)
+curve = SubResource("Curve3D_gj5ie")
+
+[node name="UI" parent="." instance=ExtResource("13_4keop")]
+
+[node name="Port_al" parent="." instance=ExtResource("14_3yrdd")]
+transform = Transform3D(0.68796384, 0, 3.1252592, 0, 2.9454327, 0, -1.4444219, 0, 1.48853, -1, 1.334, -7)
+
+[node name="Port_al2" parent="." instance=ExtResource("14_3yrdd")]
+transform = Transform3D(1.3855456, 0, 1.7308211, 0, 2.9454327, 0, -0.7999451, 0, 2.99787, 13, 1, -7)
