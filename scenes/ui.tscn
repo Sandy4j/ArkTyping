@@ -2,15 +2,15 @@
 
 [ext_resource type="Script" uid="uid://bbexpquh4b3ip" path="res://scripts/UI/UI.gd" id="1_6rmj2"]
 [ext_resource type="FontFile" uid="uid://ddon0uj5gtdts" path="res://asset/UI_Gameplay/Viga-Regular.ttf" id="2_catpy"]
-[ext_resource type="Texture2D" uid="uid://b12vcxaju3drt" path="res://asset/UI_Gameplay/Heart_BG.png" id="2_vsj0x"]
-[ext_resource type="Texture2D" uid="uid://dgh3o7a60ljhb" path="res://asset/UI_Gameplay/Heart.png" id="3_qsv74"]
-[ext_resource type="Texture2D" uid="uid://bwp1jf5ljg3rb" path="res://asset/UI_Gameplay/Enemy_BG.png" id="5_cof4p"]
-[ext_resource type="Texture2D" uid="uid://ds45sauhw3tjq" path="res://asset/UI_Gameplay/Enemy.png" id="6_f7tlh"]
-[ext_resource type="Texture2D" uid="uid://dcjddmsrg8vdy" path="res://asset/UI_Gameplay/Wave.png" id="7_8k7j3"]
-[ext_resource type="Texture2D" uid="uid://cci18kuxibjpy" path="res://asset/UI_Gameplay/Energy_BG.png" id="8_jkdwc"]
-[ext_resource type="Texture2D" uid="uid://qgwf3s20g5g" path="res://asset/UI_Gameplay/Chara_BG.png" id="9_rlppe"]
-[ext_resource type="Texture2D" uid="uid://ej7fvjdun2vt" path="res://asset/UI_Gameplay/History_Box.png" id="11_kupmu"]
-[ext_resource type="Texture2D" uid="uid://omvvnc2d3cag" path="res://asset/UI_Gameplay/Type_Box.png" id="12_catpy"]
+[ext_resource type="Texture2D" uid="uid://r0jk5u3l805y" path="res://asset/UI_Gameplay/Heart_BG.png" id="2_vsj0x"]
+[ext_resource type="Texture2D" uid="uid://d1h3dgmmbiuiv" path="res://asset/UI_Gameplay/Heart.png" id="3_qsv74"]
+[ext_resource type="Texture2D" uid="uid://bngpunog37ovt" path="res://asset/UI_Gameplay/Enemy_BG.png" id="5_cof4p"]
+[ext_resource type="Texture2D" uid="uid://d28ptae74b53p" path="res://asset/UI_Gameplay/Enemy.png" id="6_f7tlh"]
+[ext_resource type="Texture2D" uid="uid://dn0ab3cbqkqm4" path="res://asset/UI_Gameplay/Wave.png" id="7_8k7j3"]
+[ext_resource type="Texture2D" uid="uid://vaw87a8ccvlx" path="res://asset/UI_Gameplay/Energy_BG.png" id="8_jkdwc"]
+[ext_resource type="Texture2D" uid="uid://b87mglfyqmn0v" path="res://asset/UI_Gameplay/Chara_BG.png" id="9_rlppe"]
+[ext_resource type="Texture2D" uid="uid://dk5lualwoepbg" path="res://asset/UI_Gameplay/History_Box.png" id="11_kupmu"]
+[ext_resource type="Texture2D" uid="uid://1giep6h25tvp" path="res://asset/UI_Gameplay/Type_Box.png" id="12_catpy"]
 [ext_resource type="Script" uid="uid://bpdh0cu6naavy" path="res://scripts/Tower/inputtower.gd" id="13_jkdwc"]
 [ext_resource type="Script" uid="uid://g85gwfmcln8s" path="res://scripts/Tower/Tower_Res.gd" id="14_rlppe"]
 [ext_resource type="Resource" uid="uid://bk8grfmo48v2h" path="res://resources/res_tower/kaelio.tres" id="15_ycmcx"]
@@ -24,6 +24,7 @@
 [ext_resource type="Resource" uid="uid://dovjt4j0250hn" path="res://resources/res_tower/celene.tres" id="21_catpy"]
 [ext_resource type="PackedScene" uid="uid://bj5dtcmvpkfwk" path="res://scenes/UI/WinLose.tscn" id="21_ycmcx"]
 [ext_resource type="Resource" uid="uid://k5xab2kd6y7y" path="res://resources/res_tower/priestess.tres" id="22_41akx"]
+[ext_resource type="PackedScene" uid="uid://dryibkwveyvuw" path="res://scenes/UI/Vignette.tscn" id="24_41akx"]
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_6rmj2")
@@ -353,8 +354,10 @@ vertical_alignment = 1
 
 [node name="Input" type="Node" parent="." groups=["towerinput"]]
 script = ExtResource("13_jkdwc")
-tower_list = Array[ExtResource("14_rlppe")]([ExtResource("15_ycmcx"), ExtResource("18_41akx"), ExtResource("17_catpy"), ExtResource("19_rlppe"), ExtResource("16_kupmu"), ExtResource("20_kupmu"), ExtResource("18_jkdwc"), ExtResource("21_catpy"), ExtResource("22_41akx")])
+tower_list = Array[ExtResource("14_rlppe")]([ExtResource("15_ycmcx"), ExtResource("18_41akx"), ExtResource("17_catpy"), ExtResource("21_catpy"), ExtResource("19_rlppe"), ExtResource("16_kupmu"), ExtResource("22_41akx"), ExtResource("20_kupmu"), ExtResource("18_jkdwc")])
 
 [node name="WinLose" parent="." instance=ExtResource("21_ycmcx")]
 
 [node name="Pause" parent="." instance=ExtResource("20_pause")]
+
+[node name="Vignette" parent="." instance=ExtResource("24_41akx")]

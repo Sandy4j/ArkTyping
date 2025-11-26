@@ -44,7 +44,8 @@ const VFX_CACHE: Dictionary = {
 	"gun_rosemary": "res://asset/Vfx/Effect/gun_Rosemary.tscn",
 	"hit_tower": "res://asset/Vfx/Effect/hit_Tower.tscn",
 	"heal_celen": "res://asset/Vfx/Effect/heal_aura_2.tscn",
-	"heal_priest": "res://asset/Vfx/Effect/heal_aura.tscn"
+	"heal_priest": "res://asset/Vfx/Effect/heal_aura.tscn",
+	"binded": "res://asset/Vfx/Effect/debuff_bind.tscn"
 }
 
 ## Resource types yang benefit dari threading

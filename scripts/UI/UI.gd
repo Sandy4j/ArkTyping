@@ -14,6 +14,10 @@ extends CanvasLayer
 @onready var input: TowerInput = $Input
 @onready var icon_con: HBoxContainer = $NinePatchRect/MarginContainer/HBoxContainer
 @onready var winlose = $WinLose
+@onready var vignette: DangerVignette = $Vignette
+
+var blink_tween: Tween = null
+var original_message_color: Color
 
 func _ready() -> void:
 	GameManager.currency_changed.connect(_on_currency_changed)
@@ -22,7 +26,9 @@ func _ready() -> void:
 	LevelManager.victory.connect(_on_victory)
 	wavesystem.wave_started.connect(_on_wave_started)
 	wavesystem.wave_transition_warning.connect(_on_wave_transition_warning)
+	wavesystem.boss_incoming.connect(_on_boss_incoming)
 	message.visible = false
+	original_message_color = message.get_theme_color("font_color") if message.has_theme_color("font_color") else Color.WHITE
 	NPR.size = Vector2((145 * input.tower_list.size()),190)
 	for tower in input.tower_list:
 		var icon_rect = TextureRect.new()
@@ -68,6 +74,14 @@ func _on_wave_started(wave: int) -> void:
 func _on_wave_transition_warning(next_wave: int, countdown: float) -> void:
 	show_message("Wave " + str(next_wave) + " akan dimulai!")
 	AudioManager.play_sfx("notif_win")
+
+func _on_boss_incoming() -> void:
+	show_blinking_message("⚠️ BOSS INCOMING! ⚠️", 3.0, Color.RED)
+	AudioManager.play_sfx("notif_win")
+	
+	# Trigger vignette effect
+	if vignette:
+		vignette.trigger_boss_warning(3.0)
 
 func _on_game_over(stars: int) -> void:
 	if winlose:
@@ -169,3 +183,29 @@ func show_message(v:String):
 	message.visible = true
 	await get_tree().create_timer(2).timeout
 	message.visible = false
+
+func show_blinking_message(v: String, duration: float = 3.0, text_color: Color = Color.WHITE):
+	# Stop any existing blink animation
+	if blink_tween and blink_tween.is_running():
+		blink_tween.kill()
+	
+	message.text = v
+	message.visible = true
+	
+	# Set text color (use original if WHITE is passed, otherwise use custom color)
+	if text_color == Color.WHITE:
+		message.add_theme_color_override("font_color", original_message_color)
+	else:
+		message.add_theme_color_override("font_color", text_color)
+	
+	# Create blinking effect
+	blink_tween = create_tween()
+	blink_tween.set_loops(int(duration * 2))  # Blink twice per second
+	blink_tween.tween_property(message, "modulate:a", 0.2, 0.25)
+	blink_tween.tween_property(message, "modulate:a", 1.0, 0.25)
+	
+	# Hide message after duration
+	await get_tree().create_timer(duration).timeout
+	message.visible = false
+	message.modulate.a = 1.0  # Reset alpha
+	message.add_theme_color_override("font_color", original_message_color)  # Reset color

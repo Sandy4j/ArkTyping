@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bv8ctbeg2gd6" path="res://asset/Vfx/Texture/Lock.png" id="1_4xq2k"]
 [ext_resource type="Texture2D" uid="uid://bl0nboqtcrq0v" path="res://asset/Vfx/Texture/chain.png" id="2_mrs8h"]
 [ext_resource type="Texture2D" uid="uid://bxyn5yc5ikli4" path="res://asset/Vfx/Texture/T_cloudy_noise_211c.png" id="3_7lhvd"]
-[ext_resource type="ArrayMesh" uid="uid://cmulr6d1utn67" path="res://asset/Vfx/Obj/silinder_long.obj" id="4_pfp8o"]
+[ext_resource type="ArrayMesh" uid="uid://f6i7lrngtc4a" path="res://asset/Vfx/Obj/silinder_long.obj" id="4_pfp8o"]
 [ext_resource type="Texture2D" uid="uid://br5wp1ewdruk2" path="res://asset/Vfx/Texture/chain2.png" id="5_mq2v8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i2rag"]

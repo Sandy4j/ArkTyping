@@ -5,6 +5,7 @@ class_name SpawnManager
 
 signal spawn_point_completed(spawn_point_index: int)
 signal all_spawn_points_completed
+signal boss_incoming
 
 
 
@@ -60,6 +61,7 @@ func _process_sequential(delta: float) -> void:
 	if current_config.has_boss and not boss_spawned_at_current_point:
 		var boss_spawn_count = int(current_config.enemies_to_spawn * current_config.boss_spawn_timing)
 		if enemies_spawned_at_current_point >= boss_spawn_count:
+			boss_incoming.emit()
 			spawn_boss(current_config, current_spawn_point_index)
 			boss_spawned_at_current_point = true
 	
@@ -87,6 +89,7 @@ func _process_simultaneous(delta: float) -> void:
 		if config.has_boss and not state.boss_spawned:
 			var boss_spawn_count = int(config.enemies_to_spawn * config.boss_spawn_timing)
 			if state.enemies_spawned >= boss_spawn_count:
+				boss_incoming.emit()
 				spawn_boss(config, i)
 				state.boss_spawned = true
 		
@@ -169,10 +172,17 @@ func spawn_enemy(config: SpawnPointConfig, spawn_point_index: int) -> void:
 	
 	if not enemy:
 		enemy = spawn_entry.enemy_scene.instantiate()
-	else:
-		enemy.pool_name = pool_name
 	
-	if enemy is BaseEnemy and spawn_entry.enemy_data:
+	# Validate that the enemy is actually a BaseEnemy
+	if not enemy is BaseEnemy:
+		push_error("SpawnManager: Enemy scene at spawn point ", spawn_point_index, " is not a BaseEnemy! Got: ", enemy.get_class())
+		enemy.queue_free()
+		return
+	
+	# Set pool_name for both pooled and new instances
+	enemy.pool_name = pool_name
+	
+	if spawn_entry.enemy_data:
 		enemy.enemy_data = spawn_entry.enemy_data
 	
 	enemy.path_to_follow = spawn_path
@@ -184,10 +194,8 @@ func spawn_enemy(config: SpawnPointConfig, spawn_point_index: int) -> void:
 		enemy.reached_end.connect(_on_enemy_reached_end, CONNECT_ONE_SHOT)
 	
 	get_tree().current_scene.add_child(enemy)
-	
-	if enemy is BaseEnemy:
-		enemy._setup_path()
-		enemy._setup_visual()
+	enemy._setup_path()
+	enemy._setup_visual()
 	
 	# Play spawn sound
 	AudioManager.play_sfx("enemy_spawn")
@@ -202,6 +210,7 @@ func spawn_enemy(config: SpawnPointConfig, spawn_point_index: int) -> void:
 
 func spawn_boss(config: SpawnPointConfig, spawn_point_index: int) -> void:
 	if not config.boss_scene:
+		push_error("SpawnManager: Boss scene is not set for spawn point ", spawn_point_index)
 		return
 		
 	var spawn_path = get_spawn_path(config)
@@ -216,10 +225,17 @@ func spawn_boss(config: SpawnPointConfig, spawn_point_index: int) -> void:
 	
 	if not boss:
 		boss = config.boss_scene.instantiate()
-	else:
-		boss.pool_name = pool_name
 	
-	if boss is BaseEnemy and config.boss_data:
+	# Validate that the boss is actually a BaseEnemy
+	if not boss is BaseEnemy:
+		push_error("SpawnManager: Boss scene at spawn point ", spawn_point_index, " is not a BaseEnemy! Got: ", boss.get_class(), " - Check your SpawnPointConfig resource")
+		boss.queue_free()
+		return
+	
+	# Set pool_name for both pooled and new instances
+	boss.pool_name = pool_name
+	
+	if config.boss_data:
 		boss.enemy_data = config.boss_data
 		boss._setup_visual()
 	
@@ -232,9 +248,7 @@ func spawn_boss(config: SpawnPointConfig, spawn_point_index: int) -> void:
 		boss.reached_end.connect(_on_enemy_reached_end, CONNECT_ONE_SHOT)
 	
 	get_tree().current_scene.add_child(boss)
-	
-	if boss is BaseEnemy:
-		boss._setup_path()
+	boss._setup_path()
 	
 	active_enemies += 1
 	

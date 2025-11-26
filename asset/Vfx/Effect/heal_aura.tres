@@ -6,7 +6,6 @@ input_name = "time"
 [sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_reiqb"]
 default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]
 op_type = 0
-operator = 2
 
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_dpmvf"]
 expanded_output_ports = [0]
@@ -25,7 +24,7 @@ colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_6xuq8"]
 gradient = SubResource("Gradient_i7ovy")
-fill_from = Vector2(0.4871795, 0.20940171)
+fill_from = Vector2(0.46581197, 0)
 fill_to = Vector2(0.47863248, 1)
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_3tjsn"]
@@ -69,7 +68,7 @@ void fragment() {
 
 
 // VectorOp:11
-	vec2 n_out11p0 = vec2(n_out10p0) * n_out9p0;
+	vec2 n_out11p0 = vec2(n_out10p0) + n_out9p0;
 
 
 // UVFunc:8

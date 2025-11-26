@@ -5,6 +5,7 @@ signal wave_started(wave_number: int)
 signal wave_completed(wave_number: int)
 signal all_waves_completed
 signal wave_transition_warning(next_wave_number: int, countdown: float)
+signal boss_incoming
 
 ## Array berisi konfigurasi WaveConfig untuk setiap gelombang
 @export var wave_configs: Array[WaveConfig] = []
@@ -17,6 +18,7 @@ var spawn_manager: SpawnManager = null
 var wave_complete_checked: bool = false
 var waiting_for_enemies_to_die: bool = false
 var transition_warning_shown: bool = false
+var boss_warning_shown: bool = false
 
 func _ready() -> void:
 	var initial_wait = 5.0
@@ -27,6 +29,7 @@ func _ready() -> void:
 	spawn_manager = SpawnManager.new()
 	add_child(spawn_manager)
 	spawn_manager.all_spawn_points_completed.connect(_on_all_spawn_points_completed)
+	spawn_manager.boss_incoming.connect(_on_boss_incoming)
 	
 	# Get tower data dari TowerInput
 	var tower_datas: Array[TowerData] = []
@@ -55,6 +58,12 @@ func _process(delta: float) -> void:
 	if not spawn_manager.is_currently_spawning() and not waiting_for_enemies_to_die and current_wave < get_max_waves():
 		wave_timer += delta
 		
+		# Check if next wave has a boss and show warning early
+		if not boss_warning_shown and wave_timer >= get_time_between_waves() - 5.0:
+			if check_next_wave_has_boss():
+				boss_warning_shown = true
+				boss_incoming.emit()
+		
 		# Tampilkan peringatan transisi gelombang 3 detik sebelum gelombang berikutnya dimulai
 		if not transition_warning_shown and wave_timer >= get_time_between_waves() - 3.0:
 			if current_wave > 0:  # Hanya tampilkan pada transisi wave
@@ -68,6 +77,7 @@ func start_wave() -> void:
 	current_wave += 1
 	wave_timer = 0.0
 	wave_complete_checked = false
+	boss_warning_shown = false
 	
 	if current_wave <= wave_configs.size() and wave_configs[current_wave - 1]:
 		current_wave_config = wave_configs[current_wave - 1]
@@ -81,8 +91,6 @@ func start_wave() -> void:
 		
 		spawn_manager.start_spawning(spawn_configs, mode)
 		wave_started.emit(current_wave)
-		
-		var mode_name = "SEQUENTIAL" if mode == 0 else "SIMULTANEOUS"
 	else:
 		push_error("WaveManager: tidak ada konfigurasi ", current_wave)
 
@@ -107,8 +115,20 @@ func get_max_waves() -> int:
 func get_wave_configs() -> Array[WaveConfig]:
 	return wave_configs
 
+func check_next_wave_has_boss() -> bool:
+	var next_wave_index = current_wave  # Next wave is current_wave + 1, but array is 0-indexed
+	if next_wave_index < wave_configs.size() and wave_configs[next_wave_index]:
+		var next_wave_config = wave_configs[next_wave_index]
+		for spawn_config in next_wave_config.spawn_point_configs:
+			if spawn_config and spawn_config.has_boss:
+				return true
+	return false
+
 func _on_all_spawn_points_completed() -> void:
 	waiting_for_enemies_to_die = true
+
+func _on_boss_incoming() -> void:
+	boss_incoming.emit()
 
 func check_wave_complete() -> void:
 	if wave_complete_checked:

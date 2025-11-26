@@ -1,6 +1,6 @@
 [gd_resource type="VisualShader" load_steps=14 format=3 uid="uid://btlagn6h7s7lr"]
 
-[ext_resource type="Texture2D" uid="uid://b6iitcdtsamkl" path="res://asset/Vfx/Texture/Flame01.png" id="1_llpuk"]
+[ext_resource type="Texture2D" uid="uid://q8tpm5tac0oq" path="res://asset/Vfx/Texture/Flame01.png" id="1_llpuk"]
 
 [sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_2jlq5"]
 parameter_name = "FloatParameter"
