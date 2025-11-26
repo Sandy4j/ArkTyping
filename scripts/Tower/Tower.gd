@@ -206,16 +206,18 @@ func update_animation():
 			sprite.play("default")
 
 func binded():
+	if got_binded:
+		return
 	sprite.stop()
 	got_binded = true
-	var aura_scene = ResourceLoadManager.get_vfx_resource("magic_circle_7")
+	var aura_scene = ResourceLoadManager.get_vfx_resource("binded")
 	if not aura_scene:
-		aura_scene = ResourceLoadManager.load_resource_sync("res://asset/Vfx/Effect/magic_circle_7(Lilitia).tscn")
+		aura_scene = ResourceLoadManager.load_resource_sync("res://asset/Vfx/Effect/debuff_bind.tscn")
 	var aura_node = aura_scene.instantiate()
 	altar.add_child(aura_node)
 	debuff_aura = aura_node
-	var anim = aura_node.get_child(5)
-	anim.play("Kaileo_FX")
+	var anim = aura_node.get_node("AnimationPlayer")
+	anim.play("bind")
 	debuff_text.text = TypingSystem.debuff_text.pick_random()
 	debuff_text.visible = true
 
@@ -529,8 +531,7 @@ func update_healing_target():
 	for area in near_tower:
 		if area.has_method("place_tower"):
 			if area.has_tower:
-				if area.tower_node != self:
-					tower_in_range.append(area.tower_node)
+				tower_in_range.append(area.tower_node)
 		#if area.get_parent().is_in_group("tower"):
 			#tower_in_range.append(area.get_parent())
 			#print("terdeteksi ", area.get_parent().tower_data.chara)
@@ -565,7 +566,7 @@ func cleanup_tower_array() -> void:
 			update_healing_target()
 
 func take_damage(dmg: float) -> void:
-	if !self.got_binded:
+	if !got_binded:
 		binded()
 	current_hp -= dmg
 	HPBar.value = current_hp
@@ -576,7 +577,10 @@ func take_damage(dmg: float) -> void:
 		var vfx_nd = vfx_sc.instantiate()
 		self.add_child(vfx_nd)
 	if current_hp <= 0:
+		if is_instance_valid(debuff_aura):
+			debuff_aura.queue_free()
 		destroy()
+
 
 func destroy() -> void:
 	AudioManager.play_sfx("tower_dead")

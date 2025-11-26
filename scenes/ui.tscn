@@ -353,7 +353,7 @@ vertical_alignment = 1
 
 [node name="Input" type="Node" parent="." groups=["towerinput"]]
 script = ExtResource("13_jkdwc")
-tower_list = Array[ExtResource("14_rlppe")]([ExtResource("15_ycmcx"), ExtResource("18_41akx"), ExtResource("17_catpy"), ExtResource("19_rlppe"), ExtResource("16_kupmu"), ExtResource("20_kupmu"), ExtResource("18_jkdwc"), ExtResource("21_catpy"), ExtResource("22_41akx")])
+tower_list = Array[ExtResource("14_rlppe")]([ExtResource("15_ycmcx"), ExtResource("18_41akx"), ExtResource("17_catpy"), ExtResource("21_catpy"), ExtResource("19_rlppe"), ExtResource("16_kupmu"), ExtResource("22_41akx"), ExtResource("20_kupmu"), ExtResource("18_jkdwc")])
 
 [node name="WinLose" parent="." instance=ExtResource("21_ycmcx")]
 
