@@ -87,27 +87,22 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 8.650532, 2.130024, 1.9625738
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 11.350532, 2.130024, 1.9625738)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="WorldEnvironment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.80619, 2.3672886, -2.8323064)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 2.367, 0)
 light_color = Color(1, 0.45999998, 0.45999998, 1)
 omni_range = 9.54
 omni_attenuation = 1.194
 metadata/_edit_lock_ = true
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="WorldEnvironment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5336218, 2.3672886, -3.5502186)
-light_color = Color(1, 0.45999998, 0.45999998, 1)
-omni_range = 9.54
-omni_attenuation = 1.194
-metadata/_edit_lock_ = true
-
-[node name="OmniLight3D3" type="OmniLight3D" parent="WorldEnvironment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5336218, 2.3672886, 3.934719)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.367, 0)
 light_color = Color(1, 0.45999998, 0.45999998, 1)
 omni_range = 9.54
 omni_attenuation = 1.194
 metadata/_edit_lock_ = true
 
 [node name="ENV lvl 4 ground" parent="WorldEnvironment" instance=ExtResource("4_kf744")]
+
+[node name="Props lvl 4" parent="WorldEnvironment" instance=ExtResource("8_e7ppy")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.37870607, -0.74707997, -0.5463085, -0.49369705, -0.6623454, 0.5635261, -0.7828441, 0.056300182, -0.6196655, 0, 10, 2.6227646)
@@ -161,8 +156,6 @@ tower_scene = ExtResource("9_s5m8x")
 [node name="TowerSpot8" parent="TowerCon" instance=ExtResource("8_folie")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.8, 1, 2)
 tower_scene = ExtResource("9_s5m8x")
-
-[node name="Props lvl 4" parent="TowerCon" instance=ExtResource("8_e7ppy")]
 
 [node name="Base" parent="." instance=ExtResource("10_1tvcb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3, 0, 0)
