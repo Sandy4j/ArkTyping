@@ -8,6 +8,7 @@ signal base_hp_changed(new_hp: int)
 @export var currency_regen_amount: int = 1
 @export var currency_regen_interval: float = 2.0
 
+var cap_currency: int = 10
 var currency: int = 0
 var is_game_over: bool = false
 var final_stars: int = 0
@@ -23,7 +24,7 @@ func _process(delta: float) -> void:
 		return
 	
 	regen_timer += delta
-	if regen_timer >= currency_regen_interval:
+	if regen_timer >= currency_regen_interval and not cap_currency:
 		add_currency(currency_regen_amount)
 		regen_timer = 0.0
 

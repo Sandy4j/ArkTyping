@@ -1,13 +1,16 @@
-[gd_scene load_steps=11 format=3 uid="uid://cqlv1757tkesm"]
+[gd_scene load_steps=14 format=3 uid="uid://cqlv1757tkesm"]
 
 [ext_resource type="Script" path="res://scripts/Enemies/BasicEnemy.gd" id="1_bocv8"]
 [ext_resource type="Resource" uid="uid://crmk4fyxjfv8u" path="res://resources/Enemy Data/BasicCrawler.tres" id="2_v7vfw"]
-[ext_resource type="Texture2D" uid="uid://bf0ab7yfjb7m8" path="res://asset/Enemy/Enemy 5/idle/1.png" id="3_bocv8"]
-[ext_resource type="Texture2D" uid="uid://3ad5jkslpkhc" path="res://asset/Enemy/Enemy 5/idle/2.png" id="4_v7vfw"]
-[ext_resource type="Texture2D" uid="uid://lbsjdbw2tx8m" path="res://asset/Enemy/Enemy 5/idle/3.png" id="5_thwxf"]
-[ext_resource type="Texture2D" uid="uid://d2mgsamqaia6v" path="res://asset/Enemy/Enemy 5/idle/4.png" id="6_h7oqj"]
-[ext_resource type="Texture2D" uid="uid://ccuhc573ubpae" path="res://asset/Enemy/Enemy 5/idle/5.png" id="7_dfdqg"]
-[ext_resource type="Texture2D" uid="uid://x30x5w88rd1y" path="res://asset/Enemy/Enemy 5/idle/6.png" id="8_4b0r6"]
+[ext_resource type="Texture2D" uid="uid://dq3cdnf3eqby7" path="res://asset/Enemy/Enemy 5/1.png" id="3_h7oqj"]
+[ext_resource type="Texture2D" uid="uid://djkgatahw1382" path="res://asset/Enemy/Enemy 5/2.png" id="4_dfdqg"]
+[ext_resource type="Texture2D" uid="uid://csrq2t1bld757" path="res://asset/Enemy/Enemy 5/3.png" id="5_4b0r6"]
+[ext_resource type="Texture2D" uid="uid://o8a43ib37tsi" path="res://asset/Enemy/Enemy 5/4.png" id="6_dm6e4"]
+[ext_resource type="Texture2D" uid="uid://5i4qhd1vny5w" path="res://asset/Enemy/Enemy 5/5.png" id="7_fa87e"]
+[ext_resource type="Texture2D" uid="uid://ws52pcnm3fyq" path="res://asset/Enemy/Enemy 5/6.png" id="8_o0iop"]
+[ext_resource type="Texture2D" uid="uid://dt80l6f4we408" path="res://asset/Enemy/Enemy 5/7.png" id="9_uu4ou"]
+[ext_resource type="Texture2D" uid="uid://dslf2dxuhenqw" path="res://asset/Enemy/Enemy 5/8.png" id="10_qqw3y"]
+[ext_resource type="Texture2D" uid="uid://cxgmvl6i0sdpj" path="res://asset/Enemy/Enemy 5/9.png" id="11_bwcpm"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_inemf"]
 
@@ -15,26 +18,35 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_bocv8")
+"texture": ExtResource("3_h7oqj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_v7vfw")
+"texture": ExtResource("4_dfdqg")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_thwxf")
+"texture": ExtResource("5_4b0r6")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_h7oqj")
+"texture": ExtResource("6_dm6e4")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_dfdqg")
+"texture": ExtResource("7_fa87e")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_4b0r6")
+"texture": ExtResource("8_o0iop")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_uu4ou")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_qqw3y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_bwcpm")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [node name="BasicCrawler" type="CharacterBody3D"]
@@ -47,7 +59,6 @@ shape = SubResource("SphereShape3D_inemf")
 
 [node name="Anim" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 1, 0)
-flip_h = true
 billboard = 1
 sprite_frames = SubResource("SpriteFrames_y4hfw")
-frame_progress = 0.59799033
+frame_progress = 0.12198948

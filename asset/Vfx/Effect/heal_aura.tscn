@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dukk822on7upq"]
+[gd_scene load_steps=37 format=3 uid="uid://dukk822on7upq"]
 
 [ext_resource type="Shader" uid="uid://bwoh8wt2d35b5" path="res://asset/Vfx/Effect/heal_aura.tres" id="1_reiqb"]
 [ext_resource type="Texture2D" uid="uid://cqoy0tghp4b2l" path="res://asset/Vfx/Texture/T_PerlinNoise_46_inv.png" id="2_reiqb"]
@@ -11,6 +11,13 @@ render_priority = 0
 shader = ExtResource("1_reiqb")
 shader_parameter/Speed = Vector2(0.5, -0.5)
 shader_parameter/Texture2DParameter = ExtResource("2_reiqb")
+
+[sub_resource type="Curve" id="Curve_reiqb"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_dpmvf"]
+curve = SubResource("Curve_reiqb")
 
 [sub_resource type="Curve" id="Curve_jpld0"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -33,6 +40,7 @@ curve_z = SubResource("Curve_1syq7")
 gravity = Vector3(0, 0, 0)
 scale_curve = SubResource("CurveXYZTexture_pb1jb")
 color = Color(1, 1, 0.5921569, 1)
+alpha_curve = SubResource("CurveTexture_dpmvf")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_i783o"]
 render_priority = 0
@@ -281,7 +289,7 @@ process_material = SubResource("ParticleProcessMaterial_ue7o2")
 draw_pass_1 = ExtResource("2_wo0sd")
 
 [node name="2" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.79492056, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1463684, 0)
 material_override = SubResource("ShaderMaterial_i783o")
 emitting = false
 amount = 2
@@ -290,7 +298,7 @@ process_material = SubResource("ParticleProcessMaterial_htthr")
 draw_pass_1 = SubResource("CylinderMesh_gicb2")
 
 [node name="3" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2586726, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7419323, 0)
 material_override = SubResource("ShaderMaterial_i783o")
 amount = 2
 one_shot = true
@@ -306,10 +314,10 @@ process_material = SubResource("ParticleProcessMaterial_htthr")
 draw_pass_1 = SubResource("CylinderMesh_gicb2")
 
 [node name="Particle" type="GPUParticles3D" parent="."]
-transform = Transform3D(0.23064278, 0, 0, 0, 0.71857375, 0, 0, 0, 0.22387947, 0, 0.73782516, 0)
+transform = Transform3D(0.23064278, 0, 0, 0, 0.5535023, 0, 0, 0, 0.22387947, 0, 0.73782516, 0)
 material_override = SubResource("StandardMaterial3D_c1nd8")
 emitting = false
-amount = 20
+amount = 50
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_2gg6j")
 draw_pass_1 = SubResource("QuadMesh_alqxe")

@@ -11,11 +11,7 @@ vertex_color_use_as_albedo = true
 vertex_color_is_srgb = true
 albedo_texture = ExtResource("1_ex7h7")
 albedo_texture_msdf = true
-billboard_mode = 3
 billboard_keep_scale = true
-particles_anim_h_frames = 1
-particles_anim_v_frames = 1
-particles_anim_loop = false
 
 [sub_resource type="Gradient" id="Gradient_1hfsq"]
 offsets = PackedFloat32Array(0.008174387, 0.032697547, 0.22070844)
@@ -32,7 +28,7 @@ point_count = 2
 curve = SubResource("Curve_ex7h7")
 
 [sub_resource type="Curve" id="Curve_baoqn"]
-_data = [Vector2(0, 0.3092783), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.15463912), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_bsten"]
@@ -43,6 +39,8 @@ spread = 180.0
 initial_velocity_min = 5.0
 initial_velocity_max = 25.0
 gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+scale_max = 0.5
 scale_curve = SubResource("CurveTexture_bsten")
 color = Color(1.18, 0.9166312, 0.4970258, 1)
 color_ramp = SubResource("GradientTexture1D_0yte7")
@@ -100,11 +98,12 @@ _data = {
 }
 
 [node name="Hit" type="Node3D"]
+transform = Transform3D(0.5119321, 0, 0, 0, 0.6418423, 0, 0, 0, 0.7359079, 0, 0, 0)
 
 [node name="Splash" type="GPUParticles3D" parent="."]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(-3.6680323e-08, 0.781721, 0, -0.8391479, -3.4170114e-08, 0, 0, 0, 0.71303993, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_gf1ey")
-amount = 100
+amount = 75
 lifetime = 0.2
 one_shot = true
 explosiveness = 1.0

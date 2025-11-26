@@ -11,7 +11,7 @@ func _ready() -> void:
 
 func _on_start_btn_pressed() -> void:
 	AudioManager.play_sfx("button_click")
-	LevelManager.load_level_async("res://levels/level_01.tscn")
+	LevelManager.load_level_async("res://scenes/UI/LevelSelection.tscn")
 
 func _on_hero_btn_pressed() -> void:
 	AudioManager.play_sfx("button_click")

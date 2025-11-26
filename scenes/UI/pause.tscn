@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b8y7ehgxvep5v"]
+[gd_scene load_steps=10 format=3 uid="uid://b8y7ehgxvep5v"]
 
 [ext_resource type="Script" uid="uid://bn6n27ttgmiyn" path="res://scripts/UI/pause.gd" id="1_h04nq"]
 [ext_resource type="Texture2D" uid="uid://dsirwbfffx68h" path="res://asset/UI/Vector.png" id="2_35g5d"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c0qumn20tiu0m" path="res://asset/UI/resumehbtn.png" id="4_35g5d"]
 [ext_resource type="Texture2D" uid="uid://bpvwl8ffs6b4w" path="res://asset/UI/mmbtn.png" id="4_wgkjp"]
 [ext_resource type="Texture2D" uid="uid://c8bpfik6l48gp" path="res://asset/UI/mmhbtn.png" id="5_0f636"]
+[ext_resource type="Script" uid="uid://d1p2pdmy5r4wm" path="res://scripts/UI/button_hover_scale.gd" id="5_supq8"]
 [ext_resource type="Texture2D" uid="uid://bvydxrtay4jjx" path="res://asset/UI/retry.png" id="5_wgkjp"]
 [ext_resource type="Texture2D" uid="uid://b2yc1xuo6hgv1" path="res://asset/UI/retryH.png" id="6_0f636"]
 
@@ -56,6 +57,7 @@ texture_normal = ExtResource("3_gc51q")
 texture_pressed = ExtResource("4_35g5d")
 texture_hover = ExtResource("4_35g5d")
 texture_focused = ExtResource("4_35g5d")
+script = ExtResource("5_supq8")
 
 [node name="retrybtn" type="TextureButton" parent="Panel/VBoxContainer"]
 layout_mode = 2
@@ -63,6 +65,7 @@ texture_normal = ExtResource("5_wgkjp")
 texture_pressed = ExtResource("6_0f636")
 texture_hover = ExtResource("6_0f636")
 texture_focused = ExtResource("6_0f636")
+script = ExtResource("5_supq8")
 
 [node name="mainmenubtn" type="TextureButton" parent="Panel/VBoxContainer"]
 layout_mode = 2
@@ -70,3 +73,4 @@ texture_normal = ExtResource("4_wgkjp")
 texture_pressed = ExtResource("5_0f636")
 texture_hover = ExtResource("5_0f636")
 texture_focused = ExtResource("5_0f636")
+script = ExtResource("5_supq8")
