@@ -9,4 +9,4 @@
 script = ExtResource("2_q8mnf")
 spawn_path_node = NodePath("PathBot")
 enemy_spawn_entries = Array[ExtResource("1_j8pcv")]([ExtResource("2_fx8ox"), ExtResource("3_lkim6")])
-enemies_to_spawn = 6
+enemies_to_spawn = 8

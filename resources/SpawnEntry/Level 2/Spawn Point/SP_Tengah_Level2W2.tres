@@ -9,5 +9,3 @@
 script = ExtResource("4_x610s")
 spawn_path_node = NodePath("PathMid")
 enemy_spawn_entries = Array[ExtResource("1_ghevy")]([ExtResource("2_ghevy"), ExtResource("3_30ens")])
-enemies_to_spawn = 3
-spawn_interval = 2.0

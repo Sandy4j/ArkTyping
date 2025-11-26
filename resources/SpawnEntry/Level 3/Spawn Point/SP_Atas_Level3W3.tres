@@ -1,21 +1,23 @@
-[gd_resource type="Resource" script_class="SpawnPointConfig" load_steps=6 format=3 uid="uid://d0qcdsilab6ul"]
+[gd_resource type="Resource" script_class="SpawnPointConfig" load_steps=8 format=3 uid="uid://d0qcdsilab6ul"]
 
 [ext_resource type="Script" path="res://resources/EnemySpawnEntry.gd" id="1_5pqle"]
 [ext_resource type="Resource" uid="uid://bq4231ilgt53l" path="res://resources/Enemy Data/BossDevil.tres" id="1_6cfrx"]
+[ext_resource type="PackedScene" uid="uid://orr3oexwxv50" path="res://scenes/Enemy/BossDevil.tscn" id="2_g81gm"]
 [ext_resource type="Script" path="res://resources/SpawnPointConfig.gd" id="2_vwj8h"]
+[ext_resource type="Resource" uid="uid://4vnkysnhwpoy" path="res://resources/Enemy Data/BasicEye.tres" id="4_xu674"]
+[ext_resource type="PackedScene" uid="uid://iv56om7n6qae" path="res://scenes/Enemy/BasicEye.tscn" id="5_cnv3l"]
 
-[sub_resource type="Resource" id="Resource_vwj8h"]
-metadata/__load_path__ = "res://scenes/Enemy/BasicDevil.tscn"
-
-[sub_resource type="Resource" id="Resource_6cfrx"]
+[sub_resource type="Resource" id="Resource_2qj3d"]
 script = ExtResource("1_5pqle")
-enemy_scene = SubResource("Resource_vwj8h")
-enemy_data = ExtResource("1_6cfrx")
+enemy_scene = ExtResource("5_cnv3l")
+enemy_data = ExtResource("4_xu674")
 
 [resource]
 script = ExtResource("2_vwj8h")
 spawn_path_node = NodePath("PathUp")
-enemy_spawn_entries = Array[ExtResource("1_5pqle")]([SubResource("Resource_6cfrx")])
-enemies_to_spawn = 1
-spawn_interval = 2.0
+enemy_spawn_entries = Array[ExtResource("1_5pqle")]([SubResource("Resource_2qj3d")])
+enemies_to_spawn = 2
+has_boss = true
+boss_scene = ExtResource("2_g81gm")
+boss_data = ExtResource("1_6cfrx")
 boss_spawn_timing = 0.1

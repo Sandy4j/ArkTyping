@@ -5,7 +5,7 @@ class_name SpawnPointConfig
 @export var spawn_path_node: NodePath  # Path Path3D node
 @export var enemy_spawn_entries: Array[EnemySpawnEntry] = []  # Enemies yang dapat di-spawn dari titik ini
 @export var enemies_to_spawn: int = 5  # Jumlah total musuh yang akan di-spawn dari titik ini
-@export var spawn_interval: float = 1.0  # Interval waktu antara spawn musuh (dalam detik)
+@export var spawn_interval: float = 2.0  # Interval waktu antara spawn musuh (dalam detik)
 
 ## Konfigurasi boss (opsional)
 @export_group("boss")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cj0xxw8ewgpqy"]
+[gd_scene load_steps=20 format=3 uid="uid://cj0xxw8ewgpqy"]
 
 [ext_resource type="Script" uid="uid://dgxccv80klhc7" path="res://scripts/Tower/TowerCon.gd" id="3_kjd3d"]
 [ext_resource type="PackedScene" uid="uid://dfql5k5psmgxn" path="res://scenes/Tower/TowerSpot.tscn" id="4_qdeet"]
@@ -8,8 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://drlwka2ahedj4" path="res://scenes/Base.tscn" id="8_l0eo6"]
 [ext_resource type="Resource" uid="uid://dgw4ukvn22bjs" path="res://resources/WaveData/Level 1/Wave1_lvl1.tres" id="9_5dxk1"]
 [ext_resource type="Script" path="res://scripts/LevelInit.gd" id="11_kjd3d"]
+[ext_resource type="Resource" uid="uid://baoxfgqvytd5c" path="res://resources/WaveData/Level 1/Wave2_lvl1.tres" id="13_l0eo6"]
 [ext_resource type="PackedScene" uid="uid://dqmlunqfclena" path="res://asset/Vfx/Effect/Portalem.tscn" id="13_y72ps"]
 [ext_resource type="PackedScene" uid="uid://b6ot4uwb74jwf" path="res://scenes/ui.tscn" id="14_2t17w"]
+[ext_resource type="Resource" uid="uid://bb62puqosayiy" path="res://resources/WaveData/Level 1/Wave3_lvl1.tres" id="14_d3o6j"]
 [ext_resource type="PackedScene" uid="uid://dh34gp23bbucb" path="res://asset/Envi/env_lvl_1_ground.tscn" id="16_pdl2l"]
 [ext_resource type="PackedScene" uid="uid://dmcrg4ny4bb3n" path="res://asset/Envi/props_lvl_1.tscn" id="17_2t17w"]
 [ext_resource type="PackedScene" uid="uid://csob2dk5jrcb5" path="res://asset/Envi/fireflies.tscn" id="18_2t17w"]
@@ -114,7 +116,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.319666, 0, 0.34087634)
 
 [node name="WaveManager" type="Node" parent="."]
 script = ExtResource("7_l0eo6")
-wave_configs = Array[ExtResource("8_jy02f")]([ExtResource("9_5dxk1")])
+wave_configs = Array[ExtResource("8_jy02f")]([ExtResource("9_5dxk1"), ExtResource("13_l0eo6"), ExtResource("14_d3o6j")])
 metadata/_custom_type_script = "uid://4ipxb665lopb"
 
 [node name="EnemyPath" type="Path3D" parent="WaveManager"]

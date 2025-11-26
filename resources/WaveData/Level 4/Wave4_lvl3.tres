@@ -1,0 +1,47 @@
+[gd_resource type="Resource" script_class="WaveConfig" load_steps=14 format=3 uid="uid://cfb0mbfmudlit"]
+
+[ext_resource type="Script" path="res://resources/WaveConfig.gd" id="1_m263x"]
+[ext_resource type="Script" path="res://resources/SpawnPointConfig.gd" id="2_dgyc5"]
+[ext_resource type="Script" path="res://resources/EnemySpawnEntry.gd" id="3_140fe"]
+[ext_resource type="Resource" uid="uid://crmk4fyxjfv8u" path="res://resources/Enemy Data/BasicCrawler.tres" id="4_vf06g"]
+[ext_resource type="PackedScene" uid="uid://cqlv1757tkesm" path="res://scenes/Enemy/BasicCrawler.tscn" id="5_h0os4"]
+[ext_resource type="Resource" uid="uid://bpwnq55cbyk7n" path="res://resources/Enemy Data/RangedBat.tres" id="6_nm5ry"]
+[ext_resource type="PackedScene" uid="uid://hb6wcarprmym" path="res://scenes/Enemy/RangedBat.tscn" id="7_db5gh"]
+
+[sub_resource type="Resource" id="Resource_y6mx8"]
+script = ExtResource("3_140fe")
+enemy_scene = ExtResource("5_h0os4")
+enemy_data = ExtResource("4_vf06g")
+spawn_weight = 0.3
+
+[sub_resource type="Resource" id="Resource_6a6fh"]
+script = ExtResource("3_140fe")
+enemy_scene = ExtResource("7_db5gh")
+enemy_data = ExtResource("6_nm5ry")
+spawn_weight = 0.7
+
+[sub_resource type="Resource" id="Resource_x32f8"]
+script = ExtResource("2_dgyc5")
+spawn_path_node = NodePath("PathKiri")
+enemy_spawn_entries = Array[ExtResource("3_140fe")]([SubResource("Resource_y6mx8"), SubResource("Resource_6a6fh")])
+
+[sub_resource type="Resource" id="Resource_axrts"]
+script = ExtResource("3_140fe")
+enemy_scene = ExtResource("5_h0os4")
+enemy_data = ExtResource("4_vf06g")
+spawn_weight = 0.3
+
+[sub_resource type="Resource" id="Resource_lqhd8"]
+script = ExtResource("3_140fe")
+enemy_scene = ExtResource("7_db5gh")
+enemy_data = ExtResource("6_nm5ry")
+spawn_weight = 0.7
+
+[sub_resource type="Resource" id="Resource_ipk6o"]
+script = ExtResource("2_dgyc5")
+spawn_path_node = NodePath("PathKanan")
+enemy_spawn_entries = Array[ExtResource("3_140fe")]([SubResource("Resource_axrts"), SubResource("Resource_lqhd8")])
+
+[resource]
+script = ExtResource("1_m263x")
+spawn_point_configs = Array[ExtResource("2_dgyc5")]([SubResource("Resource_x32f8"), SubResource("Resource_ipk6o")])

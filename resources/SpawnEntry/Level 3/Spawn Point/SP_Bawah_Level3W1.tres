@@ -8,5 +8,4 @@
 script = ExtResource("2_doqug")
 spawn_path_node = NodePath("WaveManager/PathBot")
 enemy_spawn_entries = Array[ExtResource("1_o1lgc")]([ExtResource("2_b8ofh")])
-enemies_to_spawn = 10
-spawn_interval = 2.0
+enemies_to_spawn = 15

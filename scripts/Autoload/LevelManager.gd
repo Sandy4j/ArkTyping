@@ -10,7 +10,11 @@ var current_level_path: String = ""
 var available_levels: Array[String] = [
 	"res://levels/level_01.tscn",
 	"res://levels/level_02.tscn",
-	"res://levels/level_03.tscn"
+	"res://levels/level_03.tscn",
+	"res://levels/level_04.tscn",
+	"res://levels/level_05.tscn",
+	"res://levels/level_06.tscn",
+	"res://levels/level_07.tscn"
 ]
 var current_level_index: int = -1
 var loading_screen: CanvasLayer = null

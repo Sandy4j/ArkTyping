@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dbjgfw6ycb20"]
+[gd_scene load_steps=21 format=3 uid="uid://csmk52yjhoxal"]
 
 [ext_resource type="Script" path="res://scripts/LevelInit.gd" id="1_htwx1"]
 [ext_resource type="Material" uid="uid://ctd55tbm5xssh" path="res://asset/Shader/Sky/night.tres" id="2_0vajx"]
@@ -35,26 +35,19 @@ fog_light_energy = 0.15
 fog_density = 1.0
 volumetric_fog_density = 0.0
 
-[sub_resource type="Curve3D" id="Curve3D_5pqto"]
+[sub_resource type="Curve3D" id="Curve3D_jepln"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.019699574, -0.012340546, 0.015871286, 0, 0, 0, 0, 0, 0, 19.347816, 0.5902839, -0.03160405, 0, 0, 0, 0, 0, 0, 19.443438, 0.56552124, 3.7517772, 0, 0, 0, 0, 0, 0, 5.451264, 0.5641298, 3.989827, 0, 0, 0, 0, 0, 0, 5.284218, 0.56442046, 7.751011, 0, 0, 0, 0, 0, 0, 21.414196, 0.57609177, 7.9719243),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.03682661, 0.5418925, 0.19023466, 0, 0, 0, 0, 0, 0, 5.145983, 0.5117464, 0.120461464, 0, 0, 0, 0, 0, 0, 5.691942, 0.20601892, -6.174506, 0, 0, 0, 0, 0, 0, 12.715688, 0.4312744, -5.534149, 0, 0, 0, 0, 0, 0, 12.443482, 0.30056643, -1.6112416, 0, 0, 0, 0, 0, 0, 16.265388, 0.29397464, -1.2709506),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
 }
 point_count = 6
 
-[sub_resource type="Curve3D" id="Curve3D_wrb7r"]
+[sub_resource type="Curve3D" id="Curve3D_fk51f"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.045303345, -0.02466631, 0.06237352, 0, 0, 0, 0, 0, 0, -19.817373, 0.40763545, 0.29576063, 0, 0, 0, 0, 0, 0, -19.985926, 0.40253782, 4.106901, 0, 0, 0, 0, 0, 0, -3.5088444, 0.5216906, 4.2805095),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -1.132699, 0.3280108, 0.23348665, 0, 0, 0, 0, 0, 0, 5.172015, 0.073108196, 0.16329622, 0, 0, 0, 0, 0, 0, 5.0500603, 0.031911373, 5.1951838, 0, 0, 0, 0, 0, 0, 17.744083, 0.030888557, 5.156768),
 "tilts": PackedFloat32Array(0, 0, 0, 0)
 }
 point_count = 4
-
-[sub_resource type="Curve3D" id="Curve3D_gj5ie"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.012520313, -0.0011577606, 0.0150773525, 0, 0, 0, 0, 0, 0, 21.466011, 1.1500859, 0.50174165),
-"tilts": PackedFloat32Array(0, 0)
-}
-point_count = 2
 
 [node name="Level03" type="Node3D"]
 script = ExtResource("1_htwx1")
@@ -165,17 +158,13 @@ script = ExtResource("11_ukmku")
 wave_configs = Array[ExtResource("12_hsx28")]([ExtResource("13_6tpke"), ExtResource("14_6jcg3"), ExtResource("15_tkq1q")])
 metadata/_custom_type_script = "uid://4ipxb665lopb"
 
-[node name="PathUp" type="Path3D" parent="WaveManager"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4492683, 0, -3.9879968)
-curve = SubResource("Curve3D_5pqto")
+[node name="PathBawah" type="Path3D" parent="WaveManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.918124, 0, 3.692861)
+curve = SubResource("Curve3D_jepln")
 
-[node name="PathMid" type="Path3D" parent="WaveManager"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.74035, 0, -0.31590223)
-curve = SubResource("Curve3D_wrb7r")
-
-[node name="PathBot" type="Path3D" parent="WaveManager"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4492683, 0, 3.4048185)
-curve = SubResource("Curve3D_gj5ie")
+[node name="PathAtas" type="Path3D" parent="WaveManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9826858, 0, -3.3570979)
+curve = SubResource("Curve3D_fk51f")
 
 [node name="UI" parent="." instance=ExtResource("16_ny085")]
 

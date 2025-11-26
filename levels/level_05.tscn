@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://h6pnp72mcxyi"]
+[gd_scene load_steps=17 format=3 uid="uid://dbjgfw6ycb20"]
 
 [ext_resource type="Script" path="res://scripts/LevelInit.gd" id="1_jepln"]
 [ext_resource type="Material" uid="uid://ctd55tbm5xssh" path="res://asset/Shader/Sky/night.tres" id="2_fk51f"]
@@ -8,10 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://cjhp6v8qnx4qm" path="res://scenes/Tower/Tower.tscn" id="6_1q5uq"]
 [ext_resource type="PackedScene" uid="uid://drlwka2ahedj4" path="res://scenes/Base.tscn" id="7_6vgds"]
 [ext_resource type="Script" uid="uid://4ipxb665lopb" path="res://scripts/WaveManager.gd" id="8_fuywf"]
-[ext_resource type="Script" path="res://resources/WaveConfig.gd" id="9_16tge"]
-[ext_resource type="Resource" uid="uid://d4nr4jpcakmc0" path="res://resources/WaveData/Level 3/Wave1_lvl3.tres" id="10_1nphh"]
-[ext_resource type="Resource" uid="uid://bbmnux0b6xmd4" path="res://resources/WaveData/Level 3/Wave2_lvl3.tres" id="11_ciyj4"]
-[ext_resource type="Resource" uid="uid://dhifykxglre0u" path="res://resources/WaveData/Level 3/Wave3_lvl3.tres" id="12_88ktw"]
 [ext_resource type="PackedScene" uid="uid://b6ot4uwb74jwf" path="res://scenes/ui.tscn" id="13_thh07"]
 [ext_resource type="PackedScene" uid="uid://dqmlunqfclena" path="res://asset/Vfx/Effect/Portalem.tscn" id="14_ivanv"]
 [ext_resource type="PackedScene" uid="uid://daee5xj5vgu0d" path="res://asset/Envi/ENV lvl 6 ground.fbx" id="15_jepln"]
@@ -35,26 +31,19 @@ fog_light_energy = 0.15
 fog_density = 1.0
 volumetric_fog_density = 0.0
 
-[sub_resource type="Curve3D" id="Curve3D_5pqto"]
+[sub_resource type="Curve3D" id="Curve3D_ywhho"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.019699574, -0.012340546, 0.015871286, 0, 0, 0, 0, 0, 0, 19.347816, 0.5902839, -0.03160405, 0, 0, 0, 0, 0, 0, 19.443438, 0.56552124, 3.7517772, 0, 0, 0, 0, 0, 0, 5.451264, 0.5641298, 3.989827, 0, 0, 0, 0, 0, 0, 5.284218, 0.56442046, 7.751011, 0, 0, 0, 0, 0, 0, 21.414196, 0.57609177, 7.9719243),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.055513144, 0.012914658, -0.025084972, 0, 0, 0, 0, 0, 0, 10.709814, 0.10694075, -0.09019256, 0, 0, 0, 0, 0, 0, 9.978152, 1.5245509, -2.7872627, 0, 0, 0, 0, 0, 0, 3.9125745, 1.4522243, -2.7138693, 0, 0, 0, 0, 0, 0, 3.0031393, 0.17926884, -0.30849123, 0, 0, 0, 0, 0, 0, 10.4016485, 0.20819998, -0.285532, 0, 0, 0, 0, 0, 0, 9.498022, 2.334615, -4.329096),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
 }
-point_count = 6
+point_count = 7
 
-[sub_resource type="Curve3D" id="Curve3D_wrb7r"]
+[sub_resource type="Curve3D" id="Curve3D_6q6br"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.045303345, -0.02466631, 0.06237352, 0, 0, 0, 0, 0, 0, -19.817373, 0.40763545, 0.29576063, 0, 0, 0, 0, 0, 0, -19.985926, 0.40253782, 4.106901, 0, 0, 0, 0, 0, 0, -3.5088444, 0.5216906, 4.2805095),
-"tilts": PackedFloat32Array(0, 0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.0025253296, 0.001251936, 0.0087509155, 0, 0, 0, 0, 0, 0, 0.0060949326, 0.069689035, 8.250141, 0, 0, 0, 0, 0, 0, -4.8562183, 0.120660305, 8.27067, 0, 0, 0, 0, 0, 0, -4.976622, 0.40493298, 4.284177, 0, 0, 0, 0, 0, 0, -12.868482, 0.15863085, 4.2741137, 0, 0, 0, 0, 0, 0, -12.941266, 0.105498314, 8.261415, 0, 0, 0, 0, 0, 0, -5.269098, 0.14558029, 8.300308, 0, 0, 0, 0, 0, 0, -4.980824, -0.041923523, -0.7926135),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
 }
-point_count = 4
-
-[sub_resource type="Curve3D" id="Curve3D_gj5ie"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.012520313, -0.0011577606, 0.0150773525, 0, 0, 0, 0, 0, 0, 21.466011, 1.1500859, 0.50174165),
-"tilts": PackedFloat32Array(0, 0)
-}
-point_count = 2
+point_count = 8
 
 [node name="Level03" type="Node3D"]
 script = ExtResource("1_jepln")
@@ -162,20 +151,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -6)
 
 [node name="WaveManager" type="Node" parent="."]
 script = ExtResource("8_fuywf")
-wave_configs = Array[ExtResource("9_16tge")]([ExtResource("10_1nphh"), ExtResource("11_ciyj4"), ExtResource("12_88ktw")])
 metadata/_custom_type_script = "uid://4ipxb665lopb"
 
-[node name="PathUp" type="Path3D" parent="WaveManager"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4492683, 0, -3.9879968)
-curve = SubResource("Curve3D_5pqto")
+[node name="PathKiri" type="Path3D" parent="WaveManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9076536, 0, 3.185004)
+curve = SubResource("Curve3D_ywhho")
 
-[node name="PathMid" type="Path3D" parent="WaveManager"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.74035, 0, -0.31590223)
-curve = SubResource("Curve3D_wrb7r")
-
-[node name="PathBot" type="Path3D" parent="WaveManager"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4492683, 0, 3.4048185)
-curve = SubResource("Curve3D_gj5ie")
+[node name="PathKanan" type="Path3D" parent="WaveManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.916161, 0, -5.2516203)
+curve = SubResource("Curve3D_6q6br")
 
 [node name="UI" parent="." instance=ExtResource("13_thh07")]
 

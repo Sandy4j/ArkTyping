@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="WaveConfig" load_steps=10 format=3 uid="uid://denirtruegv51"]
+
+[ext_resource type="Script" path="res://resources/WaveConfig.gd" id="1_dqv2l"]
+[ext_resource type="Script" path="res://resources/SpawnPointConfig.gd" id="2_ngtqb"]
+[ext_resource type="Script" path="res://resources/EnemySpawnEntry.gd" id="3_s23pk"]
+[ext_resource type="Resource" uid="uid://bpwnq55cbyk7n" path="res://resources/Enemy Data/RangedBat.tres" id="4_rasla"]
+[ext_resource type="PackedScene" uid="uid://hb6wcarprmym" path="res://scenes/Enemy/RangedBat.tscn" id="5_hq12a"]
+
+[sub_resource type="Resource" id="Resource_tos2a"]
+script = ExtResource("3_s23pk")
+enemy_scene = ExtResource("5_hq12a")
+enemy_data = ExtResource("4_rasla")
+
+[sub_resource type="Resource" id="Resource_aelwo"]
+script = ExtResource("2_ngtqb")
+spawn_path_node = NodePath("PathKiri")
+enemy_spawn_entries = Array[ExtResource("3_s23pk")]([SubResource("Resource_tos2a")])
+
+[sub_resource type="Resource" id="Resource_te7hy"]
+script = ExtResource("3_s23pk")
+enemy_scene = ExtResource("5_hq12a")
+enemy_data = ExtResource("4_rasla")
+
+[sub_resource type="Resource" id="Resource_qeam2"]
+script = ExtResource("2_ngtqb")
+spawn_path_node = NodePath("PathKanan")
+enemy_spawn_entries = Array[ExtResource("3_s23pk")]([SubResource("Resource_te7hy")])
+
+[resource]
+script = ExtResource("1_dqv2l")
+spawn_point_configs = Array[ExtResource("2_ngtqb")]([SubResource("Resource_aelwo"), SubResource("Resource_qeam2")])

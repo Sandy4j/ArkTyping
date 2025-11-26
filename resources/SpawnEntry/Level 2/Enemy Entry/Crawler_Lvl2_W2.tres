@@ -8,4 +8,4 @@
 script = ExtResource("1_gx432")
 enemy_scene = ExtResource("2_y20er")
 enemy_data = ExtResource("1_sur2l")
-spawn_weight = 0.9
+spawn_weight = 0.7

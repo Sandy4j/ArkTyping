@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b3yoqm5od8v3d"]
+[gd_scene load_steps=21 format=3 uid="uid://dlm47rrl86u4u"]
 
 [ext_resource type="Script" path="res://scripts/LevelInit.gd" id="1_blie1"]
 [ext_resource type="Material" uid="uid://ctd55tbm5xssh" path="res://asset/Shader/Sky/night.tres" id="2_yp53p"]
@@ -35,26 +35,19 @@ fog_light_energy = 0.15
 fog_density = 1.0
 volumetric_fog_density = 0.0
 
-[sub_resource type="Curve3D" id="Curve3D_5pqto"]
+[sub_resource type="Curve3D" id="Curve3D_blie1"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.019699574, -0.012340546, 0.015871286, 0, 0, 0, 0, 0, 0, 19.347816, 0.5902839, -0.03160405, 0, 0, 0, 0, 0, 0, 19.443438, 0.56552124, 3.7517772, 0, 0, 0, 0, 0, 0, 5.451264, 0.5641298, 3.989827, 0, 0, 0, 0, 0, 0, 5.284218, 0.56442046, 7.751011, 0, 0, 0, 0, 0, 0, 21.414196, 0.57609177, 7.9719243),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.047007084, 0.011028767, -0.02159977, 0, 0, 0, 0, 0, 0, -0.14605463, 0.29466343, 4.8039474, 0, 0, 0, 0, 0, 0, 5.80684, 0.12342715, 5.0270023, 0, 0, 0, 0, 0, 0, 5.905469, 0.28967214, 9.904279, 0, 0, 0, 0, 0, 0, -0.8507236, 0.00864625, 9.700984),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
 }
-point_count = 6
+point_count = 5
 
-[sub_resource type="Curve3D" id="Curve3D_wrb7r"]
+[sub_resource type="Curve3D" id="Curve3D_yp53p"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.045303345, -0.02466631, 0.06237352, 0, 0, 0, 0, 0, 0, -19.817373, 0.40763545, 0.29576063, 0, 0, 0, 0, 0, 0, -19.985926, 0.40253782, 4.106901, 0, 0, 0, 0, 0, 0, -3.5088444, 0.5216906, 4.2805095),
-"tilts": PackedFloat32Array(0, 0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.01556778, 0.012084484, 0.00476408, 0, 0, 0, 0, 0, 0, 0.12689686, 0.20308399, 5.9058905, 0, 0, 0, 0, 0, 0, -3.9671183, -0.007138729, 6.055357, 0, 0, 0, 0, 0, 0, -3.5891676, 0.29600167, 1.9451528, 0, 0, 0, 0, 0, 0, -0.051264763, 0.14508176, 1.8447971, 0, 0, 0, 0, 0, 0, 0.29265022, 0.10254717, 5.930148, 0, 0, 0, 0, 0, 0, -4.129854, 0.11464441, 6.093534, 0, 0, 0, 0, 0, 0, -4.215479, -0.13338709, 1.6144886, 0, 0, 0, 0, 0, 0, 0.2701435, -0.06372595, 1.4793153, 0, 0, 0, 0, 0, 0, 0.1772337, 0.011749148, 9.867895, 0, 0, 0, 0, 0, 0, -14.376711, -0.117887735, 9.795385),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
-point_count = 4
-
-[sub_resource type="Curve3D" id="Curve3D_gj5ie"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.012520313, -0.0011577606, 0.0150773525, 0, 0, 0, 0, 0, 0, 21.466011, 1.1500859, 0.50174165),
-"tilts": PackedFloat32Array(0, 0)
-}
-point_count = 2
+point_count = 11
 
 [node name="Level03" type="Node3D"]
 script = ExtResource("1_blie1")
@@ -64,27 +57,35 @@ environment = SubResource("Environment_xxuo2")
 
 [node name="fireflies" parent="WorldEnvironment" instance=ExtResource("3_xcgam")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1, 2.13, -3.547)
+metadata/_edit_lock_ = true
 
 [node name="fireflies2" parent="WorldEnvironment" instance=ExtResource("3_xcgam")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 3.881, 2.13, -3.462)
+metadata/_edit_lock_ = true
 
 [node name="fireflies3" parent="WorldEnvironment" instance=ExtResource("3_xcgam")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6.781, 2.13, -3.447)
+metadata/_edit_lock_ = true
 
 [node name="fireflies4" parent="WorldEnvironment" instance=ExtResource("3_xcgam")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.881, 2.13, 0.868)
+metadata/_edit_lock_ = true
 
 [node name="fireflies5" parent="WorldEnvironment" instance=ExtResource("3_xcgam")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 3.036, 2.13, 0.788)
+metadata/_edit_lock_ = true
 
 [node name="fireflies6" parent="WorldEnvironment" instance=ExtResource("3_xcgam")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 10.881, 2.13, -2.627)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 10.880902, 2.1257367, -2.6228986)
+metadata/_edit_lock_ = true
 
 [node name="fireflies7" parent="WorldEnvironment" instance=ExtResource("3_xcgam")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6.926, 2.13, 0.793)
+metadata/_edit_lock_ = true
 
 [node name="fireflies8" parent="WorldEnvironment" instance=ExtResource("3_xcgam")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 10.856, 2.13, 0.863)
+metadata/_edit_lock_ = true
 
 [node name="OmniLight3D" type="OmniLight3D" parent="WorldEnvironment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 2.367, -5)
@@ -101,8 +102,10 @@ omni_attenuation = 1.194
 metadata/_edit_lock_ = true
 
 [node name="ENV lvl 7 ground" parent="WorldEnvironment" instance=ExtResource("4_blie1")]
+metadata/_edit_lock_ = true
 
 [node name="Props lvl 7" parent="WorldEnvironment" instance=ExtResource("5_yp53p")]
+metadata/_edit_lock_ = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.37870607, -0.74707997, -0.5463085, -0.49369705, -0.6623454, 0.5635261, -0.7828441, 0.056300182, -0.6196655, 0, 10, 2.6227646)
@@ -165,17 +168,13 @@ script = ExtResource("8_hjpc8")
 wave_configs = Array[ExtResource("9_f1cbd")]([ExtResource("10_joyp0"), ExtResource("11_dqmxr"), ExtResource("12_symhl")])
 metadata/_custom_type_script = "uid://4ipxb665lopb"
 
-[node name="PathUp" type="Path3D" parent="WaveManager"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4492683, 0, -3.9879968)
-curve = SubResource("Curve3D_5pqto")
+[node name="PathKiri" type="Path3D" parent="WaveManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8482019, 0, -6.861801)
+curve = SubResource("Curve3D_blie1")
 
-[node name="PathMid" type="Path3D" parent="WaveManager"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.74035, 0, -0.31590223)
-curve = SubResource("Curve3D_wrb7r")
-
-[node name="PathBot" type="Path3D" parent="WaveManager"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4492683, 0, 3.4048185)
-curve = SubResource("Curve3D_gj5ie")
+[node name="PathKanan" type="Path3D" parent="WaveManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.056082, 0.3046522, -7.057844)
+curve = SubResource("Curve3D_yp53p")
 
 [node name="UI" parent="." instance=ExtResource("13_4keop")]
 
