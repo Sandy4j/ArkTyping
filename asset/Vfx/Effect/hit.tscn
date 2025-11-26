@@ -11,7 +11,6 @@ vertex_color_use_as_albedo = true
 vertex_color_is_srgb = true
 albedo_texture = ExtResource("1_1hfsq")
 albedo_texture_msdf = true
-billboard_mode = 2
 billboard_keep_scale = true
 
 [sub_resource type="Gradient" id="Gradient_1hfsq"]
@@ -87,7 +86,7 @@ _data = {
 [node name="Hit" type="Node3D"]
 
 [node name="Splash" type="GPUParticles3D" parent="."]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(-2.7643734e-08, 0.64542055, 0, -0.63241494, -2.8212229e-08, 0, 0, 0, 0.5111166, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_jmy5i")
 amount = 50
 lifetime = 0.2
