@@ -1,0 +1,258 @@
+[gd_scene load_steps=31 format=4 uid="uid://cbhnirglyf8us"]
+
+[ext_resource type="Texture2D" uid="uid://dakw7usrtirep" path="res://asset/Vfx/Texture/Time1.png" id="1_ni5do"]
+[ext_resource type="Texture2D" uid="uid://daxc7d810vm0b" path="res://asset/Vfx/Texture/T_flare12.png" id="2_lpms7"]
+[ext_resource type="ArrayMesh" uid="uid://b6hjtb5bm6403" path="res://asset/Vfx/Obj/Bundar.obj" id="3_4mvrw"]
+[ext_resource type="Texture2D" uid="uid://rbas1wb7bknm" path="res://asset/Vfx/Texture/T_Noise10.png" id="4_u7uc7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hecsx"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_color = Color(1.6372112, 0.46095067, 0.59933424, 1)
+albedo_texture = ExtResource("1_ni5do")
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="Curve" id="Curve_ni5do"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.48061705), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_lpms7"]
+curve = SubResource("Curve_ni5do")
+
+[sub_resource type="Curve" id="Curve_tmnkl"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_d1pfc"]
+curve = SubResource("Curve_tmnkl")
+
+[sub_resource type="Curve" id="Curve_x0tc0"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.503158, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ji284"]
+curve = SubResource("Curve_x0tc0")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_b3ftx"]
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_ji284")
+alpha_curve = SubResource("CurveTexture_lpms7")
+emission_curve = SubResource("CurveTexture_d1pfc")
+
+[sub_resource type="QuadMesh" id="QuadMesh_1m8th"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gis0s"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_color = Color(1.0184411, 0.27228934, 0.36007184, 0.49411765)
+albedo_texture = ExtResource("2_lpms7")
+albedo_texture_msdf = true
+uv1_scale = Vector3(2, 2, 2)
+
+[sub_resource type="Curve" id="Curve_ki884"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.49090183), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ml3ck"]
+curve = SubResource("Curve_ki884")
+
+[sub_resource type="Curve" id="Curve_mwg0j"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.50118667), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_tvxbf"]
+curve = SubResource("Curve_mwg0j")
+
+[sub_resource type="Curve" id="Curve_mt5ee"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 2), 0.5597724, 0.5597724, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_gsm3b"]
+curve = SubResource("Curve_mt5ee")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_r6ssx"]
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_gsm3b")
+alpha_curve = SubResource("CurveTexture_ml3ck")
+emission_curve = SubResource("CurveTexture_tvxbf")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nhmlf"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_color = Color(0.98299, 0, 0.26854315, 0.094)
+albedo_texture = ExtResource("4_u7uc7")
+albedo_texture_msdf = true
+uv1_scale = Vector3(2, 2, 2)
+
+[sub_resource type="Curve" id="Curve_dnpq5"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_7704x"]
+curve = SubResource("Curve_dnpq5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_y138e"]
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_gsm3b")
+alpha_curve = SubResource("CurveTexture_7704x")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_j7fkm"]
+_surfaces = [{
+"aabb": AABB(-6.777919, -0.009391, -6.777919, 13.555838, 0.309911, 13.555838),
+"format": 34896613377,
+"index_count": 96,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAAACAAQAAAAFAAMAAAAEAAYAAAAHAAUAAAAGAAgAAAAJAAcAAAAIAAoAAAALAAkAAAAKAAwAAAANAAsAAAAMAA4AAAAPAA0AAAAOABAAAAARAA8AAAAQABIAAAATABEAAAASABQAAAAVABMAAAAUABYAAAAXABUAAAAWABgAAAAZABcAAAAYABoAAAAbABkAAAAaABwAAAAdABsAAAAcAB4AAAAfAB0AAAAeACAAAAAgAB8A"),
+"name": "Cone",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 33,
+"vertex_data": PackedByteArray("/3////9/AAD/fwAAAAAAAPiYAAB1AgAABmcAAHUCAAD7sAAAvgkAAANPAAC+CQAAHMcAAJIVAADiOAAAkhUAAIHaAAB9JQAAfSUAAH0lAABs6gAA4jgAAJIVAADiOAAAQPYAAANPAAC+CQAAA08AAIn9AAAGZwAAdQIAAAZnAAD//wAA/38AAAAAAAD/fwAAif0AAPiYAAB1AgAA+JgAAED2AAD7sAAAvgkAAPuwAABs6gAAHMcAAJIVAAAcxwAAgdoAAIHaAAB9JQAAgdoAABzHAABs6gAA4jgAAGzqAAD7sAAAQPYAAANPAABA9gAA+JgAAIn9AAAGZwAAif0AAP9/AAD//wAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_8iala"]
+_surfaces = [{
+"aabb": AABB(-6.777919, -0.009391, -6.777919, 13.555838, 0.309911, 13.555838),
+"attribute_data": PackedByteArray("/z//v/8/joL8S72D/z//v/xLvYOCVzyH/z//v4JXPIchYumM/z//vyFi6Yxxa42U/z//v3FrjZQVc92d/z//vxVz3Z3CeHyo/z//v8J4fKhBfAK0/z//v0F8ArRwff+//z//v3B9/79BfPvL/z//v0F8+8vCeILX/z//v8J4gtcVcyHi/z//vxVzIeJxa3Dr/z//v3FrcOshYhTz/z//vyFiFPOCV8L4/z//v4JXwvj8S0H8/z//v/xLQfz/P2/9/z//v/8/b/0DNEH8/z//vwM0Qfx8KML4/z//v3wowvjdHRTz/z//v90dFPOOFHDr/z//v44UcOvqDCHi/z//v+oMIeI8B4LX/z//vzwHgte9A/vL/z//v70D+8uPAv+//z//v48C/7+9AwK0/z//v70DArQ8B3yo/z//vzwHfKjqDN2d/z//v+oM3Z2OFI2U/z//v44UjZTdHemM/z//v90d6Yx8KDyH/z//v3woPIcDNL2D/z//vwM0vYP/P46C"),
+"format": 34896613399,
+"index_count": 96,
+"index_data": PackedByteArray("AAABAAIAAwAEAAUABgAHAAgACQAKAAsADAANAA4ADwAQABEAEgATABQAFQAWABcAGAAZABoAGwAcAB0AHgAfACAAIQAiACMAJAAlACYAJwAoACkAKgArACwALQAuAC8AMAAxADIAMwA0ADUANgA3ADgAOQA6ADsAPAA9AD4APwBAAEEAQgBDAEQARQBGAEcASABJAEoASwBMAE0ATgBPAFAAUQBSAFMAVABVAFYAVwBYAFkAWgBbAFwAXQBeAF8A"),
+"name": "Cone",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 96,
+"vertex_data": PackedByteArray("/3////9/3MH/fwAAAADcwfiYAAB1AtzB/3////9/ycH4mAAAdQLJwfuwAAC+CcnB/3////9/psH7sAAAvgmmwRzHAACSFabB/3////9/c8EcxwAAkhVzwYHaAAB9JXPB/3////9/MsGB2gAAfSUywWzqAADiODLB/3////9/5MBs6gAA4jjkwED2AAADT+TA/3////9/jsBA9gAAA0+OwIn9AAAGZ47A/3////9/M8CJ/QAABmczwP//AAD/fzPA/3////9/1b///wAA/3/Vv4n9AAD4mNW//3////9/eb+J/QAA+Jh5v0D2AAD7sHm//3////9/Ir9A9gAA+7Aiv2zqAAAcxyK//3////9/075s6gAAHMfTvoHaAACB2tO+/3////9/j76B2gAAgdqPvhzHAABs6o++/3////9/Wb4cxwAAbOpZvvuwAABA9lm+/3////9/Nb77sAAAQPY1vviYAACJ/TW+/3////9/Ir74mAAAif0ivv9/AAD//yK+/3////9/Ir7/fwAA//8ivgZnAACJ/SK+/3////9/Nb4GZwAAif01vgNPAABA9jW+/3////9/Wb4DTwAAQPZZvuI4AABs6lm+/3////9/j77iOAAAbOqPvn0lAACB2o++/3////9/0759JQAAgdrTvpIVAAAcx9O+/3////9/Ir+SFQAAHMciv74JAAD7sCK//3////9/eb++CQAA+7B5v3UCAAD4mHm//3////9/1b91AgAA+JjVvwAAAAD/f9W//3////9/M8AAAAAA/38zwHUCAAAGZzPA/3////9/jsB1AgAABmeOwL4JAAADT47A/3////9/5MC+CQAAA0/kwJIVAADiOOTA/3////9/MsGSFQAA4jgywX0lAAB9JTLB/3////9/c8F9JQAAfSVzweI4AACSFXPB/3////9/psHiOAAAkhWmwQNPAAC+CabB/3////9/ycEDTwAAvgnJwQZnAAB1AsnB/3////9/3MEGZwAAdQLcwf9/AAAAANzBb/+1f2//tX9v/7V/Wf4of1n+KH9Z/ih/V/2kflf9pH5X/aR+b/wvfm/8L35v/C9+qvvNfar7zX2q+819D/uBfQ/7gX0P+4F9pPpNfaT6TX2k+k19afozfWn6M31p+jN9Y/ozfWP6M31j+jN9k/pOfZP6Tn2T+k599fqBffX6gX31+oF9ivvNfYr7zX2K+819T/wwfk/8MH5P/DB+O/2kfjv9pH47/aR+Rv4of0b+KH9G/ih/aP+2f2j/tn9o/7Z/tf+VgLX/lYC1/5WAJ/+3gSf/t4En/7eBpP7DgqT+w4Kk/sOCL/6vgy/+r4Mv/q+Dzf1zhM39c4TN/XOEgf0JhYH9CYWB/QmFTf1rhU39a4VN/WuFMv2bhTL9m4Uy/ZuFMv2VhTL9lYUy/ZWFTf1ZhU39WYVN/VmFgP3uhID97oSA/e6EzP1UhMz9VITM/VSEL/6Pgy/+j4Mv/o+DpP6ngqT+p4Kk/qeCJ/+kgSf/pIEn/6SBtf+PgLX/j4C1/4+A")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_j7fkm")
+
+[sub_resource type="Animation" id="Animation_13d7l"]
+resource_name = "Za warudo"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Time:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("1:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("2:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_cq42v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Time:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("1:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("2:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b2yh4"]
+_data = {
+&"RESET": SubResource("Animation_cq42v"),
+&"Za warudo": SubResource("Animation_13d7l")
+}
+
+[node name="Timestopu" type="Node3D"]
+
+[node name="Time" type="GPUParticles3D" parent="."]
+material_override = SubResource("StandardMaterial3D_hecsx")
+emitting = false
+amount = 1
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_b3ftx")
+draw_pass_1 = SubResource("QuadMesh_1m8th")
+
+[node name="1" type="GPUParticles3D" parent="."]
+material_override = SubResource("StandardMaterial3D_gis0s")
+emitting = false
+amount = 1
+lifetime = 4.0
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_r6ssx")
+draw_pass_1 = ExtResource("3_4mvrw")
+
+[node name="2" type="GPUParticles3D" parent="."]
+material_override = SubResource("StandardMaterial3D_nhmlf")
+amount = 1
+lifetime = 4.0
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_y138e")
+draw_pass_1 = SubResource("ArrayMesh_8iala")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_b2yh4")
+}
