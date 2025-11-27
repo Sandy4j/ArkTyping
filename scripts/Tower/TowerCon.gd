@@ -210,7 +210,7 @@ func active_tower_at_selected(v:String) -> void:
 		elif spot.tower_node.skill_active:
 			var msg =str("Tower skill is already active")
 			ui.show_message(msg)
-		elif spot.tower_node.is_binded:
+		elif spot.tower_node.got_binded:
 			var msg =str(spot.tower_node.tower_data.chara, " cant activate the skill because of debuff")
 			ui.show_message(msg)
 		elif spot.tower_data.skill == v:

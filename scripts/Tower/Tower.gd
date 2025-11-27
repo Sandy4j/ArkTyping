@@ -216,6 +216,7 @@ func update_animation():
 func binded():
 	if got_binded:
 		return
+	print("[DEBUG] binded() dipanggil oleh:", get_stack())
 	sprite.stop()
 	got_binded = true
 	var aura_scene = ResourceLoadManager.get_vfx_resource("binded")
@@ -259,13 +260,15 @@ func apply_bind_debuff(bind_word: String):
 func remove_bind_debuff():
 	if not got_binded:
 		return
-	
 	got_binded = false
-	
-	# Tell TowerSpot to remove VFX
+	var vfx_removed = false
 	if is_instance_valid(debuff_aura) and debuff_aura.has_method("remove_bind_vfx"):
 		debuff_aura.remove_bind_vfx()
-	
+		vfx_removed = true
+	if not vfx_removed and is_instance_valid(altar):
+		for child in altar.get_children():
+			if child is Node and child.name.find("bind") != -1:
+				child.queue_free()
 	debuff_aura = null
 	debuff_text.visible = false
 	sprite.play("default")
@@ -609,8 +612,8 @@ func cleanup_tower_array() -> void:
 			healing_target = null
 			update_healing_target()
 
-func take_damage(dmg: float) -> void:
-	if !got_binded:
+func take_damage(dmg: float, is_bind: bool = false) -> void:
+	if is_bind and !got_binded:
 		binded()
 	current_hp -= dmg
 	HPBar.value = current_hp

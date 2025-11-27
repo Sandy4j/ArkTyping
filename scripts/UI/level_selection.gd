@@ -2,7 +2,7 @@ extends Control
 
 ## LevelSelection - UI untuk memilih level yang akan dimainkan
 
-@onready var level_container = $CanvasLayer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/LevelContainer
+@onready var level_container = $CanvasLayer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/LevelContainer
 @onready var back_button = $CanvasLayer/BackButton
 
 const LEVEL_BUTTON_SCENE = preload("res://scenes/UI/LevelButton.tscn")

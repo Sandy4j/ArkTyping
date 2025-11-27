@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://hb6wcarprmym"]
+[gd_scene load_steps=30 format=3 uid="uid://hb6wcarprmym"]
 
 [ext_resource type="Script" path="res://scripts/Enemies/RangedEnemy.gd" id="1_thq1w"]
 [ext_resource type="Resource" uid="uid://bpwnq55cbyk7n" path="res://resources/Enemy Data/RangedBat.tres" id="2_rvsi4"]
@@ -12,6 +12,20 @@
 [ext_resource type="Texture2D" uid="uid://bc7o87nwxwo7u" path="res://asset/Enemy/Enemy 3/8.png" id="10_etbk8"]
 [ext_resource type="Texture2D" uid="uid://boca7xib5eipo" path="res://asset/Enemy/Enemy 3/9.png" id="11_l8es6"]
 [ext_resource type="Texture2D" uid="uid://btrod0acddhno" path="res://asset/Enemy/Enemy 3/10.png" id="12_jiksd"]
+[ext_resource type="Texture2D" uid="uid://7v72pwit11pw" path="res://asset/Enemy/Enemy die/1.png" id="13_vunub"]
+[ext_resource type="Texture2D" uid="uid://doasoi0h3ckpm" path="res://asset/Enemy/Enemy die/2.png" id="14_0nv8k"]
+[ext_resource type="Texture2D" uid="uid://bv2wg38ffkhf5" path="res://asset/Enemy/Enemy die/3.png" id="15_kwfty"]
+[ext_resource type="Texture2D" uid="uid://cm75gs3ee6ivi" path="res://asset/Enemy/Enemy die/4.png" id="16_svm8c"]
+[ext_resource type="Texture2D" uid="uid://dk33yqadnmdej" path="res://asset/Enemy/Enemy die/5.png" id="17_qb36h"]
+[ext_resource type="Texture2D" uid="uid://cdn0lflniluyo" path="res://asset/Enemy/Enemy die/6.png" id="18_db7fs"]
+[ext_resource type="Texture2D" uid="uid://c15u0j8ay141e" path="res://asset/Enemy/Enemy die/7.png" id="19_biifx"]
+[ext_resource type="Texture2D" uid="uid://j2rdcx7q6boc" path="res://asset/Enemy/Enemy die/8.png" id="20_xtm0n"]
+[ext_resource type="Texture2D" uid="uid://casbnl3h78evu" path="res://asset/Enemy/Enemy die/9.png" id="21_smd3p"]
+[ext_resource type="Texture2D" uid="uid://cpfayjyykabpp" path="res://asset/Enemy/Enemy die/10.png" id="22_et4hs"]
+[ext_resource type="Texture2D" uid="uid://brn34lgcnirps" path="res://asset/Enemy/Enemy die/11.png" id="23_8gp0d"]
+[ext_resource type="Texture2D" uid="uid://b4f2mc278ds6t" path="res://asset/Enemy/Enemy die/12.png" id="24_4h340"]
+[ext_resource type="Texture2D" uid="uid://0sbbl2wnyann" path="res://asset/Enemy/Enemy die/13.png" id="25_awsgg"]
+[ext_resource type="Texture2D" uid="uid://sbnh2mf4dy0" path="res://asset/Enemy/Enemy die/14.png" id="26_lyeg6"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_aw3p5"]
 
@@ -54,6 +68,53 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_vunub")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_0nv8k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_kwfty")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_svm8c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_qb36h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_db7fs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_biifx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_xtm0n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_smd3p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_et4hs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_8gp0d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_4h340")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_awsgg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_lyeg6")
+}],
+"loop": false,
+"name": &"die",
+"speed": 5.0
 }]
 
 [node name="RangedBat" type="CharacterBody3D"]
@@ -72,4 +133,4 @@ shape = SubResource("SphereShape3D_icdvm")
 transform = Transform3D(0.2, 0, 0, 0, 0.18793853, 0.06840403, 0, -0.06840403, 0.18793853, 0, 1, 0)
 billboard = 1
 sprite_frames = SubResource("SpriteFrames_mvnst")
-frame_progress = 0.8650812
+animation = &"die"

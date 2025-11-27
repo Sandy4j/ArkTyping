@@ -105,6 +105,8 @@ func die() -> void:
 	is_alive = false
 	died.emit(enemy_data.reward)
 	AudioManager.play_sfx("enemy_die")
+	sprite.play("die")
+	await get_tree().create_timer(2)
 	_on_death()
 	return_to_pool()
 

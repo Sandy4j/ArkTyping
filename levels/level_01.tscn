@@ -1,95 +1,127 @@
-[gd_scene load_steps=6 format=3 uid="uid://cj0xxw8ewgpqy"]
+[gd_scene load_steps=20 format=3 uid="uid://cj0xxw8ewgpqy"]
 
-[ext_resource type="Script" path="res://scripts/UI/level_selection.gd" id="1_81a5f"]
-[ext_resource type="Texture2D" uid="uid://be6mij1a7xdhi" path="res://asset/UI/main menu/main bg 2.png" id="2_gg43x"]
-[ext_resource type="PackedScene" path="res://scenes/UI/DebugMenu.tscn" id="3_mllcm"]
+[ext_resource type="Script" uid="uid://dgxccv80klhc7" path="res://scripts/Tower/TowerCon.gd" id="3_kjd3d"]
+[ext_resource type="PackedScene" uid="uid://dfql5k5psmgxn" path="res://scenes/Tower/TowerSpot.tscn" id="4_qdeet"]
+[ext_resource type="PackedScene" uid="uid://cjhp6v8qnx4qm" path="res://scenes/Tower/Tower.tscn" id="6_xw3ee"]
+[ext_resource type="Script" uid="uid://4ipxb665lopb" path="res://scripts/WaveManager.gd" id="7_l0eo6"]
+[ext_resource type="Script" path="res://resources/WaveConfig.gd" id="8_jy02f"]
+[ext_resource type="PackedScene" uid="uid://drlwka2ahedj4" path="res://scenes/Base.tscn" id="8_l0eo6"]
+[ext_resource type="Resource" uid="uid://dgw4ukvn22bjs" path="res://resources/WaveData/Level 1/Wave1_lvl1.tres" id="9_5dxk1"]
+[ext_resource type="Script" path="res://scripts/LevelInit.gd" id="11_kjd3d"]
+[ext_resource type="Resource" uid="uid://baoxfgqvytd5c" path="res://resources/WaveData/Level 1/Wave2_lvl1.tres" id="13_l0eo6"]
+[ext_resource type="PackedScene" uid="uid://dqmlunqfclena" path="res://asset/Vfx/Effect/Portalem.tscn" id="13_y72ps"]
+[ext_resource type="PackedScene" uid="uid://b6ot4uwb74jwf" path="res://scenes/ui.tscn" id="14_2t17w"]
+[ext_resource type="Resource" uid="uid://bb62puqosayiy" path="res://resources/WaveData/Level 1/Wave3_lvl1.tres" id="14_d3o6j"]
+[ext_resource type="PackedScene" uid="uid://dh34gp23bbucb" path="res://asset/Envi/env_lvl_1_ground.tscn" id="16_pdl2l"]
+[ext_resource type="PackedScene" uid="uid://dmcrg4ny4bb3n" path="res://asset/Envi/props_lvl_1.tscn" id="17_2t17w"]
+[ext_resource type="PackedScene" uid="uid://csob2dk5jrcb5" path="res://asset/Envi/fireflies.tscn" id="18_2t17w"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dicgb"]
-bg_color = Color(0.04, 0.04, 0.04, 0.78431374)
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bm28l"]
+sky_top_color = Color(0.20850936, 0.256172, 0.3196701, 1)
+sky_horizon_color = Color(0.2792006, 0.28520942, 0.29723975, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
-bg_color = Color(0, 0, 0, 0)
+[sub_resource type="Sky" id="Sky_2t17w"]
+sky_material = SubResource("ProceduralSkyMaterial_bm28l")
 
-[node name="LevelSelection" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("1_81a5f")
+[sub_resource type="Environment" id="Environment_main"]
+background_mode = 2
+background_energy_multiplier = 0.25
+sky = SubResource("Sky_2t17w")
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.0
+tonemap_mode = 2
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.3979408, 0.5685658, 0.7184154, 1)
+fog_light_energy = 0.15
+fog_density = 1.0
+volumetric_fog_density = 0.0
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[sub_resource type="Curve3D" id="Curve3D_path"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.007716179, -0.00050777197, -0.0042788386, 0, 0, 0, 0, 0, 0, 6.635499, 0.014657617, 0.24488723, 0, 0, 0, 0, 0, 0, 6.412777, 0.052482247, -2.183722, 0, 0, 0, 0, 0, 0, 10.356508, 0.13016617, -1.9482588, 0, 0, 0, 0, 0, 0, 13.123932, 0.15895164, -1.9590139, 0, 0, 0, 0, 0, 0, 13.348322, 0.11993581, -0.124624014, 0, 0, 0, 0, 0, 0, 19.587301, 0.04982257, -0.58872485),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 7
 
-[node name="Background" type="TextureRect" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_gg43x")
-expand_mode = 1
+[node name="Level1" type="Node3D"]
+script = ExtResource("11_kjd3d")
 
-[node name="Panel" type="Panel" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_dicgb")
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_main")
 
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="ENV lvl 1 ground" parent="WorldEnvironment" instance=ExtResource("16_pdl2l")]
 
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/CenterContainer"]
-custom_minimum_size = Vector2(1200, 700)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+[node name="Props lvl 1" parent="WorldEnvironment" instance=ExtResource("17_2t17w")]
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/CenterContainer/PanelContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 50
-theme_override_constants/margin_top = 80
-theme_override_constants/margin_right = 50
-theme_override_constants/margin_bottom = 50
+[node name="fireflies" parent="WorldEnvironment" instance=ExtResource("18_2t17w")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.99984205, 2.130024, -0.53972733)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer/PanelContainer/MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = 40
+[node name="fireflies2" parent="WorldEnvironment" instance=ExtResource("18_2t17w")]
+transform = Transform3D(1.9728585, 0, -0.32837367, 0, 2, 0, 0.32837367, 0, 1.9728585, 4.849866, 2.130024, 1.210681)
 
-[node name="TitleLabel" type="Label" parent="CanvasLayer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.85, 0.5, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 72
-text = "Level Select"
-horizontal_alignment = 1
+[node name="fireflies3" parent="WorldEnvironment" instance=ExtResource("18_2t17w")]
+transform = Transform3D(1.9728585, 0, -0.32837367, 0, 2, 0, 0.32837367, 0, 1.9728585, 7.898345, 2.130024, 1.210681)
 
-[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
-clip_contents = false
-custom_minimum_size = Vector2(0, 537)
-layout_mode = 2
+[node name="fireflies4" parent="WorldEnvironment" instance=ExtResource("18_2t17w")]
+transform = Transform3D(1.9728585, 0, -0.32837367, 0, 2, 0, 0.32837367, 0, 1.9728585, 11.539082, 2.130024, -0.5306618)
 
-[node name="LevelContainer" type="HBoxContainer" parent="CanvasLayer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer"]
-custom_minimum_size = Vector2(537, 537)
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 30
-alignment = 1
+[node name="OmniLight3D" type="OmniLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7855268, 2.3672886, 1.6348174)
+light_color = Color(1, 0.45999998, 0.45999998, 1)
+omni_range = 9.54
+omni_attenuation = 1.194
 
-[node name="BackButton" type="Button" parent="CanvasLayer"]
-offset_left = 30.0
-offset_top = 30.0
-offset_right = 150.0
-offset_bottom = 80.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_color = Color(1, 0.9, 0.5, 1)
-theme_override_font_sizes/font_size = 24
-text = "← Back"
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.37870607, -0.74707997, -0.5463085, -0.49369705, -0.6623454, 0.5635261, -0.7828441, 0.056300182, -0.6196655, 0, 10, 2.6227646)
+visible = false
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+shadow_enabled = true
+shadow_bias = 0.0
+shadow_normal_bias = 1.794
+shadow_reverse_cull_face = true
+shadow_transmittance_bias = 16.0
+shadow_blur = 0.0
 
-[node name="DebugMenu" parent="." instance=ExtResource("3_mllcm")]
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.53147244, 0.8470755, 0, -0.8470755, 0.53147244, 6.46914, 24.157495, 15.642178)
+current = true
+fov = 22.5
+
+[node name="TowerCon" type="Node" parent="." groups=["towercon"]]
+script = ExtResource("3_kjd3d")
+
+[node name="TowerSpot1" parent="TowerCon" instance=ExtResource("4_qdeet")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -1)
+tower_scene = ExtResource("6_xw3ee")
+
+[node name="TowerSpot2" parent="TowerCon" instance=ExtResource("4_qdeet")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 1)
+tower_scene = ExtResource("6_xw3ee")
+
+[node name="TowerSpot3" parent="TowerCon" instance=ExtResource("4_qdeet")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, 1)
+tower_scene = ExtResource("6_xw3ee")
+
+[node name="TowerSpot4" parent="TowerCon" instance=ExtResource("4_qdeet")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1, -1)
+tower_scene = ExtResource("6_xw3ee")
+
+[node name="Base" parent="." instance=ExtResource("8_l0eo6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.319666, 0, 0.34087634)
+
+[node name="UI" parent="." instance=ExtResource("14_2t17w")]
+
+[node name="WaveManager" type="Node" parent="."]
+script = ExtResource("7_l0eo6")
+wave_configs = Array[ExtResource("8_jy02f")]([ExtResource("9_5dxk1"), ExtResource("13_l0eo6"), ExtResource("14_d3o6j")])
+metadata/_custom_type_script = "uid://4ipxb665lopb"
+
+[node name="EnemyPath" type="Path3D" parent="WaveManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.422686, 0, 0.86039543)
+curve = SubResource("Curve3D_path")
+
+[node name="Port_al" parent="." instance=ExtResource("13_y72ps")]
+transform = Transform3D(0.68796384, 0, 3.1252592, 0, 2.9454327, 0, -1.4444219, 0, 1.48853, -2.8015485, 1.3340216, 1.2997634)
