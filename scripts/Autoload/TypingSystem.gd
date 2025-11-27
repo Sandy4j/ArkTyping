@@ -67,4 +67,3 @@ func notify_boss_typing_failed():
 		if is_instance_valid(boss) and boss.has_method("on_typing_failed"):
 			boss.on_typing_failed()
 			print("[TypingSystem] Notified boss typing failed: ", boss.name)
-
