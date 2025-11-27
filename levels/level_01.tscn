@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://cj0xxw8ewgpqy"]
 
-[ext_resource type="Script" uid="uid://cirr4wttroku" path="res://scripts/UI/level_selection.gd" id="1_81a5f"]
-[ext_resource type="Texture2D" uid="uid://biar3j3bf1jix" path="res://asset/UI/main menu/main bg 2.png" id="2_gg43x"]
-[ext_resource type="PackedScene" uid="uid://dxax5y708a1b2" path="res://scenes/UI/DebugMenu.tscn" id="3_mllcm"]
+[ext_resource type="Script" path="res://scripts/UI/level_selection.gd" id="1_81a5f"]
+[ext_resource type="Texture2D" uid="uid://be6mij1a7xdhi" path="res://asset/UI/main menu/main bg 2.png" id="2_gg43x"]
+[ext_resource type="PackedScene" path="res://scenes/UI/DebugMenu.tscn" id="3_mllcm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dicgb"]
 bg_color = Color(0.04, 0.04, 0.04, 0.78431374)

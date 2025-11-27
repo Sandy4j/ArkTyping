@@ -7,12 +7,12 @@
 [ext_resource type="AudioStream" uid="uid://c4i7mj8g3dw3i" path="res://asset/SFX_IGame/Tower/Rosemary/Rosemary Skill.wav" id="5_1kkq2"]
 [ext_resource type="Texture2D" uid="uid://jare2cytqhve" path="res://asset/Tower/Icon/Vigilante-9.png" id="6_2otcp"]
 [ext_resource type="Texture2D" uid="uid://dvmengmcefoog" path="res://asset/Tower/Icon/Glow/V92.png" id="7_1kkq2"]
-[ext_resource type="Texture2D" uid="uid://dfrica54jcu2e" path="res://asset/Tower/Rosemary/attack/1.png" id="8_2otcp"]
-[ext_resource type="Texture2D" uid="uid://dsfwjrlh0xbeu" path="res://asset/Tower/Rosemary/attack/2.png" id="9_1kkq2"]
-[ext_resource type="Texture2D" uid="uid://c7mjlh2pmwmkg" path="res://asset/Tower/Rosemary/attack/3.png" id="10_ciw6g"]
-[ext_resource type="Texture2D" uid="uid://cjsncppccvc37" path="res://asset/Tower/Rosemary/attack/4.png" id="11_6lxli"]
-[ext_resource type="Texture2D" uid="uid://dwij6553bqlxk" path="res://asset/Tower/Rosemary/attack/5.png" id="12_nghwd"]
-[ext_resource type="Texture2D" uid="uid://c2mgd37imyf3n" path="res://asset/Tower/Rosemary/attack/6.png" id="13_xdg6b"]
+[ext_resource type="Texture2D" uid="uid://bkhwfhh4ak7v4" path="res://asset/Tower/Rosemary/attack/1.png" id="8_2otcp"]
+[ext_resource type="Texture2D" uid="uid://vm1tp8m2m808" path="res://asset/Tower/Rosemary/attack/2.png" id="9_1kkq2"]
+[ext_resource type="Texture2D" uid="uid://cct6tirlt71ai" path="res://asset/Tower/Rosemary/attack/3.png" id="10_ciw6g"]
+[ext_resource type="Texture2D" uid="uid://btwspgjii0rs1" path="res://asset/Tower/Rosemary/attack/4.png" id="11_6lxli"]
+[ext_resource type="Texture2D" uid="uid://cl4g8bfj5aohd" path="res://asset/Tower/Rosemary/attack/5.png" id="12_nghwd"]
+[ext_resource type="Texture2D" uid="uid://cypax34tbhea1" path="res://asset/Tower/Rosemary/attack/6.png" id="13_xdg6b"]
 [ext_resource type="Texture2D" uid="uid://b1selxcte4ih6" path="res://asset/Tower/Rosemary/Idle/1.png" id="14_ysa34"]
 [ext_resource type="Texture2D" uid="uid://c0uyb5sjymem6" path="res://asset/Tower/Rosemary/Idle/2.png" id="15_gqs4k"]
 [ext_resource type="Texture2D" uid="uid://c66e568roqvmp" path="res://asset/Tower/Rosemary/Idle/3.png" id="16_7q6o5"]
@@ -81,9 +81,9 @@ skl_sfx = ExtResource("5_1kkq2")
 cost = 22
 slot = ExtResource("6_2otcp")
 slot_glow = ExtResource("7_1kkq2")
-damage = 600
-speed = 0.5
-range = 350.0
+damage = 700
+speed = 0.55
+range = 10.0
 skill = "bullet requiem"
 skill_duration = 5
 skill_sprite = ExtResource("4_2otcp")

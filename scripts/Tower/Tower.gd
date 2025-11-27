@@ -839,6 +839,7 @@ func activeate_bloody_opus()-> void:
 		var normal_speed = fire_rate
 		fire_rate = normal_speed * 2
 		await skill_done 
+		sfx.stream = tower_data.atk_sfx
 		aura_node.queue_free()
 		fire_rate = normal_speed
 		print("bloody opus berakhir")

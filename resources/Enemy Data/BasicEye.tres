@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_rc238")
 enemy_name = "Basic Eye"
-max_hp = 750.0
-move_speed = 1.0
+max_hp = 900.0
+move_speed = 0.7
 reward = 2

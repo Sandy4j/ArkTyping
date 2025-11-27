@@ -1,10 +1,10 @@
 [gd_scene load_steps=26 format=3 uid="uid://cnj1iuxvobnl6"]
 
 [ext_resource type="Script" uid="uid://b6s5qxp2nqpgv" path="res://scripts/UI/heroUI.gd" id="1_eo8df"]
-[ext_resource type="Texture2D" uid="uid://biar3j3bf1jix" path="res://asset/UI/main menu/main bg 2.png" id="2_doufj"]
-[ext_resource type="FontFile" uid="uid://bidkq3k8s4itr" path="res://asset/Font/Lovato-Bold.ttf" id="3_oy08c"]
-[ext_resource type="Texture2D" uid="uid://b1h0xwqtoo2v0" path="res://asset/UI/Hero/box.png" id="4_iof5b"]
-[ext_resource type="Texture2D" uid="uid://ck6aixsiisjds" path="res://asset/UI/Hero/leciana/Group 118.png" id="5_0hg5w"]
+[ext_resource type="Texture2D" uid="uid://be6mij1a7xdhi" path="res://asset/UI/main menu/main bg 2.png" id="2_doufj"]
+[ext_resource type="FontFile" uid="uid://cggjjwu7bfhpo" path="res://asset/Font/Lovato-Bold.ttf" id="3_oy08c"]
+[ext_resource type="Texture2D" uid="uid://bfvh3pkqyke41" path="res://asset/UI/Hero/box.png" id="4_iof5b"]
+[ext_resource type="Texture2D" uid="uid://r10i4nuax48" path="res://asset/UI/Hero/leciana/Group 118.png" id="5_0hg5w"]
 [ext_resource type="Texture2D" uid="uid://clnkvxls6mret" path="res://asset/UI/Hero/kaelio/Group (13).png" id="5_iof5b"]
 [ext_resource type="FontFile" uid="uid://ddon0uj5gtdts" path="res://asset/UI_Gameplay/Viga-Regular.ttf" id="6_sfo0p"]
 [ext_resource type="Texture2D" uid="uid://da2rprqfiioe8" path="res://asset/UI/Hero/kaelio/Group (12).png" id="7_faxy4"]
@@ -112,880 +112,980 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = -30
 
-[node name="Slot_1" type="PanelContainer" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="Kaelio" type="PanelContainer" parent="ScrollContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 220)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_styles/panel = SubResource("StyleBoxEmpty_v4vlb")
 
-[node name="CardBackground" type="TextureRect" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_1"]
+[node name="CardBackground" type="TextureRect" parent="ScrollContainer/MarginContainer/VBoxContainer/Kaelio"]
 layout_mode = 2
 texture = ExtResource("5_iof5b")
 
-[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_1"]
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Kaelio"]
 layout_mode = 2
 theme_override_constants/margin_top = 90
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_1/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Kaelio/MarginContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_1/MarginContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Kaelio/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 50
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_1/MarginContainer/HBoxContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Kaelio/MarginContainer/HBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(511, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="Title" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_1/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Kaelio/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sfo0p")
-theme_override_font_sizes/font_size = 60
-text = "Leciana - The Scarlet Noble"
+theme_override_font_sizes/font_size = 50
+text = "Kaelio - The Twin Gunslinger "
 autowrap_mode = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_1/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Kaelio/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="Label1" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_1/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Label1" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Kaelio/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sfo0p")
 theme_override_font_sizes/font_size = 27
-text = "Cost: 15"
+text = "Cost: 7"
 
-[node name="Label2" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_1/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Label2" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Kaelio/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sfo0p")
 theme_override_font_sizes/font_size = 27
-text = "HP: 1300"
+text = "HP: 750"
 
-[node name="Label3" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_1/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Label3" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Kaelio/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sfo0p")
 theme_override_font_sizes/font_size = 27
-text = "Damage: 200"
+text = "Damage: 150"
 
-[node name="Label4" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_1/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Label4" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Kaelio/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sfo0p")
 theme_override_font_sizes/font_size = 27
-text = "Attack Interval: 1.0s"
+text = "Attack Speed: 1.1"
 
-[node name="Lore" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_1/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="Lore" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Kaelio/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sfo0p")
-theme_override_font_sizes/font_size = 27
-text = "Bangsawan vampir terakhir dari Kerjaan Crimson Blood, rela melindungi umat manusia agar makanannya itu tidak menjadi korban dari Abyss"
+theme_override_font_sizes/font_size = 25
+text = "Mantan prajurit pemberontak kini menjadi tentara bayaran, untuk menebus dosanya dengan setiap pelurunya ia akan menghancurkan para monster Abyss."
 autowrap_mode = 3
 
-[node name="Control" type="Control" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_1/MarginContainer/HBoxContainer"]
+[node name="Control" type="Control" parent="ScrollContainer/MarginContainer/VBoxContainer/Kaelio/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Skill" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_1/MarginContainer/HBoxContainer"]
+[node name="Skill" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Kaelio/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 alignment = 1
 
-[node name="Sprite" type="TextureRect" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_1/MarginContainer/HBoxContainer/Skill"]
+[node name="Sprite" type="TextureRect" parent="ScrollContainer/MarginContainer/VBoxContainer/Kaelio/MarginContainer/HBoxContainer/Skill"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("7_faxy4")
 stretch_mode = 3
 
-[node name="Desc" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_1/MarginContainer/HBoxContainer/Skill"]
+[node name="Desc" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Kaelio/MarginContainer/HBoxContainer/Skill"]
+custom_minimum_size = Vector2(0, 69)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("6_sfo0p")
+theme_override_font_sizes/font_size = 45
+text = "Skill – Overload Burst:"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Desc2" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Kaelio/MarginContainer/HBoxContainer/Skill"]
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("6_sfo0p")
 theme_override_font_sizes/font_size = 29
-text = "Skill – scarlet harvest:
-Menyerang 5 target sekaligus
-selama 5 detik. (CD: 10s)"
+text = "Menyerang 2 target sekaligus
+selama 10 detik. 
+(Cooldown 10 Detik)"
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="Slot_2" type="PanelContainer" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="Silvanna" type="PanelContainer" parent="ScrollContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 220)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_styles/panel = SubResource("StyleBoxEmpty_v4vlb")
 
-[node name="CardBackground" type="TextureRect" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_2"]
+[node name="CardBackground" type="TextureRect" parent="ScrollContainer/MarginContainer/VBoxContainer/Silvanna"]
 layout_mode = 2
 texture = ExtResource("8_lsu41")
 
-[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_2"]
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Silvanna"]
 layout_mode = 2
 theme_override_constants/margin_top = 90
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_2/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Silvanna/MarginContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_2/MarginContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Silvanna/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 50
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_2/MarginContainer/HBoxContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Silvanna/MarginContainer/HBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="Title" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_2/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Silvanna/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sfo0p")
-theme_override_font_sizes/font_size = 60
-text = "Leciana - The Scarlet Noble"
+theme_override_font_sizes/font_size = 50
+text = "Silvanna - The Moonlight Elf"
 autowrap_mode = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_2/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Silvanna/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="Label1" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_2/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Label1" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Silvanna/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sfo0p")
 theme_override_font_sizes/font_size = 27
-text = "Cost: 15"
+text = "Cost: 8"
 
-[node name="Label2" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_2/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Label2" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Silvanna/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sfo0p")
 theme_override_font_sizes/font_size = 27
-text = "HP: 1300"
+text = "HP: 900"
 
-[node name="Label3" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_2/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Label3" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Silvanna/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sfo0p")
 theme_override_font_sizes/font_size = 27
-text = "Damage: 200"
+text = "Damage: 275"
 
-[node name="Label4" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_2/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Label4" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Silvanna/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sfo0p")
 theme_override_font_sizes/font_size = 27
-text = "Attack Interval: 1.0s"
+text = "Attack Speed: 0.9"
 
-[node name="Lore" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_2/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="Lore" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Silvanna/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sfo0p")
-theme_override_font_sizes/font_size = 27
-text = "Bangsawan vampir terakhir dari Kerjaan Crimson Blood, rela melindungi umat manusia agar makanannya itu tidak menjadi korban dari Abyss"
+theme_override_font_sizes/font_size = 25
+text = "Penyihir hutan dari ras Elf Bulan yang dulunya menjaga hutan bulan suci, sekarang ia mengembara berkeliling dunia untuk membantu orang orang yang menderita karena Abyss"
 autowrap_mode = 3
 
-[node name="Control" type="Control" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_2/MarginContainer/HBoxContainer"]
+[node name="Control" type="Control" parent="ScrollContainer/MarginContainer/VBoxContainer/Silvanna/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Skill" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_2/MarginContainer/HBoxContainer"]
+[node name="Skill" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Silvanna/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 alignment = 1
 
-[node name="Sprite" type="TextureRect" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_2/MarginContainer/HBoxContainer/Skill"]
+[node name="Sprite" type="TextureRect" parent="ScrollContainer/MarginContainer/VBoxContainer/Silvanna/MarginContainer/HBoxContainer/Skill"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("9_e7mn5")
 stretch_mode = 3
 
-[node name="Desc" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_2/MarginContainer/HBoxContainer/Skill"]
+[node name="Desc" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Silvanna/MarginContainer/HBoxContainer/Skill"]
+custom_minimum_size = Vector2(0, 69)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("6_sfo0p")
+theme_override_font_sizes/font_size = 45
+text = "Skill – Lunar Blessing:"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Desc2" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Silvanna/MarginContainer/HBoxContainer/Skill"]
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("6_sfo0p")
 theme_override_font_sizes/font_size = 29
-text = "Skill – scarlet harvest:
-Menyerang 5 target sekaligus
-selama 5 detik. (CD: 10s)"
+text = "Menambah Attack nya sebanyak 100% selama 7 Detik
+(Cooldown 15 Detik)"
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="Slot_3" type="PanelContainer" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="Morriden" type="PanelContainer" parent="ScrollContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 220)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_styles/panel = SubResource("StyleBoxEmpty_v4vlb")
 
-[node name="CardBackground" type="TextureRect" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_3"]
+[node name="CardBackground" type="TextureRect" parent="ScrollContainer/MarginContainer/VBoxContainer/Morriden"]
 layout_mode = 2
 texture = ExtResource("10_dhouu")
 
-[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_3"]
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Morriden"]
 layout_mode = 2
 theme_override_constants/margin_top = 90
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_3/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Morriden/MarginContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_3/MarginContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Morriden/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 50
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_3/MarginContainer/HBoxContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Morriden/MarginContainer/HBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="Title" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_3/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Morriden/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sfo0p")
-theme_override_font_sizes/font_size = 60
-text = "Leciana - The Scarlet Noble"
+theme_override_font_sizes/font_size = 50
+text = "Morriden - The Plague Doctor"
 autowrap_mode = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_3/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Morriden/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="Label1" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_3/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Label1" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Morriden/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sfo0p")
 theme_override_font_sizes/font_size = 27
-text = "Cost: 15"
+text = "Cost: 10"
 
-[node name="Label2" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_3/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Label2" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Morriden/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sfo0p")
 theme_override_font_sizes/font_size = 27
-text = "HP: 1300"
+text = "HP: 1500"
 
-[node name="Label3" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_3/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Label3" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Morriden/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sfo0p")
 theme_override_font_sizes/font_size = 27
-text = "Damage: 200"
+text = "Damage: 250"
 
-[node name="Label4" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_3/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Label4" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Morriden/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sfo0p")
 theme_override_font_sizes/font_size = 27
-text = "Attack Interval: 1.0s"
+text = "Attack Speed: 0.75"
 
-[node name="Lore" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_3/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="Lore" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Morriden/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sfo0p")
-theme_override_font_sizes/font_size = 27
-text = "Bangsawan vampir terakhir dari Kerjaan Crimson Blood, rela melindungi umat manusia agar makanannya itu tidak menjadi korban dari Abyss"
+theme_override_font_sizes/font_size = 25
+text = "Dokter dari kota yang sudah mati akibat wabah hitam Abyss, ia kini menyebarkan racun buatannya untuk membasmi sumber penyakit itu sendiri."
 autowrap_mode = 3
 
-[node name="Control" type="Control" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_3/MarginContainer/HBoxContainer"]
+[node name="Control" type="Control" parent="ScrollContainer/MarginContainer/VBoxContainer/Morriden/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Skill" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_3/MarginContainer/HBoxContainer"]
+[node name="Skill" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Morriden/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 alignment = 1
 
-[node name="Sprite" type="TextureRect" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_3/MarginContainer/HBoxContainer/Skill"]
+[node name="Sprite" type="TextureRect" parent="ScrollContainer/MarginContainer/VBoxContainer/Morriden/MarginContainer/HBoxContainer/Skill"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("11_oy08c")
 stretch_mode = 3
 
-[node name="Desc" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_3/MarginContainer/HBoxContainer/Skill"]
+[node name="Desc" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Morriden/MarginContainer/HBoxContainer/Skill"]
+custom_minimum_size = Vector2(0, 69)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("6_sfo0p")
+theme_override_font_sizes/font_size = 45
+text = "Skill – Toxic Veil:"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Desc2" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Morriden/MarginContainer/HBoxContainer/Skill"]
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("6_sfo0p")
 theme_override_font_sizes/font_size = 29
-text = "Skill – scarlet harvest:
-Menyerang 5 target sekaligus
-selama 5 detik. (CD: 10s)"
+text = "Mengurangi Movement Speed Enemy sebanyak 50% selama 10 Detik
+(Cooldown 15 Detik)"
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="Slot_4" type="PanelContainer" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="Cellene" type="PanelContainer" parent="ScrollContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 220)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_styles/panel = SubResource("StyleBoxEmpty_v4vlb")
 
-[node name="CardBackground" type="TextureRect" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_4"]
+[node name="CardBackground" type="TextureRect" parent="ScrollContainer/MarginContainer/VBoxContainer/Cellene"]
 layout_mode = 2
 texture = ExtResource("12_sylqr")
 
-[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_4"]
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Cellene"]
 layout_mode = 2
 theme_override_constants/margin_top = 90
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_4/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Cellene/MarginContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_4/MarginContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Cellene/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 50
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_4/MarginContainer/HBoxContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Cellene/MarginContainer/HBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="Title" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_4/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Cellene/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sfo0p")
-theme_override_font_sizes/font_size = 60
-text = "Leciana - The Scarlet Noble"
+theme_override_font_sizes/font_size = 50
+text = "Cellene - The Exiled Priestess"
 autowrap_mode = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_4/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Cellene/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="Label1" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_4/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Label1" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Cellene/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sfo0p")
 theme_override_font_sizes/font_size = 27
-text = "Cost: 15"
+text = "Cost: 13"
 
-[node name="Label2" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_4/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Label2" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Cellene/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sfo0p")
 theme_override_font_sizes/font_size = 27
-text = "HP: 1300"
+text = "HP: 1500"
 
-[node name="Label3" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_4/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Label3" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Cellene/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sfo0p")
 theme_override_font_sizes/font_size = 27
-text = "Damage: 200"
+text = "Heal: 75 "
 
-[node name="Label4" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_4/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Label4" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Cellene/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sfo0p")
 theme_override_font_sizes/font_size = 27
-text = "Attack Interval: 1.0s"
+text = "Attack Speed 0.9s"
 
-[node name="Lore" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_4/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="Lore" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Cellene/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sfo0p")
-theme_override_font_sizes/font_size = 27
-text = "Bangsawan vampir terakhir dari Kerjaan Crimson Blood, rela melindungi umat manusia agar makanannya itu tidak menjadi korban dari Abyss"
+theme_override_font_sizes/font_size = 25
+text = "Mantan pendeta suci yang diasingkan karena menggunakan doa terlarang untuk menghidupkan ayahnya yang sudah mati. Ia kini bertempur dengan berkah gelap demi melawan Abyss"
 autowrap_mode = 3
 
-[node name="Control" type="Control" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_4/MarginContainer/HBoxContainer"]
+[node name="Control" type="Control" parent="ScrollContainer/MarginContainer/VBoxContainer/Cellene/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Skill" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_4/MarginContainer/HBoxContainer"]
+[node name="Skill" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Cellene/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 alignment = 1
 
-[node name="Sprite" type="TextureRect" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_4/MarginContainer/HBoxContainer/Skill"]
+[node name="Sprite" type="TextureRect" parent="ScrollContainer/MarginContainer/VBoxContainer/Cellene/MarginContainer/HBoxContainer/Skill"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("13_itcjo")
 stretch_mode = 3
 
-[node name="Desc" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_4/MarginContainer/HBoxContainer/Skill"]
+[node name="Desc" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Cellene/MarginContainer/HBoxContainer/Skill"]
+custom_minimum_size = Vector2(0, 69)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("6_sfo0p")
+theme_override_font_sizes/font_size = 45
+text = "Skill – Unholy Bless:"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Desc2" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Cellene/MarginContainer/HBoxContainer/Skill"]
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("6_sfo0p")
 theme_override_font_sizes/font_size = 29
-text = "Skill – scarlet harvest:
-Menyerang 5 target sekaligus
-selama 5 detik. (CD: 10s)"
+text = "Memperkuat Healing pada Hero sebanyak 100% selama 7 Detik
+(Cooldown 10 Detik)"
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="Slot_5" type="PanelContainer" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="Leciana" type="PanelContainer" parent="ScrollContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 220)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_styles/panel = SubResource("StyleBoxEmpty_v4vlb")
 
-[node name="CardBackground" type="TextureRect" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_5"]
+[node name="CardBackground" type="TextureRect" parent="ScrollContainer/MarginContainer/VBoxContainer/Leciana"]
 layout_mode = 2
 texture = ExtResource("5_0hg5w")
 
-[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_5"]
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Leciana"]
 layout_mode = 2
 theme_override_constants/margin_top = 90
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_5/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Leciana/MarginContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_5/MarginContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Leciana/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 50
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_5/MarginContainer/HBoxContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Leciana/MarginContainer/HBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="Title" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_5/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Leciana/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sfo0p")
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 50
 text = "Leciana - The Scarlet Noble"
 autowrap_mode = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_5/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Leciana/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="Label1" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_5/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Label1" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Leciana/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sfo0p")
 theme_override_font_sizes/font_size = 27
-text = "Cost: 15"
+text = "Cost: 13"
 
-[node name="Label2" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_5/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Label2" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Leciana/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sfo0p")
 theme_override_font_sizes/font_size = 27
 text = "HP: 1300"
 
-[node name="Label3" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_5/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Label3" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Leciana/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sfo0p")
 theme_override_font_sizes/font_size = 27
-text = "Damage: 200"
+text = "Damage: 250"
 
-[node name="Label4" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_5/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Label4" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Leciana/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sfo0p")
 theme_override_font_sizes/font_size = 27
-text = "Attack Interval: 1.0s"
+text = "Attack Speed: 1.0s"
 
-[node name="Lore" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_5/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="Lore" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Leciana/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sfo0p")
-theme_override_font_sizes/font_size = 27
+theme_override_font_sizes/font_size = 25
 text = "Bangsawan vampir terakhir dari Kerjaan Crimson Blood, rela melindungi umat manusia agar makanannya itu tidak menjadi korban dari Abyss"
 autowrap_mode = 3
 
-[node name="Control" type="Control" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_5/MarginContainer/HBoxContainer"]
+[node name="Control" type="Control" parent="ScrollContainer/MarginContainer/VBoxContainer/Leciana/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Skill" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_5/MarginContainer/HBoxContainer"]
+[node name="Skill" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Leciana/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 alignment = 1
 
-[node name="Sprite" type="TextureRect" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_5/MarginContainer/HBoxContainer/Skill"]
+[node name="Sprite" type="TextureRect" parent="ScrollContainer/MarginContainer/VBoxContainer/Leciana/MarginContainer/HBoxContainer/Skill"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("7_ntxqs")
 stretch_mode = 3
 
-[node name="Desc" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_5/MarginContainer/HBoxContainer/Skill"]
+[node name="Desc" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Leciana/MarginContainer/HBoxContainer/Skill"]
+custom_minimum_size = Vector2(0, 69)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("6_sfo0p")
+theme_override_font_sizes/font_size = 45
+text = "Skill – scarlet harvester:"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Desc2" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Leciana/MarginContainer/HBoxContainer/Skill"]
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("6_sfo0p")
 theme_override_font_sizes/font_size = 29
-text = "Skill – scarlet harvest:
-Menyerang 5 target sekaligus
-selama 5 detik. (CD: 10s)"
+text = "Menyerang 5 Enemy sekaligus selama 10 Detik
+(Coodown 20 Detik)"
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="Slot_6" type="PanelContainer" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="Lilitia" type="PanelContainer" parent="ScrollContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 220)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_styles/panel = SubResource("StyleBoxEmpty_v4vlb")
 
-[node name="CardBackground" type="TextureRect" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_6"]
+[node name="CardBackground" type="TextureRect" parent="ScrollContainer/MarginContainer/VBoxContainer/Lilitia"]
 layout_mode = 2
 texture = ExtResource("16_upfl7")
 stretch_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_6"]
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Lilitia"]
 layout_mode = 2
 theme_override_constants/margin_top = 90
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_6/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Lilitia/MarginContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_6/MarginContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Lilitia/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 50
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_6/MarginContainer/HBoxContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Lilitia/MarginContainer/HBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="Title" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_6/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Lilitia/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sfo0p")
-theme_override_font_sizes/font_size = 60
-text = "Leciana - The Scarlet Noble"
+theme_override_font_sizes/font_size = 50
+text = "Lilitia - The Fallen Angel"
 autowrap_mode = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_6/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Lilitia/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="Label1" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_6/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Label1" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Lilitia/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sfo0p")
 theme_override_font_sizes/font_size = 27
 text = "Cost: 15"
 
-[node name="Label2" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_6/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Label2" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Lilitia/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sfo0p")
 theme_override_font_sizes/font_size = 27
-text = "HP: 1300"
+text = "HP: 1500"
 
-[node name="Label3" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_6/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Label3" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Lilitia/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sfo0p")
 theme_override_font_sizes/font_size = 27
-text = "Damage: 200"
+text = "Damage: 75"
 
-[node name="Label4" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_6/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Label4" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Lilitia/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sfo0p")
 theme_override_font_sizes/font_size = 27
-text = "Attack Interval: 1.0s"
+text = "Attack Speed: -"
 
-[node name="Lore" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_6/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="Lore" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Lilitia/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sfo0p")
-theme_override_font_sizes/font_size = 27
-text = "Bangsawan vampir terakhir dari Kerjaan Crimson Blood, rela melindungi umat manusia agar makanannya itu tidak menjadi korban dari Abyss"
+theme_override_font_sizes/font_size = 25
+text = "Seorang malaikat yang diusir dari langit karena rela melanggar sumpah demi umat manusia, kini dia melawan Abyss dengan kekuatan cahaya"
 autowrap_mode = 3
 
-[node name="Control" type="Control" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_6/MarginContainer/HBoxContainer"]
+[node name="Control" type="Control" parent="ScrollContainer/MarginContainer/VBoxContainer/Lilitia/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Skill" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_6/MarginContainer/HBoxContainer"]
+[node name="Skill" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Lilitia/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 alignment = 1
 
-[node name="Sprite" type="TextureRect" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_6/MarginContainer/HBoxContainer/Skill"]
+[node name="Sprite" type="TextureRect" parent="ScrollContainer/MarginContainer/VBoxContainer/Lilitia/MarginContainer/HBoxContainer/Skill"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("17_iqo81")
 stretch_mode = 3
 
-[node name="Desc" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_6/MarginContainer/HBoxContainer/Skill"]
+[node name="Desc" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Lilitia/MarginContainer/HBoxContainer/Skill"]
+custom_minimum_size = Vector2(0, 69)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("6_sfo0p")
+theme_override_font_sizes/font_size = 45
+text = "Skill – Holy Divine:"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Desc2" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Lilitia/MarginContainer/HBoxContainer/Skill"]
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("6_sfo0p")
 theme_override_font_sizes/font_size = 29
-text = "Skill – scarlet harvest:
-Menyerang 5 target sekaligus
-selama 5 detik. (CD: 10s)"
+text = "Menambah Jumlah Bola Cahayanya menjadi 4, dan mempercepat putarannya selama 5 Detik
+ (Cooldown: 10 Detik)"
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="Slot_7" type="PanelContainer" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="Priestess" type="PanelContainer" parent="ScrollContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 220)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_styles/panel = SubResource("StyleBoxEmpty_v4vlb")
 
-[node name="CardBackground" type="TextureRect" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_7"]
+[node name="CardBackground" type="TextureRect" parent="ScrollContainer/MarginContainer/VBoxContainer/Priestess"]
 layout_mode = 2
 texture = ExtResource("18_glprv")
 stretch_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_7"]
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Priestess"]
 layout_mode = 2
 theme_override_constants/margin_top = 90
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_7/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Priestess/MarginContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_7/MarginContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Priestess/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 50
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_7/MarginContainer/HBoxContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Priestess/MarginContainer/HBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="Title" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_7/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Priestess/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sfo0p")
-theme_override_font_sizes/font_size = 60
-text = "Leciana - The Scarlet Noble"
+theme_override_font_sizes/font_size = 50
+text = "Priestess - The Sacred Templar"
 autowrap_mode = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_7/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Priestess/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="Label1" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_7/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Label1" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Priestess/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sfo0p")
 theme_override_font_sizes/font_size = 27
-text = "Cost: 15"
+text = "Cost: 17"
 
-[node name="Label2" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_7/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Label2" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Priestess/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sfo0p")
 theme_override_font_sizes/font_size = 27
 text = "HP: 1300"
 
-[node name="Label3" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_7/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Label3" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Priestess/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sfo0p")
 theme_override_font_sizes/font_size = 27
-text = "Damage: 200"
+text = "Damage: 150"
 
-[node name="Label4" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_7/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Label4" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Priestess/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sfo0p")
 theme_override_font_sizes/font_size = 27
-text = "Attack Interval: 1.0s"
+text = "Attack Speed: 0.8s"
 
-[node name="Lore" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_7/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="Lore" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Priestess/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sfo0p")
-theme_override_font_sizes/font_size = 27
-text = "Bangsawan vampir terakhir dari Kerjaan Crimson Blood, rela melindungi umat manusia agar makanannya itu tidak menjadi korban dari Abyss"
+theme_override_font_sizes/font_size = 25
+text = "Seorang pendeta wanita misterius dari Ordo Cahaya, memimpin pasukan Ksatria Templar untuk memurnikan kegelapan dan menghapus setiap jejak Abyss dari dunia."
 autowrap_mode = 3
 
-[node name="Control" type="Control" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_7/MarginContainer/HBoxContainer"]
+[node name="Control" type="Control" parent="ScrollContainer/MarginContainer/VBoxContainer/Priestess/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Skill" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_7/MarginContainer/HBoxContainer"]
+[node name="Skill" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Priestess/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 alignment = 1
 
-[node name="Sprite" type="TextureRect" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_7/MarginContainer/HBoxContainer/Skill"]
+[node name="Sprite" type="TextureRect" parent="ScrollContainer/MarginContainer/VBoxContainer/Priestess/MarginContainer/HBoxContainer/Skill"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("19_hgboo")
 stretch_mode = 3
 
-[node name="Desc" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_7/MarginContainer/HBoxContainer/Skill"]
+[node name="Desc" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Priestess/MarginContainer/HBoxContainer/Skill"]
+custom_minimum_size = Vector2(0, 69)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("6_sfo0p")
+theme_override_font_sizes/font_size = 45
+text = "Skill – Purify Wave:"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Desc2" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Priestess/MarginContainer/HBoxContainer/Skill"]
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("6_sfo0p")
 theme_override_font_sizes/font_size = 29
-text = "Skill – scarlet harvest:
-Menyerang 5 target sekaligus
-selama 5 detik. (CD: 10s)"
+text = "Memberikan Heal pada semua hero yang ada di sekitarnya sebanyak 3x 
+(Cooldown 15 Detik)"
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="Slot_8" type="PanelContainer" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="Vigilante" type="PanelContainer" parent="ScrollContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 220)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_styles/panel = SubResource("StyleBoxEmpty_v4vlb")
 
-[node name="CardBackground" type="TextureRect" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_8"]
+[node name="CardBackground" type="TextureRect" parent="ScrollContainer/MarginContainer/VBoxContainer/Vigilante"]
 layout_mode = 2
 texture = ExtResource("20_2vd1v")
 stretch_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_8"]
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Vigilante"]
 layout_mode = 2
 theme_override_constants/margin_top = 90
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_8/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Vigilante/MarginContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_8/MarginContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Vigilante/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 50
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_8/MarginContainer/HBoxContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Vigilante/MarginContainer/HBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="Title" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_8/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Vigilante/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(500, 150)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sfo0p")
-theme_override_font_sizes/font_size = 60
-text = "Leciana - The Scarlet Noble"
+theme_override_font_sizes/font_size = 50
+text = "Vigilante - The Nameless Assassin"
 autowrap_mode = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_8/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Vigilante/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="Label1" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_8/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Label1" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Vigilante/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sfo0p")
 theme_override_font_sizes/font_size = 27
-text = "Cost: 15"
+text = "Cost: 19"
 
-[node name="Label2" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_8/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Label2" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Vigilante/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sfo0p")
 theme_override_font_sizes/font_size = 27
-text = "HP: 1300"
+text = "HP: 1200"
 
-[node name="Label3" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_8/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Label3" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Vigilante/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sfo0p")
 theme_override_font_sizes/font_size = 27
-text = "Damage: 200"
+text = "Damage: 300"
 
-[node name="Label4" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_8/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Label4" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Vigilante/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sfo0p")
 theme_override_font_sizes/font_size = 27
 text = "Attack Interval: 1.0s"
 
-[node name="Lore" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_8/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="Lore" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Vigilante/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sfo0p")
-theme_override_font_sizes/font_size = 27
-text = "Bangsawan vampir terakhir dari Kerjaan Crimson Blood, rela melindungi umat manusia agar makanannya itu tidak menjadi korban dari Abyss"
+theme_override_font_sizes/font_size = 25
+text = "Assassin tanpa nama dari organisasi bawah tanah yang misterius, dia akan memburu siapapun yang berhubungan dengan Abyss."
 autowrap_mode = 3
 
-[node name="Control" type="Control" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_8/MarginContainer/HBoxContainer"]
+[node name="Control" type="Control" parent="ScrollContainer/MarginContainer/VBoxContainer/Vigilante/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Skill" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_8/MarginContainer/HBoxContainer"]
+[node name="Skill" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Vigilante/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 alignment = 1
 
-[node name="Sprite" type="TextureRect" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_8/MarginContainer/HBoxContainer/Skill"]
+[node name="Sprite" type="TextureRect" parent="ScrollContainer/MarginContainer/VBoxContainer/Vigilante/MarginContainer/HBoxContainer/Skill"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("21_eb70d")
 stretch_mode = 3
 
-[node name="Desc" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_8/MarginContainer/HBoxContainer/Skill"]
+[node name="Desc" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Vigilante/MarginContainer/HBoxContainer/Skill"]
+custom_minimum_size = Vector2(0, 69)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("6_sfo0p")
+theme_override_font_sizes/font_size = 45
+text = "Skill – Bloody Opus:"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Desc2" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Vigilante/MarginContainer/HBoxContainer/Skill"]
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("6_sfo0p")
 theme_override_font_sizes/font_size = 29
-text = "Skill – scarlet harvest:
-Menyerang 5 target sekaligus
-selama 5 detik. (CD: 10s)"
+text = "Mempercepat Attack Speed nya 2x lipat selama 7 Detik
+(Cooldown 15 Detik)"
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="Slot_9" type="PanelContainer" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="Rosemary" type="PanelContainer" parent="ScrollContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 220)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_styles/panel = SubResource("StyleBoxEmpty_v4vlb")
 
-[node name="CardBackground" type="TextureRect" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_9"]
+[node name="CardBackground" type="TextureRect" parent="ScrollContainer/MarginContainer/VBoxContainer/Rosemary"]
 layout_mode = 2
 texture = ExtResource("22_fu5vx")
 stretch_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_9"]
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Rosemary"]
 layout_mode = 2
 theme_override_constants/margin_top = 90
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_9/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Rosemary/MarginContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_9/MarginContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Rosemary/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 50
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_9/MarginContainer/HBoxContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Rosemary/MarginContainer/HBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="Title" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_9/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Rosemary/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sfo0p")
-theme_override_font_sizes/font_size = 60
-text = "Leciana - The Scarlet Noble"
+theme_override_font_sizes/font_size = 50
+text = "Rosemary - The Elite Marksman"
 autowrap_mode = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_9/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Rosemary/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="Label1" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_9/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Label1" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Rosemary/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sfo0p")
 theme_override_font_sizes/font_size = 27
-text = "Cost: 15"
+text = "Cost: 22"
 
-[node name="Label2" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_9/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Label2" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Rosemary/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sfo0p")
 theme_override_font_sizes/font_size = 27
-text = "HP: 1300"
+text = "HP: 1000"
 
-[node name="Label3" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_9/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Label3" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Rosemary/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sfo0p")
 theme_override_font_sizes/font_size = 27
-text = "Damage: 200"
+text = "Damage: 700"
 
-[node name="Label4" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_9/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Label4" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Rosemary/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sfo0p")
 theme_override_font_sizes/font_size = 27
-text = "Attack Interval: 1.0s"
+text = "Attack Speed: 0.55"
 
-[node name="Lore" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_9/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="Lore" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Rosemary/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sfo0p")
-theme_override_font_sizes/font_size = 27
-text = "Bangsawan vampir terakhir dari Kerjaan Crimson Blood, rela melindungi umat manusia agar makanannya itu tidak menjadi korban dari Abyss"
+theme_override_font_sizes/font_size = 25
+text = "Tentara militer elit dari Kerajaan, seorang Sniper dengan sumpah untuk tidak pernah meleset jika menembak Monster Abyss"
 autowrap_mode = 3
 
-[node name="Control" type="Control" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_9/MarginContainer/HBoxContainer"]
+[node name="Control" type="Control" parent="ScrollContainer/MarginContainer/VBoxContainer/Rosemary/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Skill" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_9/MarginContainer/HBoxContainer"]
+[node name="Skill" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Rosemary/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 alignment = 1
 
-[node name="Sprite" type="TextureRect" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_9/MarginContainer/HBoxContainer/Skill"]
+[node name="Sprite" type="TextureRect" parent="ScrollContainer/MarginContainer/VBoxContainer/Rosemary/MarginContainer/HBoxContainer/Skill"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("23_5wd6a")
 stretch_mode = 3
 
-[node name="Desc" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Slot_9/MarginContainer/HBoxContainer/Skill"]
+[node name="Desc" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Rosemary/MarginContainer/HBoxContainer/Skill"]
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("6_sfo0p")
-theme_override_font_sizes/font_size = 29
-text = "Skill – scarlet harvest:
-Menyerang 5 target sekaligus
-selama 5 detik. (CD: 10s)"
+theme_override_font_sizes/font_size = 45
+text = "Skill – Bullet Requiem"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Desc2" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Rosemary/MarginContainer/HBoxContainer/Skill"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("6_sfo0p")
+theme_override_font_sizes/font_size = 27
+text = "Menambah attack nya sebanyak 100% dan menyerang secara beruntun sebanyak 5x
+(Cooldown 20 Detik)"
 horizontal_alignment = 1
 autowrap_mode = 3
 

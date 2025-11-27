@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="TowerData" load_steps=21 format=3 uid="uid://b253lnqawjdve"]
+[gd_resource type="Resource" script_class="TowerData" load_steps=22 format=3 uid="uid://b253lnqawjdve"]
 
 [ext_resource type="Script" uid="uid://g85gwfmcln8s" path="res://scripts/Tower/Tower_Res.gd" id="1_0vi2l"]
 [ext_resource type="AudioStream" uid="uid://bbg848x0bxta5" path="res://asset/SFX_IGame/Tower/Vigilante/Vigilante Basic Attack.wav" id="1_kudlk"]
 [ext_resource type="PackedScene" uid="uid://bp5td02i78gru" path="res://asset/Vfx/Effect/dark_dagger.tscn" id="1_r1kqw"]
 [ext_resource type="Texture2D" uid="uid://byt8w8tvb4c5d" path="res://asset/Tower/Skill/Group 113.png" id="4_r1kqw"]
+[ext_resource type="AudioStream" uid="uid://cienwc52whtux" path="res://asset/SFX_IGame/Tower/Vigilante/Vigilante Skill.wav" id="5_kudlk"]
 [ext_resource type="Texture2D" uid="uid://c45pb636j080m" path="res://asset/Tower/Icon/Vigilante-8.png" id="5_mglro"]
 [ext_resource type="Texture2D" uid="uid://bu23eup4yf6ja" path="res://asset/Tower/Icon/Glow/V82.png" id="6_kudlk"]
 [ext_resource type="Texture2D" uid="uid://dywuhx1hbnqp0" path="res://asset/Tower/Vigilante/Attack_/1.png" id="7_r1kqw"]
@@ -76,6 +77,7 @@ animations = [{
 script = ExtResource("1_0vi2l")
 chara = "vigilante"
 atk_sfx = ExtResource("1_kudlk")
+skl_sfx = ExtResource("5_kudlk")
 cost = 18
 slot = ExtResource("5_mglro")
 slot_glow = ExtResource("6_kudlk")

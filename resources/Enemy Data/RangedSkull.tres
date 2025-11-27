@@ -5,9 +5,10 @@
 [resource]
 script = ExtResource("1_p1f8y")
 enemy_name = "Ranged Skull"
-max_hp = 750.0
+max_hp = 1000.0
 move_speed = 1.0
 reward = 5
 can_attack = true
-attack_damage = 150.0
+attack_damage = 200.0
+attack_cooldown = 1.5
 projectile_speed = 10.0

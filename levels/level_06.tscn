@@ -11,9 +11,9 @@
 [ext_resource type="Script" path="res://resources/WaveConfig.gd" id="12_hsx28"]
 [ext_resource type="Resource" uid="uid://d4nr4jpcakmc0" path="res://resources/WaveData/Level 3/Wave1_lvl3.tres" id="13_6tpke"]
 [ext_resource type="Resource" uid="uid://bbmnux0b6xmd4" path="res://resources/WaveData/Level 3/Wave2_lvl3.tres" id="14_6jcg3"]
-[ext_resource type="PackedScene" uid="uid://cat4b08j8wo1g" path="res://asset/Envi/ENV lvl 5 ground.fbx" id="15_oku8f"]
+[ext_resource type="PackedScene" uid="uid://bsk3lmpayaf4j" path="res://asset/Envi/ENV lvl 5 ground.fbx" id="15_oku8f"]
 [ext_resource type="Resource" uid="uid://dhifykxglre0u" path="res://resources/WaveData/Level 3/Wave3_lvl3.tres" id="15_tkq1q"]
-[ext_resource type="PackedScene" uid="uid://b02l6og2hhico" path="res://asset/Envi/Props lvl 5.fbx" id="16_htwx1"]
+[ext_resource type="PackedScene" uid="uid://b4i4ja0igi3h2" path="res://asset/Envi/Props lvl 5.fbx" id="16_htwx1"]
 [ext_resource type="PackedScene" uid="uid://b6ot4uwb74jwf" path="res://scenes/ui.tscn" id="16_ny085"]
 [ext_resource type="PackedScene" uid="uid://dqmlunqfclena" path="res://asset/Vfx/Effect/Portalem.tscn" id="17_mskhr"]
 
