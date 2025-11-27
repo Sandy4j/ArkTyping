@@ -26,22 +26,15 @@ func _on_ready() -> void:
 			sphere_shape.radius = enemy_data.attack_range
 
 func _move(delta: float) -> void:
-	if is_attacking:
-		# Still bob when attacking but don't move forward
-		bob_timer += delta * bob_speed
-		global_position.y += sin(bob_timer) * bob_height
-		
-		# Face the target when attacking
-		if current_target and is_instance_valid(current_target):
-			var direction_to_target = current_target.global_position - global_position
-			if direction_to_target.x > 0.01:  # Target is to the right
-				sprite.flip_h = true
-			elif direction_to_target.x < -0.01:  # Target is to the left
-				sprite.flip_h = false
-		return
+	# Always move forward along path
+	path_follow.progress += move_speed * delta
+	var base_y = path_follow.global_position.y
+	bob_timer += delta * bob_speed
 	
-	path_follow.progress += enemy_data.move_speed * delta
-	global_position = path_follow.global_position
+	# Apply position with bobbing
+	global_position.x = path_follow.global_position.x
+	global_position.y = base_y + sin(bob_timer) * bob_height
+	global_position.z = path_follow.global_position.z
 	
 	# Flip sprite based on movement direction (default facing left)
 	var direction = global_position - previous_position
@@ -51,9 +44,6 @@ func _move(delta: float) -> void:
 		sprite.flip_h = false
 	previous_position = global_position
 	
-	bob_timer += delta * bob_speed
-	global_position.y += sin(bob_timer) * bob_height
-	
 	if path_follow.progress_ratio >= 1.0:
 		reach_end()
 
@@ -62,6 +52,7 @@ func _update_logic(delta: float) -> void:
 		return
 
 	attack_timer += delta
+	
 	if not current_target or not is_instance_valid(current_target):
 		current_target = find_nearest_tower()
 		is_attacking = false

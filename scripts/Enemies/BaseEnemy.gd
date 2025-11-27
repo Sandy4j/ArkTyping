@@ -65,17 +65,21 @@ func _process(delta: float) -> void:
 
 func _move(delta: float) -> void:
 	path_follow.progress += move_speed * delta
-	global_position = path_follow.global_position
+	var base_y = path_follow.global_position.y
+	bob_timer += delta * bob_speed
 	
+	# Apply position with bobbing
+	global_position.x = path_follow.global_position.x
+	global_position.y = base_y + sin(bob_timer) * bob_height
+	global_position.z = path_follow.global_position.z
+	
+	# Flip sprite based on movement direction (default facing left)
 	var direction = global_position - previous_position
 	if direction.x > 0.01:  # Moving right
 		sprite.flip_h = true
 	elif direction.x < -0.01:  # Moving left
 		sprite.flip_h = false
 	previous_position = global_position
-	
-	bob_timer += delta * bob_speed
-	global_position.y += sin(bob_timer) * bob_height
 	
 	if path_follow.progress_ratio >= 1.0:
 		reach_end()

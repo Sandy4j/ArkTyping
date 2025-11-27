@@ -11,3 +11,5 @@ reward = 2
 can_attack = true
 attack_range = 3.0
 attack_damage = 100.0
+attack_cooldown = 2.0
+projectile_speed = 8.0

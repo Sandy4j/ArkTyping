@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bngpunog37ovt" path="res://asset/UI_Gameplay/Enemy_BG.png" id="5_cof4p"]
 [ext_resource type="Texture2D" uid="uid://d28ptae74b53p" path="res://asset/UI_Gameplay/Enemy.png" id="6_f7tlh"]
 [ext_resource type="Texture2D" uid="uid://dn0ab3cbqkqm4" path="res://asset/UI_Gameplay/Wave.png" id="7_8k7j3"]
-[ext_resource type="Texture2D" uid="uid://vaw87a8ccvlx" path="res://asset/UI_Gameplay/Energy_BG.png" id="8_jkdwc"]
+[ext_resource type="Texture2D" uid="uid://bqunjr3swghiv" path="res://asset/UI_Gameplay/Energy_BG.png" id="8_jkdwc"]
 [ext_resource type="Texture2D" uid="uid://b87mglfyqmn0v" path="res://asset/UI_Gameplay/Chara_BG.png" id="9_rlppe"]
 [ext_resource type="Texture2D" uid="uid://dk5lualwoepbg" path="res://asset/UI_Gameplay/History_Box.png" id="11_kupmu"]
 [ext_resource type="Texture2D" uid="uid://1giep6h25tvp" path="res://asset/UI_Gameplay/Type_Box.png" id="12_catpy"]
@@ -22,7 +22,7 @@
 [ext_resource type="Resource" uid="uid://b253lnqawjdve" path="res://resources/res_tower/vigilante.tres" id="20_kupmu"]
 [ext_resource type="PackedScene" uid="uid://b8y7ehgxvep5v" path="res://scenes/UI/pause.tscn" id="20_pause"]
 [ext_resource type="Resource" uid="uid://dovjt4j0250hn" path="res://resources/res_tower/celene.tres" id="21_catpy"]
-[ext_resource type="PackedScene" uid="uid://bj5dtcmvpkfwk" path="res://scenes/UI/WinLose.tscn" id="21_ycmcx"]
+[ext_resource type="PackedScene" uid="uid://bj5dtcmvpkfwk" path="res://scenes/WinLose.tscn" id="21_ycmcx"]
 [ext_resource type="Resource" uid="uid://k5xab2kd6y7y" path="res://resources/res_tower/priestess.tres" id="22_41akx"]
 [ext_resource type="PackedScene" uid="uid://dryibkwveyvuw" path="res://scenes/UI/Vignette.tscn" id="24_41akx"]
 
