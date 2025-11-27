@@ -123,6 +123,10 @@ func return_to_pool() -> void:
 	is_alive = false
 	speed_buffs.clear()
 	move_speed = original_move_speed
+
+	# Reset sprite animation and modulate
+	sprite.play("default")
+	sprite.modulate = Color(1, 1, 1)
 	
 	# Disconnect all signals before returning to pool
 	for connection in died.get_connections():

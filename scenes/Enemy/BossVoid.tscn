@@ -108,6 +108,7 @@ animations = [{
 
 [node name="BossVoid" type="CharacterBody3D"]
 script = ExtResource("1_ldimu")
+time_stop_cooldown_min = 20.0
 enemy_data = ExtResource("2_8v3as")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

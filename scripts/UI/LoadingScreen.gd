@@ -97,15 +97,15 @@ func update_progress(progress: float) -> void:
 	# Force redraw
 	progress_bar.queue_redraw()
 	
-	# Update loading text based on progress
-	if progress < 0.3:
-		loading_label.text = "Loading assets..."
-	elif progress < 0.6:
-		loading_label.text = "Mempersiapkan level..."
-	elif progress < 0.9:
-		loading_label.text = "Hampir Selesai..."
-	else:
-		loading_label.text = "Ready!"
+	## Update loading text based on progress
+	#if progress < 0.3:
+		#loading_label.text = "Loading assets..."
+	#elif progress < 0.6:
+		#loading_label.text = "Mempersiapkan level..."
+	#elif progress < 0.9:
+		#loading_label.text = "Hampir Selesai..."
+	#else:
+		#loading_label.text = "Ready!"
 
 func _fade_text(new_text: String) -> void:
 	var tween = create_tween()

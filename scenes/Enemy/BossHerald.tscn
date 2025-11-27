@@ -1,8 +1,9 @@
-[gd_scene load_steps=28 format=3 uid="uid://d34arcnfbqpst"]
+[gd_scene load_steps=29 format=3 uid="uid://d34arcnfbqpst"]
 
 [ext_resource type="Script" uid="uid://bt6xnoujd8fcg" path="res://scripts/Enemies/BossHerald.gd" id="1_27tu1"]
 [ext_resource type="Texture2D" uid="uid://mg008vfg2sy0" path="res://asset/Enemy/Boss 2/1.png" id="1_txs5q"]
 [ext_resource type="Texture2D" uid="uid://bu810vii0hgwf" path="res://asset/Enemy/Boss 2/2.png" id="2_27tu1"]
+[ext_resource type="Resource" uid="uid://r5o8a1rqluqq" path="res://resources/Enemy Data/BossHerald.tres" id="2_jufa0"]
 [ext_resource type="Texture2D" uid="uid://dacvwwpv6koq1" path="res://asset/Enemy/Boss 2/3.png" id="3_x4nr6"]
 [ext_resource type="Texture2D" uid="uid://duhbl3d6eawhu" path="res://asset/Enemy/Boss 2/4.png" id="4_q6cwt"]
 [ext_resource type="Texture2D" uid="uid://bfefer8q72cnw" path="res://asset/Enemy/Boss 2/5.png" id="5_xfhch"]
@@ -114,6 +115,7 @@ radius = 5.0
 
 [node name="BossDevil" type="CharacterBody3D"]
 script = ExtResource("1_27tu1")
+enemy_data = ExtResource("2_jufa0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_inemf")

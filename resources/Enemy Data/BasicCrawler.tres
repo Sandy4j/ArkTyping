@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_gmjmk")
 enemy_name = "Basic Crawler"
-max_hp = 1250.0
-move_speed = 0.7
+max_hp = 1500.0
+move_speed = 0.5
 reward = 3
