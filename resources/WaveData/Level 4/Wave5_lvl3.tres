@@ -46,4 +46,5 @@ enemies_to_spawn = 8
 
 [resource]
 script = ExtResource("1_r3lek")
+spawn_mode = 1
 spawn_point_configs = Array[ExtResource("2_pvb0o")]([SubResource("Resource_2xliy"), SubResource("Resource_ls1ur")])

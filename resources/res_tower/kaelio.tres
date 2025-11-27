@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://brp7kuvut0qn3" path="res://asset/SFX_IGame/Tower/Kaelio/Kaelio Basic Attack.wav" id="1_ektn4"]
 [ext_resource type="Texture2D" uid="uid://dpe0eyadq4jau" path="res://asset/mbuh/Group 108.png" id="4_ektn4"]
 [ext_resource type="AudioStream" uid="uid://dcy1hijgtr2b0" path="res://asset/SFX_IGame/Tower/Kaelio/Kaelio Skill.wav" id="5_w588g"]
-[ext_resource type="Texture2D" uid="uid://c7b8qcffjet" path="res://asset/Tower/Icon/Vigilante-1.png" id="6_ektn4"]
+[ext_resource type="Texture2D" uid="uid://bjq2v4c1ayt08" path="res://asset/Tower/Icon/Vigilante-1.png" id="6_ektn4"]
 [ext_resource type="Texture2D" uid="uid://fritibnfy5fg" path="res://asset/Tower/Icon/Glow/V12.png" id="7_ektn4"]
 [ext_resource type="Texture2D" uid="uid://cnex4n1fiqbjx" path="res://asset/Tower/Kaelio/Attack/1.png" id="8_ektn4"]
 [ext_resource type="Texture2D" uid="uid://bcp6qug7xbxm3" path="res://asset/Tower/Kaelio/Attack/2.png" id="9_w588g"]

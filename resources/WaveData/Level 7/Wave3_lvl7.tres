@@ -1,0 +1,56 @@
+[gd_resource type="Resource" script_class="WaveConfig" load_steps=18 format=3 uid="uid://ovtbba41nsgw"]
+
+[ext_resource type="Script" path="res://resources/WaveConfig.gd" id="1_xpfow"]
+[ext_resource type="Script" path="res://resources/SpawnPointConfig.gd" id="2_js0jg"]
+[ext_resource type="Script" path="res://resources/EnemySpawnEntry.gd" id="3_mwh6e"]
+[ext_resource type="Resource" uid="uid://4vnkysnhwpoy" path="res://resources/Enemy Data/BasicEye.tres" id="4_wpem8"]
+[ext_resource type="PackedScene" uid="uid://iv56om7n6qae" path="res://scenes/Enemy/BasicEye.tscn" id="5_ovkl8"]
+[ext_resource type="Resource" uid="uid://bpwnq55cbyk7n" path="res://resources/Enemy Data/RangedBat.tres" id="6_c4owp"]
+[ext_resource type="PackedScene" uid="uid://hb6wcarprmym" path="res://scenes/Enemy/RangedBat.tscn" id="7_kx3cd"]
+[ext_resource type="Resource" uid="uid://crmk4fyxjfv8u" path="res://resources/Enemy Data/BasicCrawler.tres" id="8_t8qi1"]
+[ext_resource type="PackedScene" uid="uid://cqlv1757tkesm" path="res://scenes/Enemy/BasicCrawler.tscn" id="9_h1ges"]
+[ext_resource type="Resource" uid="uid://cl7vbw18komq5" path="res://resources/Enemy Data/BossVoid.tres" id="10_gqcdr"]
+[ext_resource type="PackedScene" uid="uid://cy32m6d3q4iry" path="res://scenes/Enemy/BossVoid.tscn" id="11_dtldf"]
+
+[sub_resource type="Resource" id="Resource_5ln7t"]
+script = ExtResource("3_mwh6e")
+enemy_scene = ExtResource("5_ovkl8")
+enemy_data = ExtResource("4_wpem8")
+spawn_weight = 0.5
+
+[sub_resource type="Resource" id="Resource_1g6he"]
+script = ExtResource("3_mwh6e")
+enemy_scene = ExtResource("7_kx3cd")
+enemy_data = ExtResource("6_c4owp")
+spawn_weight = 0.25
+
+[sub_resource type="Resource" id="Resource_ncvja"]
+script = ExtResource("3_mwh6e")
+enemy_scene = ExtResource("9_h1ges")
+enemy_data = ExtResource("8_t8qi1")
+spawn_weight = 0.25
+
+[sub_resource type="Resource" id="Resource_nni17"]
+script = ExtResource("2_js0jg")
+spawn_path_node = NodePath("PathKiri")
+enemy_spawn_entries = Array[ExtResource("3_mwh6e")]([SubResource("Resource_5ln7t"), SubResource("Resource_1g6he"), SubResource("Resource_ncvja")])
+enemies_to_spawn = 20
+
+[sub_resource type="Resource" id="Resource_4j532"]
+script = ExtResource("3_mwh6e")
+enemy_scene = ExtResource("5_ovkl8")
+enemy_data = ExtResource("4_wpem8")
+
+[sub_resource type="Resource" id="Resource_mx066"]
+script = ExtResource("2_js0jg")
+spawn_path_node = NodePath("PathKanan")
+enemy_spawn_entries = Array[ExtResource("3_mwh6e")]([SubResource("Resource_4j532")])
+has_boss = true
+boss_scene = ExtResource("11_dtldf")
+boss_data = ExtResource("10_gqcdr")
+boss_spawn_timing = 0.1
+
+[resource]
+script = ExtResource("1_xpfow")
+spawn_mode = 1
+spawn_point_configs = Array[ExtResource("2_js0jg")]([SubResource("Resource_nni17"), SubResource("Resource_mx066")])

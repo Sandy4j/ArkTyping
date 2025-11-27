@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="SpawnPointConfig" load_steps=14 format=3 uid="uid://cmjwi2y0e64nx"]
+
+[ext_resource type="Resource" uid="uid://r5o8a1rqluqq" path="res://resources/Enemy Data/BossHerald.tres" id="1_plsp5"]
+[ext_resource type="PackedScene" uid="uid://d34arcnfbqpst" path="res://scenes/Enemy/BossHerald.tscn" id="2_5fdfu"]
+[ext_resource type="Script" path="res://resources/EnemySpawnEntry.gd" id="3_84s17"]
+[ext_resource type="Resource" uid="uid://duxh40etvv6qo" path="res://resources/Enemy Data/RangedSkull.tres" id="4_v4o4j"]
+[ext_resource type="PackedScene" uid="uid://c0kl54ny82siw" path="res://scenes/Enemy/RangedSkull.tscn" id="5_u5tpu"]
+[ext_resource type="Resource" uid="uid://bpwnq55cbyk7n" path="res://resources/Enemy Data/RangedBat.tres" id="6_6l1g8"]
+[ext_resource type="PackedScene" uid="uid://hb6wcarprmym" path="res://scenes/Enemy/RangedBat.tscn" id="7_44tlf"]
+[ext_resource type="Resource" uid="uid://4vnkysnhwpoy" path="res://resources/Enemy Data/BasicEye.tres" id="8_5xdoq"]
+[ext_resource type="PackedScene" uid="uid://iv56om7n6qae" path="res://scenes/Enemy/BasicEye.tscn" id="9_jooho"]
+[ext_resource type="Script" path="res://resources/SpawnPointConfig.gd" id="10_eu84m"]
+
+[sub_resource type="Resource" id="Resource_lc08a"]
+script = ExtResource("3_84s17")
+enemy_scene = ExtResource("5_u5tpu")
+enemy_data = ExtResource("4_v4o4j")
+spawn_weight = 0.1
+
+[sub_resource type="Resource" id="Resource_hqjd3"]
+script = ExtResource("3_84s17")
+enemy_scene = ExtResource("7_44tlf")
+enemy_data = ExtResource("6_6l1g8")
+spawn_weight = 0.45
+
+[sub_resource type="Resource" id="Resource_iejo1"]
+script = ExtResource("3_84s17")
+enemy_scene = ExtResource("9_jooho")
+enemy_data = ExtResource("8_5xdoq")
+spawn_weight = 0.45
+
+[resource]
+script = ExtResource("10_eu84m")
+spawn_path_node = NodePath("PathKiri")
+enemy_spawn_entries = Array[ExtResource("3_84s17")]([SubResource("Resource_lc08a"), SubResource("Resource_hqjd3"), SubResource("Resource_iejo1")])
+enemies_to_spawn = 11
+has_boss = true
+boss_scene = ExtResource("2_5fdfu")
+boss_data = ExtResource("1_plsp5")
+boss_spawn_timing = 0.1

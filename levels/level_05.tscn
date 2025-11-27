@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dbjgfw6ycb20"]
+[gd_scene load_steps=22 format=3 uid="uid://dbjgfw6ycb20"]
 
 [ext_resource type="Script" path="res://scripts/LevelInit.gd" id="1_jepln"]
 [ext_resource type="Material" uid="uid://ctd55tbm5xssh" path="res://asset/Shader/Sky/night.tres" id="2_fk51f"]
@@ -8,9 +8,14 @@
 [ext_resource type="PackedScene" uid="uid://cjhp6v8qnx4qm" path="res://scenes/Tower/Tower.tscn" id="6_1q5uq"]
 [ext_resource type="PackedScene" uid="uid://drlwka2ahedj4" path="res://scenes/Base.tscn" id="7_6vgds"]
 [ext_resource type="Script" uid="uid://4ipxb665lopb" path="res://scripts/WaveManager.gd" id="8_fuywf"]
+[ext_resource type="Script" path="res://resources/WaveConfig.gd" id="11_htwx1"]
+[ext_resource type="Resource" uid="uid://dui7mu4pk6rfd" path="res://resources/WaveData/Level 5/Wave1_lvl5.tres" id="12_0vajx"]
+[ext_resource type="Resource" uid="uid://ep6npb30d584" path="res://resources/WaveData/Level 5/Wave2_lvl5.tres" id="13_j10hr"]
 [ext_resource type="PackedScene" uid="uid://b6ot4uwb74jwf" path="res://scenes/ui.tscn" id="13_thh07"]
+[ext_resource type="Resource" uid="uid://b2ipcyisgbn7p" path="res://resources/WaveData/Level 5/Wave3_lvl5.tres" id="14_0163i"]
 [ext_resource type="PackedScene" uid="uid://dqmlunqfclena" path="res://asset/Vfx/Effect/Portalem.tscn" id="14_ivanv"]
 [ext_resource type="PackedScene" uid="uid://daee5xj5vgu0d" path="res://asset/Envi/ENV lvl 6 ground.fbx" id="15_jepln"]
+[ext_resource type="Resource" uid="uid://busc7e634mfsq" path="res://resources/WaveData/Level 5/Wave4_lvl5.tres" id="15_nb100"]
 [ext_resource type="PackedScene" uid="uid://rlie2mwntn7y" path="res://asset/Envi/Props lvl 6.fbx" id="16_fk51f"]
 
 [sub_resource type="Sky" id="Sky_2qse1"]
@@ -45,7 +50,7 @@ _data = {
 }
 point_count = 8
 
-[node name="Level03" type="Node3D"]
+[node name="Level05" type="Node3D"]
 script = ExtResource("1_jepln")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -151,6 +156,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -6)
 
 [node name="WaveManager" type="Node" parent="."]
 script = ExtResource("8_fuywf")
+wave_configs = Array[ExtResource("11_htwx1")]([ExtResource("12_0vajx"), ExtResource("13_j10hr"), ExtResource("14_0163i"), ExtResource("15_nb100")])
 metadata/_custom_type_script = "uid://4ipxb665lopb"
 
 [node name="PathKiri" type="Path3D" parent="WaveManager"]

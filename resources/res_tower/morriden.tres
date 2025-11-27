@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://g85gwfmcln8s" path="res://scripts/Tower/Tower_Res.gd" id="1_ij4bj"]
 [ext_resource type="Texture2D" uid="uid://dbvd4pwrmtt4p" path="res://asset/Tower/Skill/Group 110.png" id="4_asmgg"]
 [ext_resource type="AudioStream" uid="uid://tcm2jj8px5ha" path="res://asset/SFX_IGame/Tower/Morriden/Morriden Skill.wav" id="5_asmgg"]
-[ext_resource type="Texture2D" uid="uid://5pc863u8g2q7" path="res://asset/Tower/Icon/Vigilante-3.png" id="6_asmgg"]
+[ext_resource type="Texture2D" uid="uid://csix8bygwmdmj" path="res://asset/Tower/Icon/Vigilante-3.png" id="6_asmgg"]
 [ext_resource type="Texture2D" uid="uid://dew8q7mc4qev5" path="res://asset/Tower/Icon/Glow/V32.png" id="7_mmkrx"]
 [ext_resource type="Texture2D" uid="uid://bk3vjes6evysn" path="res://asset/Tower/Morriden/attack/1.png" id="8_asmgg"]
 [ext_resource type="Texture2D" uid="uid://bkgw5fu6po6og" path="res://asset/Tower/Morriden/attack/2.png" id="9_mmkrx"]

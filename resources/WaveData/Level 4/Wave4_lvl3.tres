@@ -44,4 +44,5 @@ enemy_spawn_entries = Array[ExtResource("3_140fe")]([SubResource("Resource_axrts
 
 [resource]
 script = ExtResource("1_m263x")
+spawn_mode = 1
 spawn_point_configs = Array[ExtResource("2_dgyc5")]([SubResource("Resource_x32f8"), SubResource("Resource_ipk6o")])

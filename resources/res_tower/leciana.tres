@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cj1oprebspu6a" path="res://asset/Vfx/Effect/BloodBall.tscn" id="1_jf8tk"]
 [ext_resource type="Texture2D" uid="uid://bgkfuke1i0ul5" path="res://asset/Tower/Skill/Group 117.png" id="4_nvyl0"]
 [ext_resource type="AudioStream" uid="uid://ckrvnls7feosm" path="res://asset/SFX_IGame/Tower/Leciana/Leciana Skill.wav" id="5_mvied"]
-[ext_resource type="Texture2D" uid="uid://b6bfsws0sf7sp" path="res://asset/Tower/Icon/Vigilante-5.png" id="5_nvyl0"]
+[ext_resource type="Texture2D" uid="uid://b7mmrfol0dtia" path="res://asset/Tower/Icon/Vigilante-5.png" id="5_nvyl0"]
 [ext_resource type="Texture2D" uid="uid://covcavjtcu5yw" path="res://asset/Tower/Icon/Glow/V52.png" id="6_mvied"]
 [ext_resource type="Texture2D" uid="uid://do4rdvuvdd2yp" path="res://asset/Tower/Leciana/Attack/1.png" id="7_nvyl0"]
 [ext_resource type="Texture2D" uid="uid://g7geij80dj2t" path="res://asset/Tower/Leciana/Attack/2.png" id="8_mvied"]

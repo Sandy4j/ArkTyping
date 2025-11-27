@@ -10,7 +10,7 @@ enum SpawnMode {
 }
 
 @export var wave_number: int = 1
-@export var time_until_next_wave: float = 5.0
+@export var time_until_next_wave: float = 10.0
 ## Mode spawn untuk wave ini
 @export var spawn_mode: SpawnMode = SpawnMode.SEQUENTIAL
 ## Konfigurasi spawn points dalam wave

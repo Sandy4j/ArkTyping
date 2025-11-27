@@ -9,6 +9,5 @@
 [resource]
 script = ExtResource("1_64lw6")
 wave_number = 3
-time_until_next_wave = 10.0
 spawn_mode = 1
 spawn_point_configs = Array[ExtResource("2_6sxrs")]([ExtResource("3_6sxrs"), ExtResource("4_q2bbf"), ExtResource("5_7adbh")])

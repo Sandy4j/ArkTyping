@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="WaveConfig" load_steps=15 format=3 uid="uid://dqne2ktm6rs2i"]
+
+[ext_resource type="Script" path="res://resources/WaveConfig.gd" id="1_g2lh1"]
+[ext_resource type="Script" path="res://resources/SpawnPointConfig.gd" id="2_njcwu"]
+[ext_resource type="Resource" uid="uid://bvxw1qnxw2nfs" path="res://resources/SpawnEntry/Level 6/SP_W2.tres" id="3_occkp"]
+[ext_resource type="Script" path="res://resources/EnemySpawnEntry.gd" id="4_tks4q"]
+[ext_resource type="Resource" uid="uid://bpwnq55cbyk7n" path="res://resources/Enemy Data/RangedBat.tres" id="5_3rgvp"]
+[ext_resource type="PackedScene" uid="uid://hb6wcarprmym" path="res://scenes/Enemy/RangedBat.tscn" id="6_oliah"]
+[ext_resource type="Resource" uid="uid://4vnkysnhwpoy" path="res://resources/Enemy Data/BasicEye.tres" id="7_bnp65"]
+[ext_resource type="PackedScene" uid="uid://iv56om7n6qae" path="res://scenes/Enemy/BasicEye.tscn" id="8_yvxkj"]
+[ext_resource type="Resource" uid="uid://crmk4fyxjfv8u" path="res://resources/Enemy Data/BasicCrawler.tres" id="9_xugf6"]
+[ext_resource type="PackedScene" uid="uid://cqlv1757tkesm" path="res://scenes/Enemy/BasicCrawler.tscn" id="10_4p7gq"]
+
+[sub_resource type="Resource" id="Resource_ptvmk"]
+script = ExtResource("4_tks4q")
+enemy_scene = ExtResource("6_oliah")
+enemy_data = ExtResource("5_3rgvp")
+spawn_weight = 0.3
+
+[sub_resource type="Resource" id="Resource_m2jfe"]
+script = ExtResource("4_tks4q")
+enemy_scene = ExtResource("8_yvxkj")
+enemy_data = ExtResource("7_bnp65")
+spawn_weight = 0.5
+
+[sub_resource type="Resource" id="Resource_i4ecb"]
+script = ExtResource("4_tks4q")
+enemy_scene = ExtResource("10_4p7gq")
+enemy_data = ExtResource("9_xugf6")
+spawn_weight = 0.2
+
+[sub_resource type="Resource" id="Resource_fwp64"]
+script = ExtResource("2_njcwu")
+spawn_path_node = NodePath("PathAtas")
+enemy_spawn_entries = Array[ExtResource("4_tks4q")]([SubResource("Resource_ptvmk"), SubResource("Resource_m2jfe"), SubResource("Resource_i4ecb")])
+enemies_to_spawn = 10
+
+[resource]
+script = ExtResource("1_g2lh1")
+spawn_mode = 1
+spawn_point_configs = Array[ExtResource("2_njcwu")]([ExtResource("3_occkp"), SubResource("Resource_fwp64")])

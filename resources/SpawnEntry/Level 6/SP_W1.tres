@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="SpawnPointConfig" load_steps=9 format=3 uid="uid://ddcr30bfarahm"]
+
+[ext_resource type="Script" path="res://resources/EnemySpawnEntry.gd" id="1_o7uu5"]
+[ext_resource type="Resource" uid="uid://4vnkysnhwpoy" path="res://resources/Enemy Data/BasicEye.tres" id="2_x1dmb"]
+[ext_resource type="PackedScene" uid="uid://iv56om7n6qae" path="res://scenes/Enemy/BasicEye.tscn" id="3_hrh02"]
+[ext_resource type="Resource" uid="uid://crmk4fyxjfv8u" path="res://resources/Enemy Data/BasicCrawler.tres" id="4_4y1j5"]
+[ext_resource type="PackedScene" uid="uid://cqlv1757tkesm" path="res://scenes/Enemy/BasicCrawler.tscn" id="5_veqnt"]
+[ext_resource type="Script" path="res://resources/SpawnPointConfig.gd" id="6_tamhn"]
+
+[sub_resource type="Resource" id="Resource_s7kho"]
+script = ExtResource("1_o7uu5")
+enemy_scene = ExtResource("3_hrh02")
+enemy_data = ExtResource("2_x1dmb")
+spawn_weight = 0.8
+
+[sub_resource type="Resource" id="Resource_7qfb4"]
+script = ExtResource("1_o7uu5")
+enemy_scene = ExtResource("5_veqnt")
+enemy_data = ExtResource("4_4y1j5")
+spawn_weight = 0.2
+
+[resource]
+script = ExtResource("6_tamhn")
+spawn_path_node = NodePath("PathBawah")
+enemy_spawn_entries = Array[ExtResource("1_o7uu5")]([SubResource("Resource_s7kho"), SubResource("Resource_7qfb4")])
+enemies_to_spawn = 12

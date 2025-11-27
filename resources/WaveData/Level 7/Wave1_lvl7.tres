@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="WaveConfig" load_steps=11 format=3 uid="uid://bq7vu1i4rja0f"]
+
+[ext_resource type="Script" path="res://resources/WaveConfig.gd" id="1_l5n3a"]
+[ext_resource type="Script" path="res://resources/SpawnPointConfig.gd" id="2_wdin7"]
+[ext_resource type="Script" path="res://resources/EnemySpawnEntry.gd" id="3_4r76x"]
+[ext_resource type="Resource" uid="uid://4vnkysnhwpoy" path="res://resources/Enemy Data/BasicEye.tres" id="4_lacor"]
+[ext_resource type="PackedScene" uid="uid://iv56om7n6qae" path="res://scenes/Enemy/BasicEye.tscn" id="5_ggot2"]
+[ext_resource type="Resource" uid="uid://bpwnq55cbyk7n" path="res://resources/Enemy Data/RangedBat.tres" id="6_srkew"]
+[ext_resource type="PackedScene" uid="uid://hb6wcarprmym" path="res://scenes/Enemy/RangedBat.tscn" id="7_7wdmo"]
+
+[sub_resource type="Resource" id="Resource_n2fvk"]
+script = ExtResource("3_4r76x")
+enemy_scene = ExtResource("5_ggot2")
+enemy_data = ExtResource("4_lacor")
+spawn_weight = 0.6
+
+[sub_resource type="Resource" id="Resource_eaq10"]
+script = ExtResource("3_4r76x")
+enemy_scene = ExtResource("7_7wdmo")
+enemy_data = ExtResource("6_srkew")
+spawn_weight = 0.4
+
+[sub_resource type="Resource" id="Resource_ejkke"]
+script = ExtResource("2_wdin7")
+spawn_path_node = NodePath("PathKiri")
+enemy_spawn_entries = Array[ExtResource("3_4r76x")]([SubResource("Resource_n2fvk"), SubResource("Resource_eaq10")])
+enemies_to_spawn = 30
+
+[resource]
+script = ExtResource("1_l5n3a")
+spawn_mode = 1
+spawn_point_configs = Array[ExtResource("2_wdin7")]([SubResource("Resource_ejkke")])
