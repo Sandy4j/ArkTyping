@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="SpawnPointConfig" load_steps=15 format=3 uid="uid://bfknl63f1n3oi"]
+
+[ext_resource type="Script" path="res://resources/EnemySpawnEntry.gd" id="1_jw53b"]
+[ext_resource type="Resource" uid="uid://duxh40etvv6qo" path="res://resources/Enemy Data/RangedSkull.tres" id="2_o0xlf"]
+[ext_resource type="PackedScene" uid="uid://c0kl54ny82siw" path="res://scenes/Enemy/RangedSkull.tscn" id="3_v4ld1"]
+[ext_resource type="Resource" uid="uid://4vnkysnhwpoy" path="res://resources/Enemy Data/BasicEye.tres" id="4_raim6"]
+[ext_resource type="PackedScene" uid="uid://iv56om7n6qae" path="res://scenes/Enemy/BasicEye.tscn" id="5_n7xo5"]
+[ext_resource type="Resource" uid="uid://crmk4fyxjfv8u" path="res://resources/Enemy Data/BasicCrawler.tres" id="6_1vvqh"]
+[ext_resource type="PackedScene" uid="uid://cqlv1757tkesm" path="res://scenes/Enemy/BasicCrawler.tscn" id="7_if7yk"]
+[ext_resource type="Resource" uid="uid://bpwnq55cbyk7n" path="res://resources/Enemy Data/RangedBat.tres" id="8_fmwte"]
+[ext_resource type="PackedScene" uid="uid://hb6wcarprmym" path="res://scenes/Enemy/RangedBat.tscn" id="9_mi3o7"]
+[ext_resource type="Script" path="res://resources/SpawnPointConfig.gd" id="10_iro6e"]
+
+[sub_resource type="Resource" id="Resource_qyghv"]
+script = ExtResource("1_jw53b")
+enemy_scene = ExtResource("3_v4ld1")
+enemy_data = ExtResource("2_o0xlf")
+spawn_weight = 0.2
+
+[sub_resource type="Resource" id="Resource_gtxgp"]
+script = ExtResource("1_jw53b")
+enemy_scene = ExtResource("5_n7xo5")
+enemy_data = ExtResource("4_raim6")
+spawn_weight = 0.2
+
+[sub_resource type="Resource" id="Resource_4k1yq"]
+script = ExtResource("1_jw53b")
+enemy_scene = ExtResource("7_if7yk")
+enemy_data = ExtResource("6_1vvqh")
+spawn_weight = 0.4
+
+[sub_resource type="Resource" id="Resource_dgdww"]
+script = ExtResource("1_jw53b")
+enemy_scene = ExtResource("9_mi3o7")
+enemy_data = ExtResource("8_fmwte")
+spawn_weight = 0.2
+
+[resource]
+script = ExtResource("10_iro6e")
+spawn_path_node = NodePath("PathKiri")
+enemy_spawn_entries = Array[ExtResource("1_jw53b")]([SubResource("Resource_qyghv"), SubResource("Resource_gtxgp"), SubResource("Resource_4k1yq"), SubResource("Resource_dgdww")])
+enemies_to_spawn = 14

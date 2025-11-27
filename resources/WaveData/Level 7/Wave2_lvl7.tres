@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="WaveConfig" load_steps=14 format=3 uid="uid://oux3ab6j7ypl"]
+
+[ext_resource type="Script" path="res://resources/WaveConfig.gd" id="1_61p3y"]
+[ext_resource type="Script" path="res://resources/SpawnPointConfig.gd" id="2_2n3ge"]
+[ext_resource type="Script" path="res://resources/EnemySpawnEntry.gd" id="3_ni1vw"]
+[ext_resource type="Resource" uid="uid://crmk4fyxjfv8u" path="res://resources/Enemy Data/BasicCrawler.tres" id="4_hexel"]
+[ext_resource type="PackedScene" uid="uid://cqlv1757tkesm" path="res://scenes/Enemy/BasicCrawler.tscn" id="5_3yg0j"]
+[ext_resource type="Resource" uid="uid://duxh40etvv6qo" path="res://resources/Enemy Data/RangedSkull.tres" id="6_w0665"]
+[ext_resource type="PackedScene" uid="uid://c0kl54ny82siw" path="res://scenes/Enemy/RangedSkull.tscn" id="7_51sji"]
+[ext_resource type="Resource" uid="uid://4vnkysnhwpoy" path="res://resources/Enemy Data/BasicEye.tres" id="8_8jsuq"]
+[ext_resource type="PackedScene" uid="uid://iv56om7n6qae" path="res://scenes/Enemy/BasicEye.tscn" id="9_f1vj4"]
+
+[sub_resource type="Resource" id="Resource_ijklw"]
+script = ExtResource("3_ni1vw")
+enemy_scene = ExtResource("5_3yg0j")
+enemy_data = ExtResource("4_hexel")
+spawn_weight = 0.3
+
+[sub_resource type="Resource" id="Resource_tqxyj"]
+script = ExtResource("3_ni1vw")
+enemy_scene = ExtResource("7_51sji")
+enemy_data = ExtResource("6_w0665")
+spawn_weight = 0.1
+
+[sub_resource type="Resource" id="Resource_e2crx"]
+script = ExtResource("3_ni1vw")
+enemy_scene = ExtResource("9_f1vj4")
+enemy_data = ExtResource("8_8jsuq")
+spawn_weight = 0.6
+
+[sub_resource type="Resource" id="Resource_88jhv"]
+script = ExtResource("2_2n3ge")
+spawn_path_node = NodePath("PathKiri")
+enemy_spawn_entries = Array[ExtResource("3_ni1vw")]([SubResource("Resource_ijklw"), SubResource("Resource_tqxyj"), SubResource("Resource_e2crx")])
+enemies_to_spawn = 25
+
+[resource]
+script = ExtResource("1_61p3y")
+spawn_mode = 1
+spawn_point_configs = Array[ExtResource("2_2n3ge")]([SubResource("Resource_88jhv")])

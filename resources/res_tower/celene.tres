@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://g85gwfmcln8s" path="res://scripts/Tower/Tower_Res.gd" id="3_lilhk"]
 [ext_resource type="Texture2D" uid="uid://11idcqmce1gr" path="res://asset/Tower/Skill/Group 111.png" id="4_87730"]
 [ext_resource type="AudioStream" uid="uid://buic24cnjm4q2" path="res://asset/SFX_IGame/Tower/Cellene/Cellene Skill.wav" id="5_igygd"]
-[ext_resource type="Texture2D" uid="uid://8fnum5ac488p" path="res://asset/Tower/Icon/Vigilante-4.png" id="6_igygd"]
+[ext_resource type="Texture2D" uid="uid://dc7r6vt6hpd3w" path="res://asset/Tower/Icon/Vigilante-4.png" id="6_igygd"]
 [ext_resource type="Texture2D" uid="uid://w6jdemg3v0r6" path="res://asset/Tower/Icon/Glow/V42.png" id="7_doxk2"]
 [ext_resource type="Texture2D" uid="uid://cw6ei5thays23" path="res://asset/Tower/Cellene/Skill/2.png" id="8_87730"]
 [ext_resource type="Texture2D" uid="uid://dcpoljk0mqlt4" path="res://asset/Tower/Cellene/Skill/4.png" id="9_igygd"]

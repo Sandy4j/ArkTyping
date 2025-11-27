@@ -1,22 +1,27 @@
-﻿[gd_scene load_steps=15 format=3 uid="uid://d34arcnfbqpst"]
+[gd_scene load_steps=14 format=3 uid="uid://d34arcnfbqpst"]
 
-[ext_resource type="Script" uid="uid://bt6xnoujd8fcg" path="res://scripts/Enemies/BossHerald.gd" id="1_q6cwt"]
-[ext_resource type="Resource" uid="uid://c3eheroliiyjr" path="res://resources/Enemy Data/BossHerald.tres" id="2_q6cwt"]
-[ext_resource type="Texture2D" uid="uid://mg008vfg2sy0" path="res://asset/Enemy/Boss 2/1.png" id="3_x4nr6"]
-[ext_resource type="Texture2D" uid="uid://bu810vii0hgwf" path="res://asset/Enemy/Boss 2/2.png" id="4_q6cwt"]
-[ext_resource type="Texture2D" uid="uid://dacvwwpv6koq1" path="res://asset/Enemy/Boss 2/3.png" id="5_xfhch"]
-[ext_resource type="Texture2D" uid="uid://duhbl3d6eawhu" path="res://asset/Enemy/Boss 2/4.png" id="6_13hwb"]
-[ext_resource type="Texture2D" uid="uid://bfefer8q72cnw" path="res://asset/Enemy/Boss 2/5.png" id="7_vpryt"]
-[ext_resource type="Texture2D" uid="uid://b0s7epufkyok7" path="res://asset/Enemy/Boss 2/6.png" id="8_2t7c3"]
-[ext_resource type="Texture2D" uid="uid://ss60tusyyays" path="res://asset/Enemy/Boss 2/7.png" id="9_se57y"]
-[ext_resource type="Texture2D" uid="uid://4isvhhr36vbb" path="res://asset/Enemy/Boss 2/8.png" id="10_fk3xo"]
-[ext_resource type="Texture2D" uid="uid://cvu47unervysc" path="res://asset/Enemy/Boss 2/9.png" id="11_ksn81"]
+[ext_resource type="Script" uid="uid://bt6xnoujd8fcg" path="res://scripts/Enemies/BossHerald.gd" id="1_27tu1"]
+[ext_resource type="Texture2D" uid="uid://mg008vfg2sy0" path="res://asset/Enemy/Boss 2/1.png" id="1_txs5q"]
+[ext_resource type="Texture2D" uid="uid://bu810vii0hgwf" path="res://asset/Enemy/Boss 2/2.png" id="2_27tu1"]
+[ext_resource type="Texture2D" uid="uid://dacvwwpv6koq1" path="res://asset/Enemy/Boss 2/3.png" id="3_x4nr6"]
+[ext_resource type="Texture2D" uid="uid://duhbl3d6eawhu" path="res://asset/Enemy/Boss 2/4.png" id="4_q6cwt"]
+[ext_resource type="Texture2D" uid="uid://bfefer8q72cnw" path="res://asset/Enemy/Boss 2/5.png" id="5_xfhch"]
+[ext_resource type="Texture2D" uid="uid://b0s7epufkyok7" path="res://asset/Enemy/Boss 2/6.png" id="6_13hwb"]
+[ext_resource type="Texture2D" uid="uid://ss60tusyyays" path="res://asset/Enemy/Boss 2/7.png" id="7_vpryt"]
+[ext_resource type="Texture2D" uid="uid://4isvhhr36vbb" path="res://asset/Enemy/Boss 2/8.png" id="8_2t7c3"]
+[ext_resource type="Texture2D" uid="uid://cvu47unervysc" path="res://asset/Enemy/Boss 2/9.png" id="9_se57y"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_inemf"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rkjbc"]
 animations = [{
 "frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_txs5q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_27tu1")
+}, {
 "duration": 1.0,
 "texture": ExtResource("3_x4nr6")
 }, {
@@ -37,23 +42,17 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("9_se57y")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_fk3xo")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_ksn81")
 }],
 "loop": true,
 "name": &"default",
-"speed": 10.0
+"speed": 5.0
 }]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_yhny7"]
 radius = 5.0
 
-[node name="BossHerald" type="CharacterBody3D"]
-script = ExtResource("1_q6cwt")
+[node name="BossDevil" type="CharacterBody3D"]
+script = ExtResource("1_27tu1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_inemf")
@@ -62,7 +61,7 @@ shape = SubResource("SphereShape3D_inemf")
 transform = Transform3D(0.3, 0, 0, 0, 0.2819078, 0.10260604, 0, -0.10260604, 0.2819078, 0, 1, 0)
 billboard = 1
 sprite_frames = SubResource("SpriteFrames_rkjbc")
-frame_progress = 0.88764447
+frame_progress = 0.85134363
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.100949466, 0)
@@ -76,9 +75,8 @@ omni_range = 3.0
 shape = SubResource("SphereShape3D_yhny7")
 
 [node name="TypingLabel" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
 billboard = 1
 modulate = Color(1, 1, 0, 1)
-text = "SPEED"
+text = "Test"
 font_size = 56
-outline_size = 16

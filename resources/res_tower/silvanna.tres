@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://ckw6pw52cvcwx" path="res://asset/SFX_IGame/Tower/Silvanna/Silvanna Basic Attack.wav" id="1_lniv3"]
 [ext_resource type="Texture2D" uid="uid://ehs8spu8axd0" path="res://asset/Tower/Skill/Group 109.png" id="4_5piew"]
 [ext_resource type="AudioStream" uid="uid://d3wto142s5h7g" path="res://asset/SFX_IGame/Tower/Silvanna/Silvanna Skill.wav" id="5_5piew"]
-[ext_resource type="Texture2D" uid="uid://dnoco1iqfe8b6" path="res://asset/Tower/Icon/Vigilante-2.png" id="6_5piew"]
+[ext_resource type="Texture2D" uid="uid://btprkqn7xx1rb" path="res://asset/Tower/Icon/Vigilante-2.png" id="6_5piew"]
 [ext_resource type="Texture2D" uid="uid://cpsqyteqckyyt" path="res://asset/Tower/Icon/Glow/V22.png" id="7_1mo65"]
 [ext_resource type="Texture2D" uid="uid://xwccqxn7bxbf" path="res://asset/Tower/Silvanna/Attack/1.png" id="8_5piew"]
 [ext_resource type="Texture2D" uid="uid://bftp8rrl55qv8" path="res://asset/Tower/Silvanna/Attack/2.png" id="9_1mo65"]

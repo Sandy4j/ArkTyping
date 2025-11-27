@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://csmk52yjhoxal"]
+[gd_scene load_steps=23 format=3 uid="uid://csmk52yjhoxal"]
 
 [ext_resource type="Script" path="res://scripts/LevelInit.gd" id="1_htwx1"]
 [ext_resource type="Material" uid="uid://ctd55tbm5xssh" path="res://asset/Shader/Sky/night.tres" id="2_0vajx"]
@@ -8,11 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://cjhp6v8qnx4qm" path="res://scenes/Tower/Tower.tscn" id="9_c4ago"]
 [ext_resource type="PackedScene" uid="uid://drlwka2ahedj4" path="res://scenes/Base.tscn" id="10_a45jb"]
 [ext_resource type="Script" uid="uid://4ipxb665lopb" path="res://scripts/WaveManager.gd" id="11_ukmku"]
+[ext_resource type="Resource" uid="uid://bhowad2lbvqt0" path="res://resources/WaveData/Level 6/Wave1_lvl6.tres" id="12_d0fql"]
 [ext_resource type="Script" path="res://resources/WaveConfig.gd" id="12_hsx28"]
-[ext_resource type="Resource" uid="uid://d4nr4jpcakmc0" path="res://resources/WaveData/Level 3/Wave1_lvl3.tres" id="13_6tpke"]
-[ext_resource type="Resource" uid="uid://bbmnux0b6xmd4" path="res://resources/WaveData/Level 3/Wave2_lvl3.tres" id="14_6jcg3"]
+[ext_resource type="Resource" uid="uid://dqne2ktm6rs2i" path="res://resources/WaveData/Level 6/Wave2_lvl6.tres" id="13_dbgp1"]
+[ext_resource type="Resource" uid="uid://bj6vak5ybft0p" path="res://resources/WaveData/Level 6/Wave3_lvl6.tres" id="14_ocw3c"]
+[ext_resource type="Resource" uid="uid://cpj75j7ktmsrv" path="res://resources/WaveData/Level 6/Wave4_lvl6.tres" id="15_1q5uq"]
 [ext_resource type="PackedScene" uid="uid://cat4b08j8wo1g" path="res://asset/Envi/ENV lvl 5 ground.fbx" id="15_oku8f"]
-[ext_resource type="Resource" uid="uid://dhifykxglre0u" path="res://resources/WaveData/Level 3/Wave3_lvl3.tres" id="15_tkq1q"]
+[ext_resource type="Resource" uid="uid://dbs56tuyikhfq" path="res://resources/WaveData/Level 6/Wave5_lvl6.tres" id="16_6vgds"]
 [ext_resource type="PackedScene" uid="uid://b02l6og2hhico" path="res://asset/Envi/Props lvl 5.fbx" id="16_htwx1"]
 [ext_resource type="PackedScene" uid="uid://b6ot4uwb74jwf" path="res://scenes/ui.tscn" id="16_ny085"]
 [ext_resource type="PackedScene" uid="uid://dqmlunqfclena" path="res://asset/Vfx/Effect/Portalem.tscn" id="17_mskhr"]
@@ -49,7 +51,7 @@ _data = {
 }
 point_count = 4
 
-[node name="Level03" type="Node3D"]
+[node name="Level06" type="Node3D"]
 script = ExtResource("1_htwx1")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -155,7 +157,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 2)
 
 [node name="WaveManager" type="Node" parent="."]
 script = ExtResource("11_ukmku")
-wave_configs = Array[ExtResource("12_hsx28")]([ExtResource("13_6tpke"), ExtResource("14_6jcg3"), ExtResource("15_tkq1q")])
+wave_configs = Array[ExtResource("12_hsx28")]([ExtResource("12_d0fql"), ExtResource("13_dbgp1"), ExtResource("14_ocw3c"), ExtResource("15_1q5uq"), ExtResource("16_6vgds")])
 metadata/_custom_type_script = "uid://4ipxb665lopb"
 
 [node name="PathBawah" type="Path3D" parent="WaveManager"]

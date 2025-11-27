@@ -11,11 +11,11 @@
 [ext_resource type="PackedScene" uid="uid://drlwka2ahedj4" path="res://scenes/Base.tscn" id="7_5r10y"]
 [ext_resource type="Script" uid="uid://4ipxb665lopb" path="res://scripts/WaveManager.gd" id="8_hjpc8"]
 [ext_resource type="Script" path="res://resources/WaveConfig.gd" id="9_f1cbd"]
-[ext_resource type="Resource" uid="uid://d4nr4jpcakmc0" path="res://resources/WaveData/Level 3/Wave1_lvl3.tres" id="10_joyp0"]
-[ext_resource type="Resource" uid="uid://bbmnux0b6xmd4" path="res://resources/WaveData/Level 3/Wave2_lvl3.tres" id="11_dqmxr"]
-[ext_resource type="Resource" uid="uid://dhifykxglre0u" path="res://resources/WaveData/Level 3/Wave3_lvl3.tres" id="12_symhl"]
+[ext_resource type="Resource" uid="uid://bq7vu1i4rja0f" path="res://resources/WaveData/Level 7/Wave1_lvl7.tres" id="12_blie1"]
 [ext_resource type="PackedScene" uid="uid://b6ot4uwb74jwf" path="res://scenes/ui.tscn" id="13_4keop"]
+[ext_resource type="Resource" uid="uid://oux3ab6j7ypl" path="res://resources/WaveData/Level 7/Wave2_lvl7.tres" id="13_yp53p"]
 [ext_resource type="PackedScene" uid="uid://dqmlunqfclena" path="res://asset/Vfx/Effect/Portalem.tscn" id="14_3yrdd"]
+[ext_resource type="Resource" uid="uid://ovtbba41nsgw" path="res://resources/WaveData/Level 7/Wave3_lvl7.tres" id="14_xcgam"]
 
 [sub_resource type="Sky" id="Sky_2qse1"]
 sky_material = ExtResource("2_yp53p")
@@ -49,7 +49,7 @@ _data = {
 }
 point_count = 11
 
-[node name="Level03" type="Node3D"]
+[node name="Level07" type="Node3D"]
 script = ExtResource("1_blie1")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -165,7 +165,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 3)
 
 [node name="WaveManager" type="Node" parent="."]
 script = ExtResource("8_hjpc8")
-wave_configs = Array[ExtResource("9_f1cbd")]([ExtResource("10_joyp0"), ExtResource("11_dqmxr"), ExtResource("12_symhl")])
+wave_configs = Array[ExtResource("9_f1cbd")]([ExtResource("12_blie1"), ExtResource("13_yp53p"), ExtResource("14_xcgam")])
 metadata/_custom_type_script = "uid://4ipxb665lopb"
 
 [node name="PathKiri" type="Path3D" parent="WaveManager"]

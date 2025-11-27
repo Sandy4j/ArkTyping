@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="SpawnPointConfig" load_steps=12 format=3 uid="uid://bttde8xpe37cv"]
+
+[ext_resource type="Script" path="res://resources/EnemySpawnEntry.gd" id="1_ayu81"]
+[ext_resource type="Resource" uid="uid://duxh40etvv6qo" path="res://resources/Enemy Data/RangedSkull.tres" id="2_r7n1m"]
+[ext_resource type="PackedScene" uid="uid://c0kl54ny82siw" path="res://scenes/Enemy/RangedSkull.tscn" id="3_gk0c5"]
+[ext_resource type="Resource" uid="uid://4vnkysnhwpoy" path="res://resources/Enemy Data/BasicEye.tres" id="4_mb648"]
+[ext_resource type="PackedScene" uid="uid://iv56om7n6qae" path="res://scenes/Enemy/BasicEye.tscn" id="5_a37l4"]
+[ext_resource type="Resource" uid="uid://bpwnq55cbyk7n" path="res://resources/Enemy Data/RangedBat.tres" id="6_ekvcs"]
+[ext_resource type="PackedScene" uid="uid://hb6wcarprmym" path="res://scenes/Enemy/RangedBat.tscn" id="7_vtcfl"]
+[ext_resource type="Script" path="res://resources/SpawnPointConfig.gd" id="8_b88jq"]
+
+[sub_resource type="Resource" id="Resource_uk2vs"]
+script = ExtResource("1_ayu81")
+enemy_scene = ExtResource("3_gk0c5")
+enemy_data = ExtResource("2_r7n1m")
+spawn_weight = 0.2
+
+[sub_resource type="Resource" id="Resource_8n0qv"]
+script = ExtResource("1_ayu81")
+enemy_scene = ExtResource("5_a37l4")
+enemy_data = ExtResource("4_mb648")
+spawn_weight = 0.5
+
+[sub_resource type="Resource" id="Resource_pwvov"]
+script = ExtResource("1_ayu81")
+enemy_scene = ExtResource("7_vtcfl")
+enemy_data = ExtResource("6_ekvcs")
+spawn_weight = 0.3
+
+[resource]
+script = ExtResource("8_b88jq")
+spawn_path_node = NodePath("PathBawah")
+enemy_spawn_entries = Array[ExtResource("1_ayu81")]([SubResource("Resource_uk2vs"), SubResource("Resource_8n0qv"), SubResource("Resource_pwvov")])
+enemies_to_spawn = 15

@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="TowerData" load_steps=14 format=3 uid="uid://dvfphesh2a4nj"]
 
-[ext_resource type="AudioStream" uid="uid://djp1tehmnypx8" path="res://asset/SFX_IGame/Tower/Lilitia/Lilitia Basic Attack.wav" id="1_lnjyb"]
+[ext_resource type="AudioStream" uid="uid://casypnrt35tg" path="res://asset/SFX_IGame/Tower/Lilitia/Lilitia Basic Attack.wav" id="1_lnjyb"]
 [ext_resource type="Script" uid="uid://g85gwfmcln8s" path="res://scripts/Tower/Tower_Res.gd" id="1_r3aw5"]
 [ext_resource type="Texture2D" uid="uid://77ug46cq5dmt" path="res://asset/Tower/Skill/Group 112.png" id="3_lnjyb"]
 [ext_resource type="AudioStream" uid="uid://44ofpgt4biv0" path="res://asset/SFX_IGame/Tower/Lilitia/Lilitia Skill.wav" id="4_j14hj"]
-[ext_resource type="Texture2D" uid="uid://yjf77pg4kqae" path="res://asset/Tower/Icon/Vigilante-6.png" id="4_kg1ol"]
+[ext_resource type="Texture2D" uid="uid://brjlm4kehb4q" path="res://asset/Tower/Icon/Vigilante-6.png" id="4_kg1ol"]
 [ext_resource type="Texture2D" uid="uid://beemutt51b77n" path="res://asset/Tower/Icon/Glow/V62.png" id="5_j14hj"]
 [ext_resource type="Texture2D" uid="uid://qbey87nrmef5" path="res://asset/Tower/Lilitia/Idle/1.png" id="6_lnjyb"]
 [ext_resource type="Texture2D" uid="uid://bwicler6d2uns" path="res://asset/Tower/Lilitia/Idle/2.png" id="7_kg1ol"]

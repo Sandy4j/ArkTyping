@@ -7,7 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://hb6wcarprmym" path="res://scenes/Enemy/RangedBat.tscn" id="5_cu18t"]
 [ext_resource type="Resource" uid="uid://4vnkysnhwpoy" path="res://resources/Enemy Data/BasicEye.tres" id="6_2l1xl"]
 [ext_resource type="PackedScene" uid="uid://iv56om7n6qae" path="res://scenes/Enemy/BasicEye.tscn" id="7_m8m2q"]
-[ext_resource type="Resource" uid="uid://b7yx83eaov6d0" path="res://resources/SpawnEntry/Level4/SPKananW2&3.tres" id="8_4f34c"]
+[ext_resource type="Resource" uid="uid://b7yx83eaov6d0" path="res://resources/SpawnEntry/Level 4/SPKananW2&3.tres" id="8_4f34c"]
+
 
 [sub_resource type="Resource" id="Resource_6boah"]
 script = ExtResource("3_nogww")

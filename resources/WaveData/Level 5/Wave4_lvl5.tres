@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="WaveConfig" load_steps=15 format=3 uid="uid://busc7e634mfsq"]
+
+[ext_resource type="Script" path="res://resources/WaveConfig.gd" id="1_da6j7"]
+[ext_resource type="Script" path="res://resources/SpawnPointConfig.gd" id="2_5tjx1"]
+[ext_resource type="Resource" uid="uid://cmjwi2y0e64nx" path="res://resources/SpawnEntry/Level 5/SP_W4.tres" id="3_bwaqe"]
+[ext_resource type="Script" path="res://resources/EnemySpawnEntry.gd" id="3_tsuji"]
+[ext_resource type="Resource" uid="uid://duxh40etvv6qo" path="res://resources/Enemy Data/RangedSkull.tres" id="4_bwaqe"]
+[ext_resource type="PackedScene" uid="uid://c0kl54ny82siw" path="res://scenes/Enemy/RangedSkull.tscn" id="5_ua787"]
+[ext_resource type="Resource" uid="uid://bpwnq55cbyk7n" path="res://resources/Enemy Data/RangedBat.tres" id="6_ad5cd"]
+[ext_resource type="PackedScene" uid="uid://hb6wcarprmym" path="res://scenes/Enemy/RangedBat.tscn" id="7_hbuyu"]
+[ext_resource type="Resource" uid="uid://4vnkysnhwpoy" path="res://resources/Enemy Data/BasicEye.tres" id="8_yv5u2"]
+[ext_resource type="PackedScene" uid="uid://iv56om7n6qae" path="res://scenes/Enemy/BasicEye.tscn" id="9_ijaoj"]
+
+[sub_resource type="Resource" id="Resource_lc08a"]
+script = ExtResource("3_tsuji")
+enemy_scene = ExtResource("5_ua787")
+enemy_data = ExtResource("4_bwaqe")
+spawn_weight = 0.1
+
+[sub_resource type="Resource" id="Resource_hqjd3"]
+script = ExtResource("3_tsuji")
+enemy_scene = ExtResource("7_hbuyu")
+enemy_data = ExtResource("6_ad5cd")
+spawn_weight = 0.45
+
+[sub_resource type="Resource" id="Resource_iejo1"]
+script = ExtResource("3_tsuji")
+enemy_scene = ExtResource("9_ijaoj")
+enemy_data = ExtResource("8_yv5u2")
+spawn_weight = 0.45
+
+[sub_resource type="Resource" id="Resource_ua787"]
+script = ExtResource("2_5tjx1")
+spawn_path_node = NodePath("PathKanan")
+enemy_spawn_entries = Array[ExtResource("3_tsuji")]([SubResource("Resource_lc08a"), SubResource("Resource_hqjd3"), SubResource("Resource_iejo1")])
+enemies_to_spawn = 11
+
+[resource]
+script = ExtResource("1_da6j7")
+spawn_mode = 1
+spawn_point_configs = Array[ExtResource("2_5tjx1")]([ExtResource("3_bwaqe"), SubResource("Resource_ua787")])
