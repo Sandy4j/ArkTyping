@@ -155,7 +155,7 @@ func return_to_pool() -> void:
 	# Kill any active tweens to prevent callbacks after pooling
 	var tweens = get_tree().get_processed_tweens()
 	for tween in tweens:
-		if tween.is_valid() and tween.get_meta("owner", null) == self:
+		if tween.is_valid() and tween.has_meta("owner") and tween.get_meta("owner") == self:
 			tween.kill()
 	
 	remove_from_group("enemies")

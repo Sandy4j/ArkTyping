@@ -14,6 +14,7 @@ config/name="TypeKnights"
 config/tags=PackedStringArray("gamejam")
 run/main_scene="uid://cgksfc3odlqxl"
 config/features=PackedStringArray("4.5", "Forward Plus")
+config/icon="uid://bg25rjntel7uy"
 
 [autoload]
 

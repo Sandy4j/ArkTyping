@@ -1032,10 +1032,9 @@ func purify_wave_counter():
 		vfx_aura.queue_free()
 
 func _on_sprite_3d_animation_finished() -> void:
-	#print("Animation finished: ", sprite.animation)
-	
-	# 🎯 JIKA ANIMASI ATTACK SELESAI, KEMBALI KE IDLE
+# 🎯 JIKA ANIMASI ATTACK SELESAI, KEMBALI KE DEFAULT
 	if sprite.animation == "attack":
 		is_shooting = false
 		is_animation_playing = false
-		sprite.play("idle")  # 🎯 KEMBALI KE IDLE YANG MUTER-MUTER
+		if sprite.sprite_frames and sprite.sprite_frames.has_animation("default"):
+			sprite.play("default")
