@@ -42,10 +42,6 @@ func return_to_pool() -> void:
 	damage = 10.0
 	speed = 10.0
 	
-	# Remove from tree before returning to pool
-	if is_inside_tree() and get_parent():
-		get_parent().call_deferred("remove_child", self)
-	
 	if pool_name != "" and ObjectPool.pools.has(pool_name):
 		ObjectPool.return_pooled_object(pool_name, self)
 	else:

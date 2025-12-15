@@ -28,7 +28,7 @@ var is_alive: bool = true
 func _ready() -> void:
 	move_speed = enemy_data.move_speed
 	original_move_speed = enemy_data.move_speed
-	is_alive = true
+	is_alive = false
 	sprite.play("default")
 	if not enemy_data:
 		push_error("Enemy has no data assigned!")
@@ -36,7 +36,6 @@ func _ready() -> void:
 		return
 	
 	current_hp = enemy_data.max_hp
-	add_to_group("enemies")
 	
 	_setup_path()
 	previous_position = global_position
@@ -46,9 +45,20 @@ func _on_ready() -> void:
 	pass
 
 func _setup_visual() -> void:
+	is_alive = true
+	bob_timer = 0.0
 	if enemy_data:
 		current_hp = enemy_data.max_hp
+		move_speed = enemy_data.move_speed
+		original_move_speed = enemy_data.move_speed
 	add_to_group("enemies")
+	if sprite:
+		sprite.play("default")
+		sprite.modulate = Color(1, 1, 1)
+		sprite.flip_h = false 
+	if path_follow:
+		previous_position.x = path_follow.global_position.x
+		previous_position.z = path_follow.global_position.z
 
 func _setup_path() -> void:
 	if path_to_follow:
@@ -57,7 +67,7 @@ func _setup_path() -> void:
 		path_follow.loop = false
 
 func _process(delta: float) -> void:
-	if not path_follow or not enemy_data:
+	if not path_follow or not enemy_data or not is_alive:
 		return
 	
 	_move(delta)
@@ -68,18 +78,19 @@ func _move(delta: float) -> void:
 	var base_y = path_follow.global_position.y
 	bob_timer += delta * bob_speed
 	
-	# Apply position with bobbing
-	global_position.x = path_follow.global_position.x
+	var new_x = path_follow.global_position.x
+	var direction_x = new_x - previous_position.x
+
+	if direction_x > 0.01:  # Moving right
+		sprite.flip_h = true
+	elif direction_x < -0.01:  # Moving left
+		sprite.flip_h = false
+	
+	global_position.x = new_x
 	global_position.y = base_y + sin(bob_timer) * bob_height
 	global_position.z = path_follow.global_position.z
-	
-	# Flip sprite based on movement direction (default facing left)
-	var direction = global_position - previous_position
-	if direction.x > 0.01:  # Moving right
-		sprite.flip_h = true
-	elif direction.x < -0.01:  # Moving left
-		sprite.flip_h = false
-	previous_position = global_position
+	previous_position.x = new_x
+	previous_position.z = path_follow.global_position.z
 	
 	if path_follow.progress_ratio >= 1.0:
 		reach_end()
@@ -148,15 +159,6 @@ func reach_end() -> void:
 	return_to_pool()
 
 func return_to_pool() -> void:
-	# Kill any active tweens to prevent callbacks after pooling
-	var tweens = get_tree().get_processed_tweens() if get_tree() else []
-	for tween in tweens:
-		if tween.is_valid():
-			# Check if tween belongs to this node or its children
-			var tween_bound = tween.get_bound_node()
-			if tween_bound and (tween_bound == self or is_ancestor_of(tween_bound)):
-				tween.kill()
-	
 	remove_from_group("enemies")
 	bob_timer = 0.0
 	is_alive = false
@@ -167,11 +169,14 @@ func return_to_pool() -> void:
 	if sprite:
 		sprite.play("default")
 		sprite.modulate = Color(1, 1, 1)
+		sprite.stop()
 	
 	# Clean up any VFX children before returning to pool
 	for child in get_children():
-		if child.name.contains("hit") or child.name.contains("vfx") or child is GPUParticles3D:
-			child.call_deferred("queue_free")
+		if child.name.contains("hit") or child.name.contains("vfx") or child.name.contains("rage") or child is GPUParticles3D:
+			if child is GPUParticles3D:
+				child.emitting = false
+			child.queue_free()
 	
 	# Disconnect all signals before returning to pool
 	for connection in died.get_connections():
@@ -185,7 +190,12 @@ func return_to_pool() -> void:
 	
 	current_hp = enemy_data.max_hp if enemy_data else 0.0
 	
-	if path_follow:
+	# Properly cleanup PathFollow3D
+	if path_follow and is_instance_valid(path_follow):
+		if path_follow.is_inside_tree():
+			var parent = path_follow.get_parent()
+			if parent and is_instance_valid(parent):
+				parent.call_deferred("remove_child", path_follow)
 		path_follow.call_deferred("queue_free")
 		path_follow = null
 	

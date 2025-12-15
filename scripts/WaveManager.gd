@@ -153,11 +153,14 @@ func _exit_tree() -> void:
 	if spawn_manager:
 		spawn_manager.stop_spawning()
 	
-	# Clear wave configs to release references
+	# Clear wave configs
 	wave_configs.clear()
 	current_wave_config = null
+	
+	if get_tree():
+		await get_tree().process_frame
 	call_deferred("_deferred_pool_cleanup")
 
 func _deferred_pool_cleanup() -> void:
-	# Clear all pools when exiting the level
-	ObjectPool.clear_all_pools()
+	if ObjectPool:
+		ObjectPool.clear_all_pools()

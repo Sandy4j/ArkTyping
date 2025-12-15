@@ -19,11 +19,20 @@ func _on_ready() -> void:
 		shape.radius = enemy_data.attack_range
 		collision.shape = shape
 		attack_range_area.add_child(collision)
+		
+		# Connect signals
+		attack_range_area.body_entered.connect(_on_body_entered_range)
+		attack_range_area.body_exited.connect(_on_body_exited_range)
 	else:
 		var collision = attack_range_area.get_node_or_null("CollisionShape3D")
 		if collision and collision.shape is SphereShape3D:
 			var sphere_shape = collision.shape as SphereShape3D
 			sphere_shape.radius = enemy_data.attack_range
+		
+		if not attack_range_area.body_entered.is_connected(_on_body_entered_range):
+			attack_range_area.body_entered.connect(_on_body_entered_range)
+		if not attack_range_area.body_exited.is_connected(_on_body_exited_range):
+			attack_range_area.body_exited.connect(_on_body_exited_range)
 
 func _move(delta: float) -> void:
 	# Always move forward along path
@@ -48,7 +57,7 @@ func _move(delta: float) -> void:
 		reach_end()
 
 func _update_logic(delta: float) -> void:
-	if not enemy_data or not enemy_data.can_attack:
+	if not enemy_data or not enemy_data.can_attack or not is_alive:
 		return
 
 	attack_timer += delta
@@ -109,3 +118,26 @@ func attack(target: Node3D) -> void:
 
 		if projectile.has_method("initialize"):
 			projectile.initialize(target, enemy_data.attack_damage, enemy_data.projectile_speed)
+
+func return_to_pool() -> void:
+	current_target = null
+	is_attacking = false
+	attack_timer = 0.0
+	
+	if attack_range_area and is_instance_valid(attack_range_area):
+		if attack_range_area.body_entered.is_connected(_on_body_entered_range):
+			attack_range_area.body_entered.disconnect(_on_body_entered_range)
+		if attack_range_area.body_exited.is_connected(_on_body_exited_range):
+			attack_range_area.body_exited.disconnect(_on_body_exited_range)
+	
+	super.return_to_pool()
+
+func _on_body_entered_range(body: Node3D):
+	if body.is_in_group("tower") and not is_attacking:
+		current_target = body
+		is_attacking = true
+
+func _on_body_exited_range(body: Node3D):
+	if body == current_target:
+		current_target = null
+		is_attacking = false

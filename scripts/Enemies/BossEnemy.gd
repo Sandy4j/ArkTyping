@@ -1,4 +1,4 @@
-﻿extends BaseEnemy
+extends BaseEnemy
 class_name BossEnemy
 
 ## Base class untuk semua Boss dengan sistem buff/debuff dan abilities
@@ -54,3 +54,25 @@ func cleanse_ability():
 func take_damage(amount: float):
 	super.take_damage(amount)
 	# Boss bisa punya special reaction saat kena damage
+
+func return_to_pool() -> void:
+	# Stop and cleanup ability timer
+	if ability_timer and is_instance_valid(ability_timer):
+		ability_timer.stop()
+		if ability_timer.timeout.is_connected(_on_ability_timer_timeout):
+			ability_timer.timeout.disconnect(_on_ability_timer_timeout)
+		ability_timer.queue_free()
+		ability_timer = null
+	
+	# Reset ability state
+	ability_active = false
+	current_typing_progress = 0
+	typing_words.clear()
+	
+	super.return_to_pool()
+
+func die() -> void:
+	if ability_timer and is_instance_valid(ability_timer):
+		ability_timer.stop()
+	
+	super.die()

@@ -41,7 +41,6 @@ func _enemy_near(body:Node3D)-> void:
 		near_enemy.append(body)
 		body.take_damage(damage)
 		sfx.play()
-		print("body masuk")
 
 func _enemy_take_damage()-> void:
 	var valid_enemies = []
@@ -52,7 +51,6 @@ func _enemy_take_damage()-> void:
 	
 	for body in near_enemy:
 		body.take_damage(damage)
-		print("body damage")
 		sfx.play()
 
 func _enemy_out(body:Node3D)-> void:

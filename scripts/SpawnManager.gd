@@ -201,9 +201,10 @@ func spawn_enemy(config: SpawnPointConfig, spawn_point_index: int) -> void:
 	
 	get_tree().current_scene.add_child(enemy)
 	enemy._setup_path()
-	enemy._setup_visual()
+	if enemy.path_follow:
+		enemy.global_position = enemy.path_follow.global_position
 	
-	# Play spawn sound
+	enemy._setup_visual()
 	AudioManager.play_sfx("enemy_spawn")
 	
 	active_enemies += 1
@@ -243,18 +244,23 @@ func spawn_boss(config: SpawnPointConfig, spawn_point_index: int) -> void:
 	
 	if config.boss_data:
 		boss.enemy_data = config.boss_data
-		boss._setup_visual()
 	
 	boss.path_to_follow = spawn_path
+	if boss.died.is_connected(_on_enemy_died):
+		boss.died.disconnect(_on_enemy_died)
+	if boss.reached_end.is_connected(_on_enemy_reached_end):
+		boss.reached_end.disconnect(_on_enemy_reached_end)
 	
-	# Connect signals only if not already connected
-	if not boss.died.is_connected(_on_enemy_died):
-		boss.died.connect(_on_enemy_died, CONNECT_ONE_SHOT)
-	if not boss.reached_end.is_connected(_on_enemy_reached_end):
-		boss.reached_end.connect(_on_enemy_reached_end, CONNECT_ONE_SHOT)
+	boss.died.connect(_on_enemy_died, CONNECT_ONE_SHOT)
+	boss.reached_end.connect(_on_enemy_reached_end, CONNECT_ONE_SHOT)
 	
 	get_tree().current_scene.add_child(boss)
 	boss._setup_path()
+	
+	if boss.path_follow:
+		boss.global_position = boss.path_follow.global_position
+	
+	boss._setup_visual()
 	
 	active_enemies += 1
 	
@@ -321,3 +327,16 @@ func get_active_enemy_count() -> int:
 
 func is_currently_spawning() -> bool:
 	return is_spawning
+
+func _exit_tree() -> void:
+	stop_spawning()
+	
+	if base and base.has_signal("died"):
+		if base.died.is_connected(_on_base_died):
+			base.died.disconnect(_on_base_died)
+	
+	base = null
+
+func _on_base_died() -> void:
+	stop_spawning()
+

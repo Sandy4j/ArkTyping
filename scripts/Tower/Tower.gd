@@ -171,7 +171,7 @@ func _process(delta: float) -> void:
 	update_target()
 	update_sprite_direction()
 	# Shoot at target
-	if current_target and is_instance_valid(current_target) and current_target.is_in_group("enemies") and fire_timer >= 1.0 / fire_rate:
+	if current_target and is_instance_valid(current_target) and current_target.is_inside_tree() and current_target.is_in_group("enemies") and current_target.is_alive and fire_timer >= 1.0 / fire_rate:
 		# Don't shoot if time stop is active (check global flag)
 		if get_tree().root.has_meta("time_stop_active") and get_tree().root.get_meta("time_stop_active"):
 			return
@@ -197,7 +197,7 @@ func update_sprite_direction():
 		return
 	
 	# 🎯 JIKA ADA TARGET, FLIP BERDASARKAN POSISI TARGET
-	if current_target and is_instance_valid(current_target):
+	if current_target and is_instance_valid(current_target) and current_target.is_inside_tree():
 		var target_position = current_target.global_position
 		var tower_position = global_position
 		
@@ -514,7 +514,7 @@ func find_nearest_enemy() -> CharacterBody3D:
 	var nearest_distance: float = INF
 	
 	for enemy in enemies:
-		if is_instance_valid(enemy) and enemy.is_in_group("enemies"):
+		if is_instance_valid(enemy) and enemy.is_inside_tree() and enemy.is_in_group("enemies") and enemy.is_alive:
 			var distance = global_position.distance_to(enemy.global_position)
 			if distance <= detection_range and distance < nearest_distance:
 				nearest = enemy
@@ -557,26 +557,26 @@ func update_target() -> void:
 		current_target = enemies_in_range[0]
 		#print(tower_data.chara, " Target updated to first enemy in range: ", current_target.name)
 	
-	elif current_target and (not is_instance_valid(current_target) or not current_target in enemies_in_range):
+	elif current_target and (not is_instance_valid(current_target) or not current_target.is_inside_tree() or not current_target.is_in_group("enemies") or not current_target in enemies_in_range):
 		current_target = null
 		if enemies_in_range.size() > 0:
 			current_target = enemies_in_range[0]
-			print(tower_data.chara, " Target reacquired: ", current_target.name)
+			if current_target:
+				print(tower_data.chara, " Target reacquired: ", current_target.name)
 
 func cleanup_enemies_array() -> void:
-	# Hapus musuh yang sudah tidak valid atau tidak dalam group "enemies" (pooled)
+	# Hapus musuh yang sudah tidak valid, tidak dalam group "enemies", atau not alive (pooled/dead)
 	var invalid_enemies: Array[CharacterBody3D] = []
 	
 	for enemy in enemies_in_range:
-		if not is_instance_valid(enemy) or not enemy.is_in_group("enemies"):
+		if not is_instance_valid(enemy) or not enemy.is_inside_tree() or not enemy.is_in_group("enemies") or not enemy.is_alive:
 			invalid_enemies.append(enemy)
 	
 	for invalid_enemy in invalid_enemies:
 		enemies_in_range.erase(invalid_enemy)
 	
 	if invalid_enemies.size() > 0:
-		print("Cleaned up ", invalid_enemies.size(), " invalid enemies")
-		if current_target and (not is_instance_valid(current_target) or not current_target.is_in_group("enemies")):
+		if current_target and (not is_instance_valid(current_target) or not current_target.is_inside_tree() or not current_target.is_in_group("enemies") or not current_target.is_alive):
 			current_target = null
 			update_target()
 

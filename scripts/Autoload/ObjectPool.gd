@@ -45,9 +45,11 @@ class Pool:
 		
 		obj.process_mode = Node.PROCESS_MODE_DISABLED
 		
-		# Use call_deferred to avoid "parent is busy" errors
-		if obj.get_parent():
-			obj.get_parent().call_deferred("remove_child", obj)
+		# Safely remove from parent
+		if obj.is_inside_tree():
+			var parent = obj.get_parent()
+			if parent and is_instance_valid(parent):
+				parent.call_deferred("remove_child", obj)
 		
 		if pool.size() < max_size:
 			pool.append(obj)
@@ -61,14 +63,16 @@ class Pool:
 		for obj in active_copy:
 			if is_instance_valid(obj):
 				obj.process_mode = Node.PROCESS_MODE_DISABLED
-				if obj.get_parent():
-					obj.get_parent().call_deferred("remove_child", obj)
-				
-				# Add to pool
-				if pool.size() < max_size:
-					pool.append(obj)
-				else:
-					obj.call_deferred("queue_free")
+				if obj.is_inside_tree():
+					var parent = obj.get_parent()
+					if parent and is_instance_valid(parent):
+						parent.call_deferred("remove_child", obj)
+				obj.call_deferred("queue_free")
+		
+		for obj in pool:
+			if is_instance_valid(obj):
+				obj.call_deferred("queue_free")
+		pool.clear()
 	
 	func cleanup() -> void:
 		for obj in pool:
@@ -141,14 +145,16 @@ func clear_all_pools() -> void:
 		pool.clear()
 	
 	# Reset flag after a frame to allow new operations
-	await get_tree().process_frame if get_tree() else null
+	if get_tree():
+		await get_tree().process_frame
 	_is_clearing = false
 
 ## Cleanup semua pool
 func cleanup_all_pools() -> void:
 	if _is_clearing:
 		push_warning("Pool operation already in progress, waiting...")
-		await get_tree().process_frame if get_tree() else null
+		if get_tree():
+			await get_tree().process_frame
 	
 	_is_clearing = true
 	for pool in pools.values():

@@ -61,7 +61,7 @@ func _on_body_exited_range(body: Node3D):
 		is_attacking = false
 
 func _update_logic(delta: float):
-	if not enemy_data or not enemy_data.can_attack:
+	if not enemy_data or not enemy_data.can_attack or not is_alive:
 		return
 	
 	if is_attacking and current_target and is_instance_valid(current_target):
