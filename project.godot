@@ -24,6 +24,7 @@ ObjectPool="*res://scripts/Autoload/ObjectPool.gd"
 AudioManager="*res://scripts/Autoload/AudioManager.gd"
 ResourceLoadManager="*res://scripts/Autoload/ResourceLoadManager.gd"
 SaveManager="*res://scripts/Autoload/SaveManager.gd"
+TowerStateManager="*res://scripts/Autoload/TowerStateManager.gd"
 
 [display]
 

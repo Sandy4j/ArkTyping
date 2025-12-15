@@ -173,7 +173,7 @@ func start_countdown(data:TowerData, target: TextureRect, countdown_label: Label
 
 func countdown_finished(data:TowerData, target: TextureRect, countdown_label: Label):
 	target.self_modulate = Color(1.0, 1.0, 1.0)
-	GameManager.set_tower_state(data,true)
+	TowerStateManager.set_tower_available(data.chara, true)
 	countdown_label.queue_free()
 	
 	print("Countdown finished for tower ", data.chara)

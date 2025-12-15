@@ -45,8 +45,20 @@ func place_tower(data:TowerData) -> bool:
 		return false
 
 func remove_tower():
+	if not tower_node or not is_instance_valid(tower_node):
+		has_tower = false
+		tower_data = null
+		return
+	
 	tower_gone.emit(tower_data)
-	tower_node.queue_free()
+	
+	# Cleanup tower resources sebelum queue_free untuk menghindari frame drop
+	if tower_node.has_method("cleanup_before_retreat"):
+		tower_node.cleanup_before_retreat()
+	
+	# Defer queue_free untuk menghindari spike
+	tower_node.call_deferred("queue_free")
+	
 	tower_data = null
 	has_tower = false
 	print("tower di hapus")

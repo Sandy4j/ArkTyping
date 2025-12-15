@@ -128,10 +128,13 @@ func update_spot_labels() -> void:
 func place_tower_at_selected(data:TowerData) -> void:
 	if selected_spot_index >= 0 and selected_spot_index < tower_spots.size():
 		var spot = tower_spots[selected_spot_index]
-		if !data.available:
+		
+		# Check availability using TowerStateManager
+		if not TowerStateManager.is_tower_available(data.chara):
 			var msg:String = str(data.chara, " is currently on cooldown!")
 			ui.show_message(msg)
 			return
+			
 		for name in placed_tower:
 			if name == data.chara:
 				var msg:String = str(data.chara, " is already deployed!")
@@ -231,10 +234,14 @@ func delete_tower_at_selected() -> void:
 			ui.show_message("This spot has no tower")
 			return
 		var msg =str("Removed ", spot.tower_data.chara, " tower")
-		GameManager.set_tower_state(spot.tower_data,false)
+		
+		# Set tower as unavailable (on cooldown) using TowerStateManager
+		TowerStateManager.set_tower_available(spot.tower_data.chara, false)
+		
 		spot.remove_tower()
 		AudioManager.play_sfx("tower_retreat")
-		update_spot_labels()
+		# Defer update untuk menghindari frame drop
+		call_deferred("update_spot_labels")
 		ui.show_message(msg)
 		TypingSystem.clear_text()
 

@@ -10,12 +10,22 @@ func _ready() -> void:
 	var scene_path = get_tree().current_scene.scene_file_path
 	if scene_path != "":
 		LevelManager.set_current_level(scene_path)
+	
+	# Reset tower availability states
+	_reset_tower_availability()
+	
 	await _preload_level_resources()
 	
 	AudioManager.play_bgm("gameplay")
 	_setup_danger_vignette()
 	
 	is_level_ready = true
+
+
+## Reset semua tower availability ke true saat level dimulai
+func _reset_tower_availability() -> void:
+	TowerStateManager.reset_all_towers()
+	print("[LevelInit] Tower availability reset")
 
 
 ## Preload semua resources yang dibutuhkan level sebelum memulai gameplay

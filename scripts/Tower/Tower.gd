@@ -634,6 +634,72 @@ func destroy() -> void:
 	tower_destroyed.emit()
 	print("Tower destroyed!")
 
+## Cleanup resources sebelum tower di-retreat untuk menghindari frame drop
+func cleanup_before_retreat() -> void:
+	print("[Tower] Cleanup before retreat: ", tower_data.chara if tower_data else "Unknown")
+	
+	# Disable processing immediately to stop all updates
+	set_process(false)
+	set_physics_process(false)
+	
+	# Stop semua animasi
+	if is_instance_valid(sprite):
+		sprite.stop()
+	
+	# Stop audio
+	if is_instance_valid(sfx) and sfx.playing:
+		sfx.stop()
+	
+	# Clear arrays
+	enemies_in_range.clear()
+	tower_in_range.clear()
+	current_target = null
+	healing_target = null
+	
+	# Disconnect signals safely BEFORE cleaning up VFX to prevent callbacks
+	if shot_fired.get_connections().size() > 0:
+		for connection in shot_fired.get_connections():
+			shot_fired.disconnect(connection.callable)
+	
+	# Clear skill states
+	skill_active = false
+	overload_burst_active = false
+	scarlet_harvester_active = false
+	bullet_requiem_active = false
+	purify_wave_active = false
+	got_binded = false
+	is_shooting = false
+	is_animation_playing = false
+	
+	# Cleanup VFX nodes - use call_deferred to avoid immediate free during frame
+	if is_instance_valid(vfx_node) and vfx_node is Node:
+		vfx_node.call_deferred("queue_free")
+		vfx_node = null
+	
+	if is_instance_valid(vfx_shoot):
+		vfx_shoot = null
+	
+	if is_instance_valid(vfx_aura) and vfx_aura is Node:
+		vfx_aura.call_deferred("queue_free")
+		vfx_aura = null
+	
+	# Cleanup debuff aura
+	if is_instance_valid(debuff_aura):
+		if debuff_aura is Node:
+			debuff_aura.call_deferred("queue_free")
+		debuff_aura = null
+	
+	# Cleanup orbit nodes for Lilitia
+	if is_instance_valid(orbit) and orbit is Node:
+		orbit.call_deferred("queue_free")
+		orbit = null
+	
+	if is_instance_valid(orbit2) and orbit2 is Node:
+		orbit2.call_deferred("queue_free")
+		orbit2 = null
+	
+	print("[Tower] Cleanup complete")
+
 func healed(heal: float, aura:Node3D) -> void:
 	print(tower_data.chara, " kena heal ", str(heal))
 	current_hp += heal
