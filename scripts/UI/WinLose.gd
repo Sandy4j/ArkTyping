@@ -131,18 +131,21 @@ func _animate_star_appear(star: TextureRect, delay: float) -> void:
 
 func _on_restart_pressed() -> void:
 	AudioManager.play_sfx("button_click")
+	GameManager.cleanup_timestop_effects()
 	get_tree().paused = false
 	GameManager.reset_game_state()
 	LevelManager.load_level_async(LevelManager.current_level_path)
 
 func _on_next_level_pressed() -> void:
 	AudioManager.play_sfx("button_click")
+	GameManager.cleanup_timestop_effects()
 	get_tree().paused = false
 	GameManager.reset_game_state()
 	LevelManager.load_next_level()
 
 func _on_menu_pressed() -> void:
 	AudioManager.play_sfx("button_click")
+	GameManager.cleanup_timestop_effects()
 	get_tree().paused = false
 	GameManager.reset_game_state()
 	LevelManager.load_level_async("res://scenes/UI/main_menu.tscn")

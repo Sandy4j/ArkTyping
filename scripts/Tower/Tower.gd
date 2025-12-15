@@ -157,7 +157,7 @@ func _process(delta: float) -> void:
 	if is_healer:
 		update_healing_target()
 		update_sprite_direction()
-		if healing_target and is_instance_valid(healing_target) and fire_timer >= 1.0 / fire_rate:
+		if healing_target and is_instance_valid(healing_target) and healing_target.current_hp < healing_target.max_hp and fire_timer >= 1.0 / fire_rate:
 			if purify_wave_active:
 				purify_wave()
 				fire_timer = 0.0
@@ -457,6 +457,10 @@ func scarlet_harvester() -> void:
 	shot_fired.emit()
 
 func healing()-> void:
+	# Check if target is already at full HP first
+	if healing_target.current_hp >= healing_target.max_hp:
+		return
+	
 	is_shooting = true
 	is_animation_playing = true
 	
@@ -465,12 +469,10 @@ func healing()-> void:
 	sfx.play()
 	# 🎯 PLAY ANIMASI ATTACK
 	sprite.play("attack")
-	if healing_target.current_hp == healing_target.max_hp:
-		return
-	else :
-		var aura = projectile.instantiate()
-		healing_target.healed(damage, aura)
-		print(tower_data.chara, " melakukan heal pada ", healing_target.tower_data.chara)
+	
+	var aura = projectile.instantiate()
+	healing_target.healed(damage, aura)
+	print(tower_data.chara, " melakukan heal pada ", healing_target.tower_data.chara)
 
 
 func purify_wave()-> void:
@@ -483,14 +485,19 @@ func purify_wave()-> void:
 	# 🎯 PLAY ANIMASI ATTACK
 	sprite.play("attack")
 	sfx.play()
+	
+	var healed_any = false
 	for tower in tower_in_range:
+		# Skip towers that are already at full HP
+		if tower.current_hp >= tower.max_hp:
+			continue
+		
 		healing_target = tower
-		if healing_target.current_hp == healing_target.max_hp:
-			return
-		else :
-			var aura = ResourceLoadManager.get_vfx_resource("heal_priest")
-			healing_target.healed(damage, aura)
-			print(tower_data.chara, " melakukan heal pada ", healing_target.tower_data.chara)
+		var aura = ResourceLoadManager.get_vfx_resource("heal_priest")
+		healing_target.healed(damage, aura)
+		print(tower_data.chara, " melakukan heal pada ", healing_target.tower_data.chara)
+		healed_any = true
+	
 	shot_fired.emit()
 
 func show_skill():

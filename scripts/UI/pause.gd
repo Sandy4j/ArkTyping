@@ -25,15 +25,17 @@ func hide_pause_menu() -> void:
 func _on_resume_pressed() -> void:
 	AudioManager.play_sfx("button_click")
 	hide_pause_menu()
-	
+
 func _on_retry_pressed() -> void:
 	AudioManager.play_sfx("button_click")
+	GameManager.cleanup_timestop_effects()
 	get_tree().paused = false
 	GameManager.reset_game_state()
 	LevelManager.reload_current_level()
 
 func _on_main_menu_pressed() -> void:
 	AudioManager.play_sfx("button_click")
+	GameManager.cleanup_timestop_effects()
 	get_tree().paused = false
 	GameManager.reset_game_state()
 	LevelManager.load_level_async("res://scenes/UI/main_menu.tscn")

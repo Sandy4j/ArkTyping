@@ -47,8 +47,15 @@ func load_progress() -> void:
 			var loaded_data = json.get_data()
 			if loaded_data is Dictionary:
 				player_data = loaded_data
+				# Pastikan semua keys ada
+				if not player_data.has("unlocked_levels"):
+					player_data["unlocked_levels"] = [1]
+				if not player_data.has("level_stars"):
+					player_data["level_stars"] = {}
+				if not player_data.has("level_completed"):
+					player_data["level_completed"] = {}
 				# Pastikan level 1 selalu unlocked
-				if not 1 in player_data.get("unlocked_levels", []):
+				if not 1 in player_data["unlocked_levels"]:
 					player_data["unlocked_levels"].append(1)
 				print("[SaveManager] Progress loaded successfully")
 				progress_loaded.emit()
@@ -73,17 +80,27 @@ func unlock_level(level_number: int) -> void:
 
 ## Complete a level with stars
 func complete_level(level_number: int, stars: int) -> void:
+	# Pastikan dictionary keys exist
+	if not player_data.has("level_stars"):
+		player_data["level_stars"] = {}
+	if not player_data.has("level_completed"):
+		player_data["level_completed"] = {}
+	
 	# Simpan stars (hanya jika lebih tinggi dari sebelumnya)
-	var current_stars = player_data.get("level_stars", {}).get(str(level_number), 0)
+	var current_stars = player_data["level_stars"].get(str(level_number), 0)
 	if stars > current_stars:
 		player_data["level_stars"][str(level_number)] = stars
 	
 	# Mark level sebagai completed
 	player_data["level_completed"][str(level_number)] = true
 	
-	# Unlock level berikutnya
-	unlock_level(level_number + 1)
+	# Unlock level berikutnya (tanpa auto-save di dalamnya)
+	if not is_level_unlocked(level_number + 1):
+		player_data["unlocked_levels"].append(level_number + 1)
+		player_data["unlocked_levels"].sort()
+		print("[SaveManager] Level ", level_number + 1, " unlocked")
 	
+	# Save sekali saja di akhir
 	save_progress()
 	print("[SaveManager] Level ", level_number, " completed with ", stars, " stars")
 

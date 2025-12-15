@@ -87,6 +87,58 @@ func reset_game_state() -> void:
 	currency = starting_currency
 	regen_timer = 0.0
 	currency_changed.emit(currency)
+	
+	cleanup_timestop_effects()
+
+func cleanup_timestop_effects() -> void:
+	if not get_tree() or not get_tree().root:
+		return
+	
+	# Force end timestop on all BossVoid instances
+	var boss_voids = get_tree().get_nodes_in_group("enemies")
+	for enemy in boss_voids:
+		if is_instance_valid(enemy) and enemy.has_method("end_time_stop"):
+			if enemy.get("is_time_stopped"):
+				enemy.end_time_stop()
+	
+	# Clean up overlay
+	var overlays = get_tree().root.get_children()
+	for child in overlays:
+		if is_instance_valid(child) and child is CanvasLayer and child.name == "TimeStopOverlay":
+			child.queue_free()
+	
+	# Reset timestop meta flag
+	get_tree().root.set_meta("time_stop_active", false)
+	
+	# unfreeze all entities
+	var all_enemies = get_tree().get_nodes_in_group("enemies")
+	for enemy in all_enemies:
+		if is_instance_valid(enemy):
+			enemy.process_mode = Node.PROCESS_MODE_INHERIT
+			enemy.set_process(true)
+			enemy.set_physics_process(true)
+			enemy.set_process_input(true)
+	
+	var all_towers = get_tree().get_nodes_in_group("towers")
+	for tower in all_towers:
+		if is_instance_valid(tower):
+			if tower.has_method("set"):
+				tower.set("got_binded", false)
+			tower.process_mode = Node.PROCESS_MODE_INHERIT
+			tower.set_process(true)
+			tower.set_physics_process(true)
+			tower.set_process_input(true)
+	
+	var all_projectiles = get_tree().get_nodes_in_group("projectiles")
+	for projectile in all_projectiles:
+		if is_instance_valid(projectile):
+			projectile.process_mode = Node.PROCESS_MODE_INHERIT
+			projectile.set_process(true)
+			projectile.set_physics_process(true)
+	
+	# Resume BGM if paused
+	if AudioManager and AudioManager.bgm_player:
+		AudioManager.bgm_player.stream_paused = false
 
 func set_tower_state(data: TowerData, v: bool):
 	data.available = v

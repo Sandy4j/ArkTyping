@@ -20,6 +20,13 @@ func _ready():
 	ability_cooldown = randf_range(time_stop_cooldown_min, time_stop_cooldown_max)
 	setup_ability_timer()
 	ability_timer.start(ability_cooldown)
+	
+	# Safety cleanup when exiting tree
+	tree_exiting.connect(_on_tree_exiting)
+
+func _on_tree_exiting():
+	if is_time_stopped:
+		end_time_stop()
 
 func _process(delta: float) -> void:
 	if not is_time_stopped:
@@ -299,6 +306,17 @@ func enable_pause():
 func _on_death():
 	if is_time_stopped:
 		end_time_stop()
+	
+	# Extra cleanup untuk safety
+	if time_stop_overlay and is_instance_valid(time_stop_overlay):
+		time_stop_overlay.queue_free()
+		time_stop_overlay = null
+	
+	if timestop_vfx and is_instance_valid(timestop_vfx):
+		timestop_vfx.queue_free()
+		timestop_vfx = null
+	
+	super._on_death()
 
 func return_to_pool():
 	if is_time_stopped:
