@@ -94,26 +94,28 @@ func _ready() -> void:
 				activate_holy_divine_basic()
 			"kaelio":
 				is_kaelio = true
-				var vfx_scene = ResourceLoadManager.get_cached_resource("res://asset/Vfx/Effect/Shoot.tscn")
-				if not vfx_scene:
-					vfx_scene = ResourceLoadManager.load_resource_sync("res://asset/Vfx/Effect/Shoot.tscn")
-				if vfx_scene:
-					var vfx_node = vfx_scene.instantiate()
-					self.add_child(vfx_node)
-					var light:OmniLight3D = vfx_node.get_child(3)
+				var kaelio_vfx_scene = ResourceLoadManager.get_cached_resource("res://asset/Vfx/Effect/Shoot.tscn")
+				if not kaelio_vfx_scene:
+					kaelio_vfx_scene = ResourceLoadManager.load_resource_sync("res://asset/Vfx/Effect/Shoot.tscn")
+				if kaelio_vfx_scene:
+					var kaelio_vfx = kaelio_vfx_scene.instantiate()
+					self.add_child(kaelio_vfx)
+					vfx_node = kaelio_vfx
+					var light:OmniLight3D = kaelio_vfx.get_child(3)
 					light.light_energy = 0
-					vfx_shoot = vfx_node.get_child(4)
+					vfx_shoot = kaelio_vfx.get_child(4)
 			"rosemary":
 				is_rosemary = true
-				var vfx_scene = ResourceLoadManager.get_cached_resource("res://asset/Vfx/Effect/gun_Rosemary.tscn")
-				if not vfx_scene:
-					vfx_scene = ResourceLoadManager.load_resource_sync("res://asset/Vfx/Effect/gun_Rosemary.tscn")
-				if vfx_scene:
-					var vfx_node = vfx_scene.instantiate()
-					self.add_child(vfx_node)
-					var light:OmniLight3D = vfx_node.get_child(3)
+				var rose_vfx_scene = ResourceLoadManager.get_cached_resource("res://asset/Vfx/Effect/gun_Rosemary.tscn")
+				if not rose_vfx_scene:
+					rose_vfx_scene = ResourceLoadManager.load_resource_sync("res://asset/Vfx/Effect/gun_Rosemary.tscn")
+				if rose_vfx_scene:
+					var rose_vfx = rose_vfx_scene.instantiate()
+					self.add_child(rose_vfx)
+					vfx_node = rose_vfx
+					var light:OmniLight3D = rose_vfx.get_child(3)
 					light.light_energy = 0
-					vfx_shoot = vfx_node.get_child(4)
+					vfx_shoot = rose_vfx.get_child(4)
 			"cellene":
 				is_healer = true
 			"priestess":
@@ -297,19 +299,19 @@ func shoot(target: Node3D) -> void:
 	if pool_key == "":
 		pool_key = "tower_projectile_" + tower_data.chara
 	
-	var projectile = ObjectPool.get_pooled_object(pool_key)
+	var proj = ObjectPool.get_pooled_object(pool_key)
 	
-	if not projectile:
-		projectile = projectile.instantiate()
+	if not proj:
+		proj = projectile.instantiate()
 	else:
-		projectile.pool_name = pool_key
-	get_tree().current_scene.add_child(projectile)
+		proj.pool_name = pool_key
+	get_tree().current_scene.add_child(proj)
 
 	if shoot_point:
-		projectile.global_position = shoot_point.global_position
+		proj.global_position = shoot_point.global_position
 	else:
-		projectile.global_position = global_position + Vector3.UP
-	projectile.initialize(target, damage, projectile_speed)
+		proj.global_position = global_position + Vector3.UP
+	proj.initialize(target, damage, projectile_speed)
 	shot_fired.emit()
 	#print("shot")
 
@@ -330,20 +332,20 @@ func double_shoot(target: CharacterBody3D) -> void:
 	
 	for i in 2:
 		if is_instance_valid(target):
-			var projectile = ObjectPool.get_pooled_object(pool_key)
-			if not projectile:
-				projectile = projectile.instantiate()
+			var proj = ObjectPool.get_pooled_object(pool_key)
+			if not proj:
+				proj = projectile.instantiate()
 			else:
-				projectile.pool_name = pool_key
+				proj.pool_name = pool_key
 			
-			get_tree().current_scene.add_child(projectile)
+			get_tree().current_scene.add_child(proj)
 			
 			if shoot_point:
-				projectile.global_position = shoot_point.global_position
+				proj.global_position = shoot_point.global_position
 			else:
-				projectile.global_position = global_position + Vector3.UP
+				proj.global_position = global_position + Vector3.UP
 			
-			projectile.initialize(target, damage, projectile_speed)
+			proj.initialize(target, damage, projectile_speed)
 			if i == 0:
 				await get_tree().create_timer(0.25).timeout
 			
@@ -382,21 +384,21 @@ func overload_burst() -> void:
 	for i in range(targets.size()):
 		var target = targets[i]
 		if is_instance_valid(target):
-			var projectile = ObjectPool.get_pooled_object(pool_key)
+			var proj = ObjectPool.get_pooled_object(pool_key)
 			
-			if not projectile:
-				projectile = projectile.instantiate()
+			if not proj:
+				proj = projectile.instantiate()
 			else:
-				projectile.pool_name = pool_key
+				proj.pool_name = pool_key
 			
-			get_tree().current_scene.add_child(projectile)
+			get_tree().current_scene.add_child(proj)
 			
 			if shoot_point:
-				projectile.global_position = shoot_point.global_position
+				proj.global_position = shoot_point.global_position
 			else:
-				projectile.global_position = global_position + Vector3.UP
+				proj.global_position = global_position + Vector3.UP
 			
-			projectile.initialize(target, damage, projectile_speed)
+			proj.initialize(target, damage, projectile_speed)
 	
 	shot_fired.emit()
 	print("Triple Shot! Hit ", targets.size(), " enemies")
@@ -579,24 +581,26 @@ func cleanup_enemies_array() -> void:
 			update_target()
 
 func update_healing_target():
-	cleanup_tower_array()
+	# Clear array completely before rebuilding
+	tower_in_range.clear()
+	
 	var near_tower = range_area.get_overlapping_areas()
 	
 	for area in near_tower:
 		if area.has_method("place_tower"):
-			if area.has_tower:
-				tower_in_range.append(area.tower_node)
-		#if area.get_parent().is_in_group("tower"):
-			#tower_in_range.append(area.get_parent())
-			#print("terdeteksi ", area.get_parent().tower_data.chara)
-		#print(area.get_parent().name, " masuk ke range healer")
+			if area.has_tower and is_instance_valid(area.tower_node):
+				if not area.tower_node in tower_in_range:
+					tower_in_range.append(area.tower_node)
 	
 	if tower_in_range.size() <= 0:
+		healing_target = null
 		return
+	
 	var lowest_hp = INF
+	healing_target = null
 	
 	for tower in tower_in_range:
-		if not is_instance_valid(tower) or tower.current_hp == tower.max_hp:
+		if not is_instance_valid(tower) or tower.current_hp >= tower.max_hp:
 			continue
 			
 		if tower.current_hp < lowest_hp:

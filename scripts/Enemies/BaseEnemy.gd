@@ -87,41 +87,77 @@ func _move(delta: float) -> void:
 func _update_logic(delta: float) -> void:
 	pass
 
+## Cached hit VFX scene - loaded once
+static var _hit_vfx_scene: PackedScene = null
+
 func take_damage(damage: float) -> void:
+	if not is_alive:
+		return
+	
 	current_hp -= damage
 	hp_changed.emit(current_hp, enemy_data.max_hp)
-	sprite.modulate = Color(1, 0, 0)
-	await get_tree().create_timer(0.1).timeout
-	sprite.modulate = Color(1, 1, 1)
-	var vfx_sc = load("res://asset/Vfx/Effect/hit.tscn")
-	var vfx_nd = vfx_sc.instantiate()
-	var gpu:GPUParticles3D = vfx_nd.get_child(0)
-	gpu.finished.connect(done_hit.bind(gpu))
-	self.add_child(vfx_nd)
+	
+	# Flash effect without await to prevent issues when pooled
+	_flash_damage()
+	
+	# Spawn hit VFX using cached scene
+	_spawn_hit_vfx()
+	
 	if current_hp <= 0:
 		die()
 
+func _flash_damage() -> void:
+	sprite.modulate = Color(1, 0, 0)
+	# Use tween instead of await to avoid issues if enemy is pooled
+	var tween = create_tween()
+	tween.tween_property(sprite, "modulate", Color(1, 1, 1), 0.1)
 
-func done_hit(vfx_node: GPUParticles2D):
-	vfx_node.get_parent().queue_free()
+func _spawn_hit_vfx() -> void:
+	# Cache the scene on first use
+	if _hit_vfx_scene == null:
+		_hit_vfx_scene = ResourceLoadManager.load_resource_sync("res://asset/Vfx/Effect/hit.tscn")
+	
+	if _hit_vfx_scene:
+		var vfx_nd = _hit_vfx_scene.instantiate()
+		var gpu: GPUParticles3D = vfx_nd.get_child(0)
+		gpu.finished.connect(_on_hit_vfx_finished.bind(vfx_nd))
+		self.add_child(vfx_nd)
+
+func _on_hit_vfx_finished(vfx_node: Node) -> void:
+	if is_instance_valid(vfx_node):
+		vfx_node.queue_free()
 
 func die() -> void:
+	if not is_alive:
+		return
 	is_alive = false
 	died.emit(enemy_data.reward)
 	AudioManager.play_sfx("enemy_die")
 	sprite.play("die")
-	await get_tree().create_timer(2)
-	_on_death()
-	return_to_pool()
+	
+	# Use tween instead of await to prevent pool issues
+	var tween = create_tween()
+	tween.tween_interval(2.0)
+	tween.tween_callback(_complete_death)
 
 func _on_death() -> void:
 	pass
+
+func _complete_death() -> void:
+	_on_death()
+	return_to_pool()
 
 func reach_end() -> void:
 	reached_end.emit(enemy_data.base_damage)
 	return_to_pool()
 
 func return_to_pool() -> void:
+	# Kill any active tweens to prevent callbacks after pooling
+	var tweens = get_tree().get_processed_tweens()
+	for tween in tweens:
+		if tween.is_valid() and tween.get_meta("owner", null) == self:
+			tween.kill()
+	
 	remove_from_group("enemies")
 	bob_timer = 0.0
 	is_alive = false
@@ -131,6 +167,11 @@ func return_to_pool() -> void:
 	# Reset sprite animation and modulate
 	sprite.play("default")
 	sprite.modulate = Color(1, 1, 1)
+	
+	# Clean up any VFX children before returning to pool
+	for child in get_children():
+		if child.name.contains("hit") or child.name.contains("vfx") or child is GPUParticles3D:
+			child.queue_free()
 	
 	# Disconnect all signals before returning to pool
 	for connection in died.get_connections():

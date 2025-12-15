@@ -134,6 +134,12 @@ func start_spawning(configs: Array[SpawnPointConfig], mode: int = 0) -> void:
 func stop_spawning() -> void:
 	is_spawning = false
 	spawn_point_configs.clear()
+	spawn_point_states.clear()
+	spawn_timers.clear()
+	current_spawn_point_index = 0
+	enemies_spawned_at_current_point = 0
+	spawn_timer = 0.0
+	boss_spawned_at_current_point = false
 
 func get_current_spawn_point_config() -> SpawnPointConfig:
 	if current_spawn_point_index < spawn_point_configs.size():

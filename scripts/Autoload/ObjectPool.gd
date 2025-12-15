@@ -86,8 +86,7 @@ func register_pool(pool_name: String, scene: PackedScene, initial_size: int = 10
 	
 	var pool = Pool.new(scene, initial_size, max_size)
 	pools[pool_name] = pool
-	add_child(pool.scene.instantiate())
-	get_child(get_child_count() - 1).queue_free()
+	# Removed unnecessary instance creation - prewarm handles this
 	pool.prewarm()
 
 ## Get objek dari pool

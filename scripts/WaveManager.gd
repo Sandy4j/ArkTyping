@@ -147,3 +147,15 @@ func check_wave_complete() -> void:
 			LevelManager.trigger_victory()
 		else:
 			wave_timer = 0.0
+
+## Cleanup when level exits to prevent memory leaks
+func _exit_tree() -> void:
+	if spawn_manager:
+		spawn_manager.stop_spawning()
+	
+	# Clear wave configs to release references
+	wave_configs.clear()
+	current_wave_config = null
+	
+	# Clear all pools when exiting the level
+	ObjectPool.clear_all_pools()

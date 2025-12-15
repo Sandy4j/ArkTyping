@@ -308,13 +308,8 @@ func _on_death():
 		end_time_stop()
 	
 	# Extra cleanup untuk safety
-	if time_stop_overlay and is_instance_valid(time_stop_overlay):
-		time_stop_overlay.queue_free()
-		time_stop_overlay = null
-	
-	if timestop_vfx and is_instance_valid(timestop_vfx):
-		timestop_vfx.queue_free()
-		timestop_vfx = null
+	_cleanup_timestop_resources()
+	original_pause_mode.clear()
 	
 	super._on_death()
 
@@ -322,12 +317,21 @@ func return_to_pool():
 	if is_time_stopped:
 		end_time_stop()
 	
+	_cleanup_timestop_resources()
+	original_pause_mode.clear()
+	
+	super.return_to_pool()
+
+## Helper to clean up all timestop-related resources
+func _cleanup_timestop_resources():
 	if time_stop_overlay and is_instance_valid(time_stop_overlay):
+		var parent = time_stop_overlay.get_parent()
 		time_stop_overlay.queue_free()
 		time_stop_overlay = null
+		# Clean up canvas layer if empty
+		if parent and parent.name == "TimeStopOverlay" and is_instance_valid(parent):
+			parent.queue_free()
 	
 	if timestop_vfx and is_instance_valid(timestop_vfx):
 		timestop_vfx.queue_free()
 		timestop_vfx = null
-	
-	super.return_to_pool()

@@ -67,3 +67,19 @@ func notify_boss_typing_failed():
 		if is_instance_valid(boss) and boss.has_method("on_typing_failed"):
 			boss.on_typing_failed()
 			print("[TypingSystem] Notified boss typing failed: ", boss.name)
+
+## Clear all typing state - call when level exits
+func clear_all() -> void:
+	_current_text = ""
+	active_words.clear()
+	boss_typing_targets.clear()
+
+## Clean up invalid boss references
+func cleanup_invalid_bosses() -> void:
+	var invalid_bosses: Array = []
+	for boss in boss_typing_targets.keys():
+		if not is_instance_valid(boss):
+			invalid_bosses.append(boss)
+	
+	for boss in invalid_bosses:
+		boss_typing_targets.erase(boss)

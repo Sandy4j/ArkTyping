@@ -89,6 +89,10 @@ func reset_game_state() -> void:
 	currency_changed.emit(currency)
 	
 	cleanup_timestop_effects()
+	
+	# Clear typing system state
+	if TypingSystem:
+		TypingSystem.clear_all()
 
 func cleanup_timestop_effects() -> void:
 	if not get_tree() or not get_tree().root:
