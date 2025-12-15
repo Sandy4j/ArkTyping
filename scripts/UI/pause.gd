@@ -35,6 +35,7 @@ func _on_retry_pressed() -> void:
 
 func _on_main_menu_pressed() -> void:
 	AudioManager.play_sfx("button_click")
+	TypingSystem.clear_all()
 	GameManager.cleanup_timestop_effects()
 	get_tree().paused = false
 	GameManager.reset_game_state()

@@ -97,10 +97,7 @@ func take_damage(damage: float) -> void:
 	current_hp -= damage
 	hp_changed.emit(current_hp, enemy_data.max_hp)
 	
-	# Flash effect without await to prevent issues when pooled
 	_flash_damage()
-	
-	# Spawn hit VFX using cached scene
 	_spawn_hit_vfx()
 	
 	if current_hp <= 0:
@@ -108,7 +105,6 @@ func take_damage(damage: float) -> void:
 
 func _flash_damage() -> void:
 	sprite.modulate = Color(1, 0, 0)
-	# Use tween instead of await to avoid issues if enemy is pooled
 	var tween = create_tween()
 	tween.tween_property(sprite, "modulate", Color(1, 1, 1), 0.1)
 
@@ -132,10 +128,10 @@ func die() -> void:
 		return
 	is_alive = false
 	died.emit(enemy_data.reward)
+	move_speed = 0.0
 	AudioManager.play_sfx("enemy_die")
 	sprite.play("die")
 	
-	# Use tween instead of await to prevent pool issues
 	var tween = create_tween()
 	tween.tween_interval(2.0)
 	tween.tween_callback(_complete_death)
@@ -153,10 +149,13 @@ func reach_end() -> void:
 
 func return_to_pool() -> void:
 	# Kill any active tweens to prevent callbacks after pooling
-	var tweens = get_tree().get_processed_tweens()
+	var tweens = get_tree().get_processed_tweens() if get_tree() else []
 	for tween in tweens:
-		if tween.is_valid() and tween.has_meta("owner") and tween.get_meta("owner") == self:
-			tween.kill()
+		if tween.is_valid():
+			# Check if tween belongs to this node or its children
+			var tween_bound = tween.get_bound_node()
+			if tween_bound and (tween_bound == self or is_ancestor_of(tween_bound)):
+				tween.kill()
 	
 	remove_from_group("enemies")
 	bob_timer = 0.0
@@ -165,13 +164,14 @@ func return_to_pool() -> void:
 	move_speed = original_move_speed
 
 	# Reset sprite animation and modulate
-	sprite.play("default")
-	sprite.modulate = Color(1, 1, 1)
+	if sprite:
+		sprite.play("default")
+		sprite.modulate = Color(1, 1, 1)
 	
 	# Clean up any VFX children before returning to pool
 	for child in get_children():
 		if child.name.contains("hit") or child.name.contains("vfx") or child is GPUParticles3D:
-			child.queue_free()
+			child.call_deferred("queue_free")
 	
 	# Disconnect all signals before returning to pool
 	for connection in died.get_connections():
@@ -186,14 +186,14 @@ func return_to_pool() -> void:
 	current_hp = enemy_data.max_hp if enemy_data else 0.0
 	
 	if path_follow:
-		path_follow.queue_free()
+		path_follow.call_deferred("queue_free")
 		path_follow = null
 	
 	path_to_follow = null
 	if pool_name != "" and ObjectPool.pools.has(pool_name):
 		ObjectPool.return_pooled_object(pool_name, self)
 	else:
-		queue_free()
+		call_deferred("queue_free")
 
 ## Speed buff system untuk boss Herald
 func apply_speed_buff(multiplier: float, source: Node):

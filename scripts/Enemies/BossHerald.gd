@@ -209,9 +209,10 @@ func cleanse_ability():
 	
 	for vfx in buffed_enemies_vfx.values():
 		if is_instance_valid(vfx):
-			vfx.queue_free()
+			vfx.call_deferred("queue_free")
+	
 	if boss_rage_vfx and is_instance_valid(boss_rage_vfx):
-		boss_rage_vfx.queue_free()
+		boss_rage_vfx.call_deferred("queue_free")
 		boss_rage_vfx = null
 	
 	buffed_enemies.clear()
@@ -233,3 +234,41 @@ func die():
 
 func get_typing_word() -> String:
 	return current_buff_word
+
+func _on_death() -> void:
+	# Clean up all references and VFX
+	_cleanup_ability_resources()
+	
+	# Unregister from TypingSystem
+	if TypingSystem:
+		TypingSystem.unregister_boss_typing(self)
+	
+	super._on_death()
+
+func _cleanup_ability_resources() -> void:
+	# Clean up all buffed enemy VFX
+	for vfx in buffed_enemies_vfx.values():
+		if is_instance_valid(vfx):
+			vfx.call_deferred("queue_free")
+	buffed_enemies_vfx.clear()
+	
+	# Clean up boss rage VFX
+	if boss_rage_vfx and is_instance_valid(boss_rage_vfx):
+		boss_rage_vfx.call_deferred("queue_free")
+		boss_rage_vfx = null
+	
+	# Clear enemy references
+	buffed_enemies.clear()
+	current_target = null
+	
+	# Hide typing label
+	if typing_label:
+		typing_label.visible = false
+	
+	# Disconnect signals from attack range area
+	if attack_range_area:
+		if attack_range_area.body_entered.is_connected(_on_body_entered_range):
+			attack_range_area.body_entered.disconnect(_on_body_entered_range)
+		if attack_range_area.body_exited.is_connected(_on_body_exited_range):
+			attack_range_area.body_exited.disconnect(_on_body_exited_range)
+

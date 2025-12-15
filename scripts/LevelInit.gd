@@ -11,11 +11,9 @@ func _ready() -> void:
 	if scene_path != "":
 		LevelManager.set_current_level(scene_path)
 	
-	# Reset tower availability states
+	TypingSystem.clear_all()
 	_reset_tower_availability()
-	
 	await _preload_level_resources()
-	
 	AudioManager.play_bgm("gameplay")
 	_setup_danger_vignette()
 	

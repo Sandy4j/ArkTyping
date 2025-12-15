@@ -9,6 +9,7 @@ var type_correct: AudioStream
 var type_wrong: AudioStream
 var typing_1: AudioStream
 var typing_2: AudioStream
+var typing_delete: AudioStream
 var button_click: AudioStream
 
 var base_hit: AudioStream
@@ -46,6 +47,7 @@ func _ready() -> void:
 	type_wrong = load("res://asset/Audio/Sfx/Typing/Wrong.wav")
 	typing_1 = load("res://asset/Audio/Sfx/Typing/Typing 1.wav")
 	typing_2 = load("res://asset/Audio/Sfx/Typing/Typing 2.wav")
+	typing_delete = load("res://asset/Audio/Sfx/Typing/Delete.wav")
 	button_click = load("res://asset/Audio/Sfx/UI Click.wav")
 	spot_select = load("res://asset/Audio/Sfx/Tile Selected.wav")
 	base_hit = load("res://asset/Audio/Base get Hit.wav")
@@ -136,6 +138,8 @@ func play_sfx(sfx_name: String, pitch_scale: float = 1.0) -> void:
 			stream = typing_1
 		"typing_2":
 			stream = typing_2
+		"typing_delete":
+			stream = typing_delete
 		"button_click":
 			stream = button_click
 		"boss_silence":

@@ -80,6 +80,9 @@ func load_level_async(level_path: String) -> void:
 	
 	var is_level = is_gameplay_level(level_path)
 	
+	# Cleanup sebelum load level baru
+	_pre_load_cleanup()
+	
 	if is_level:
 		is_loading = true
 		fake_progress = 0.0
@@ -105,6 +108,17 @@ func load_level_async(level_path: String) -> void:
 	else:
 		#jika bukan level gameplay, gunakan simple fade transition
 		_simple_fade_transition(level_path)
+
+func _pre_load_cleanup() -> void:
+	TypingSystem.clear_all()
+	_kill_all_tweens()
+	_stop_all_audio()
+	
+	# Stop spawning
+	var wave_managers = get_tree().get_nodes_in_group("wave_manager")
+	for wm in wave_managers:
+		if wm.has_method("stop_spawning") and wm.has_node("SpawnManager"):
+			wm.get_node("SpawnManager").stop_spawning()
 
 func _animate_fake_progress() -> void:
 	var tween = create_tween()
@@ -183,6 +197,25 @@ func preload_level(level_path: String) -> void:
 
 ## Simple fade transition untuk non-gameplay scenes
 func _simple_fade_transition(scene_path: String) -> void:
+	# Clear typing system first
+	TypingSystem.clear_all()
+	
+	# Kill all active tweens to prevent memory leaks
+	_kill_all_tweens()
+	
+	# Stop all active spawning
+	var wave_managers = get_tree().get_nodes_in_group("wave_manager")
+	for wm in wave_managers:
+		if wm.has_method("stop_spawning") and wm.has_node("SpawnManager"):
+			wm.get_node("SpawnManager").stop_spawning()
+	
+	# Stop all audio to prevent leaks
+	_stop_all_audio()
+	
+	# Defer pool cleanup to avoid race conditions
+	call_deferred("_pre_transition_pool_cleanup")
+	await get_tree().process_frame
+	
 	var fade = ColorRect.new()
 	fade.color = Color.BLACK
 	fade.set_anchors_preset(Control.PRESET_FULL_RECT)
@@ -211,3 +244,36 @@ func _simple_fade_transition(scene_path: String) -> void:
 	
 	# Cleanup
 	canvas.queue_free()
+
+func _pre_transition_pool_cleanup() -> void:
+	# Safely clear pools before scene transition
+	ObjectPool.clear_all_pools()
+
+## Kill all active tweens to prevent memory leaks
+func _kill_all_tweens() -> void:
+	var tweens = get_tree().get_processed_tweens()
+	for tween in tweens:
+		if tween and tween.is_valid():
+			tween.kill()
+
+## Stop all audio players to prevent resource leaks
+func _stop_all_audio() -> void:
+	# Stop all AudioStreamPlayer nodes
+	for node in get_tree().get_nodes_in_group("audio_players"):
+		if node is AudioStreamPlayer or node is AudioStreamPlayer2D or node is AudioStreamPlayer3D:
+			if node.playing:
+				node.stop()
+	
+	# Also check all AudioStreamPlayer nodes in the tree
+	var current_scene = get_tree().current_scene
+	if current_scene:
+		_stop_audio_recursive(current_scene)
+
+func _stop_audio_recursive(node: Node) -> void:
+	if node is AudioStreamPlayer or node is AudioStreamPlayer2D or node is AudioStreamPlayer3D:
+		if node.playing:
+			node.stop()
+	
+	for child in node.get_children():
+		_stop_audio_recursive(child)
+

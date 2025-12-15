@@ -72,5 +72,21 @@ func normalize_attack():
 	anim.play("spin")
 
 func _exit_tree() -> void:
-	# Clean up all enemy references when this node is removed
+	# Cleanup
 	near_enemy.clear()
+	
+	# Stop anim dan sfx
+	if anim and anim.is_playing():
+		anim.stop()
+	
+	if sfx and sfx.playing:
+		sfx.stop()
+	
+	if area1 and area1.body_entered.is_connected(_enemy_near):
+		area1.body_entered.disconnect(_enemy_near)
+	if area1 and area1.body_exited.is_connected(_enemy_out):
+		area1.body_exited.disconnect(_enemy_out)
+	if area2 and area2.body_entered.is_connected(_enemy_near):
+		area2.body_entered.disconnect(_enemy_near)
+	if area2 and area2.body_exited.is_connected(_enemy_out):
+		area2.body_exited.disconnect(_enemy_out)

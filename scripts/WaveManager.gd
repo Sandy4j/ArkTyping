@@ -156,6 +156,8 @@ func _exit_tree() -> void:
 	# Clear wave configs to release references
 	wave_configs.clear()
 	current_wave_config = null
-	
+	call_deferred("_deferred_pool_cleanup")
+
+func _deferred_pool_cleanup() -> void:
 	# Clear all pools when exiting the level
 	ObjectPool.clear_all_pools()

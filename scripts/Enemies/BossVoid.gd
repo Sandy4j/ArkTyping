@@ -81,7 +81,7 @@ func end_time_stop():
 	remove_time_stop_overlay()
 	
 	if timestop_vfx and is_instance_valid(timestop_vfx):
-		timestop_vfx.queue_free()
+		timestop_vfx.call_deferred("queue_free")
 		timestop_vfx = null
 	
 	unfreeze_all_entities()
@@ -158,11 +158,11 @@ func remove_time_stop_overlay():
 		tween.tween_callback(func():
 			if is_instance_valid(time_stop_overlay):
 				var parent = time_stop_overlay.get_parent()
-				time_stop_overlay.queue_free()
+				time_stop_overlay.call_deferred("queue_free")
 				time_stop_overlay = null
 				# Cleanup canvas layer jika kosong
-				if parent and parent.name == "TimeStopOverlay" and parent.get_child_count() == 0:
-					parent.queue_free()
+				if parent and parent.name == "TimeStopOverlay" and is_instance_valid(parent) and parent.get_child_count() <= 1:
+					parent.call_deferred("queue_free")
 		)
 
 func _find_canvas_layer() -> CanvasLayer:
@@ -326,12 +326,12 @@ func return_to_pool():
 func _cleanup_timestop_resources():
 	if time_stop_overlay and is_instance_valid(time_stop_overlay):
 		var parent = time_stop_overlay.get_parent()
-		time_stop_overlay.queue_free()
+		time_stop_overlay.call_deferred("queue_free")
 		time_stop_overlay = null
 		# Clean up canvas layer if empty
 		if parent and parent.name == "TimeStopOverlay" and is_instance_valid(parent):
-			parent.queue_free()
+			parent.call_deferred("queue_free")
 	
 	if timestop_vfx and is_instance_valid(timestop_vfx):
-		timestop_vfx.queue_free()
+		timestop_vfx.call_deferred("queue_free")
 		timestop_vfx = null
