@@ -115,6 +115,8 @@ radius = 5.0
 
 [node name="BossDevil" type="CharacterBody3D"]
 script = ExtResource("1_27tu1")
+speed_buff_multiplier = 2.0
+ability_cooldown = 20.0
 enemy_data = ExtResource("2_jufa0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

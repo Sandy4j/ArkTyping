@@ -5,9 +5,9 @@
 [resource]
 script = ExtResource("1_dav3x")
 enemy_name = "Boss"
-max_hp = 15000.0
-move_speed = 0.15
-reward = 100
+max_hp = 20000.0
+move_speed = 0.4
+reward = 0
 base_damage = 10
 can_attack = true
 attack_damage = 150.0

@@ -119,6 +119,7 @@ radius = 5.0
 
 [node name="BossDevil" type="CharacterBody3D"]
 script = ExtResource("1_ppl04")
+max_targets = 2
 enemy_data = ExtResource("2_fl4p0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
