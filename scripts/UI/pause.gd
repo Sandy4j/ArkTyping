@@ -31,7 +31,7 @@ func _on_retry_pressed() -> void:
 	GameManager.cleanup_timestop_effects()
 	get_tree().paused = false
 	GameManager.reset_game_state()
-	LevelManager.reload_current_level()
+	LevelManager.load_level_async(LevelManager.current_level_path)
 
 func _on_main_menu_pressed() -> void:
 	AudioManager.play_sfx("button_click")

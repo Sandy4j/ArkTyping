@@ -38,8 +38,12 @@ func _ready() -> void:
 		icon_con.add_child(icon_rect)
 	input.Pop.connect(pop_hero)
 	input.PopBack.connect(popback_hero)
+	
+	# Initialize wave UI data
 	if wavesystem:
 		wave_max_label.text = str(wavesystem.get_max_waves())
+		wave_label.text = "0"
+		_update_enemy_count_for_wave(1)  # Show wave 1 enemy count initially
 	
 	call_deferred("_set_max_hp")
 
@@ -61,15 +65,25 @@ func _on_base_hp_changed(hp: int) -> void:
 
 func _on_wave_started(wave: int) -> void:
 	wave_label.text = str(wave)
+	enemy_label.text = "0"  # Reset current enemy count when wave starts
+	_update_enemy_count_for_wave(wave)
+
+## Helper function to update max enemy count for a given wave
+func _update_enemy_count_for_wave(wave: int) -> void:
+	if not wavesystem:
+		return
 	
-	if wavesystem and wavesystem.current_wave_config:
-		var max_enemies = 0
-		for spawn_config in wavesystem.current_wave_config.spawn_point_configs:
-			if spawn_config:
-				max_enemies += spawn_config.enemies_to_spawn
-				if spawn_config.has_boss:
-					max_enemies += 1
-		enemy_max_label.text = str(max_enemies)
+	var wave_index = wave - 1
+	if wave_index >= 0 and wave_index < wavesystem.wave_configs.size():
+		var wave_config = wavesystem.wave_configs[wave_index]
+		if wave_config:
+			var max_enemies = 0
+			for spawn_config in wave_config.spawn_point_configs:
+				if spawn_config:
+					max_enemies += spawn_config.enemies_to_spawn
+					if spawn_config.has_boss:
+						max_enemies += 1
+			enemy_max_label.text = str(max_enemies)
 
 func _on_wave_transition_warning(next_wave: int, countdown: float) -> void:
 	show_message("Wave " + str(next_wave) + " akan dimulai!")

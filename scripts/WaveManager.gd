@@ -21,12 +21,11 @@ var transition_warning_shown: bool = false
 var boss_warning_shown: bool = false
 
 func _ready() -> void:
-	var initial_wait = 5.0
-	if wave_configs.size() > 0 and wave_configs[0]:
-		initial_wait = wave_configs[0].time_until_next_wave
-	wave_timer = initial_wait
+	add_to_group("wave_manager")
+	wave_timer = 0.0
 	
 	spawn_manager = SpawnManager.new()
+	spawn_manager.name = "SpawnManager"
 	add_child(spawn_manager)
 	spawn_manager.all_spawn_points_completed.connect(_on_all_spawn_points_completed)
 	spawn_manager.boss_incoming.connect(_on_boss_incoming)
@@ -92,7 +91,7 @@ func start_wave() -> void:
 		spawn_manager.start_spawning(spawn_configs, mode)
 		wave_started.emit(current_wave)
 	else:
-		push_error("WaveManager: tidak ada konfigurasi ", current_wave)
+		push_error("WaveManager: tidak ada konfigurasi ", current_wave, " (wave_configs.size=", wave_configs.size(), ")")
 
 func get_spawn_point_configs_for_wave() -> Array[SpawnPointConfig]:
 	var configs: Array[SpawnPointConfig] = []
@@ -105,6 +104,8 @@ func get_spawn_point_configs_for_wave() -> Array[SpawnPointConfig]:
 func get_time_between_waves() -> float:
 	if current_wave_config:
 		return current_wave_config.time_until_next_wave
+	elif current_wave == 0 and wave_configs.size() > 0 and wave_configs[0]:
+		return wave_configs[0].time_until_next_wave
 	else:
 		return 5.0  # Default fallback
 
@@ -139,6 +140,7 @@ func check_wave_complete() -> void:
 	
 	if spawning_complete and all_enemies_defeated and not GameManager.is_game_over:
 		wave_complete_checked = true
+		waiting_for_enemies_to_die = false  # Reset this flag when wave completes
 		wave_completed.emit(current_wave)
 		
 		if current_wave >= get_max_waves() and not victory_triggered:
@@ -147,20 +149,10 @@ func check_wave_complete() -> void:
 			LevelManager.trigger_victory()
 		else:
 			wave_timer = 0.0
+			transition_warning_shown = false
 
 ## Cleanup when level exits to prevent memory leaks
 func _exit_tree() -> void:
 	if spawn_manager:
 		spawn_manager.stop_spawning()
-	
-	# Clear wave configs
-	wave_configs.clear()
 	current_wave_config = null
-	
-	if get_tree():
-		await get_tree().process_frame
-	call_deferred("_deferred_pool_cleanup")
-
-func _deferred_pool_cleanup() -> void:
-	if ObjectPool:
-		ObjectPool.clear_all_pools()

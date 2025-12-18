@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cgksfc3odlqxl"]
+[gd_scene load_steps=23 format=3 uid="uid://cgksfc3odlqxl"]
 
 [ext_resource type="Script" uid="uid://d1p2pdmy5r4wm" path="res://scripts/UI/button_hover_scale.gd" id="1_button_hover"]
 [ext_resource type="Script" uid="uid://d3bjk64bt6a4k" path="res://scripts/UI/main_menu.gd" id="1_n3ahy"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" uid="uid://b06vmxkwy27cu" path="res://scripts/fire_fly_main.gd" id="15_scr1a"]
 [ext_resource type="PackedScene" uid="uid://dry7yto1vn2xt" path="res://scenes/UI/kunang-main.tscn" id="17_d0t0a"]
 [ext_resource type="Texture2D" uid="uid://bn4q7pd333yn0" path="res://asset/UI_Gameplay/rev bg non kunang 1.png" id="17_sh0sw"]
+[ext_resource type="PackedScene" uid="uid://dxax5y708a1b2" path="res://scenes/UI/DebugMenu.tscn" id="19_wfqjx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wfqjx"]
 shader = ExtResource("2_d0t0a")
@@ -157,6 +158,8 @@ curve = SubResource("Curve2D_d0t0a")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 size = Vector2i(1920, 1080)
+
+[node name="DebugMenu" parent="." instance=ExtResource("19_wfqjx")]
 
 [connection signal="pressed" from="CanvasLayer/ButtonContainer/StartBtn" to="." method="_on_start_btn_pressed"]
 [connection signal="pressed" from="CanvasLayer/ButtonContainer/HeroBtn" to="." method="_on_hero_btn_pressed"]

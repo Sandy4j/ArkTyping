@@ -43,7 +43,7 @@ func _update_info() -> void:
 	text += "Unlocked Levels: " + str(unlocked) + "\n"
 	text += "Total Stars: " + str(total_stars) + "\n\n"
 	
-	for i in range(1, 4):
+	for i in range(1, LevelManager.available_levels.size() + 1):
 		var stars = SaveManager.get_level_stars(i)
 		var completed = SaveManager.is_level_completed(i)
 		text += "Level %d: %d★ %s\n" % [i, stars, "(✓)" if completed else ""]
@@ -66,4 +66,3 @@ func _on_give_3stars_pressed() -> void:
 		SaveManager.complete_level(i, 3)
 	_update_info()
 	print("[Debug] All levels completed with 3 stars")
-

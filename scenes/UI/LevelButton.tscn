@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://ytp1tss38jj3" path="res://asset/UI/main menu/Level.png" id="1_1f016"]
 [ext_resource type="Script" uid="uid://dxsqramg7ojv1" path="res://scripts/UI/LevelButton.gd" id="1_level_button"]
-[ext_resource type="FontFile" uid="uid://bidkq3k8s4itr" path="res://asset/Font/Lovato-Bold.ttf" id="2_mic1q"]
+[ext_resource type="FontFile" uid="uid://cggjjwu7bfhpo" path="res://asset/Font/Lovato-Bold.ttf" id="2_mic1q"]
 
 [node name="LevelButton" type="TextureRect"]
 custom_minimum_size = Vector2(452, 452)

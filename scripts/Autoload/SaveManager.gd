@@ -5,7 +5,7 @@ extends Node
 signal progress_loaded
 signal progress_saved
 
-const SAVE_FILE_PATH: String = "user://save_data.json"
+const SAVE_FILE_PATH: String = "user://TypeKnight_Save.json"
 
 var player_data: Dictionary = {
 	"unlocked_levels": [1],  # Level pertama selalu unlocked
@@ -24,7 +24,7 @@ func save_progress() -> void:
 		file.store_string(json_string)
 		file.close()
 		progress_saved.emit()
-		print("[SaveManager] Progress saved successfully")
+		print("[SaveManager] Progress saved: ", player_data)
 	else:
 		push_error("[SaveManager] Failed to save progress")
 
@@ -54,10 +54,19 @@ func load_progress() -> void:
 					player_data["level_stars"] = {}
 				if not player_data.has("level_completed"):
 					player_data["level_completed"] = {}
+				
+				# Convert unlocked_levels to integers (JSON may load them as floats)
+				var int_levels: Array = []
+				for level in player_data["unlocked_levels"]:
+					int_levels.append(int(level))
+				player_data["unlocked_levels"] = int_levels
+				
 				# Pastikan level 1 selalu unlocked
 				if not 1 in player_data["unlocked_levels"]:
 					player_data["unlocked_levels"].append(1)
-				print("[SaveManager] Progress loaded successfully")
+				
+				player_data["unlocked_levels"].sort()
+				print("[SaveManager] Progress loaded: ", player_data)
 				progress_loaded.emit()
 			else:
 				push_error("[SaveManager] Invalid save data format")
@@ -81,6 +90,8 @@ func unlock_level(level_number: int) -> void:
 ## Complete a level with stars
 func complete_level(level_number: int, stars: int) -> void:
 	# Pastikan dictionary keys exist
+	if not player_data.has("unlocked_levels"):
+		player_data["unlocked_levels"] = [1]
 	if not player_data.has("level_stars"):
 		player_data["level_stars"] = {}
 	if not player_data.has("level_completed"):
@@ -95,10 +106,11 @@ func complete_level(level_number: int, stars: int) -> void:
 	player_data["level_completed"][str(level_number)] = true
 	
 	# Unlock level berikutnya (tanpa auto-save di dalamnya)
-	if not is_level_unlocked(level_number + 1):
-		player_data["unlocked_levels"].append(level_number + 1)
+	var next_level = level_number + 1
+	if not is_level_unlocked(next_level):
+		player_data["unlocked_levels"].append(next_level)
 		player_data["unlocked_levels"].sort()
-		print("[SaveManager] Level ", level_number + 1, " unlocked")
+		print("[SaveManager] Level ", next_level, " unlocked")
 	
 	# Save sekali saja di akhir
 	save_progress()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b6ot4uwb74jwf"]
+[gd_scene load_steps=26 format=3 uid="uid://b6ot4uwb74jwf"]
 
 [ext_resource type="Script" uid="uid://bbexpquh4b3ip" path="res://scripts/UI/UI.gd" id="1_6rmj2"]
 [ext_resource type="FontFile" uid="uid://ddon0uj5gtdts" path="res://asset/UI_Gameplay/Viga-Regular.ttf" id="2_catpy"]
@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bngpunog37ovt" path="res://asset/UI_Gameplay/Enemy_BG.png" id="5_cof4p"]
 [ext_resource type="Texture2D" uid="uid://d28ptae74b53p" path="res://asset/UI_Gameplay/Enemy.png" id="6_f7tlh"]
 [ext_resource type="Texture2D" uid="uid://dn0ab3cbqkqm4" path="res://asset/UI_Gameplay/Wave.png" id="7_8k7j3"]
-[ext_resource type="Texture2D" uid="uid://bqunjr3swghiv" path="res://asset/UI_Gameplay/Energy_BG.png" id="8_jkdwc"]
+[ext_resource type="Texture2D" uid="uid://vaw87a8ccvlx" path="res://asset/UI_Gameplay/Energy_BG.png" id="8_jkdwc"]
 [ext_resource type="Texture2D" uid="uid://b87mglfyqmn0v" path="res://asset/UI_Gameplay/Chara_BG.png" id="9_rlppe"]
 [ext_resource type="Texture2D" uid="uid://dk5lualwoepbg" path="res://asset/UI_Gameplay/History_Box.png" id="11_kupmu"]
 [ext_resource type="Texture2D" uid="uid://1giep6h25tvp" path="res://asset/UI_Gameplay/Type_Box.png" id="12_catpy"]
@@ -140,7 +140,7 @@ grow_vertical = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_catpy")
 theme_override_font_sizes/font_size = 40
-text = "12"
+text = "1"
 
 [node name="Ph" type="Label" parent="Enemy/Wave_Con"]
 layout_mode = 2
@@ -152,7 +152,7 @@ text = "/"
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_catpy")
 theme_override_font_sizes/font_size = 40
-text = "120"
+text = "3"
 
 [node name="Wave" type="TextureRect" parent="."]
 anchors_preset = 1
@@ -197,7 +197,7 @@ grow_vertical = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_catpy")
 theme_override_font_sizes/font_size = 40
-text = "12"
+text = "1"
 
 [node name="Ph" type="Label" parent="Wave/Wave_Con"]
 layout_mode = 2
@@ -209,7 +209,7 @@ text = "/"
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_catpy")
 theme_override_font_sizes/font_size = 40
-text = "120"
+text = "10"
 
 [node name="TextureProgressBar" type="TextureRect" parent="."]
 anchors_preset = 3

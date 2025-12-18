@@ -109,7 +109,7 @@ func _process_simultaneous(delta: float) -> void:
 		print("SpawnManager: All spawn points completed (simultaneous mode)")
 
 func start_spawning(configs: Array[SpawnPointConfig], mode: int = 0) -> void:
-	spawn_point_configs = configs
+	spawn_point_configs = configs.duplicate()
 	spawn_mode = mode
 	is_spawning = true
 	
