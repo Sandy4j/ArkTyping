@@ -5,13 +5,13 @@
 [resource]
 script = ExtResource("1_k7dok")
 enemy_name = "Boss"
-max_hp = 15000.0
-move_speed = 0.5
+max_hp = 22500.0
+move_speed = 0.55
 reward = 0
 base_damage = 5
 can_attack = true
 attack_range = 10.0
-attack_damage = 150.0
+attack_damage = 200.0
 attack_cooldown = 1.0
 projectile_speed = 5.0
 is_boss = true
