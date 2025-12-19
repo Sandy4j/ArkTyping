@@ -24,44 +24,47 @@ func _ready():
 func _setup_attack_range():
 	if not enemy_data or not enemy_data.can_attack:
 		return
-	
-	if not attack_range_area:
-		attack_range_area = Area3D.new()
-		add_child(attack_range_area)
-
-		var collision = CollisionShape3D.new()
-		var shape = SphereShape3D.new()
-		shape.radius = enemy_data.attack_range
-		collision.shape = shape
-		attack_range_area.add_child(collision)
-	else:
-		var collision = attack_range_area.get_node_or_null("CollisionShape3D")
-		if collision and collision.shape is SphereShape3D:
-			var sphere_shape = collision.shape as SphereShape3D
-			sphere_shape.radius = enemy_data.attack_range
-
-func _on_body_entered_range(body: Node3D):
-	if body.is_in_group("tower") and not is_attacking:
-		current_target = body
-		is_attacking = true
-
-func _on_body_exited_range(body: Node3D):
-	if body == current_target:
-		current_target = null
-		is_attacking = false
 
 func _update_logic(delta: float):
 	if not enemy_data or not enemy_data.can_attack or not is_alive:
 		return
+
+	if not current_target or not is_instance_valid(current_target):
+		current_target = find_nearest_tower()
+		is_attacking = false
+	
+	if current_target:
+		var distance = global_position.distance_to(current_target.global_position)
+		if distance > enemy_data.attack_range:
+			current_target = null
+			is_attacking = false
+		else:
+			is_attacking = true
 	
 	if is_attacking and current_target and is_instance_valid(current_target):
 		attack_timer -= delta
 		if attack_timer <= 0:
 			_perform_attack()
 			attack_timer = enemy_data.attack_cooldown
-	else:
-		is_attacking = false
-		current_target = null
+
+func find_nearest_tower() -> Node3D:
+	if not get_tree():
+		return null
+	
+	var towers = get_tree().get_nodes_in_group("tower")
+	if towers.is_empty():
+		return null
+	
+	var nearest: Node3D = null
+	var nearest_distance: float = INF
+	
+	for tower in towers:
+		if is_instance_valid(tower):
+			var distance = global_position.distance_to(tower.global_position)
+			if distance <= enemy_data.attack_range and distance < nearest_distance:
+				nearest = tower
+				nearest_distance = distance
+	return nearest
 
 func _perform_attack():
 	if not current_target or not is_instance_valid(current_target):
@@ -72,34 +75,17 @@ func _perform_attack():
 	if projectile_scene:
 		var pool_key = "enemy_projectile"
 		var projectile = ObjectPool.get_pooled_object(pool_key)
-		
+
 		if not projectile:
 			projectile = projectile_scene.instantiate()
 		else:
 			projectile.pool_name = pool_key
-		
+
 		get_tree().current_scene.add_child(projectile)
 		projectile.global_position = global_position + Vector3.UP * 0.5
-		
+
 		if projectile.has_method("initialize"):
 			projectile.initialize(current_target, enemy_data.attack_damage, enemy_data.projectile_speed)
-
-func _move(delta: float):
-	if is_attacking:
-		# Bob when attacking but don't move forward
-		bob_timer += delta * bob_speed
-		global_position.y += sin(bob_timer) * bob_height
-		
-		# Face target
-		if current_target and is_instance_valid(current_target):
-			var direction_to_target = current_target.global_position - global_position
-			if direction_to_target.x > 0.01:
-				sprite.flip_h = true
-			elif direction_to_target.x < -0.01:
-				sprite.flip_h = false
-		return
-	
-	super._move(delta)
 
 func activate_ability():
 	if not is_alive or not is_instance_valid(self):
@@ -151,5 +137,9 @@ func die():
 		if is_instance_valid(tower) and tower.has_method("remove_bind_debuff"):
 			tower.remove_bind_debuff()
 	bound_towers.clear()
+	
+	current_target = null
+	is_attacking = false
+	
 	super.die()
 

@@ -628,6 +628,7 @@ func take_damage(dmg: float, is_bind: bool = false) -> void:
 		binded()
 	current_hp -= dmg
 	HPBar.value = current_hp
+	_flash_damage()
 	var vfx_sc = ResourceLoadManager.get_vfx_resource("hit_tower")
 	if not vfx_sc:
 		vfx_sc = ResourceLoadManager.load_resource_sync("res://asset/Vfx/Effect/hit_Tower.tscn")
@@ -641,6 +642,10 @@ func take_damage(dmg: float, is_bind: bool = false) -> void:
 			debuff_aura.queue_free()
 		destroy()
 
+func _flash_damage() -> void:
+	sprite.modulate = Color(1, 0, 0)
+	var tween = create_tween()
+	tween.tween_property(sprite, "modulate", Color(1, 1, 1), 0.1)
 
 func destroy() -> void:
 	AudioManager.play_sfx("tower_dead")

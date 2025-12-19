@@ -26,7 +26,6 @@ var attack_timer: float = 0.0
 var current_targets: Array[Node3D] = []  # Multiple targets
 @export var max_attack_targets: int = 4  # Maximum targets to attack
 var is_attacking: bool = false
-var attack_range_area: Area3D
 var boss_rage_vfx: Node3D = null
 
 func _ready():
@@ -39,11 +38,6 @@ func _ready():
 func _setup_attack_range():
 	if not enemy_data or not enemy_data.can_attack:
 		return
-	
-	attack_range_area = get_node_or_null("RadiusArea")
-	if attack_range_area:
-		attack_range_area.body_entered.connect(_on_body_entered_range)
-		attack_range_area.body_exited.connect(_on_body_exited_range)
 
 func setup_typing_label():
 	typing_label = get_node_or_null("TypingLabel")
@@ -51,21 +45,11 @@ func setup_typing_label():
 		typing_label.visible = false
 		typing_label.modulate = Color(1, 1, 0, 1)
 
-func _on_body_entered_range(body: Node3D):
-	if body.is_in_group("towers") and body not in current_targets:
-		if current_targets.size() < max_attack_targets:
-			current_targets.append(body)
-			is_attacking = true
-
-func _on_body_exited_range(body: Node3D):
-	if body in current_targets:
-		current_targets.erase(body)
-		if current_targets.is_empty():
-			is_attacking = false
-
 func _update_logic(delta: float):
 	if not enemy_data or not enemy_data.can_attack or not is_alive:
 		return
+	
+	_update_tower_targets()
 	
 	# Clean up invalid targets
 	current_targets = current_targets.filter(func(t): return is_instance_valid(t))
@@ -79,6 +63,40 @@ func _update_logic(delta: float):
 	else:
 		is_attacking = false
 
+func _update_tower_targets():
+	if not get_tree():
+		return
+	
+	var towers = get_tree().get_nodes_in_group("tower")
+	current_targets.clear()
+	
+	for tower in towers:
+		if is_instance_valid(tower):
+			var distance = global_position.distance_to(tower.global_position)
+			if distance <= enemy_data.attack_range:
+				current_targets.append(tower)
+				if current_targets.size() >= max_attack_targets:
+					break
+
+func find_nearest_tower() -> Node3D:
+	if not get_tree():
+		return null
+	
+	var towers = get_tree().get_nodes_in_group("tower")
+	if towers.is_empty():
+		return null
+	
+	var nearest: Node3D = null
+	var nearest_distance: float = INF
+	
+	for tower in towers:
+		if is_instance_valid(tower):
+			var distance = global_position.distance_to(tower.global_position)
+			if distance <= enemy_data.attack_range and distance < nearest_distance:
+				nearest = tower
+				nearest_distance = distance
+	return nearest
+
 func _perform_attack():
 	if current_targets.is_empty():
 		return
@@ -86,40 +104,31 @@ func _perform_attack():
 	var projectile_scene = preload("res://scenes/Enemy/ProjectileE.tscn")
 	var pool_key = "enemy_projectile"
 	
-	# Attack all current targets
-	for target in current_targets:
-		if target and is_instance_valid(target):
-			var projectile = ObjectPool.get_pooled_object(pool_key)
-			
-			if not projectile:
-				projectile = projectile_scene.instantiate()
-			else:
-				projectile.pool_name = pool_key
-			
-			get_tree().current_scene.add_child(projectile)
-			projectile.global_position = global_position + Vector3.UP * 0.5
-			
-			if projectile.has_method("initialize"):
-				projectile.initialize(target, enemy_data.attack_damage, enemy_data.projectile_speed)
-
-func _move(delta: float):
-	if is_attacking:
-		bob_timer += delta * bob_speed
-		global_position.y += sin(bob_timer) * bob_height
-		
-		# Face the first valid target
-		if current_targets.size() > 0:
-			var target = current_targets[0]
+	if ability_active:
+		# Rage Mode: Focus all shots on nearest target
+		var nearest = find_nearest_tower()
+		if nearest and is_instance_valid(nearest):
+			for i in range(max_attack_targets):
+				_spawn_projectile(projectile_scene, pool_key, nearest)
+	else:
+		# Normal Mode: 1 shot per unique target
+		for target in current_targets:
 			if target and is_instance_valid(target):
-				var direction_to_target = target.global_position - global_position
-				if direction_to_target.x > 0.01:
-					sprite.flip_h = true
-				elif direction_to_target.x < -0.01:
-					sprite.flip_h = false
-		return
-	
-	super._move(delta)
+				_spawn_projectile(projectile_scene, pool_key, target)
 
+func _spawn_projectile(projectile_scene: PackedScene, pool_key: String, target: Node3D):
+	var projectile = ObjectPool.get_pooled_object(pool_key)
+	
+	if not projectile:
+		projectile = projectile_scene.instantiate()
+	else:
+		projectile.pool_name = pool_key
+	
+	get_tree().current_scene.add_child(projectile)
+	projectile.global_position = global_position + Vector3.UP * 0.5
+	
+	if projectile.has_method("initialize"):
+		projectile.initialize(target, enemy_data.attack_damage, enemy_data.projectile_speed)
 
 func activate_ability():
 	if not is_alive or ability_active or not is_instance_valid(self):
@@ -286,11 +295,5 @@ func _cleanup_ability_resources() -> void:
 	# Hide typing label
 	if typing_label:
 		typing_label.visible = false
-	
-	# Disconnect signals from attack range area
-	if attack_range_area:
-		if attack_range_area.body_entered.is_connected(_on_body_entered_range):
-			attack_range_area.body_entered.disconnect(_on_body_entered_range)
-		if attack_range_area.body_exited.is_connected(_on_body_exited_range):
-			attack_range_area.body_exited.disconnect(_on_body_exited_range)
+
 

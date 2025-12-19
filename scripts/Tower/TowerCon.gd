@@ -246,6 +246,8 @@ func delete_tower_at_selected() -> void:
 		TypingSystem.clear_text()
 
 func tower_gone(v:TowerData):
+	if v == null:
+		return
 	ui._on_tower_gone(v)
 	for name in placed_tower:
 			if name == v.chara:

@@ -26,6 +26,7 @@ AudioManager="*res://scripts/Autoload/AudioManager.gd"
 ResourceLoadManager="*res://scripts/Autoload/ResourceLoadManager.gd"
 SaveManager="*res://scripts/Autoload/SaveManager.gd"
 TowerStateManager="*res://scripts/Autoload/TowerStateManager.gd"
+DebugMenu="*res://scenes/UI/DebugMenu.tscn"
 
 [display]
 

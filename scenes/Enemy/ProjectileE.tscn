@@ -16,11 +16,7 @@ albedo_color = Color(0.3365263, 0.46358907, 0.32076252, 1)
 albedo_texture = ExtResource("2_yswfo")
 albedo_texture_force_srgb = true
 albedo_texture_msdf = true
-billboard_mode = 3
 billboard_keep_scale = true
-particles_anim_h_frames = 1
-particles_anim_v_frames = 1
-particles_anim_loop = false
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pyybx"]
 transparency = 1
@@ -78,13 +74,13 @@ light_color = Color(0.27688417, 0.41928327, 0.29067814, 1)
 omni_range = 1.0
 
 [node name="Bijih" type="MeshInstance3D" parent="Enm_bullet"]
-transform = Transform3D(-0.5, 0, -4.371139e-08, 0, 0.5, 0, 4.371139e-08, 0, -0.5, -0.42503625, 0, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 layers = 513
 material_override = SubResource("StandardMaterial3D_pnf8t")
 mesh = ExtResource("3_0piss")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Enm_bullet"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20792985, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15722193, 0, 0)
 material_override = SubResource("StandardMaterial3D_pyybx")
 amount = 20
 process_material = SubResource("ParticleProcessMaterial_3b7fe")

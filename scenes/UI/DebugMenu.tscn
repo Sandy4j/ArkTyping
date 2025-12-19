@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://dxax5y708a1b2"]
 
-[ext_resource type="Script" path="res://scripts/UI/DebugMenu.gd" id="1_debug"]
+[ext_resource type="Script" uid="uid://b55wpxpvmm6ox" path="res://scripts/UI/DebugMenu.gd" id="1_debug"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
-bg_color = Color(0, 0, 0, 0.8)
+bg_color = Color(0, 0, 0, 0.9)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -17,58 +17,145 @@ script = ExtResource("1_debug")
 [node name="Panel" type="Panel" parent="."]
 offset_left = 20.0
 offset_top = 20.0
-offset_right = 370.0
-offset_bottom = 400.0
+offset_right = 400.0
+offset_bottom = 650.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = 10.0
-offset_right = -10.0
-offset_bottom = -10.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 10
 
-[node name="Title" type="Label" parent="Panel/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="Panel/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_font_sizes/font_size = 24
-text = "DEBUG MENU (F12)"
+text = "🛠 DEBUG MENU (F12)"
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="Panel/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="Panel/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="InfoLabel" type="Label" parent="Panel/VBoxContainer"]
+[node name="InfoLabel" type="Label" parent="Panel/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 12
 text = "=== DEBUG INFO ===
-Unlocked: []
-Total Stars: 0"
+Loading..."
 
-[node name="HSeparator2" type="HSeparator" parent="Panel/VBoxContainer"]
+[node name="HSeparator2" type="HSeparator" parent="Panel/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="UnlockAllBtn" type="Button" parent="Panel/VBoxContainer"]
+[node name="CurrencyLabel" type="Label" parent="Panel/ScrollContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.84, 0, 1)
 theme_override_font_sizes/font_size = 16
-text = "Unlock All Levels"
+text = "💰 CURRENCY"
+horizontal_alignment = 1
 
-[node name="Give3StarsBtn" type="Button" parent="Panel/VBoxContainer"]
+[node name="Add100CurrencyBtn" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 16
-text = "Give All 3 Stars"
+theme_override_font_sizes/font_size = 14
+text = "+ Add 100 Currency"
 
-[node name="ResetBtn" type="Button" parent="Panel/VBoxContainer"]
+[node name="HSeparator3" type="HSeparator" parent="Panel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="BaseLabel" type="Label" parent="Panel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.5, 0.5, 1)
+theme_override_font_sizes/font_size = 16
+text = "🏰 BASE / HP"
+horizontal_alignment = 1
+
+[node name="GodmodeBtn" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 1, 0.5, 1)
+theme_override_font_sizes/font_size = 14
+text = "Godmode: OFF"
+
+[node name="HealBaseBtn" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Heal Base to Full"
+
+[node name="HSeparator5" type="HSeparator" parent="Panel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="EnemyLabel" type="Label" parent="Panel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.6, 0.2, 1)
+theme_override_font_sizes/font_size = 16
+text = "👾 ENEMY CONTROLS"
+horizontal_alignment = 1
+
+[node name="KillAllEnemiesBtn" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.3, 0.3, 1)
-theme_override_font_sizes/font_size = 16
-text = "Reset Progress"
+theme_override_font_sizes/font_size = 14
+text = "☠ Kill All Enemies"
 
+[node name="InstantKillBtn" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 1, 0.5, 1)
+theme_override_font_sizes/font_size = 14
+text = "Instant Kill: OFF"
+
+[node name="HSeparator6" type="HSeparator" parent="Panel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="GameLabel" type="Label" parent="Panel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.5, 1, 1)
+theme_override_font_sizes/font_size = 16
+text = "🎮 GAME CONTROLS"
+horizontal_alignment = 1
+
+[node name="WinLevelBtn" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3, 1, 0.3, 1)
+theme_override_font_sizes/font_size = 14
+text = "🏆 Instant Win (3 Stars)"
+
+[node name="SkipWaveBtn" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "⏭ Skip Wave"
+
+[node name="HSeparator7" type="HSeparator" parent="Panel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="LevelLabel" type="Label" parent="Panel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 1, 0.6, 1)
+theme_override_font_sizes/font_size = 16
+text = "📊 LEVEL PROGRESS"
+horizontal_alignment = 1
+
+[node name="UnlockAllBtn" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "🔓 Unlock All Levels"
+
+[node name="Give3StarsBtn" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "⭐ Give All 3 Stars"
+
+[node name="ResetBtn" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.3, 0.3, 1)
+theme_override_font_sizes/font_size = 14
+text = "🗑 Reset Progress"

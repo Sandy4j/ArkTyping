@@ -24,6 +24,15 @@ func _process(delta: float) -> void:
 	
 	var direction = (target.global_position - global_position).normalized()
 	global_position += direction * speed * delta
+	
+	if direction.length_squared() > 0.001:
+		var up = Vector3.UP
+		var right = up.cross(direction).normalized()
+		if right.length_squared() < 0.001:
+			right = Vector3.RIGHT
+		up = direction.cross(right).normalized()
+		global_transform.basis = Basis(direction, up, right)
+	
 	if global_position.distance_to(target.global_position) < 0.5:
 		hit_target()
 
