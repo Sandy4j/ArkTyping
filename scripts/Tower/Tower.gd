@@ -495,10 +495,14 @@ func purify_wave()-> void:
 			continue
 		
 		healing_target = tower
-		var aura = ResourceLoadManager.get_vfx_resource("heal_priest")
-		healing_target.healed(damage, aura)
-		print(tower_data.chara, " melakukan heal pada ", healing_target.tower_data.chara)
-		healed_any = true
+		var aura_scene = ResourceLoadManager.get_vfx_resource("heal_priest")
+		if not aura_scene:
+			aura_scene = ResourceLoadManager.load_resource_sync("res://asset/Vfx/Effect/heal_aura_priest.tscn")
+		if aura_scene:
+			var aura = aura_scene.instantiate()
+			healing_target.healed(damage, aura)
+			print(tower_data.chara, " melakukan heal pada ", healing_target.tower_data.chara)
+			healed_any = true
 	
 	shot_fired.emit()
 
@@ -758,8 +762,8 @@ func Skill(skill_name: String) -> void:
 			activate_lunar_blessing()
 		"unholy bless":
 			active_unholy_bless()
-		"purify wave":
-			activate_purify_wave()
+		"purity wave":
+			activate_purity_wave()
 		_:
 			print("Unknown skill: ", skill_name)
 			return
@@ -1004,7 +1008,7 @@ func active_unholy_bless()-> void:
 		print("lunar blessing berakhir")
 
 var purify: int  
-func activate_purify_wave()-> void:
+func activate_purity_wave()-> void:
 	purify = tower_data.skill_duration
 	var aura_scene = ResourceLoadManager.get_vfx_resource("magic_circle_8")
 	if not aura_scene:

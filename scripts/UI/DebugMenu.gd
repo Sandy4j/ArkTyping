@@ -14,28 +14,55 @@ var instant_kill_enabled: bool = false
 
 func _ready() -> void:
 	panel.visible = false
+	panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_connect_buttons()
+	_set_buttons_disabled(true)
 	_update_info()
 
 func _connect_buttons() -> void:
 	# Level buttons
-	$Panel/ScrollContainer/VBoxContainer/UnlockAllBtn.pressed.connect(_on_unlock_all_pressed)
-	$Panel/ScrollContainer/VBoxContainer/Give3StarsBtn.pressed.connect(_on_give_3stars_pressed)
-	$Panel/ScrollContainer/VBoxContainer/ResetBtn.pressed.connect(_on_reset_pressed)
+	var unlock_btn = $Panel/ScrollContainer/VBoxContainer/UnlockAllBtn
+	var give3stars_btn = $Panel/ScrollContainer/VBoxContainer/Give3StarsBtn
+	var reset_btn = $Panel/ScrollContainer/VBoxContainer/ResetBtn
+	var add_currency_btn = $Panel/ScrollContainer/VBoxContainer/Add100CurrencyBtn
+	var godmode_btn = $Panel/ScrollContainer/VBoxContainer/GodmodeBtn
+	var heal_base_btn = $Panel/ScrollContainer/VBoxContainer/HealBaseBtn
+	var kill_enemies_btn = $Panel/ScrollContainer/VBoxContainer/KillAllEnemiesBtn
+	var instant_kill_btn = $Panel/ScrollContainer/VBoxContainer/InstantKillBtn
+	var win_btn = $Panel/ScrollContainer/VBoxContainer/WinLevelBtn
+	var skip_wave_btn = $Panel/ScrollContainer/VBoxContainer/SkipWaveBtn
 	
-	# Currency buttons
-	$Panel/ScrollContainer/VBoxContainer/Add100CurrencyBtn.pressed.connect(_on_add_100_currency)
-	# Base/HP buttons
-	$Panel/ScrollContainer/VBoxContainer/GodmodeBtn.pressed.connect(_on_toggle_godmode)
-	$Panel/ScrollContainer/VBoxContainer/HealBaseBtn.pressed.connect(_on_heal_base)
+	if unlock_btn.pressed.is_connected(_on_unlock_all_pressed):
+		unlock_btn.pressed.disconnect(_on_unlock_all_pressed)
+	if give3stars_btn.pressed.is_connected(_on_give_3stars_pressed):
+		give3stars_btn.pressed.disconnect(_on_give_3stars_pressed)
+	if reset_btn.pressed.is_connected(_on_reset_pressed):
+		reset_btn.pressed.disconnect(_on_reset_pressed)
+	if add_currency_btn.pressed.is_connected(_on_add_100_currency):
+		add_currency_btn.pressed.disconnect(_on_add_100_currency)
+	if godmode_btn.pressed.is_connected(_on_toggle_godmode):
+		godmode_btn.pressed.disconnect(_on_toggle_godmode)
+	if heal_base_btn.pressed.is_connected(_on_heal_base):
+		heal_base_btn.pressed.disconnect(_on_heal_base)
+	if kill_enemies_btn.pressed.is_connected(_on_kill_all_enemies):
+		kill_enemies_btn.pressed.disconnect(_on_kill_all_enemies)
+	if instant_kill_btn.pressed.is_connected(_on_toggle_instant_kill):
+		instant_kill_btn.pressed.disconnect(_on_toggle_instant_kill)
+	if win_btn.pressed.is_connected(_on_win_level):
+		win_btn.pressed.disconnect(_on_win_level)
+	if skip_wave_btn.pressed.is_connected(_on_skip_wave):
+		skip_wave_btn.pressed.disconnect(_on_skip_wave)
 	
-	# Enemy buttons
-	$Panel/ScrollContainer/VBoxContainer/KillAllEnemiesBtn.pressed.connect(_on_kill_all_enemies)
-	$Panel/ScrollContainer/VBoxContainer/InstantKillBtn.pressed.connect(_on_toggle_instant_kill)
-	
-	# Game buttons
-	$Panel/ScrollContainer/VBoxContainer/WinLevelBtn.pressed.connect(_on_win_level)
-	$Panel/ScrollContainer/VBoxContainer/SkipWaveBtn.pressed.connect(_on_skip_wave)
+	unlock_btn.pressed.connect(_on_unlock_all_pressed)
+	give3stars_btn.pressed.connect(_on_give_3stars_pressed)
+	reset_btn.pressed.connect(_on_reset_pressed)
+	add_currency_btn.pressed.connect(_on_add_100_currency)
+	godmode_btn.pressed.connect(_on_toggle_godmode)
+	heal_base_btn.pressed.connect(_on_heal_base)
+	kill_enemies_btn.pressed.connect(_on_kill_all_enemies)
+	instant_kill_btn.pressed.connect(_on_toggle_instant_kill)
+	win_btn.pressed.connect(_on_win_level)
+	skip_wave_btn.pressed.connect(_on_skip_wave)
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:
@@ -50,7 +77,30 @@ func toggle_debug_menu() -> void:
 	debug_visible = !debug_visible
 	panel.visible = debug_visible
 	if debug_visible:
+		panel.mouse_filter = Control.MOUSE_FILTER_STOP
+		_set_buttons_disabled(false)
 		_update_info()
+	else:
+		panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		_set_buttons_disabled(true)
+
+func _set_buttons_disabled(disabled: bool) -> void:
+	var buttons = [
+		$Panel/ScrollContainer/VBoxContainer/UnlockAllBtn,
+		$Panel/ScrollContainer/VBoxContainer/Give3StarsBtn,
+		$Panel/ScrollContainer/VBoxContainer/ResetBtn,
+		$Panel/ScrollContainer/VBoxContainer/Add100CurrencyBtn,
+		$Panel/ScrollContainer/VBoxContainer/GodmodeBtn,
+		$Panel/ScrollContainer/VBoxContainer/HealBaseBtn,
+		$Panel/ScrollContainer/VBoxContainer/KillAllEnemiesBtn,
+		$Panel/ScrollContainer/VBoxContainer/InstantKillBtn,
+		$Panel/ScrollContainer/VBoxContainer/WinLevelBtn,
+		$Panel/ScrollContainer/VBoxContainer/SkipWaveBtn
+	]
+	for btn in buttons:
+		btn.disabled = disabled
+		# Prevent buttons from capturing keyboard input (Enter/Space)
+		btn.focus_mode = Control.FOCUS_NONE
 
 func _update_info() -> void:
 	if not info_label:
@@ -100,9 +150,13 @@ func _on_give_3stars_pressed() -> void:
 
 # === CURRENCY FUNCTIONS ===
 func _on_add_100_currency() -> void:
+	if not debug_visible:
+		return
 	GameManager.add_currency(100)
 	_update_info()
 	print("[Debug] Added 100 currency")
+	# Release focus to prevent keyboard triggering this button
+	$Panel/ScrollContainer/VBoxContainer/Add100CurrencyBtn.release_focus()
 
 # === BASE/HP FUNCTIONS ===
 func _on_toggle_godmode() -> void:

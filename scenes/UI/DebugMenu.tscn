@@ -67,6 +67,7 @@ horizontal_alignment = 1
 
 [node name="Add100CurrencyBtn" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 theme_override_font_sizes/font_size = 14
 text = "+ Add 100 Currency"
 
@@ -82,12 +83,14 @@ horizontal_alignment = 1
 
 [node name="GodmodeBtn" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 theme_override_colors/font_color = Color(0.5, 1, 0.5, 1)
 theme_override_font_sizes/font_size = 14
 text = "Godmode: OFF"
 
 [node name="HealBaseBtn" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 theme_override_font_sizes/font_size = 14
 text = "Heal Base to Full"
 
@@ -103,12 +106,14 @@ horizontal_alignment = 1
 
 [node name="KillAllEnemiesBtn" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 theme_override_colors/font_color = Color(1, 0.3, 0.3, 1)
 theme_override_font_sizes/font_size = 14
 text = "☠ Kill All Enemies"
 
 [node name="InstantKillBtn" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 theme_override_colors/font_color = Color(0.5, 1, 0.5, 1)
 theme_override_font_sizes/font_size = 14
 text = "Instant Kill: OFF"
@@ -125,12 +130,14 @@ horizontal_alignment = 1
 
 [node name="WinLevelBtn" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 theme_override_colors/font_color = Color(0.3, 1, 0.3, 1)
 theme_override_font_sizes/font_size = 14
 text = "🏆 Instant Win (3 Stars)"
 
 [node name="SkipWaveBtn" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 theme_override_font_sizes/font_size = 14
 text = "⏭ Skip Wave"
 
@@ -146,16 +153,19 @@ horizontal_alignment = 1
 
 [node name="UnlockAllBtn" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 theme_override_font_sizes/font_size = 14
 text = "🔓 Unlock All Levels"
 
 [node name="Give3StarsBtn" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 theme_override_font_sizes/font_size = 14
 text = "⭐ Give All 3 Stars"
 
 [node name="ResetBtn" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 theme_override_colors/font_color = Color(1, 0.3, 0.3, 1)
 theme_override_font_sizes/font_size = 14
 text = "🗑 Reset Progress"
