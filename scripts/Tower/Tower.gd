@@ -635,7 +635,9 @@ func take_damage(dmg: float, is_bind: bool = false) -> void:
 		var vfx_nd = vfx_sc.instantiate()
 		self.add_child(vfx_nd)
 	if current_hp <= 0:
-		if is_instance_valid(debuff_aura):
+		if got_binded:
+			remove_bind_debuff()
+		elif is_instance_valid(debuff_aura) and not debuff_aura.has_method("remove_bind_vfx"):
 			debuff_aura.queue_free()
 		destroy()
 
@@ -694,9 +696,11 @@ func cleanup_before_retreat() -> void:
 		vfx_aura.call_deferred("queue_free")
 		vfx_aura = null
 	
-	# Cleanup debuff aura
+	# Cleanup debuff aura - but not TowerSpot!
 	if is_instance_valid(debuff_aura):
-		if debuff_aura is Node:
+		if debuff_aura.has_method("remove_bind_vfx"):
+			debuff_aura.remove_bind_vfx()
+		elif debuff_aura is Node:
 			debuff_aura.call_deferred("queue_free")
 		debuff_aura = null
 	

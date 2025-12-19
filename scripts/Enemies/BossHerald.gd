@@ -23,7 +23,8 @@ var buffed_enemies_vfx: Dictionary = {}
 var current_buff_word: String = ""
 var typing_label: Label3D
 var attack_timer: float = 0.0
-var current_target: Node3D = null
+var current_targets: Array[Node3D] = []  # Multiple targets
+@export var max_attack_targets: int = 4  # Maximum targets to attack
 var is_attacking: bool = false
 var attack_range_area: Area3D
 var boss_rage_vfx: Node3D = null
@@ -51,49 +52,70 @@ func setup_typing_label():
 		typing_label.modulate = Color(1, 1, 0, 1)
 
 func _on_body_entered_range(body: Node3D):
-	if body.is_in_group("towers") and not is_attacking:
-		current_target = body
-		is_attacking = true
+	if body.is_in_group("towers") and body not in current_targets:
+		if current_targets.size() < max_attack_targets:
+			current_targets.append(body)
+			is_attacking = true
 
 func _on_body_exited_range(body: Node3D):
-	if body == current_target:
-		current_target = null
-		is_attacking = false
+	if body in current_targets:
+		current_targets.erase(body)
+		if current_targets.is_empty():
+			is_attacking = false
 
 func _update_logic(delta: float):
 	if not enemy_data or not enemy_data.can_attack or not is_alive:
 		return
 	
-	if is_attacking and current_target and is_instance_valid(current_target):
+	# Clean up invalid targets
+	current_targets = current_targets.filter(func(t): return is_instance_valid(t))
+	
+	if current_targets.size() > 0:
+		is_attacking = true
 		attack_timer -= delta
 		if attack_timer <= 0:
 			_perform_attack()
 			attack_timer = enemy_data.attack_cooldown
 	else:
 		is_attacking = false
-		current_target = null
 
 func _perform_attack():
-	if not current_target or not is_instance_valid(current_target):
+	if current_targets.is_empty():
 		return
 	
-	var projectile_scene = load("res://scenes/Enemy/ProjectileE.tscn")
-	var projectile = projectile_scene.instantiate()
-	get_tree().root.add_child(projectile)
-	projectile.global_position = global_position
-	projectile.initialize(current_target, enemy_data.attack_damage, enemy_data.projectile_speed)
+	var projectile_scene = preload("res://scenes/Enemy/ProjectileE.tscn")
+	var pool_key = "enemy_projectile"
+	
+	# Attack all current targets
+	for target in current_targets:
+		if target and is_instance_valid(target):
+			var projectile = ObjectPool.get_pooled_object(pool_key)
+			
+			if not projectile:
+				projectile = projectile_scene.instantiate()
+			else:
+				projectile.pool_name = pool_key
+			
+			get_tree().current_scene.add_child(projectile)
+			projectile.global_position = global_position + Vector3.UP * 0.5
+			
+			if projectile.has_method("initialize"):
+				projectile.initialize(target, enemy_data.attack_damage, enemy_data.projectile_speed)
 
 func _move(delta: float):
 	if is_attacking:
 		bob_timer += delta * bob_speed
 		global_position.y += sin(bob_timer) * bob_height
 		
-		if current_target and is_instance_valid(current_target):
-			var direction_to_target = current_target.global_position - global_position
-			if direction_to_target.x > 0.01:
-				sprite.flip_h = true
-			elif direction_to_target.x < -0.01:
-				sprite.flip_h = false
+		# Face the first valid target
+		if current_targets.size() > 0:
+			var target = current_targets[0]
+			if target and is_instance_valid(target):
+				var direction_to_target = target.global_position - global_position
+				if direction_to_target.x > 0.01:
+					sprite.flip_h = true
+				elif direction_to_target.x < -0.01:
+					sprite.flip_h = false
 		return
 	
 	super._move(delta)
@@ -259,7 +281,7 @@ func _cleanup_ability_resources() -> void:
 	
 	# Clear enemy references
 	buffed_enemies.clear()
-	current_target = null
+	current_targets.clear()
 	
 	# Hide typing label
 	if typing_label:

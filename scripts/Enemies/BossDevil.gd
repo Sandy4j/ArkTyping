@@ -67,12 +67,22 @@ func _perform_attack():
 	if not current_target or not is_instance_valid(current_target):
 		return
 	
-	# Spawn projectile
-	var projectile_scene = load("res://scenes/Enemy/ProjectileE.tscn")
-	var projectile = projectile_scene.instantiate()
-	get_tree().root.add_child(projectile)
-	projectile.global_position = global_position
-	projectile.initialize(current_target, enemy_data.attack_damage, enemy_data.projectile_speed)
+	# Use ObjectPool for projectile
+	var projectile_scene = preload("res://scenes/Enemy/ProjectileE.tscn")
+	if projectile_scene:
+		var pool_key = "enemy_projectile"
+		var projectile = ObjectPool.get_pooled_object(pool_key)
+		
+		if not projectile:
+			projectile = projectile_scene.instantiate()
+		else:
+			projectile.pool_name = pool_key
+		
+		get_tree().current_scene.add_child(projectile)
+		projectile.global_position = global_position + Vector3.UP * 0.5
+		
+		if projectile.has_method("initialize"):
+			projectile.initialize(current_target, enemy_data.attack_damage, enemy_data.projectile_speed)
 
 func _move(delta: float):
 	if is_attacking:

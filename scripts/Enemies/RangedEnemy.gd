@@ -45,12 +45,15 @@ func _move(delta: float) -> void:
 	global_position.y = base_y + sin(bob_timer) * bob_height
 	global_position.z = path_follow.global_position.z
 	
-	# Flip sprite based on movement direction (default facing left)
+	# Calculate movement direction
 	var direction = global_position - previous_position
-	if direction.x > 0.01:  # Moving right
-		sprite.flip_h = true
-	elif direction.x < -0.01:  # Moving left
-		sprite.flip_h = false
+	if direction.length() > 0.01:
+		if abs(direction.x) > abs(direction.z):
+			if direction.x > 0.01:  # Moving right
+				sprite.flip_h = true
+			elif direction.x < -0.01:  # Moving left
+				sprite.flip_h = false
+	
 	previous_position = global_position
 	
 	if path_follow.progress_ratio >= 1.0:
