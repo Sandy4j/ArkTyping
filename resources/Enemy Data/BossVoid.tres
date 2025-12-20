@@ -6,7 +6,7 @@
 script = ExtResource("1_fy2ew")
 enemy_name = "Boss"
 max_hp = 50000.0
-move_speed = 0.5
+move_speed = 0.55
 reward = 100
 base_damage = 10
 can_attack = true

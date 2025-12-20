@@ -12,7 +12,6 @@ base_damage = 5
 can_attack = true
 attack_range = 10.0
 attack_damage = 200.0
-attack_cooldown = 1.0
 projectile_speed = 5.0
 is_boss = true
 boss_scale_multiplier = 2.0

@@ -10,4 +10,5 @@ move_speed = 1.0
 reward = 5
 can_attack = true
 attack_damage = 200.0
+attack_cooldown = 2.5
 projectile_speed = 10.0
